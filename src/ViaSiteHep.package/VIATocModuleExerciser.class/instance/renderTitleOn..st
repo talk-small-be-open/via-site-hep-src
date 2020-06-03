@@ -1,6 +1,6 @@
 rendering
 renderTitleOn: html
-	html heading level1; class: 'moduleTitle'; with: [
+	html heading level2; class: 'moduleTitle'; with: [
 
 "		html span
 			class: 'level-badge';
