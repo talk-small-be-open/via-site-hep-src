@@ -1,5 +1,7 @@
 rendering
 renderNavigationOn: html
 	html div class: 'moduleNavigation'; with: [ 
-		html text: '< 12.1 >'
+		html span: '<'.
+		html span: '12.1'.
+		html span: '>'.
 	 ]
