@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAWebsite",
+	"category" : "ViaSiteHep-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VIAItalianWebsite",
+	"type" : "normal"
+}

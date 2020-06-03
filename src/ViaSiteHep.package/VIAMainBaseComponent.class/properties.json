@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAComponent",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"coreComponent",
+		"flashMessages",
+		"mainMenu",
+		"menuRenderer"
+	],
+	"name" : "VIAMainBaseComponent",
+	"type" : "normal"
+}

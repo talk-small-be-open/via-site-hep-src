@@ -1,0 +1,3 @@
+as yet unclassified
+registerNewUser
+	self coreComponentThenGotoHome: VIARegisterComponent new

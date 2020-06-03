@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAApplicationManager",
+	"category" : "ViaSiteHep-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VIAHepApplicationManager",
+	"type" : "normal"
+}
