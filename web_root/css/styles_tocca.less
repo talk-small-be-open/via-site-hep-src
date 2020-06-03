@@ -1,9 +1,218 @@
-// Styles for a via sub-website
+// -*- less-css-compile-at-save: t -*-
+
+// Styles for hep tocca
+//
+// Namespace: "t-" = short for "Tocca-"
+
+
+@font-face {
+  font-family: zeitung;
+  src: url(fonts/NunitoSans-Regular.ttf);
+	font-weight: normal; // 400
+}
+
+@font-face {
+  font-family: zeitung;
+  src: url(fonts/NunitoSans-Bold.ttf);
+	font-weight: bold; // 700
+}
+
+@font-face {
+  font-family: zeitung;
+  src: url(fonts/NunitoSans-SemiBold.ttf);
+	font-weight: 600;
+}
+
 
 // Import main styles
 @import "../../base/web_root/css/styles.less";
 
+// Our SITE own uikit theme (overrides to the via base uikit theme)
+@import "uikit_321_theme/_import.less";
+
 // Redefine basics for this via sub-website
-@via-basic-color: #e20613;
+@via-basic-color: #ca4947;
 @via-coloredbutton-color: #555;
 @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
+
+@tocca-black: #333;
+@tocca-blue: #117CBE;
+@tocca-red: #CE5C5B;
+
+@t-header-height:                                  3rem;
+@t-header-height-small:                            5vh;
+@t-header-background:                              @tocca-black;
+@t-header-small-background:                        @tocca-black;
+
+@t-header-shadow-sticky:                           0 0 50px 1px rgba(0,0,0,0.2);
+@t-header-shadow-teaser:                           0 0 150px 1px rgba(0,0,0,0.5);
+
+@t-header-padding: 0.6rem;
+
+// DEV ???????????????????????????????????????????
+body.public {
+		background-color: @tocca-red;
+		div.coreContainer {
+				padding-top: 2em;
+				background-color: @tocca-red;
+		}
+}
+
+// DEV ============================================
+
+
+/* Breakpoints
+ ========================================================================== */
+
+// Small and bigger
+@media (min-width: @breakpoint-small) {
+
+		div.coreContainer {
+				padding-left: 2em;
+				padding-right: 2em;
+		}
+		
+}
+
+// Not small phones
+@media (min-width: @breakpoint-small-max) {
+		body.loggedIn {
+				div.core {
+						min-height: 500px;
+				}
+		}
+}
+
+// Only very small phones
+@media (max-width: @breakpoint-small) {
+		div.coreContainer {
+				padding-left: 0;
+				padding-right: 0;
+		}
+
+}
+
+
+
+//
+// header 
+//
+div.t-header {
+    
+		background-color: @t-header-background;
+		padding: @t-header-padding;
+
+		// img.tocca-logo {
+		// 		height: @t-header-height/2;
+		// 		width: auto;
+		// }
+
+		a.t-logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: white;
+		}
+
+		ul.uk-navbar-nav {
+				margin-top: 1em;
+		}
+
+		div.t-menubar {
+				a {
+						color: white;
+
+						+ a {
+								margin-left: 1rem;
+						}
+						
+						&.mainMenuToggler {
+								span.uk-icon {
+										margin-right: 0.2em;
+								}
+						}
+				}
+		}
+		
+		// &.uk-active {
+
+		// 		height: @t-header-height-small;
+		// 		box-shadow: @t-header-shadow-sticky !important;
+		// 		background: @t-header-small-background;
+
+		// 		> .uk-container {
+		// 				height: @t-header-height-small;
+
+		// 				div.uk-navbar-right, div.uk-navbar-left {
+		// 						align-items: flex-start;
+		// 				}
+		// 		}
+
+		// }
+
+		// Menu, in navbar or in offcanvas
+		#mainMenu {
+				ul.uk-nav, ul.uk-navbar-nav {
+						// Login Menu, Facebook-Vorgaben
+						li.loginMenu {
+								ul.loginMenu {
+										li.facebookLogin, li.googleLogin {
+												//				background-color: @facebook-blue;
+												padding-left: 2px;
+												background-color: #f6f6f6;
+
+												a.facebookLogin, a.googleLogin {
+														&:hover {
+																color: @base-link-color;
+														}
+														color: #333;
+
+														img.facebookLogo {
+																width: 20px;
+																//						margin: 2px;
+														}
+
+														img.googleLogo {
+																width: 16px;
+																margin: 2px;
+														}
+												}
+										}
+								}
+						}
+				}
+
+				&.uk-offcanvas {
+						ul.uk-nav {
+								li {
+										a {
+												color: white;
+										}
+								}
+						}
+				}
+		}
+
+}
+
+
+
+div.VIATocModuleExerciser {
+
+		div.moduleNavigation {
+				background-color: @tocca-red;
+				color: white;
+				font-size: 2rem;
+				text-align: center;
+				padding: @t-header-padding;
+		}
+
+		.moduleTitle {
+				color: @tocca-blue;
+				text-align: center;
+		}
+
+		div.VIAExerciserComponent {
+				padding-left: 0.2em;
+				padding-right: 0.2em;
+		}
+}
