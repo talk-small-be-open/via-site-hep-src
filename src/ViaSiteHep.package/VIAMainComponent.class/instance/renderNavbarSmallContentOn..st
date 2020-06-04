@@ -11,7 +11,7 @@ renderNavbarSmallContentOn: html
 			callback: [  ];
 			with: [ html ukIcon: 'user'].
 		html anchor
-			callback: [  ];
+			callback: [ self showModuleFinder ];
 			with: [ html ukIcon: 'search'].
 		html anchor
 			class: 'mainMenuToggler';
