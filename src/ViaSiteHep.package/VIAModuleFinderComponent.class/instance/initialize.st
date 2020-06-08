@@ -1,4 +1,6 @@
 initialization
 initialize
 	super initialize.
-	searchText := nil
+	searchText := nil.
+	
+	self addContainerDiv

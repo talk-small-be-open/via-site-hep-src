@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "VIAModuleComponent",
+	"super" : "VIAModuleExerciserBase",
 	"category" : "ViaSiteHep-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -9,7 +9,8 @@
 		"currentExerciser",
 		"exerciserComponents",
 		"subtitleTags",
-		"moduleExercise"
+		"previousModule",
+		"nextModule"
 	],
 	"name" : "VIATocModuleExerciser",
 	"type" : "normal"

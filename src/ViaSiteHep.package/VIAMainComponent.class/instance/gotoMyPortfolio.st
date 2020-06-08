@@ -1,3 +1,3 @@
 actions
 gotoMyPortfolio
-	self coreComponent: VIAMyPortfolioComponent new
+	self coreComponent: VIATocMyPortfolioComponent new

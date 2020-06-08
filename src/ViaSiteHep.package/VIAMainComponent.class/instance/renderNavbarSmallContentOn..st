@@ -5,10 +5,10 @@ renderNavbarSmallContentOn: html
 	].
 	html div class: 'uk-navbar-right t-menubar'; with: [
 		html anchor
-			callback: [  ];
+			callback: [ self goUp ];
 			with: [ html ukIcon: 'home'].
 		html anchor
-			callback: [  ];
+			callback: [ self gotoMyPortfolio ];
 			with: [ html ukIcon: 'user'].
 		html anchor
 			callback: [ self showModuleFinder ];

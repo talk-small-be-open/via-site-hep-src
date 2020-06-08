@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "VIATaskExerciserBase",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"exercise",
+		"onFinishBlock",
+		"onCheckButtonBlock",
+		"parentComponent",
+		"exerciserForHighlightAreas"
+	],
+	"name" : "VIATocTaskExerciser",
+	"type" : "normal"
+}
