@@ -1,3 +1,3 @@
 rendering
 gotoPreviousModule
-	self gotoModule: nextModule
+	self gotoModule: previousModule
