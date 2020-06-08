@@ -4,7 +4,9 @@
 //
 // Namespace: "t-" = short for "Tocca-"
 
-
+// =======================================================================
+// Fonts
+// =======================================================================
 @font-face {
   font-family: zeitung;
   src: url(fonts/NunitoSans-Regular.ttf);
@@ -23,12 +25,19 @@
 	font-weight: 600;
 }
 
+// =======================================================================
+// Importing
+// =======================================================================
 
 // Import main styles
 @import "../../base/web_root/css/styles.less";
 
 // Our SITE own uikit theme (overrides to the via base uikit theme)
 @import "uikit_321_theme/_import.less";
+
+// =======================================================================
+// Variables
+// =======================================================================
 
 // Redefine basics for this via sub-website
 @via-basic-color: #ca4947;
@@ -49,7 +58,9 @@
 
 @t-header-padding: 0.6rem;
 
-// DEV ???????????????????????????????????????????
+// =======================================================================
+// DEVELOPMENT ONLY
+// =======================================================================
 body.public {
 		background-color: @tocca-red;
 		div.coreContainer {
@@ -61,8 +72,9 @@ body.public {
 // DEV ============================================
 
 
-/* Breakpoints
- ========================================================================== */
+// =======================================================================
+// UI Breakpoints
+// =======================================================================
 
 // Small and bigger
 @media (min-width: @breakpoint-small) {
@@ -92,6 +104,23 @@ body.public {
 
 }
 
+// =======================================================================
+// Mixins
+// =======================================================================
+
+// Tocca big button
+.bigButton {
+		border: 1px solid blue;
+		display: inline-block;
+		padding: 2em;
+		margin: 0.1em;
+}
+
+
+
+// =======================================================================
+// General Styles
+// =======================================================================
 
 
 //
@@ -195,7 +224,16 @@ div.t-header {
 }
 
 
+// =======================================================================
+// UI components
+// =======================================================================
 
+
+div.VIAModuleFinderComponent {
+		margin: 2em 0;
+}
+
+// Top level module exercise displayer
 div.VIATocModuleExerciser {
 
 		div.moduleNavigation {
@@ -207,6 +245,10 @@ div.VIATocModuleExerciser {
 
 				display: flex;
 				justify-content: space-between;
+
+				a {
+						color: inherit;
+				}
 		}
 
 		.moduleTitle {
@@ -214,7 +256,19 @@ div.VIATocModuleExerciser {
 				text-align: center;
 		}
 
-		div.VIAExerciserComponent {
+		// Accordion top line
+		div.accBar {
+				border-top: 2px solid black;
+				padding: 1em 0;
+				margin: 1em 0;
+				.accTitle {
+						display: inline;
+						color: @tocca-blue;
+				}
+		}
+
+		// Exercise displayer for every task (in a module)
+		div.VIATocTaskExerciser {
 				padding-left: 0.2em;
 				padding-right: 0.2em;
 		}
