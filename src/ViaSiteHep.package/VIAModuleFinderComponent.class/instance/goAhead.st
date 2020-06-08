@@ -5,7 +5,5 @@ goAhead
 	modules
 		ifEmpty: [  ]
 		ifNotEmpty: [
-			modules size = 1 ifTrue: [ self app gotoModule: modules anyOne. ^ self ].
-			
-			
+			modules size = 1 ifTrue: [ self gotoModule: modules anyOne. ^ self ].
 		] 

@@ -9,7 +9,9 @@
 		"currentExerciser",
 		"exerciserComponents",
 		"subtitleTags",
-		"moduleExercise"
+		"moduleExercise",
+		"previousModule",
+		"nextModule"
 	],
 	"name" : "VIATocModuleExerciser",
 	"type" : "normal"
