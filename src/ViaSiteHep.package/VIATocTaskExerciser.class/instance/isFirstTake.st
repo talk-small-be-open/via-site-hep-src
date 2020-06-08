@@ -1,0 +1,3 @@
+testing
+isFirstTake
+	^exercise isFirstTake

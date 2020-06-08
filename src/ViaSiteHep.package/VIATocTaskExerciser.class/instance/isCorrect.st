@@ -1,0 +1,3 @@
+testing
+isCorrect
+	^exercise isCorrect
