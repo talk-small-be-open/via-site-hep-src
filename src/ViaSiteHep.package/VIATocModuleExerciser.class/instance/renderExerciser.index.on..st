@@ -15,8 +15,11 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 				aTaskExerciser task classification activityTypeTags do: [:each |
 					html iconActivityType: each]
 				]."
-			html heading level2; class: 'accTitle'; with: aTaskExerciser task title.
-			html span class: 'accToggle'; with: [ html iconDropdown ].
+			html heading level3; class: 'accTitle'; with: aTaskExerciser task title.
+			html span class: 'accToggle'; with: [
+				html iconDropdown.
+				html iconClose.
+			].
 "			html div class: 'uk-visible@s acc-subtitle'; with: aTaskExerciser task title."
 	"		self renderScoreTask: aTaskExerciser exercise on: html"].
 	

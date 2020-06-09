@@ -11,7 +11,7 @@ initialize
 	self addForm
 		removeButtons.
 
-	self addContainerDiv.
+	self addContainerDiv addClass: (VIATocHelper unitCssOfModule: model).
 	
 	classification := model overallClassification.
 	subtitleTags := classification contextTags,
