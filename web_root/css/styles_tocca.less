@@ -7,23 +7,26 @@
 // =======================================================================
 // Fonts
 // =======================================================================
-@font-face {
-  font-family: zeitung;
-  src: url(fonts/NunitoSans-Regular.ttf);
-	font-weight: normal; // 400
-}
 
-@font-face {
-  font-family: zeitung;
-  src: url(fonts/NunitoSans-Bold.ttf);
-	font-weight: bold; // 700
-}
+// Font "zeitung" is included via Adobe CSS
 
-@font-face {
-  font-family: zeitung;
-  src: url(fonts/NunitoSans-SemiBold.ttf);
-	font-weight: 600;
-}
+// @font-face {
+//   font-family: zeitung;
+//   src: url(fonts/NunitoSans-Regular.ttf);
+// 	font-weight: normal; // 400
+// }
+
+// @font-face {
+//   font-family: zeitung;
+//   src: url(fonts/NunitoSans-Bold.ttf);
+// 	font-weight: bold; // 700
+// }
+
+// @font-face {
+//   font-family: zeitung;
+//   src: url(fonts/NunitoSans-SemiBold.ttf);
+// 	font-weight: 600;
+// }
 
 // =======================================================================
 // Importing
@@ -33,7 +36,7 @@
 @import "../../base/web_root/css/styles.less";
 
 // Our SITE own uikit theme (overrides to the via base uikit theme)
-@import "uikit_321_theme/_import.less";
+@import "uikit_theme/_import.less";
 
 // =======================================================================
 // Variables
@@ -44,32 +47,33 @@
 @via-coloredbutton-color: #555;
 @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
 
-@tocca-black: #333;
-@tocca-blue: #117CBE;
-@tocca-red: #CE5C5B;
+@t-color-black: #333;
+@t-color-blue: #117CBE;
+@t-color-red: #CE5C5B;
+@t-color-unit1: #ca4947;
+@t-color-unit2: #f08c2d;
+@t-color-unit3: #8aa95b;
 
 @t-header-height:                                  3rem;
 @t-header-height-small:                            5vh;
-@t-header-background:                              @tocca-black;
-@t-header-small-background:                        @tocca-black;
+@t-header-background:                              @t-color-black;
+@t-header-small-background:                        @t-color-black;
 
 @t-header-shadow-sticky:                           0 0 50px 1px rgba(0,0,0,0.2);
 @t-header-shadow-teaser:                           0 0 150px 1px rgba(0,0,0,0.5);
 
-@t-header-padding: 0.6rem;
+@t-header-padding: 1rem;
 
 // =======================================================================
 // DEVELOPMENT ONLY
 // =======================================================================
 body.public {
-		background-color: @tocca-red;
+		background-color: @t-color-red;
 		div.coreContainer {
 				padding-top: 2em;
-				background-color: @tocca-red;
+				background-color: @t-color-red;
 		}
 }
-
-// DEV ============================================
 
 
 // =======================================================================
@@ -110,10 +114,46 @@ body.public {
 
 // Tocca big button
 .bigButton {
+		text-transform: uppercase;
 		border: 1px solid blue;
 		display: inline-block;
 		padding: 2em;
 		margin: 0.1em;
+		cursor: pointer;
+		color: black;
+		background-color: white;
+}
+
+// Obsolete? Siehe button.less im ui kit theme
+.button {
+		text-transform: uppercase;
+		border: 1px solid blue;
+//		display: inline-block;
+		padding: 1em;
+		margin: 0.1em;
+		cursor: pointer;
+		color: black;
+		background-color: white;
+}
+
+// Use this on html elements which are decorated with a "toccaUnitX" css class, to set
+// the background color to the unit's main color
+// Example: .toccaUnitBackgroundColor("div.control span.button")
+.toccaUnitBackgroundColor(@selector){
+		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
+		&.toccaUnit1 {@{s} {background-color: @t-color-unit1;}}
+		&.toccaUnit2 {@{s} {background-color: @t-color-unit2;}}
+		&.toccaUnit3 {@{s} {background-color: @t-color-unit3;}}
+}
+
+// Use this on html elements which are decorated with a "toccaUnitX" css class, to set
+// the background color to the unit's main color
+// Example: .toccaUnitBackgroundColor("div.control span.button")
+.toccaUnitBorderColor(@selector){
+		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
+		&.toccaUnit1 {@{s} {border-color: @t-color-unit1;}}
+		&.toccaUnit2 {@{s} {border-color: @t-color-unit2;}}
+		&.toccaUnit3 {@{s} {border-color: @t-color-unit3;}}
 }
 
 
@@ -122,6 +162,15 @@ body.public {
 // General Styles
 // =======================================================================
 
+
+input.submit, button {
+		.button();
+}
+
+div {
+		.toccaUnitBorderColor("input.submit");
+		.toccaUnitBorderColor("button");
+}
 
 //
 // header 
@@ -231,45 +280,776 @@ div.t-header {
 
 div.VIAModuleFinderComponent {
 		margin: 2em 0;
+
+		input[type=text].searchInput {
+				display: block;
+				font-size: 200%;
+				border: 1px solid black;
+		}
 }
+
+
+
 
 // Top level module exercise displayer
 div.VIATocModuleExerciser {
 
-		div.moduleNavigation {
-				background-color: @tocca-red;
+		.toccaUnitBackgroundColor("h1.moduleNavigation");
+		
+		h1.moduleNavigation {
+				margin: 0;
+//				background-color: @t-color-red;
 				color: white;
-				font-size: 2rem;
 				text-align: center;
-				padding: @t-header-padding;
+				padding: 0;
 
 				display: flex;
 				justify-content: space-between;
+				align-items: center;
 
-				a {
-						color: inherit;
+				// .toccaUnit1& {
+				// 		background-color: @t-color-unit1;
+				// }
+
+				// .toccaUnit2 & {
+				// 		background-color: @t-color-unit2;
+				// }
+
+				// .toccaUnit3 & {
+				// 		background-color: @t-color-unit3;
+				// }
+				
+
+				span.leftRight {
+						width: 15%;
+						a {
+								color: inherit;
+						}
 				}
 		}
 
-		.moduleTitle {
-				color: @tocca-blue;
+		h2.moduleTitle {
+				color: @t-color-blue;
 				text-align: center;
+				margin-bottom: 1em;
+		}
+
+		div.moduleBody {
+				margin: 0 0.5em;
 		}
 
 		// Accordion top line
 		div.accBar {
-				border-top: 2px solid black;
+				border-top: 2px solid #333;
 				padding: 1em 0;
-				margin: 1em 0;
+				margin: 0;
 				.accTitle {
 						display: inline;
-						color: @tocca-blue;
+						color: @t-color-blue;
+				}
+
+				.accToggle {
+						float: right;
 				}
 		}
+
+
+		div.hiddenTaskExercise {
+				// Nicht display:none, weil das Berechnungen mit Breite etc. nicht möglich macht
+				
+				// height: 0px;
+				// visibility: hidden;
+				// overflow: hidden;
+
+				// position: absolute; 
+				// overflow: hidden; 
+				// clip: rect(0 0 0 0); 
+				// height: 1px; width: 1px; 
+				// margin: -1px; padding: 0; border: 0; 
+
+				position: absolute !important;
+				top: -9999px !important;
+				left: -9999px !important;
+				width: 100%; // TODO: Smarter, aber ich fand nicht heraus, wo die Breite drin steht. Wir brauchen aber eine feste Breite, damit die Berechnung per JS OK ist
+				visibility: hidden;
+				
+		}
+
 
 		// Exercise displayer for every task (in a module)
 		div.VIATocTaskExerciser {
 				padding-left: 0.2em;
 				padding-right: 0.2em;
+
+				margin-bottom: 1em;
 		}
 }
+
+
+
+
+
+
+
+
+
+@wrongColor: inherited;
+@correctColor: #efe;
+@dragHandleOffset: 25px;
+
+
+.noUserSelect() {
+		
+		user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		cursor: default;
+}
+
+.noTouch() {
+		touch-action: none;
+}
+
+.draggable() {
+		.noUserSelect();
+		.noTouch();
+		cursor: move;
+}
+
+.dropHover() {
+		&.dropHover {
+				background-color: @dropTargetHoverColor;
+		}
+}
+
+
+figure.inlineAssetImage {
+		display: inline-block;
+
+		figcaption {
+				display: none;
+		}
+}
+
+.correct {
+		background-color: #cfc;
+}
+
+.wrong {
+		background-color: @wrongColor;
+}
+
+span.partiallyCorrectIcon {
+		color: orange;
+}
+
+span.correctIcon {
+		color: #1a1;
+}
+
+span.wrongIcon {
+		color: #666;
+		padding-left: 4px;
+		padding-right: 2px;
+}
+
+div.webui-popover {
+		span.markAsEmpty {
+				cursor: pointer;
+				border: 2px solid green;
+
+				&.active {
+						background-color: green;
+				}
+		}
+}
+
+// div.VIAExerciserSolutionComponent,
+// div.VIAExerciserFinishedComponent {
+// 		.solution {
+// 				// background-color: lightyellow;
+
+// 				&.answerWasWrong {
+// 						// background-color: @wrongColor;
+// 				}
+
+// 				&.answerWasCorrect {
+// 						background-color: @correctColor;
+// 				}
+// 		}
+// }
+
+// // div.VIAExerciserFinishedComponent {
+// // 		.solution {
+
+// // 				&.answerWasWrong {
+// // 						// background-color: transparent;
+// // 				}
+
+// // 		}
+// // }
+
+
+span.copyPaste, pre.copyPaste {
+		cursor: pointer;
+}
+
+
+div.exercise {
+		
+		@dropTargetHoverColor: yellow;
+		
+		margin-bottom: 50px;
+
+		div.topToolbar {
+				float: right;
+		}
+		
+		h1 {
+				font-size: 120%;
+		}
+
+		h2 {
+				font-size: 110%;
+		}
+
+		h3 {
+				font-size: 100%;
+		}
+
+		table {
+				border: 1px solid #999;
+				border-collapse: collapse;
+				
+				td, th {
+						border: 1px solid #999;
+						padding: 2px 5px;
+				}
+		}
+
+		
+		input[type=text] {
+				font: inherit;
+				padding: 0 2px;
+				margin: -2px 0;
+		}
+
+		input[type=text].clozeTextPlaceholder {
+				.clozeTextPlaceholder;
+
+				&:focus {
+						outline: 1px solid #ccc;
+						background-color: #ffd;
+				}
+
+				// Intentionally set as empty by user
+				&.markedAsEmpty {
+						background-color: black;
+				}
+		}
+
+		
+		input, select, textarea {
+				// font-family: @base-body-font-family;
+		}
+
+		p {
+				margin-top: 3px;
+				margin-bottom: 3px;
+		}
+
+
+		
+		div.selectOneInput, div.selectPointsInput {
+				margin-bottom: 10px;
+
+				label:hover {
+						background-color: #eee;
+				}
+
+				span.wrongIcon {
+						// position: absolute;
+						// left: -15px;
+				}
+
+
+		}
+
+		select.selectOneInput {
+				max-width: 100%;
+		}
+
+		div.selectMany {
+				label:hover {
+						background-color: #eee;
+				}
+
+				span.wrongIcon {
+						position: absolute;
+						left: -15px;
+				}
+		}
+		
+		div.clozeText {
+				line-height: 1.8em;
+
+				div.selectOneInput {
+						display: inline-block;
+				}
+
+
+				span.dragDropDraggable {
+						.draggable();
+						
+						background-color: #eee;
+						padding: 1px 2px;
+						border: 1px solid #ccc;
+
+						// margin-bottom: 10px;
+						// line-height: normal;
+						display: inline-block;
+
+						&:hover {
+								border: 1px solid black;
+						}
+
+						figure.inlineAssetImage {
+								display: inline-block;
+
+								figcaption {
+										display: none;
+								}
+						}
+						
+				}
+				
+				span.dragDropTarget {
+						display: inline-block;
+						min-width: 100px;
+						background-color: #eee;
+						padding-left: 5px;
+						min-height: 1em;
+						border-top: none;
+						border-left: none;
+						border-right: none;
+						border-bottom: @borderBottomClozePlaceholders;
+
+						.dropHover();
+
+						// Drag element in a drop container
+						span.dragDropDraggable {
+								margin-right: 5px;
+						}
+				}
+
+				div.dragDropDraggables {
+						background-color: #eee;
+						border: 1px dotted black;
+						margin: 10px 0;
+						padding: 1px 5px;
+						min-height: 20px;
+
+						.dropHover();
+						
+						span.dragDropDraggable {
+								.draggable();
+								
+								margin-right: 5px;
+								// line-height: normal;
+								display: inline-block;
+
+								figure.inlineAssetImage {
+										display: inline-block;
+
+										figcaption {
+												display: none;
+										}
+										
+										// span.assetInfo {
+										// 		.uk-text-muted();
+										// 		cursor: pointer;
+										// 		float: right;
+										// }
+								}
+								
+						}
+				}
+
+		}
+
+		div.buttons {
+
+				margin-top: 15px;
+
+				// input.submit, button {
+				// 		&.check, &.reset, &.recheck, &.revealAnswers, &.save {
+				// 				background: #f00;
+				// 				color: #fff;
+				// 				border:  0px;
+				// 				padding: 10px;
+				// 				font-size: 1.2em;
+				// 				cursor: pointer;
+				// 		}
+				// }
+
+				
+		}
+
+
+		div.audioPlayer {
+//				width: 50%;
+				margin: 10px 0px;
+				span.assetInfo {
+						float: right;
+				}
+
+				
+				div.transcriptionContainer {
+						// float: left;
+						// width: 45%;
+
+						div.transcriptionText {
+								font-size: 90%;
+								line-height: normal;
+								// max-height: 300px;
+								// overflow: auto;
+						}
+
+						
+						div.audioTranscription {
+								&.disabled {
+										.uk-hidden();
+								}
+
+								button.printThis {
+										float: right;
+								}
+						}
+
+				}
+				
+		}
+
+		
+		div.videoPlayer {
+				// clear: both;
+				// float: left;
+				// width: 100%;
+
+				// &.stickyVideo {
+				// 		// box-sizing: border-box;
+				// 		// background: #f5f5f5;
+				// 		// box-shadow: inset 0 10px 10px 0 rgba(0, 0, 0, 0.6);
+				// 		// border-radius: 4px;
+				// 		// margin: 10px;
+				// 		// border: 2px solid green;
+				// }
+				
+				div.videoContainer {
+						// float: left;
+						margin-right: 10px;
+						// width: 50%;
+
+						// video {
+						// 		// width: 100%    !important;
+						// 		max-width: 100%;
+						// 		height: auto   !important;
+						// 		background: rgba(200,200,200,20) no-repeat;
+						// 		// background-size: 100%;
+						// }
+				}
+
+				div.transcriptionContainer {
+
+						div.videoTranscription {
+								&.disabled {
+										.uk-hidden();
+								}
+
+								button.printThis {
+										float: right;
+								}
+						}
+
+						div.transcriptionText {
+								font-size: 90%;
+								line-height: normal;
+								// max-height: 300px;
+								// overflow: auto;
+						}
+				}
+
+				span.assetInfo {
+						float: right;
+				}
+		}
+
+		div.imageDisplayer {
+				span.image {
+						display: inline-block;
+						text-align: right;
+						img {
+								display: block;
+						}
+						span.assetInfo {
+						}
+						
+				}
+		}
+
+		span.assetInfo {
+				.uk-text-muted();
+				cursor: pointer;
+		}
+
+		span.hintSymbol {
+				margin-left: 3px;
+				margin-right: 3px;
+		}
+
+		// Meist für Videos
+		// div.uk-sticky-placeholder {
+		// 		width: 100%;
+		// 		z-index: 999999;
+		// }
+
+		// .ui-selectmenu-button span.ui-selectmenu-text {
+		// 		// text-align: left;
+		// 		// padding: 0.4em 2.1em 0.4em 1em;
+		// 		// display: block;
+		// 		// line-height: 1.4;
+		// 		// overflow: hidden;
+		// 		/* text-overflow: ellipsis; */
+		// 		white-space: normal;
+		// }
+
+		div.mapPairs {
+				@pairBorder: 1px solid black;
+				
+				// float: left;
+				// width: 100%;
+				// clear: both;
+				border-top: @pairBorder;
+				display: table;
+				border-collapse: collapse;
+				//table-layout: fixed;
+				
+				div.objectPair {
+						//float: left;
+						// width: 100%;
+						// clear: both;
+						display: table-row;
+						// background-color: #f9f9f9;
+						border-bottom: @pairBorder;
+						// padding: 5px 0;
+
+						.dropHover();
+
+						span.hintSymbol {
+								float:left;
+								// position: absolute;
+								margin-left: -20px;
+								margin-top: 10px;
+						}
+						
+						div.leftObject {
+								display: table-cell;
+								//						float: left;
+								// width: 1%;
+								padding-left: 10px;
+								//				border-bottom: @pairBorder;
+						}
+
+						div.middleColumn {
+								display: table-cell;
+						}
+
+						div.rightObject {
+								display: table-cell;
+								//						float: right;
+								//width: 48%;
+								padding: 5px 10px 5px (@dragHandleOffset + 10px);
+								//				border-bottom: @pairBorder;
+
+
+								div.objectPairDraggable {
+										background-color: #eee;
+										padding: 10px;
+										border: 1px solid #ddd;
+										margin-bottom: 10px;
+
+										.draggable();
+
+										&:hover {
+												border: 1px solid #333;
+										}
+
+										&:only-child {
+												margin-bottom: 0;
+										}
+
+										&:not(:first-child) {
+												background-color: #f99;
+										}
+
+										span.dragHandle {
+												position: absolute;
+												margin-left: -@dragHandleOffset;
+										}
+
+								}
+								
+// // TODO Obsolete jQuery UI
+// 								.ui-draggable-dragging {
+// 										box-shadow: 5px 5px 3px #ddd;
+// 										background-color: #eee;
+// 										border: 1px solid grey;
+// 										cursor: move;
+// 								}
+								
+						}
+				}
+				
+		}
+
+// 		div.score {
+// 				margin-top: 30px;
+// 				background-color: white;
+// 		}
+		
+		
+}
+
+// TODO Evt. innerhalb taskEditor
+div.inputEditor {
+		> div.inputEditor {
+				border: 1px solid #333;
+				background-color: #f3f3f3;
+				padding: 5px;
+				margin: 10px 0;
+		}
+}
+
+span.dictionaryEntry {
+		border-bottom: 1px dotted #333;
+}
+
+div.objectPairDragHelper {
+		padding: 10px;
+		border: 1px solid black;
+}
+
+div.highlightAreas {
+
+		.noUserSelect();
+		.noTouch();
+//		cursor: url('/files/images/horizontal-text-select.cur'), default;
+		//		font-size: 120%;
+		letter-spacing: 0.1em;
+//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
+		padding: 10px;
+		margin: 15px 0;
+		border: 1px solid #aaa;
+
+		span.highlightArea.solution {
+//				background-color: #ddd;
+				border: 1px solid #333;
+				padding-left: 1px;
+		}
+
+		div.pillarParagraph:first-child {
+				margin-top: 0;
+		}
+		
+		// Version 2 ==========================
+		span.selChar {
+				cursor: url('/files/images/horizontal-text-select.cur'), text;
+//				cursor: text;
+				&.highlighted {
+						background-color: green;
+						color: white;
+						padding-top: 1px;
+				}
+				&.selected {
+						background-color: red;
+				}
+		}
+		
+}
+
+div.taskGroup {
+		// clear: both;
+		// float: left;
+		// width: 100%;
+		
+		div.taskGroupItem {
+				margin: 10px 0px;
+				// clear: both;
+				// float: left;
+				// width: 100%;
+		}
+}
+
+button.taskBrickGroupToggler {
+		background-color: #999;
+
+		&:hover {
+				background: black;
+		}
+}
+
+div.taskBrickGroup {
+		// border: 1px solid black;
+		padding: 5px;
+}
+
+.finished {
+		background-color: #999;
+}
+
+.inWork {
+		background-color: #999;
+}
+
+// div.moduleScore {
+// //		float: right;
+// //		margin-bottom: 5px;
+
+// 		table.scoreTable {
+// 				border-collapse: collapse;
+
+// 				td {
+// 						border: 1px solid black;
+
+// 						&.ignored {
+// 								background-color: #999;
+// 								color: #666;
+// 						}
+
+// 						span.taskNumber {
+// 								font-size: 14px;
+// 								margin: 0 5px;
+// 								font-weight: bold;
+// 						}
+
+// 				}
+				
+// 		}
+// }
+
+// div.moduleMenu {
+// //		margin-top: 5px;
+// //		float: left;
+// }
+
+div.moduleBody {
+		clear: both;
+		position: relative; // Wichtig, damit eingebettete versteckte absolute-Elemente die Breite korrekt berechnen können
+}
+
+// div.searchResults {
+// 		h2 {
+// 				margin-top: 20px;
+// 		}
+// }
