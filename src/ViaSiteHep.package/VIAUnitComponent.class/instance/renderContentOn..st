@@ -1,6 +1,12 @@
 rendering
 renderContentOn: html
-	html heading level1; with: ('Unit ', unitNumber asString).
+	html heading level1; with: [
+		html t: 'tocca:unit'.
+		html space.
+		html text: unitNumber asString].
 	
 	modules do: [ :each |
-		html div: each displayName ]
+		html div: [
+			html anchor
+				callback: [ self gotoModule: each];
+				with: each displayName ]]

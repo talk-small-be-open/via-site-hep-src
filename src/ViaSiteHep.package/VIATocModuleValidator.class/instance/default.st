@@ -7,7 +7,7 @@ default
 
 	self validateFormat
 		of: #indexCodeString named: 'module:indexCode';
-		withRegexp: '^P?((\d+)\.)+(\d+)'.
+		withRegexp: VIATocHelper regexpIndexCode.
 
 "	self validateFormat
 		of: #exerciseLevel named: 'module:level';
