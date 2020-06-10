@@ -1,9 +1,9 @@
 actions
 openLoginDialog
 	| login |
-	login := VIALoginComponent new.
-	login messageKey: 'mainPublic:pleaseLogin:info'.
-	
-	self showLightbox: nil component: login onAnswer: [:answer |
+	login := VIATocLoginComponent new.
+"	login messageKey: 'mainPublic:pleaseLogin:info'."
+
+	self coreComponent: login onAnswer: [:answer |
 		answer = true ifTrue: [self login]
 	]

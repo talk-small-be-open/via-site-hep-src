@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAComponent",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"loginOk",
+		"messageKey",
+		"local",
+		"email"
+	],
+	"name" : "VIATocLoginComponent",
+	"type" : "normal"
+}

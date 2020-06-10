@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VIATaskValidator",
+	"category" : "ViaSiteHep-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VIATocTaskValidator",
+	"type" : "normal"
+}
