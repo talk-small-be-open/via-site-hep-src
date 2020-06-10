@@ -14,17 +14,17 @@
 // @button-font-size:                              @global-small-font-size;
 // @button-large-font-size:                        @global-small-font-size;
 
-@button-default-background:                     #555;
-@button-default-hover-background:               #3b3b3b;
+@button-default-background:                     white;
+@button-default-hover-background:               #ddd;
 @button-default-active-background:              @button-default-hover-background;
 
 @button-disabled-background:                    transparent;
 
-@button-text-color:                             @global-inverse-color;
-@button-text-hover-color:                       @global-inverse-color;
+@button-text-color:                             @global-color;
+@button-text-hover-color:                       @global-color;
 
-@button-default-color:                          @global-inverse-color;
-@button-default-hover-color:                    @global-inverse-color;
+@button-default-color:                          @global-color;
+@button-default-hover-color:                    @global-color;
 
 
 
@@ -36,7 +36,8 @@
     // transition: 0.1s ease-in-out;
     // transition-property: color, background-color, border-color;
 
-		border: 2px solid white;
+		border: 2px solid @global-color;
+		text-transform: uppercase;
 
 		// &:hover,
 		// &:focus {
