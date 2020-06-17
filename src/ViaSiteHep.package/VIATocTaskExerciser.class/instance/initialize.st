@@ -8,4 +8,4 @@ initialize
 "	formDecoration := VIAFormDecoration new removeButtons.
 	self addDecoration: formDecoration."
 	
-	exerciserForHighlightAreas := VIAHighlightAreasV2Renderer within: self.
+"	exerciserForHighlightAreas := VIAHighlightAreasV2Renderer within: self."
