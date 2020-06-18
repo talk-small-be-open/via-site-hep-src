@@ -11,9 +11,9 @@ via:
 
   gemStoneVersion: "3.4.5"
 
-  # # Location of the source code (default github main repository)
-  # baseRepository:
-  #   gitUrl: "https://github.com/talk-small-be-open/via.git"
+  # Location of the source code (default github main repository)
+  baseRepository:
+    gitUrl: "https://github.com/talk-small-be-open/via.git"
 
 
   # Technical name of project. Something like ViaBlaBla
@@ -23,7 +23,8 @@ via:
   siteRepository:
     name: via-site-hep
     gitUrl: "https://github.com/talk-small-be-open/via-site-hep.git"
-    metacelloUrl: "github://talk-small-be-open/via-site-hep"
+#    gitUrl: "git@github.com:talk-small-be-open/via-site-hep.git"
+    metacelloUrl: "github://talk-small-be-open/via-site-hep/src"
 
   # Your organization names
   organizationName: 'hep verlag ag'
