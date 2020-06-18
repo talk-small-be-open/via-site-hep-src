@@ -1,31 +1,20 @@
-// -*- less-css-compile-at-save: t -*-
-
+//
 // Styles for hep tocca
 //
 // Namespace: "t-" = short for "Tocca-"
+// Caveat! The term "Module" is used in the via software as the container for tasks, but
+// is also used as a group name for two units of the Tocca-Book
 
 // =======================================================================
 // Fonts
 // =======================================================================
 
-// Font "zeitung" is included via Adobe CSS
+// Font "zeitung" is included via online Adobe CSS
 
 // @font-face {
 //   font-family: zeitung;
 //   src: url(fonts/NunitoSans-Regular.ttf);
 // 	font-weight: normal; // 400
-// }
-
-// @font-face {
-//   font-family: zeitung;
-//   src: url(fonts/NunitoSans-Bold.ttf);
-// 	font-weight: bold; // 700
-// }
-
-// @font-face {
-//   font-family: zeitung;
-//   src: url(fonts/NunitoSans-SemiBold.ttf);
-// 	font-weight: 600;
 // }
 
 // =======================================================================
@@ -42,10 +31,6 @@
 // Variables
 // =======================================================================
 
-// Redefine basics for this via sub-website
-@via-basic-color: #ca4947;
-@via-coloredbutton-color: #555;
-@via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
 
 @t-color-black: #333;
 @t-color-blue: #117CBE;
@@ -54,31 +39,34 @@
 @t-color-unit2: #f08c2d;
 @t-color-unit3: #8aa95b;
 
-@t-header-height:                                  3rem;
-@t-header-height-small:                            5vh;
-@t-header-background:                              @t-color-black;
-@t-header-small-background:                        @t-color-black;
+@t-header-height:             3rem;
+@t-header-height-small:       5vh;
+@t-header-background:         @t-color-black;
+@t-header-small-background:   @t-color-black;
+@t-header-shadow-sticky:      0 0 50px 1px rgba(0,0,0,0.2);
+@t-header-shadow-teaser:      0 0 150px 1px rgba(0,0,0,0.5);
+@t-header-padding:            1rem;
 
-@t-header-shadow-sticky:                           0 0 50px 1px rgba(0,0,0,0.2);
-@t-header-shadow-teaser:                           0 0 150px 1px rgba(0,0,0,0.5);
 
-@t-header-padding: 1rem;
+
+// Redefine basics for this via sub-website
+@via-basic-color: @t-color-black;
+@via-basic-background-color: @t-color-red;
+// @via-coloredbutton-color: #555;
+// @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
+
 
 // =======================================================================
 // DEVELOPMENT ONLY
 // =======================================================================
-body.public {
-		background-color: @t-color-red;
-		div.coreContainer {
-				padding-top: 2em;
-				background-color: @t-color-red;
-		}
-}
+
 
 
 // =======================================================================
 // UI Breakpoints
 // =======================================================================
+// {{{
+
 
 // Small and bigger
 @media (min-width: @breakpoint-small) {
@@ -108,69 +96,111 @@ body.public {
 
 }
 
+// }}}
+
 // =======================================================================
 // Mixins
 // =======================================================================
+// {{{
 
 // Tocca big button
 .bigButton {
 		text-transform: uppercase;
-		border: 1px solid blue;
-		display: inline-block;
+		display: block;
 		padding: 2em;
 		margin: 0.1em;
 		cursor: pointer;
-		color: black;
-		background-color: white;
+//		background-color: transparent;
+		border: 2px solid @global-color;
 }
 
-// Obsolete? Siehe button.less im ui kit theme
+// Siehe auch button.less im ui kit theme
 .button {
 		text-transform: uppercase;
-		border: 1px solid blue;
 //		display: inline-block;
 		padding: 1em;
 		margin: 0.1em;
 		cursor: pointer;
-		color: black;
-		background-color: white;
+//		background-color: transparent;
+
+		border: 2px solid @global-color;
+
 }
 
-// Use this on html elements which are decorated with a "toccaUnitX" css class, to set
+.catalogListItem(@borderColor) {
+		border-top-width: 2px;
+		border-top-style: solid;
+		border-top-color: @borderColor;
+		padding: 1em 0;
+		margin: 0;
+		cursor: pointer;
+}
+
+// Use this on html elements which are decorated with a "toccamoduleX" css class, to set
 // the background color to the unit's main color
-// Example: .toccaUnitBackgroundColor("div.control span.button")
-.toccaUnitBackgroundColor(@selector){
+// Example: .toccamoduleBackgroundColor("div.control span.button")
+.toccamoduleBackgroundColor(@selector){
 		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccaUnit1 {@{s} {background-color: @t-color-unit1;}}
-		&.toccaUnit2 {@{s} {background-color: @t-color-unit2;}}
-		&.toccaUnit3 {@{s} {background-color: @t-color-unit3;}}
+		&.toccamodule1 {@{s} {background-color: @t-color-unit1;}}
+		&.toccamodule2 {@{s} {background-color: @t-color-unit2;}}
+		&.toccamodule3 {@{s} {background-color: @t-color-unit3;}}
 }
 
-// Use this on html elements which are decorated with a "toccaUnitX" css class, to set
-// the background color to the unit's main color
-// Example: .toccaUnitBackgroundColor("div.control span.button")
-.toccaUnitBorderColor(@selector){
+// Use this on html elements which are decorated with a "toccamoduleX" css class, to set
+// the border color to the unit's main color
+// Example: .toccamoduleBorderColor("div.control span.button")
+.toccamoduleBorderColor(@selector){
 		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccaUnit1 {@{s} {border-color: @t-color-unit1;}}
-		&.toccaUnit2 {@{s} {border-color: @t-color-unit2;}}
-		&.toccaUnit3 {@{s} {border-color: @t-color-unit3;}}
+		&.toccamodule1 {@{s} {border-color: @t-color-unit1;}}
+		&.toccamodule2 {@{s} {border-color: @t-color-unit2;}}
+		&.toccamodule3 {@{s} {border-color: @t-color-unit3;}}
 }
 
-
+// }}}
 
 // =======================================================================
 // General Styles
 // =======================================================================
+// {{{
 
+// Styles for the non-logged in public UI
+body.public {
+		background-color: @t-color-red;
+		div.coreContainer {
+				padding-top: 2em;
+				background-color: @t-color-red;
+		}
 
-input.submit, button {
+		h1, h2, h3 {
+				color: white;
+		}
+
+		input.submit, button, a.uk-button {
+				color: white;
+				border-color: white;
+		}
+
+		a {
+				color: black;
+
+				&:hover {
+						color: black;
+				}
+		}
+}
+
+// General button styling
+input.submit, button, a.uk-button {
 		.button();
 }
 
+// All buttons get the color of the tocca unit, if inside a div with tocca module number
 div {
-		.toccaUnitBorderColor("input.submit");
-		.toccaUnitBorderColor("button");
+		.toccamoduleBorderColor("input.submit");
+		.toccamoduleBorderColor("button");
+		.toccamoduleBorderColor("a.uk-button");
 }
+
 
 //
 // header 
@@ -179,11 +209,6 @@ div.t-header {
     
 		background-color: @t-header-background;
 		padding: @t-header-padding;
-
-		// img.tocca-logo {
-		// 		height: @t-header-height/2;
-		// 		width: auto;
-		// }
 
 		a.t-logo {
 				font-size: 1.5rem;
@@ -211,52 +236,10 @@ div.t-header {
 				}
 		}
 		
-		// &.uk-active {
-
-		// 		height: @t-header-height-small;
-		// 		box-shadow: @t-header-shadow-sticky !important;
-		// 		background: @t-header-small-background;
-
-		// 		> .uk-container {
-		// 				height: @t-header-height-small;
-
-		// 				div.uk-navbar-right, div.uk-navbar-left {
-		// 						align-items: flex-start;
-		// 				}
-		// 		}
-
-		// }
 
 		// Menu, in navbar or in offcanvas
 		#mainMenu {
 				ul.uk-nav, ul.uk-navbar-nav {
-						// Login Menu, Facebook-Vorgaben
-						li.loginMenu {
-								ul.loginMenu {
-										li.facebookLogin, li.googleLogin {
-												//				background-color: @facebook-blue;
-												padding-left: 2px;
-												background-color: #f6f6f6;
-
-												a.facebookLogin, a.googleLogin {
-														&:hover {
-																color: @base-link-color;
-														}
-														color: #333;
-
-														img.facebookLogo {
-																width: 20px;
-																//						margin: 2px;
-														}
-
-														img.googleLogo {
-																width: 16px;
-																margin: 2px;
-														}
-												}
-										}
-								}
-						}
 				}
 
 				&.uk-offcanvas {
@@ -269,14 +252,21 @@ div.t-header {
 						}
 				}
 		}
-
 }
+
+// }}}
 
 
 // =======================================================================
 // UI components
 // =======================================================================
+// {{{
 
+div.VIATocLoginComponent {
+		h1 {
+				text-align: center;
+		}
+}
 
 div.VIAModuleFinderComponent {
 		margin: 2em 0;
@@ -289,16 +279,13 @@ div.VIAModuleFinderComponent {
 }
 
 
-
-
-// Top level module exercise displayer
 div.VIATocModuleExerciser {
 
-		.toccaUnitBackgroundColor("h1.moduleNavigation");
+		// Header gets units background color
+		.toccamoduleBackgroundColor("h1.moduleNavigation");
 		
 		h1.moduleNavigation {
 				margin: 0;
-//				background-color: @t-color-red;
 				color: white;
 				text-align: center;
 				padding: 0;
@@ -306,19 +293,6 @@ div.VIATocModuleExerciser {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-
-				// .toccaUnit1& {
-				// 		background-color: @t-color-unit1;
-				// }
-
-				// .toccaUnit2 & {
-				// 		background-color: @t-color-unit2;
-				// }
-
-				// .toccaUnit3 & {
-				// 		background-color: @t-color-unit3;
-				// }
-				
 
 				span.leftRight {
 						width: 15%;
@@ -340,9 +314,8 @@ div.VIATocModuleExerciser {
 
 		// Accordion top line
 		div.accBar {
-				border-top: 2px solid #333;
-				padding: 1em 0;
-				margin: 0;
+				.catalogListItem(#333);
+
 				.accTitle {
 						display: inline;
 						color: @t-color-blue;
@@ -355,18 +328,8 @@ div.VIATocModuleExerciser {
 
 
 		div.hiddenTaskExercise {
-				// Nicht display:none, weil das Berechnungen mit Breite etc. nicht möglich macht
+				// Nicht display:none, weil das Berechnungen der enthaltenen Elemente mit Breite etc. nicht möglich macht
 				
-				// height: 0px;
-				// visibility: hidden;
-				// overflow: hidden;
-
-				// position: absolute; 
-				// overflow: hidden; 
-				// clip: rect(0 0 0 0); 
-				// height: 1px; width: 1px; 
-				// margin: -1px; padding: 0; border: 0; 
-
 				position: absolute !important;
 				top: -9999px !important;
 				left: -9999px !important;
@@ -385,12 +348,22 @@ div.VIATocModuleExerciser {
 		}
 }
 
+div.VIAUnitComponent {
+		ul.modulesList {
+				list-style-type: none;
+				
+				li {
+						.catalogListItem(#333);
+				}
+		}
+}
 
+// }}}
 
-
-
-
-
+// =======================================================================
+// Tasks
+// =======================================================================
+// {{{
 
 
 @wrongColor: inherited;
@@ -496,6 +469,7 @@ span.copyPaste, pre.copyPaste {
 }
 
 
+// Styles inside the content of tasks
 div.exercise {
 		
 		@dropTargetHoverColor: yellow;
@@ -505,7 +479,8 @@ div.exercise {
 		div.topToolbar {
 				float: right;
 		}
-		
+
+		// Titles inside task content, should not be as big as official titles
 		h1 {
 				font-size: 120%;
 		}
@@ -706,14 +681,10 @@ div.exercise {
 
 				
 				div.transcriptionContainer {
-						// float: left;
-						// width: 45%;
 
 						div.transcriptionText {
 								font-size: 90%;
 								line-height: normal;
-								// max-height: 300px;
-								// overflow: auto;
 						}
 
 						
@@ -726,38 +697,14 @@ div.exercise {
 										float: right;
 								}
 						}
-
 				}
-				
 		}
 
 		
 		div.videoPlayer {
-				// clear: both;
-				// float: left;
-				// width: 100%;
-
-				// &.stickyVideo {
-				// 		// box-sizing: border-box;
-				// 		// background: #f5f5f5;
-				// 		// box-shadow: inset 0 10px 10px 0 rgba(0, 0, 0, 0.6);
-				// 		// border-radius: 4px;
-				// 		// margin: 10px;
-				// 		// border: 2px solid green;
-				// }
 				
 				div.videoContainer {
-						// float: left;
 						margin-right: 10px;
-						// width: 50%;
-
-						// video {
-						// 		// width: 100%    !important;
-						// 		max-width: 100%;
-						// 		height: auto   !important;
-						// 		background: rgba(200,200,200,20) no-repeat;
-						// 		// background-size: 100%;
-						// }
 				}
 
 				div.transcriptionContainer {
@@ -775,8 +722,6 @@ div.exercise {
 						div.transcriptionText {
 								font-size: 90%;
 								line-height: normal;
-								// max-height: 300px;
-								// overflow: auto;
 						}
 				}
 
@@ -808,57 +753,29 @@ div.exercise {
 				margin-right: 3px;
 		}
 
-		// Meist für Videos
-		// div.uk-sticky-placeholder {
-		// 		width: 100%;
-		// 		z-index: 999999;
-		// }
-
-		// .ui-selectmenu-button span.ui-selectmenu-text {
-		// 		// text-align: left;
-		// 		// padding: 0.4em 2.1em 0.4em 1em;
-		// 		// display: block;
-		// 		// line-height: 1.4;
-		// 		// overflow: hidden;
-		// 		/* text-overflow: ellipsis; */
-		// 		white-space: normal;
-		// }
 
 		div.mapPairs {
 				@pairBorder: 1px solid black;
 				
-				// float: left;
-				// width: 100%;
-				// clear: both;
 				border-top: @pairBorder;
 				display: table;
 				border-collapse: collapse;
-				//table-layout: fixed;
 				
 				div.objectPair {
-						//float: left;
-						// width: 100%;
-						// clear: both;
 						display: table-row;
-						// background-color: #f9f9f9;
 						border-bottom: @pairBorder;
-						// padding: 5px 0;
 
 						.dropHover();
 
 						span.hintSymbol {
 								float:left;
-								// position: absolute;
 								margin-left: -20px;
 								margin-top: 10px;
 						}
 						
 						div.leftObject {
 								display: table-cell;
-								//						float: left;
-								// width: 1%;
 								padding-left: 10px;
-								//				border-bottom: @pairBorder;
 						}
 
 						div.middleColumn {
@@ -867,11 +784,7 @@ div.exercise {
 
 						div.rightObject {
 								display: table-cell;
-								//						float: right;
-								//width: 48%;
 								padding: 5px 10px 5px (@dragHandleOffset + 10px);
-								//				border-bottom: @pairBorder;
-
 
 								div.objectPairDraggable {
 										background-color: #eee;
@@ -899,27 +812,76 @@ div.exercise {
 										}
 
 								}
-								
-// // TODO Obsolete jQuery UI
-// 								.ui-draggable-dragging {
-// 										box-shadow: 5px 5px 3px #ddd;
-// 										background-color: #eee;
-// 										border: 1px solid grey;
-// 										cursor: move;
-// 								}
-								
 						}
 				}
-				
 		}
 
 // 		div.score {
 // 				margin-top: 30px;
 // 				background-color: white;
 // 		}
+
+
+		div.objectPairDragHelper {
+				padding: 10px;
+				border: 1px solid black;
+		}
+
+		div.highlightAreas {
+
+				.noUserSelect();
+				.noTouch();
+				letter-spacing: 0.1em;
+				//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
+				padding: 10px;
+				margin: 15px 0;
+				border: 1px solid #aaa;
+
+				span.highlightArea.solution {
+						border: 1px solid #333;
+						padding-left: 1px;
+				}
+
+				div.pillarParagraph:first-child {
+						margin-top: 0;
+				}
+				
+				span.selChar {
+						cursor: url('/files/images/horizontal-text-select.cur'), text;
+						&.highlighted {
+								background-color: green;
+								color: white;
+								padding-top: 1px;
+						}
+						&.selected {
+								background-color: red;
+						}
+				}		
+		}
+
+		div.taskGroup {
+				
+				div.taskGroupItem {
+						margin: 10px 0px;
+				}
+		}
+
+		button.taskBrickGroupToggler {
+				background-color: #999;
+
+				&:hover {
+						background: black;
+				}
+		}
+
+		div.taskBrickGroup {
+				// border: 1px solid black;
+				padding: 5px;
+		}
 		
 		
 }
+
 
 // TODO Evt. innerhalb taskEditor
 div.inputEditor {
@@ -935,74 +897,6 @@ span.dictionaryEntry {
 		border-bottom: 1px dotted #333;
 }
 
-div.objectPairDragHelper {
-		padding: 10px;
-		border: 1px solid black;
-}
-
-div.highlightAreas {
-
-		.noUserSelect();
-		.noTouch();
-//		cursor: url('/files/images/horizontal-text-select.cur'), default;
-		//		font-size: 120%;
-		letter-spacing: 0.1em;
-//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
-		padding: 10px;
-		margin: 15px 0;
-		border: 1px solid #aaa;
-
-		span.highlightArea.solution {
-//				background-color: #ddd;
-				border: 1px solid #333;
-				padding-left: 1px;
-		}
-
-		div.pillarParagraph:first-child {
-				margin-top: 0;
-		}
-		
-		// Version 2 ==========================
-		span.selChar {
-				cursor: url('/files/images/horizontal-text-select.cur'), text;
-//				cursor: text;
-				&.highlighted {
-						background-color: green;
-						color: white;
-						padding-top: 1px;
-				}
-				&.selected {
-						background-color: red;
-				}
-		}
-		
-}
-
-div.taskGroup {
-		// clear: both;
-		// float: left;
-		// width: 100%;
-		
-		div.taskGroupItem {
-				margin: 10px 0px;
-				// clear: both;
-				// float: left;
-				// width: 100%;
-		}
-}
-
-button.taskBrickGroupToggler {
-		background-color: #999;
-
-		&:hover {
-				background: black;
-		}
-}
-
-div.taskBrickGroup {
-		// border: 1px solid black;
-		padding: 5px;
-}
 
 .finished {
 		background-color: #999;
@@ -1038,18 +932,16 @@ div.taskBrickGroup {
 // 		}
 // }
 
-// div.moduleMenu {
-// //		margin-top: 5px;
-// //		float: left;
-// }
 
 div.moduleBody {
 		clear: both;
 		position: relative; // Wichtig, damit eingebettete versteckte absolute-Elemente die Breite korrekt berechnen können
 }
 
-// div.searchResults {
-// 		h2 {
-// 				margin-top: 20px;
-// 		}
-// }
+// }}}
+
+// Keep this for Emacs editor!
+// Local Variables:
+// less-css-compile-at-save: t
+// origami-fold-style: triple-braces
+// End:
