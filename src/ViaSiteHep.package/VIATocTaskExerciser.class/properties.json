@@ -9,8 +9,7 @@
 		"exercise",
 		"onFinishBlock",
 		"onCheckButtonBlock",
-		"parentComponent",
-		"exerciserForHighlightAreas"
+		"parentComponent"
 	],
 	"name" : "VIATocTaskExerciser",
 	"type" : "normal"
