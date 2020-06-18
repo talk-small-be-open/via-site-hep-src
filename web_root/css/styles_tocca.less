@@ -38,6 +38,7 @@
 @t-color-unit1: #ca4947;
 @t-color-unit2: #f08c2d;
 @t-color-unit3: #8aa95b;
+@t-color-tandem-question: #CDE5F2;
 
 @t-header-height:             3rem;
 @t-header-height-small:       5vh;
@@ -345,6 +346,28 @@ div.VIATocModuleExerciser {
 				padding-right: 0.2em;
 
 				margin-bottom: 1em;
+
+				// Tandem sequence
+				div.VIATandemSequenceExerciser {
+						div.question {
+								background-color: @t-color-tandem-question;
+								padding: 2em;
+								margin-bottom: 2em;
+
+								div.explanation {
+										margin-bottom: 2em;
+								}
+						}
+
+						div.answer {
+								margin: 2em 0;
+						}
+
+						div.navigation {
+								font-size: 200%;
+						}
+						
+				}
 		}
 }
 
