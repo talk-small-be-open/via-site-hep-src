@@ -40,6 +40,11 @@
 @t-color-unit3: #8aa95b;
 @t-color-tandem-question: #CDE5F2;
 
+
+@wrongColor: inherited;
+@correctColor: #efe;
+
+
 @t-header-height:             3rem;
 @t-header-height-small:       5vh;
 @t-header-background:         @t-color-black;
@@ -107,22 +112,28 @@
 // Tocca big button
 .bigButton {
 		text-transform: uppercase;
-		display: block;
-		padding: 2em;
-		margin: 0.1em;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: auto;
+		height: 3em;
+		//		padding: 2em;
+//		margin: 0.1em;
 		cursor: pointer;
-//		background-color: transparent;
+		font-size: 200%;
+		//		background-color: transparent;
 		border: 2px solid @global-color;
 }
 
 // Siehe auch button.less im ui kit theme
 .button {
 		text-transform: uppercase;
-//		display: inline-block;
+		//		display: inline-block;
 		padding: 1em;
 		margin: 0.1em;
 		cursor: pointer;
-//		background-color: transparent;
+		//		background-color: transparent;
 
 		border: 2px solid @global-color;
 
@@ -156,6 +167,53 @@
 		&.toccamodule2 {@{s} {border-color: @t-color-unit2;}}
 		&.toccamodule3 {@{s} {border-color: @t-color-unit3;}}
 }
+
+.toccamoduleButton(@selector){
+		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
+
+		.style(@localColor) {
+				border-color: @localColor;
+				color: @localColor;
+				background-color: white;
+
+				&:hover, &:active {
+						background-color: @localColor;
+						color: white;
+				}
+
+		}
+		
+		&.toccamodule1 {@{s} {.style(@t-color-unit1)}}
+		&.toccamodule2 {@{s} {.style(@t-color-unit2)}}
+		&.toccamodule3 {@{s} {.style(@t-color-unit3)}}
+}
+
+.noUserSelect() {
+		
+		user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		cursor: default;
+}
+
+.noTouch() {
+		touch-action: none;
+}
+
+.draggable() {
+		.noUserSelect();
+		.noTouch();
+		cursor: move;
+}
+
+.dropHover() {
+		&.dropHover {
+				background-color: @dropTargetHoverColor;
+		}
+}
+
+
 
 // }}}
 
@@ -197,9 +255,10 @@ input.submit, button, a.uk-button {
 
 // All buttons get the color of the tocca unit, if inside a div with tocca module number
 div {
-		.toccamoduleBorderColor("input.submit");
-		.toccamoduleBorderColor("button");
-		.toccamoduleBorderColor("a.uk-button");
+		.toccamoduleButton("input.submit");
+		.toccamoduleButton("button");
+		.toccamoduleButton(".bigButton");
+		.toccamoduleButton("a.uk-button");
 }
 
 
@@ -347,6 +406,434 @@ div.VIATocModuleExerciser {
 
 				margin-bottom: 1em;
 
+
+				// Styles inside the content of tasks
+				div.exercise {
+						
+						@dropTargetHoverColor: yellow;
+						
+						margin-bottom: 50px;
+
+						div.topToolbar {
+								float: right;
+						}
+
+						// Titles inside task content, should not be as big as official titles
+						h1 {
+								font-size: 120%;
+						}
+
+						h2 {
+								font-size: 110%;
+						}
+
+						h3 {
+								font-size: 100%;
+						}
+
+						table {
+								border: 1px solid #999;
+								border-collapse: collapse;
+								
+								td, th {
+										border: 1px solid #999;
+										padding: 2px 5px;
+								}
+						}
+
+						
+						input[type=text] {
+								font: inherit;
+								padding: 0 2px;
+								margin: -2px 0;
+						}
+
+						input[type=text].clozeTextPlaceholder {
+								.clozeTextPlaceholder;
+
+								&:focus {
+										outline: 1px solid #ccc;
+										background-color: #ffd;
+								}
+
+								// Intentionally set as empty by user
+								&.markedAsEmpty {
+										background-color: black;
+								}
+						}
+
+						
+						input, select, textarea {
+								// font-family: @base-body-font-family;
+						}
+
+						p {
+								margin-top: 3px;
+								margin-bottom: 3px;
+						}
+
+
+						
+						div.selectOneInput, div.selectPointsInput {
+								margin-bottom: 10px;
+
+								label:hover {
+										background-color: #eee;
+								}
+
+								span.wrongIcon {
+										// position: absolute;
+										// left: -15px;
+								}
+
+
+						}
+
+						select.selectOneInput {
+								max-width: 100%;
+						}
+
+						div.selectMany {
+								label:hover {
+										background-color: #eee;
+								}
+
+								span.wrongIcon {
+										position: absolute;
+										left: -15px;
+								}
+
+								.bigButton {
+										border-color: @t-color-blue;
+										color: @t-color-blue;
+
+										&:active, &.active {
+												background-color: @t-color-blue;
+												color: white;
+										}
+								}
+						}
+						
+						div.clozeText {
+								line-height: 1.8em;
+
+								div.selectOneInput {
+										display: inline-block;
+								}
+
+
+								span.dragDropDraggable {
+										.draggable();
+										
+										background-color: #eee;
+										padding: 1px 2px;
+										border: 1px solid #ccc;
+
+										// margin-bottom: 10px;
+										// line-height: normal;
+										display: inline-block;
+
+										&:hover {
+												border: 1px solid black;
+										}
+
+										figure.inlineAssetImage {
+												display: inline-block;
+
+												figcaption {
+														display: none;
+												}
+										}
+										
+								}
+								
+								span.dragDropTarget {
+										display: inline-block;
+										min-width: 100px;
+										background-color: #eee;
+										padding-left: 5px;
+										min-height: 1em;
+										border-top: none;
+										border-left: none;
+										border-right: none;
+										border-bottom: @borderBottomClozePlaceholders;
+
+										.dropHover();
+
+										// Drag element in a drop container
+										span.dragDropDraggable {
+												margin-right: 5px;
+										}
+								}
+
+								div.dragDropDraggables {
+										background-color: #eee;
+										border: 1px dotted black;
+										margin: 10px 0;
+										padding: 1px 5px;
+										min-height: 20px;
+
+										.dropHover();
+										
+										span.dragDropDraggable {
+												.draggable();
+												
+												margin-right: 5px;
+												// line-height: normal;
+												display: inline-block;
+
+												figure.inlineAssetImage {
+														display: inline-block;
+
+														figcaption {
+																display: none;
+														}
+														
+														// span.assetInfo {
+														// 		.uk-text-muted();
+														// 		cursor: pointer;
+														// 		float: right;
+														// }
+												}
+												
+										}
+								}
+
+						}
+
+						div.buttons {
+
+								margin-top: 15px;
+
+								// input.submit, button {
+								// 		&.check, &.reset, &.recheck, &.revealAnswers, &.save {
+								// 				background: #f00;
+								// 				color: #fff;
+								// 				border:  0px;
+								// 				padding: 10px;
+								// 				font-size: 1.2em;
+								// 				cursor: pointer;
+								// 		}
+								// }
+
+								
+						}
+
+
+						div.audioPlayer {
+								//				width: 50%;
+								margin: 10px 0px;
+								span.assetInfo {
+										float: right;
+								}
+
+								
+								div.transcriptionContainer {
+
+										div.transcriptionText {
+												font-size: 90%;
+												line-height: normal;
+										}
+
+										
+										div.audioTranscription {
+												&.disabled {
+														.uk-hidden();
+												}
+
+												button.printThis {
+														float: right;
+												}
+										}
+								}
+						}
+
+						
+						div.videoPlayer {
+								
+								div.videoContainer {
+										margin-right: 10px;
+								}
+
+								div.transcriptionContainer {
+
+										div.videoTranscription {
+												&.disabled {
+														.uk-hidden();
+												}
+
+												button.printThis {
+														float: right;
+												}
+										}
+
+										div.transcriptionText {
+												font-size: 90%;
+												line-height: normal;
+										}
+								}
+
+								span.assetInfo {
+										float: right;
+								}
+						}
+
+						div.imageDisplayer {
+								span.image {
+										display: inline-block;
+										text-align: right;
+										img {
+												display: block;
+										}
+										span.assetInfo {
+										}
+										
+								}
+						}
+
+						span.assetInfo {
+								.uk-text-muted();
+								cursor: pointer;
+						}
+
+						span.hintSymbol {
+								margin-left: 3px;
+								margin-right: 3px;
+						}
+
+
+						div.mapPairs {
+								@pairBorder: 1px solid black;
+								
+								border-top: @pairBorder;
+								display: table;
+								border-collapse: collapse;
+								
+								div.objectPair {
+										display: table-row;
+										border-bottom: @pairBorder;
+
+										.dropHover();
+
+										span.hintSymbol {
+												float:left;
+												margin-left: -20px;
+												margin-top: 10px;
+										}
+										
+										div.leftObject {
+												display: table-cell;
+												padding-left: 10px;
+										}
+
+										div.middleColumn {
+												display: table-cell;
+										}
+
+										div.rightObject {
+												@dragHandleOffset: 25px;
+
+												display: table-cell;
+												padding: 5px 10px 5px (@dragHandleOffset + 10px);
+
+												div.objectPairDraggable {
+														background-color: #eee;
+														padding: 10px;
+														border: 1px solid #ddd;
+														margin-bottom: 10px;
+
+														.draggable();
+
+														&:hover {
+																border: 1px solid #333;
+														}
+
+														&:only-child {
+																margin-bottom: 0;
+														}
+
+														&:not(:first-child) {
+																background-color: #f99;
+														}
+
+														span.dragHandle {
+																position: absolute;
+																margin-left: -@dragHandleOffset;
+														}
+
+												}
+										}
+								}
+						}
+
+						// 		div.score {
+						// 				margin-top: 30px;
+						// 				background-color: white;
+						// 		}
+
+
+						div.objectPairDragHelper {
+								padding: 10px;
+								border: 1px solid black;
+						}
+
+						div.highlightAreas {
+
+								.noUserSelect();
+								.noTouch();
+								letter-spacing: 0.1em;
+								//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
+								padding: 10px;
+								margin: 15px 0;
+								border: 1px solid #aaa;
+
+								span.highlightArea.solution {
+										border: 1px solid #333;
+										padding-left: 1px;
+								}
+
+								div.pillarParagraph:first-child {
+										margin-top: 0;
+								}
+								
+								span.selChar {
+										cursor: url('/files/images/horizontal-text-select.cur'), text;
+										&.highlighted {
+												background-color: green;
+												color: white;
+												padding-top: 1px;
+										}
+										&.selected {
+												background-color: red;
+										}
+								}		
+						}
+
+						div.taskGroup {
+								
+								div.taskGroupItem {
+										margin: 10px 0px;
+								}
+						}
+
+						button.taskBrickGroupToggler {
+								background-color: #999;
+
+								&:hover {
+										background: black;
+								}
+						}
+
+						div.taskBrickGroup {
+								// border: 1px solid black;
+								padding: 5px;
+						}
+						
+						
+				}
+
+
+				
 				// Tandem sequence
 				div.VIATandemSequenceExerciser {
 						div.question {
@@ -364,7 +851,26 @@ div.VIATocModuleExerciser {
 						}
 
 						div.navigation {
+								position: sticky;
+								bottom: 0;
+								background-color: white;
 								font-size: 200%;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+
+								a {
+										color: inherit;
+								}
+
+								// span.leftRight {
+								// 		width: 15%;
+								// 		a {
+								// 				color: inherit;
+								// 		}
+								// }
+
+								
 						}
 						
 				}
@@ -383,42 +889,14 @@ div.VIAUnitComponent {
 
 // }}}
 
-// =======================================================================
-// Tasks
-// =======================================================================
-// {{{
 
 
-@wrongColor: inherited;
-@correctColor: #efe;
-@dragHandleOffset: 25px;
 
+// ============================================
+// Misc
+// ============================================
 
-.noUserSelect() {
-		
-		user-select: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		cursor: default;
-}
-
-.noTouch() {
-		touch-action: none;
-}
-
-.draggable() {
-		.noUserSelect();
-		.noTouch();
-		cursor: move;
-}
-
-.dropHover() {
-		&.dropHover {
-				background-color: @dropTargetHoverColor;
-		}
-}
-
+// TODO: Oben einsortieren!
 
 figure.inlineAssetImage {
 		display: inline-block;
@@ -492,429 +970,17 @@ span.copyPaste, pre.copyPaste {
 }
 
 
-// Styles inside the content of tasks
-div.exercise {
-		
-		@dropTargetHoverColor: yellow;
-		
-		margin-bottom: 50px;
 
-		div.topToolbar {
-				float: right;
-		}
 
-		// Titles inside task content, should not be as big as official titles
-		h1 {
-				font-size: 120%;
-		}
-
-		h2 {
-				font-size: 110%;
-		}
-
-		h3 {
-				font-size: 100%;
-		}
-
-		table {
-				border: 1px solid #999;
-				border-collapse: collapse;
-				
-				td, th {
-						border: 1px solid #999;
-						padding: 2px 5px;
-				}
-		}
-
-		
-		input[type=text] {
-				font: inherit;
-				padding: 0 2px;
-				margin: -2px 0;
-		}
-
-		input[type=text].clozeTextPlaceholder {
-				.clozeTextPlaceholder;
-
-				&:focus {
-						outline: 1px solid #ccc;
-						background-color: #ffd;
-				}
-
-				// Intentionally set as empty by user
-				&.markedAsEmpty {
-						background-color: black;
-				}
-		}
-
-		
-		input, select, textarea {
-				// font-family: @base-body-font-family;
-		}
-
-		p {
-				margin-top: 3px;
-				margin-bottom: 3px;
-		}
-
-
-		
-		div.selectOneInput, div.selectPointsInput {
-				margin-bottom: 10px;
-
-				label:hover {
-						background-color: #eee;
-				}
-
-				span.wrongIcon {
-						// position: absolute;
-						// left: -15px;
-				}
-
-
-		}
-
-		select.selectOneInput {
-				max-width: 100%;
-		}
-
-		div.selectMany {
-				label:hover {
-						background-color: #eee;
-				}
-
-				span.wrongIcon {
-						position: absolute;
-						left: -15px;
-				}
-		}
-		
-		div.clozeText {
-				line-height: 1.8em;
-
-				div.selectOneInput {
-						display: inline-block;
-				}
-
-
-				span.dragDropDraggable {
-						.draggable();
-						
-						background-color: #eee;
-						padding: 1px 2px;
-						border: 1px solid #ccc;
-
-						// margin-bottom: 10px;
-						// line-height: normal;
-						display: inline-block;
-
-						&:hover {
-								border: 1px solid black;
-						}
-
-						figure.inlineAssetImage {
-								display: inline-block;
-
-								figcaption {
-										display: none;
-								}
-						}
-						
-				}
-				
-				span.dragDropTarget {
-						display: inline-block;
-						min-width: 100px;
-						background-color: #eee;
-						padding-left: 5px;
-						min-height: 1em;
-						border-top: none;
-						border-left: none;
-						border-right: none;
-						border-bottom: @borderBottomClozePlaceholders;
-
-						.dropHover();
-
-						// Drag element in a drop container
-						span.dragDropDraggable {
-								margin-right: 5px;
-						}
-				}
-
-				div.dragDropDraggables {
-						background-color: #eee;
-						border: 1px dotted black;
-						margin: 10px 0;
-						padding: 1px 5px;
-						min-height: 20px;
-
-						.dropHover();
-						
-						span.dragDropDraggable {
-								.draggable();
-								
-								margin-right: 5px;
-								// line-height: normal;
-								display: inline-block;
-
-								figure.inlineAssetImage {
-										display: inline-block;
-
-										figcaption {
-												display: none;
-										}
-										
-										// span.assetInfo {
-										// 		.uk-text-muted();
-										// 		cursor: pointer;
-										// 		float: right;
-										// }
-								}
-								
-						}
-				}
-
-		}
-
-		div.buttons {
-
-				margin-top: 15px;
-
-				// input.submit, button {
-				// 		&.check, &.reset, &.recheck, &.revealAnswers, &.save {
-				// 				background: #f00;
-				// 				color: #fff;
-				// 				border:  0px;
-				// 				padding: 10px;
-				// 				font-size: 1.2em;
-				// 				cursor: pointer;
-				// 		}
-				// }
-
-				
-		}
-
-
-		div.audioPlayer {
-//				width: 50%;
-				margin: 10px 0px;
-				span.assetInfo {
-						float: right;
-				}
-
-				
-				div.transcriptionContainer {
-
-						div.transcriptionText {
-								font-size: 90%;
-								line-height: normal;
-						}
-
-						
-						div.audioTranscription {
-								&.disabled {
-										.uk-hidden();
-								}
-
-								button.printThis {
-										float: right;
-								}
-						}
-				}
-		}
-
-		
-		div.videoPlayer {
-				
-				div.videoContainer {
-						margin-right: 10px;
-				}
-
-				div.transcriptionContainer {
-
-						div.videoTranscription {
-								&.disabled {
-										.uk-hidden();
-								}
-
-								button.printThis {
-										float: right;
-								}
-						}
-
-						div.transcriptionText {
-								font-size: 90%;
-								line-height: normal;
-						}
-				}
-
-				span.assetInfo {
-						float: right;
-				}
-		}
-
-		div.imageDisplayer {
-				span.image {
-						display: inline-block;
-						text-align: right;
-						img {
-								display: block;
-						}
-						span.assetInfo {
-						}
-						
-				}
-		}
-
-		span.assetInfo {
-				.uk-text-muted();
-				cursor: pointer;
-		}
-
-		span.hintSymbol {
-				margin-left: 3px;
-				margin-right: 3px;
-		}
-
-
-		div.mapPairs {
-				@pairBorder: 1px solid black;
-				
-				border-top: @pairBorder;
-				display: table;
-				border-collapse: collapse;
-				
-				div.objectPair {
-						display: table-row;
-						border-bottom: @pairBorder;
-
-						.dropHover();
-
-						span.hintSymbol {
-								float:left;
-								margin-left: -20px;
-								margin-top: 10px;
-						}
-						
-						div.leftObject {
-								display: table-cell;
-								padding-left: 10px;
-						}
-
-						div.middleColumn {
-								display: table-cell;
-						}
-
-						div.rightObject {
-								display: table-cell;
-								padding: 5px 10px 5px (@dragHandleOffset + 10px);
-
-								div.objectPairDraggable {
-										background-color: #eee;
-										padding: 10px;
-										border: 1px solid #ddd;
-										margin-bottom: 10px;
-
-										.draggable();
-
-										&:hover {
-												border: 1px solid #333;
-										}
-
-										&:only-child {
-												margin-bottom: 0;
-										}
-
-										&:not(:first-child) {
-												background-color: #f99;
-										}
-
-										span.dragHandle {
-												position: absolute;
-												margin-left: -@dragHandleOffset;
-										}
-
-								}
-						}
-				}
-		}
-
-// 		div.score {
-// 				margin-top: 30px;
-// 				background-color: white;
+// // TODO Evt. innerhalb taskEditor
+// div.inputEditor {
+// 		> div.inputEditor {
+// 				border: 1px solid #333;
+// 				background-color: #f3f3f3;
+// 				padding: 5px;
+// 				margin: 10px 0;
 // 		}
-
-
-		div.objectPairDragHelper {
-				padding: 10px;
-				border: 1px solid black;
-		}
-
-		div.highlightAreas {
-
-				.noUserSelect();
-				.noTouch();
-				letter-spacing: 0.1em;
-				//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
-				padding: 10px;
-				margin: 15px 0;
-				border: 1px solid #aaa;
-
-				span.highlightArea.solution {
-						border: 1px solid #333;
-						padding-left: 1px;
-				}
-
-				div.pillarParagraph:first-child {
-						margin-top: 0;
-				}
-				
-				span.selChar {
-						cursor: url('/files/images/horizontal-text-select.cur'), text;
-						&.highlighted {
-								background-color: green;
-								color: white;
-								padding-top: 1px;
-						}
-						&.selected {
-								background-color: red;
-						}
-				}		
-		}
-
-		div.taskGroup {
-				
-				div.taskGroupItem {
-						margin: 10px 0px;
-				}
-		}
-
-		button.taskBrickGroupToggler {
-				background-color: #999;
-
-				&:hover {
-						background: black;
-				}
-		}
-
-		div.taskBrickGroup {
-				// border: 1px solid black;
-				padding: 5px;
-		}
-		
-		
-}
-
-
-// TODO Evt. innerhalb taskEditor
-div.inputEditor {
-		> div.inputEditor {
-				border: 1px solid #333;
-				background-color: #f3f3f3;
-				padding: 5px;
-				margin: 10px 0;
-		}
-}
+// }
 
 span.dictionaryEntry {
 		border-bottom: 1px dotted #333;
@@ -951,7 +1017,7 @@ span.dictionaryEntry {
 // 						}
 
 // 				}
-				
+
 // 		}
 // }
 
