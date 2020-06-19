@@ -8,7 +8,7 @@ finish
 "	self removeDecoration: formDecoration.
 	formDecoration := nil."
 	
-	self show: ((VIAExerciserFinishedComponent exercise: exercise)
+	self show: ((VIATocExerciserFinishedComponent exercise: exercise)
 		displayCongratulation;
 		yourself) onAnswer: [self close].
 	onFinishBlock ifNotNil: [onFinishBlock value]

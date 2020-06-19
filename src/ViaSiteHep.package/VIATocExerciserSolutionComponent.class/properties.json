@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VIATocTaskExerciser",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VIATocExerciserSolutionComponent",
+	"type" : "normal"
+}
