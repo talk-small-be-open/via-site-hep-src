@@ -1,5 +1,5 @@
 as yet unclassified
 bigAnchorButton
-	^ self ukAnchorButton
+	^ self anchor
 		class: 'bigButton';
 		yourself	

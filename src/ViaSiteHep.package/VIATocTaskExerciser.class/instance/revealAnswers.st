@@ -1,7 +1,7 @@
 actions
 revealAnswers
 	| solution |
-	solution := VIAExerciserSolutionComponent new
+	solution := VIATocExerciserSolutionComponent new
 		exercise: exercise;
 "		addBackButton;"
 		yourself.
