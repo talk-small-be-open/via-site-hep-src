@@ -16,7 +16,7 @@ renderContentOn: html
 			with: [ html iconRight; text: 'TEST-LOGIN: Direkt einloggen'].
 		html break.
 		html anchor
-			url: '#';
+			callback: [ self registerNewUser ];
 			with: [ html iconRight; text: 'Registrieren']
 	].
 

@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"searchText",
-		"modules"
+		"modules",
+		"selectedToccaunit"
 	],
 	"name" : "VIAModuleFinderComponent",
 	"type" : "normal"

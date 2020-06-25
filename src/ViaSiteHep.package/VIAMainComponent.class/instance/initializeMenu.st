@@ -10,10 +10,10 @@ initializeMenu
 	mainMenu addEntry: 'menu:myPortfolio' send: #gotoMyPortfolio to: self.
 	mainMenu addDivider.
 		
-"	self ifTeacher: [
+	self ifTeacher: [
 		mainMenu addEntry: 'menu:myTeacherCockpit' send: #gotoMyTeacherCockpit to: self.
 		mainMenu addDivider.
-	]."
+	].
 
 	self initializeInfoMenu.
 	self initializeAccountMenu.

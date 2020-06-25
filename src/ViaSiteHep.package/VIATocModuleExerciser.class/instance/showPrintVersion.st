@@ -1,5 +1,5 @@
 actions
 showPrintVersion
 	| printer |
-	printer := VIAPrintModuleExerciser model: model.
+	printer := VIATocPrintModuleExerciser model: model.
 	self show: printer

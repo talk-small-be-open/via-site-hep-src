@@ -1,6 +1,6 @@
 actions
 goAhead
-	modules := self wd findModulesByIndexCode: searchText.
+	modules := self wd findPublicModulesByIndexCode: searchText.
 
 	modules
 		ifEmpty: [  ]

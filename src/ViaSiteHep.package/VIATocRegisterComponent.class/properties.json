@@ -1,0 +1,25 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAPagedComponent",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"email",
+		"firstName",
+		"lastName",
+		"password",
+		"passwordConfirmation",
+		"invitationCode",
+		"disclaimerComponent",
+		"termsAccepted",
+		"invitationCommand",
+		"user",
+		"hepMessage",
+		"antibotCodeOrigin",
+		"antibotCode"
+	],
+	"name" : "VIATocRegisterComponent",
+	"type" : "normal"
+}

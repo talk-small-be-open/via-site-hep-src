@@ -5,4 +5,6 @@ initialize
 	self addContainerDiv.
 	
 	"OPTIMIZE"
-	modules := self wd findModulesByIndexCode: (unitNumber asString, '.')
+	modules := self wd findPublicModulesByIndexCode: (unitNumber asString, '.').
+
+	modules := modules sortedBy: [ :each | each indexCode ].

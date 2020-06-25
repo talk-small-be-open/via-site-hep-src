@@ -11,4 +11,6 @@ renderContentOn: html
 				html listItem: [
 					html anchor
 						callback: [ self gotoModule: each];
-						with: each displayName ] ] ] ]
+						with: [
+							html span class: 'indexCode'; with: each indexCodeString.
+							html span class: 'moduleTitle'; with: each title] ] ] ] ]
