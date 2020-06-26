@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAObject",
+	"category" : "ViaSiteHep-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"id",
+		"firstname",
+		"lastname",
+		"groupId",
+		"isEmailConfirmed",
+		"email"
+	],
+	"name" : "VIATocHepUser",
+	"type" : "normal"
+}

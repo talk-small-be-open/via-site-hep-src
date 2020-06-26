@@ -22,7 +22,7 @@ renderHepLoginOn: html
 				html ukPasswordInput
 					placeholder: ('login:password't);
 					id: 'loginPassword';
-					callback: [:value | self loginWithPassword: value]]].
+					callback: [:value | self hepLoginWithPassword: value]]].
 		html div class: 'uk-margin'; with: [
 			html ukSubmitButton t: 'login:loginNow'].
 	].

@@ -1,3 +1,3 @@
 as yet unclassified
 registerNewUser
-	self coreComponentThenGotoHome: VIARegisterComponent new
+	self coreComponentThenGotoHome: VIATocRegisterComponent new
