@@ -1,7 +1,7 @@
 rendering
 renderContentOn: html
-	html devDummy: 'Hi there! This is public home.'.
-	
-	html ukAnchorButton
+	html bigAnchorButton
 		callback: [ self app openLoginDialog ];
-		with: 'Login'
+		t: 'publicHome:login'.
+		
+	self renderInfoOn: html
