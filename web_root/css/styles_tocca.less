@@ -135,13 +135,17 @@
 
 }
 
-.catalogListItem(@borderColor) {
+.catalogListItem() {
 		border-top-width: 2px;
 		border-top-style: solid;
-		border-top-color: @borderColor;
+		border-top-color: #333;
 		padding: 1em 0;
 		margin: 0;
 		cursor: pointer;
+
+		a {
+				color: inherit;
+		}
 }
 
 // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
@@ -162,6 +166,16 @@
 		&.toccamodule1 {@{s} {border-color: @t-color-unit1;}}
 		&.toccamodule2 {@{s} {border-color: @t-color-unit2;}}
 		&.toccamodule3 {@{s} {border-color: @t-color-unit3;}}
+}
+
+// Use this on html elements which are decorated with a "toccamoduleX" css class, to set
+// the text color to the unit's main color
+// Example: .toccamoduleColor("h1")
+.toccamoduleColor(@selector){
+		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
+		&.toccamodule1 {@{s} {color: @t-color-unit1;}}
+		&.toccamodule2 {@{s} {color: @t-color-unit2;}}
+		&.toccamodule3 {@{s} {color: @t-color-unit3;}}
 }
 
 .toccamoduleButton(@selector){
@@ -381,15 +395,30 @@ div.VIATocModuleExerciser {
 
 		// Accordion top line
 		div.accBar {
-				.catalogListItem(#333);
+				.catalogListItem();
 
 				.accTitle {
 						display: inline;
 						color: @t-color-blue;
 				}
 
+				&.ignored {
+						background-color: #eee;
+						text-decoration: line-through;
+				}
+				
+				&.isOpen {
+						.accToggle {
+								.doOpen {display:none}
+								.doClose {display:inline}
+						}
+				}
+				
 				.accToggle {
 						float: right;
+
+						.doOpen {display:inline}
+						.doClose {display:none}
 				}
 		}
 
@@ -422,7 +451,7 @@ div.VIATocModuleExerciser {
 						margin-bottom: 50px;
 
 						div.topToolbar {
-								float: right;
+//								float: right;
 						}
 
 						// Titles inside task content, should not be as big as official titles
@@ -885,15 +914,20 @@ div.VIATocModuleExerciser {
 }
 
 div.VIAUnitComponent {
+
+		.toccamoduleBorderColor('ul.modulesList li');
+		.toccamoduleColor('h1');
+		
 		ul.modulesList {
 				list-style-type: none;
 				
 				li {
-						.catalogListItem(#333);
+						.catalogListItem();
 
 						span.indexCode {
 								display: inline-block;
 								width: 3em;
+								font-weight: bold;
 						}
 				}
 		}
