@@ -75,13 +75,12 @@
 
 
 // Small and bigger
-@media (min-width: @breakpoint-small) {
 
+@media (min-width: @breakpoint-small) {
 		div.coreContainer {
 				padding-left: 2em;
 				padding-right: 2em;
 		}
-		
 }
 
 // Not small phones
@@ -129,12 +128,9 @@
 // Siehe auch button.less im ui kit theme
 .button {
 		text-transform: uppercase;
-		//		display: inline-block;
-		padding: 1em;
-		margin: 0.1em;
+		// padding: 1em;
+		// margin: 0.1em;
 		cursor: pointer;
-		//		background-color: transparent;
-
 		border: 2px solid @global-color;
 
 }
@@ -179,6 +175,7 @@
 				&:hover, &:active {
 						background-color: @localColor;
 						color: white;
+						text-decoration: none;
 				}
 
 		}
@@ -249,7 +246,7 @@ body.public {
 }
 
 // General button styling
-input.submit, button, a.uk-button {
+input.submit, button, button.uk-button, a.uk-button {
 		.button();
 }
 
@@ -258,6 +255,7 @@ div {
 		.toccamoduleButton("input.submit");
 		.toccamoduleButton("button");
 		.toccamoduleButton(".bigButton");
+		.toccamoduleButton("button.uk-button");
 		.toccamoduleButton("a.uk-button");
 }
 
@@ -321,6 +319,15 @@ div.t-header {
 // UI components
 // =======================================================================
 // {{{
+
+div.inputDialog {
+		input[type=text] {
+				width: 100%;
+				font-size: 120%;
+				margin: 1em 0;
+		}
+}
+
 
 div.VIATocLoginComponent {
 		h1 {
@@ -883,13 +890,14 @@ div.VIAUnitComponent {
 				
 				li {
 						.catalogListItem(#333);
+
+						span.indexCode {
+								display: inline-block;
+								width: 3em;
+						}
 				}
 		}
 }
-
-// }}}
-
-
 
 
 // ============================================
@@ -1030,7 +1038,9 @@ div.moduleBody {
 // }}}
 
 // Keep this for Emacs editor!
+// NOT origami-fold-style: triple-braces
+//
 // Local Variables:
 // less-css-compile-at-save: t
-// origami-fold-style: triple-braces
+// origami-fold-style: js-mode
 // End:
