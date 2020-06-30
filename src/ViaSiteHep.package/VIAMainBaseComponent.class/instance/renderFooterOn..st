@@ -1,18 +1,18 @@
 rendering
 renderFooterOn: html
-"	html div class: 'footer'; with: [
+	html div class: 'footer'; with: [
 		self website renderFooterContentOn: html.
 
 		html div class: 'footnotes'; with: [
-			html t: '321via:footnotes'.
-			html text: ' | '.
-			html anchor
-				callback: [self openDisclaimer];
-				t: '321via:disclaimer:link'.
+			html anchor url: 'https://www.hep-verlag.ch'; target: '_blank'; with: 'hep Verlag'.
 			html text: ' | '.
 			html anchor
 				callback: [self openImprint];
-				t: '321via:imprint:link'.
+				t: 'footer:imprint'.
+			html text: ' | '.
+			html anchor
+				callback: [self openDisclaimer];
+				t: 'footer:disclaimer'.
 			self ifAdmin: [
 				html text: ' | '.
 				html anchor
@@ -24,4 +24,10 @@ renderFooterOn: html
 					callback: [self switchBackToAdmin];
 					with: 'bck'.
 			]
-		]]."
+		].
+
+		html div class: 'logos'; with: [
+			"hep Logo, und weitere?"
+		]
+
+	].

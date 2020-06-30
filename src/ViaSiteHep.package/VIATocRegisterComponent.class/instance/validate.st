@@ -25,9 +25,10 @@ validate
 
 	recaptchaResponse := self requestContext request at: 'g-recaptcha-response' ifAbsent: nil.
 	remoteIp := self requestContext request remoteAddress.
-	self ifProduction: [
+
+"	self ifProduction: [
 		(VIAHelper verifyReCaptchaResponse: recaptchaResponse ip: remoteIp) ifFalse: [
-			beInvalid value: 'register:error:captcha' ]].
+			beInvalid value: 'register:error:captcha' ]]."
 
 	termsAccepted = true ifFalse: [beInvalid value: 'register:error:termsNotAccepted'].
 

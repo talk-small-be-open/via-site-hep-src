@@ -5,6 +5,7 @@ initializeInfoMenu
 	mainMenu addDivider.
 
 	subMenu mainEntry: (VIATextMenuEntry label: 'menu:info').
-	
-	subMenu addEntry: 'menu:info:about' send: #showText: to: self arg: 'page:about'.
-	subMenu addEntry: 'menu:info:contact' send: #showText: to: self arg: 'page:contact'.
+
+	#(teacher faq press about support contact) do: [ :each |
+		subMenu addEntry: 'menu:info:', each send: #showText: to: self arg: 'page:', each.
+	]

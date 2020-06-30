@@ -1,6 +1,6 @@
 rendering
 renderContentOn: html
-	html ukContainer: [
+	html ukContainer with: [
 		html heading level1; with: [
 			html t: 'tocca:unit'.
 			html space.

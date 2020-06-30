@@ -2,7 +2,7 @@ initialization
 initialize
 	super initialize.
 	
-	self addContainerDiv.
+	self addContainerDiv addClass: (VIATocHelper toccamoduleCssOfToccaunit: unitNumber).
 	
 	"OPTIMIZE"
 	modules := self wd findPublicModulesByIndexCode: (unitNumber asString, '.').

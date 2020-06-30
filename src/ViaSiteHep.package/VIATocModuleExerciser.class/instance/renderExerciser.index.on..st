@@ -10,9 +10,10 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		html div
 			ukToggleTarget: ('#', id) class: 'hiddenTaskExercise' "animation: 'uk-animation-fade'";
 			onClick: (html jQuery ajax
-				callback: [aTaskExerciser toggleOpen]);
+				callback: [aTaskExerciser toggleOpen]), (html jQuery this toggleClass: 'isOpen');
 			class: 'accBar';
-	"		class: 'ignored' if: aTaskExerciser exercise isIgnored;"
+			class: 'ignored' if: aTaskExerciser exercise isIgnored;
+			class: 'isOpen' if: aTaskExerciser isOpen;
 	"		class: 'level-', model exerciseLevel asLowercase;"
 			with: [
 	"			html span class: 'accNumber'; with: anInteger."
@@ -22,21 +23,20 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 					]."
 				html heading level3; class: 'accTitle'; with: title.
 				html span class: 'accToggle'; with: [
-					html iconDropdown.
-					html iconClose.
+					html iconDropdown class: 'doOpen'.
+					html iconClose class: 'doClose'.
 				].
 	"			html div class: 'uk-visible@s acc-subtitle'; with: aTaskExerciser task title."
 		"		self renderScoreTask: aTaskExerciser exercise on: html"].
 	].
 
 	html div
-"		class: 'uk-accordion-content';"
 		class: 'hiddenTaskExercise' if: (hasTitle and: [aTaskExerciser isOpen not]);
 		id: id;
 		with: [
 "			model isIgnoreTaskAllowed ifTrue: [
-				html ukAnchorButton
-					callback: [self toggleIgnore ];
-					with: 'Ignore'.
+				html bigAnchorButton
+					callback: [ aTaskExerciser toggleIgnore ];
+					t: 'moduleExerciser:ignoreTask'.
 			]."
 			html render: aTaskExerciser]
