@@ -123,6 +123,23 @@
 		font-size: 200%;
 		//		background-color: transparent;
 		border: 2px solid @global-color;
+
+		&:hover {
+				text-decoration: none;
+		}
+}
+
+.bigButtonStyle(@color, @inverseColor: white) {
+		.bigButton {
+				border-color: @color;
+				color: @color;
+
+				&:active, &:hover {
+						background-color: @color;
+						color: @inverseColor;
+				}
+		}
+
 }
 
 // Siehe auch button.less im ui kit theme
@@ -235,10 +252,10 @@
 
 // Styles for the non-logged in public UI
 body.public {
-		background-color: @t-color-red;
+//		background-color: @t-color-red;
 		div.coreContainer {
-				padding-top: 2em;
-				background-color: @t-color-red;
+//				padding-top: 2em;
+//				background-color: @t-color-red;
 		}
 
 		h1, h2, h3 {
@@ -342,8 +359,52 @@ div.inputDialog {
 		}
 }
 
+div.VIAPublicHomeComponent {
+
+		padding-bottom: 1em;
+		
+		div.toccaBanner {
+				background-color: @t-color-red;
+				padding: 0.5em;
+				margin-bottom: 1em;
+
+				div.title {
+						font-size: 4rem;
+						line-height: 4rem;
+						color: white;
+						padding: 1em 0;
+						text-align: center;
+				}
+
+				.bigButtonStyle(white, @t-color-red);
+
+		}
+
+		div.infoButtons {
+				.bigButtonStyle(@t-color-red);
+		}
+
+}
+
+div.VIAMyHomeComponent {
+
+		div.startArea {
+				background-color: @t-color-red;
+				.bigButtonStyle(white, @t-color-red);
+				
+		}
+		
+		div.infoButtons {
+				.bigButtonStyle(@t-color-blue);
+		}
+
+}
+
+
 
 div.VIATocLoginComponent {
+		background-color: @t-color-red;
+		
 		h1 {
 				text-align: center;
 		}
@@ -352,11 +413,81 @@ div.VIATocLoginComponent {
 div.VIAModuleFinderComponent {
 		margin: 2em 0;
 
-		input[type=text].searchInput {
-				display: block;
-				font-size: 200%;
+		div.searchBar {
 				border: 1px solid black;
+				padding: 0 0 0 1em;
+				position: relative;
+				@fontsize: 2rem;
+				
+				input[type=text] {
+						font-size: @fontsize;
+						
+						&.searchInput1 {
+								width: 0.7em;
+				//				text-align: right;
+						}
+
+						&.searchInput2 {
+								width: 3em;
+						}
+
+						&.searchInput1, &.searchInput2 {
+								display: inline-block;
+								border: none;
+						}
+
+						&:focus {
+								border: none;
+								outline: none;
+						}
+				}
+
+				span.dot {
+						font-size: @fontsize;
+						display: inline-block;
+						width: 0.5em;
+						margin-right: 0.1em;
+						text-align: center;
+						font-weight: bold;
+				}
+
+				button.go {
+						font-size: @fontsize;
+						background-color: red;
+						color: white;
+						border: none;
+						position: absolute;
+						height: 100%;
+						right: 0;
+				}
 		}
+
+		div.keyboard {
+				.noUserSelect();
+
+				margin: 1em 0;
+				span.keyboardButton {
+						@color: #333;
+						
+						font-size: 1.5rem;
+						padding: 0.4em 0;
+						background-color: @color;
+						color: white;
+						text-align: center;
+						display: inline-block;
+						width: 100%;
+
+						&:hover {
+								background-color: lighten(@color, 30%);
+						}
+				}
+		}
+
+		div.VIAModulesListComponent {
+				margin-top: 1em;
+		}
+				
+
 }
 
 
@@ -539,15 +670,8 @@ div.VIATocModuleExerciser {
 										left: -15px;
 								}
 
-								.bigButton {
-										border-color: @t-color-blue;
-										color: @t-color-blue;
+								.bigButtonStyle(@t-color-blue);
 
-										&:active, &.active {
-												background-color: @t-color-blue;
-												color: white;
-										}
-								}
 						}
 						
 						div.clozeText {
@@ -918,17 +1042,18 @@ div.VIAUnitComponent {
 		.toccamoduleBorderColor('ul.modulesList li');
 		.toccamoduleColor('h1');
 		
-		ul.modulesList {
-				list-style-type: none;
-				
-				li {
-						.catalogListItem();
+}
 
-						span.indexCode {
-								display: inline-block;
-								width: 3em;
-								font-weight: bold;
-						}
+ul.modulesList {
+		list-style-type: none;
+		
+		li {
+				.catalogListItem();
+
+				span.indexCode {
+						display: inline-block;
+						width: 3em;
+						font-weight: bold;
 				}
 		}
 }
