@@ -1,8 +1,9 @@
 as yet unclassified
 renderContentOn: html
-	html div class: 'uk-margin-top uk-margin-bottom'; with: [
+	html div class: 'startArea uk-margin-top uk-margin-bottom'; with: [
 		html bigAnchorButton
 			callback: [ self app gotoToccaStart ];
 			t: 'myHome:toccaStart'].
 		
-	self renderInfoOn: html
+	html ukContainer: [
+		self renderInfoOn: html ]
