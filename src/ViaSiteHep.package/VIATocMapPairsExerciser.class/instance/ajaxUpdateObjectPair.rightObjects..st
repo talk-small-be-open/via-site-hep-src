@@ -1,7 +1,7 @@
 ajax
 ajaxUpdateObjectPair: anObjectPair rightObjects: aCollection
 	| answer dropped others |
-	answer := exercise answerOf: anObjectPair.
+	answer := self exercise answerOf: anObjectPair.
 
 	dropped := aCollection first.
 
@@ -10,12 +10,12 @@ ajaxUpdateObjectPair: anObjectPair rightObjects: aCollection
 		ifFalse: [#()].
 
 	answer value: dropped.
-	exercise answer: #leftOvers of: anObjectPair put: others asOrderedCollection.
+	self exercise answer: #leftOvers of: anObjectPair put: others asOrderedCollection.
 
 	"Entfernen überall anders"
 	(anObjectPair mapPairsTaskBrick pairInputs copyWithout: anObjectPair) do: [:each |
-		answer := (exercise answerOf: each).
+		answer := (self exercise answerOf: each).
 		
 		answer value = dropped ifTrue: [answer beEmpty].
-		(exercise answer: #leftOvers of: each) value ifNotBlank: [:col | col remove: dropped ifAbsent: []].
+		(self exercise answer: #leftOvers of: each) value ifNotBlank: [:col | col remove: dropped ifAbsent: []].
 	]
