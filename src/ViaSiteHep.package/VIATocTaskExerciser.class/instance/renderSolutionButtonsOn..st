@@ -1,7 +1,7 @@
 rendering
 renderSolutionButtonsOn: html
 	html ukAnchorButton
-		class: 'reset';
+		class: 'reset uk-width-1-1@s uk-width-auto@m';
 "		popover: 'exerciser:reset:info't;"
 		callback: [self reset];
 		with: [

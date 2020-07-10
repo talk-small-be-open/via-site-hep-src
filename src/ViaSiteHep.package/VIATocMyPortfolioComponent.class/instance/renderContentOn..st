@@ -8,6 +8,8 @@ renderContentOn: html
 		ifFalse: [
 			html ukAnchorButton
 				callback: [self clearPortfolio];
-				t: 'myPortfolio:removeAll'.
+				with: [ 
+					html iconRemove; space.
+					html sT: 'myPortfolio:removeAll' ].
 			self renderMyModulesOn: html.
 		]

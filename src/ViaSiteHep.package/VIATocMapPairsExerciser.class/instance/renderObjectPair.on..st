@@ -1,26 +1,33 @@
 rendering-visitor
 renderObjectPair: anObjectPair on: html
-	| answerHolder rightObject jsEventHandler rightObjectId |
+	| answerHolder rightObject jsEventHandler objectPairId rightObjectId |
+
+	objectPairId := html nextId.
+	rightObjectId := html nextId.
+
 	answerHolder := self exercise answerOf: anObjectPair.
 
 	rightObject := answerHolder value.
-	rightObjectId := html nextId.
 
 	jsEventHandler := (html jQuery ajax
-		callback: [:values | self ajaxUpdateObjectPair: anObjectPair rightObjects: values]
-		passengers: ((html jQuery id: rightObjectId) find: 'div.objectPairDraggable');
+		callback: [:values | self ajaxPairSelected: values]
+		passengers: (((html jQuery id: exerciseId) find: 'div.leftObject.selected') add: ('#', rightObjectId));
+		dataType: 'json';
+		onSuccess: (('onMapPairsSelectionResult(ok, "', exerciseId,'", "', rightObjectId,'")') asFunction: #(ok status));
 		onError: (html javascript alert: 'Error with communication to application!')).
 
 	html div
 		class: 'objectPair';
+		id: objectPairId;
 		with: [
-			html div class: 'leftObject'; with: [
-				self renderHintSymbolOf: anObjectPair on: html.
-				html div
-					script: (html jsInteract pointer
-						onTap: '$(event.target).css("color", "red")');
-					with: [
-						self renderWithParent: anObjectPair leftPillar on: html]].
+			self renderHintSymbolOf: anObjectPair on: html.
+			html div
+				class: 'leftObject';
+				passenger: anObjectPair;
+				script: (html jsInteract pointer
+					onTap: 'onMapPairsTapLeft(event.interactable.target)');
+				with: [
+					self renderWithParent: anObjectPair leftPillar on: html].
 
 			html div class: 'middleColumn'; with: [
 				self renderCorrection: answerHolder on: html ].
@@ -28,12 +35,15 @@ renderObjectPair: anObjectPair on: html
 			html div
 				class: 'rightObject';
 				id: rightObjectId;
+				passenger: anObjectPair;
+				script: (html jsInteract pointer
+					onTap: (((JSStream on: 'window')
+						call: 'onMapPairsTapRight'
+						with: (JSStream on: 'event.interactable.target')
+						with: jsEventHandler asFunction
+						) asFunction: #(event))
+				);
+"					(JSStream on: 'onMapPairsTapRight(event.interactable.target)'),
+						jsEventHandler)"
 				with: [
-					html div
-						class: 'objectPairDraggable';
-						class: anObjectPair mapPairsTaskBrick cssScope;
-						passenger: rightObject;
-						with: [
-							self renderWithParent: rightObject on: html]].
-
-			]
+					self renderWithParent: rightObject on: html]].

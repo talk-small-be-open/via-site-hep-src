@@ -1,7 +1,7 @@
 rendering
 renderNonFirstTakeButtonsOn: html
 	html submitButton
-		class: 'recheck';
+		class: 'recheck uk-width-1-1@s uk-width-auto@m';
 "		popover: 'exerciser:recheck:info't;"
 		callback: [self recheck];
 		with: [
@@ -16,7 +16,7 @@ renderNonFirstTakeButtonsOn: html
 		with: [html t: 'exerciser:reset']."
 	html space.
 	html submitButton
-		class: 'revealAnswers';
+		class: 'revealAnswers uk-width-1-1@s uk-width-auto@m';
 "		popover: 'exerciser:showAnswers:info't;"
 		callback: [self revealAnswers];
 		with: [

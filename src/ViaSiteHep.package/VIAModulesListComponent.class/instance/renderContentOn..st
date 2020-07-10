@@ -6,7 +6,7 @@ renderContentOn: html
 			html space.
 			html text: unitNumber asString]."
 		
-		html unorderedList class: 'modulesList uk-list uk-list-collapse'; with: [
+		html unorderedList class: 'modulesList'; with: [
 			modules do: [ :each |
 				html listItem: [
 					html anchor
