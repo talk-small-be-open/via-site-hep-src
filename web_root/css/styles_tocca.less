@@ -99,6 +99,12 @@
 				padding-right: 0;
 		}
 
+		div.footer {
+				// position: sticky;
+				// bottom: 0;
+						
+		}
+
 }
 
 // }}}
@@ -108,7 +114,7 @@
 // =======================================================================
 // {{{
 
-// Tocca big button
+// Tocca big button base styles
 .bigButton {
 		text-transform: uppercase;
 		text-align: center;
@@ -127,14 +133,21 @@
 		&:hover {
 				text-decoration: none;
 		}
+
+		// // Adjacent buttons get margin
+		// + .bigButton {
+				
+		// }
+
 }
 
+// Mixin, to define the style of a big button inside a region
 .bigButtonStyle(@color, @inverseColor: white) {
 		.bigButton {
 				border-color: @color;
 				color: @color;
 
-				&:active, &:hover {
+				&:active, &:hover, &.active {
 						background-color: @color;
 						color: @inverseColor;
 				}
@@ -250,28 +263,50 @@
 // =======================================================================
 // {{{
 
+html {
+//bad		height: 100%;
+}
+
 // Styles for the non-logged in public UI
-body.public {
-//		background-color: @t-color-red;
+body {
+//bad		height: 100%;
+		
 		div.coreContainer {
-//				padding-top: 2em;
-//				background-color: @t-color-red;
+//bad				height: 100%;
+
+				div.core {
+//bad						height: 100%;
+						
+				}
 		}
 
-		h1, h2, h3 {
-				color: white;
+		div.footer {
+				padding: 0.5em;
 		}
 
-		input.submit, button, a.uk-button {
-				color: white;
-				border-color: white;
-		}
+						
+		&.public {
+				//		background-color: @t-color-red;
+				div.coreContainer {
+						//				padding-top: 2em;
+						//				background-color: @t-color-red;
+				}
 
-		a {
-				color: black;
+				h1, h2, h3 {
+						color: white;
+				}
 
-				&:hover {
+				input.submit, button, a.uk-button {
+						color: white;
+						border-color: white;
+				}
+
+				a {
 						color: black;
+
+						&:hover {
+								color: black;
+						}
 				}
 		}
 }
@@ -328,7 +363,22 @@ div.t-header {
 
 		// Menu, in navbar or in offcanvas
 		#mainMenu {
-				ul.uk-nav, ul.uk-navbar-nav {
+				ul.uk-nav {
+						li {
+								font-size: 1.5rem;
+								font-weight: bold;
+
+								ul.uk-nav-sub {
+										li {
+												font-size: 1.5rem;
+												font-weight: normal;
+										}
+								}
+
+						}
+
+						
+
 				}
 
 				&.uk-offcanvas {
@@ -403,6 +453,7 @@ div.VIAMyHomeComponent {
 
 
 div.VIATocLoginComponent {
+		height: 100%;
 		background-color: @t-color-red;
 		
 		h1 {
@@ -582,7 +633,10 @@ div.VIATocModuleExerciser {
 						margin-bottom: 50px;
 
 						div.topToolbar {
-//								float: right;
+								//								float: right;
+								.bigButton.ignoreTask {
+										height: 1.5em;
+								}
 						}
 
 						// Titles inside task content, should not be as big as official titles
@@ -656,8 +710,14 @@ div.VIATocModuleExerciser {
 
 						}
 
-						select.selectOneInput {
-								max-width: 100%;
+						div.selectOneInput {
+								.bigButtonStyle(@t-color-blue);
+
+								select.selectOneInput {
+										max-width: 100%;
+								}
+
+
 						}
 
 						div.selectMany {
@@ -857,8 +917,9 @@ div.VIATocModuleExerciser {
 						}
 
 						span.hintSymbol {
-								margin-left: 3px;
-								margin-right: 3px;
+								display: inline-block;
+								margin: 0.2em;
+								vertical-align: middle;
 						}
 
 
@@ -926,10 +987,57 @@ div.VIATocModuleExerciser {
 								}
 						}
 
-						// 		div.score {
-						// 				margin-top: 30px;
-						// 				background-color: white;
-						// 		}
+
+						div.mapPairsClickClick {
+								@pairBorder: 1px solid black;
+								
+								border-top: @pairBorder;
+								display: table;
+								border-collapse: collapse;
+
+								
+								div.objectPair {
+										display: table-row;
+										border-bottom: @pairBorder;
+
+										.selection() {
+												&.selected {
+														background-color: yellow;
+												}
+										}
+										
+										span.hintSymbol {
+												float:left;
+												margin-left: -20px;
+												margin-top: 10px;
+										}
+										
+										div.leftObject {
+												display: table-cell;
+												padding-left: 10px;
+												cursor: pointer;
+												.selection();
+										}
+
+										div.middleColumn {
+												display: table-cell;
+										}
+
+										div.rightObject {
+												display: table-cell;
+												padding: 5px 10px 5px 10px;
+												cursor: pointer;
+												.selection();
+
+										}
+								}
+						}
+						
+								div.score {
+										margin-top: 2em;
+										// background-color: white;
+										font-weight: bold;
+								}
 
 
 						div.objectPairDragHelper {
@@ -1034,6 +1142,17 @@ div.VIATocModuleExerciser {
 						}
 						
 				}
+
+				div.orderItems {
+						ul.orderItemsList {
+								list-style: none;
+								padding: 0;
+
+								li.orderItem {
+										cursor: move;
+								}
+						}
+				}
 		}
 }
 
@@ -1045,6 +1164,9 @@ div.VIAUnitComponent {
 }
 
 ul.modulesList {
+		.uk-list();
+		
+		padding-left: 0;
 		list-style-type: none;
 		
 		li {
