@@ -1,10 +1,56 @@
 // JavaScript für VIA Tocca
 
 
-function onMapPairsDrop(dropzone, draggable) {
-  $(dropzone).children('div.rightObject').prepend(draggable);
-	$(draggable).css({top:0, left:0});
+// function onMapPairsDrop(dropzone, draggable) {
+//   $(dropzone).children('div.rightObject').prepend(draggable);
+// 	$(draggable).css({top:0, left:0});
+// }
+
+function swapElement(a, b) {
+  // create a temporary marker div
+  var aNext = $('<div>').insertAfter(a);
+  a.insertAfter(b);
+  b.insertBefore(aNext);
+  // remove marker div
+  aNext.remove();
 }
+
+
+// Map Pairs
+
+function onMapPairsSelectionResult(correct, exerciseId, rightObjectId) {
+	var objectPair = $('#'+exerciseId).find('div.objectPair').has('div.leftObject.selected');
+	var leftObject = objectPair.find('div.leftObject.selected');
+	var oldRightObject = objectPair.find('div.rightObject');
+	var newRightObject = $('#'+rightObjectId);
+
+	if (correct) {
+		swapElement(oldRightObject, newRightObject);
+
+		leftObject.removeClass('selected').addClass('correct');
+		newRightObject.removeClass('selected').addClass('correct');
+	} else {
+		$("div.objectPair div.selected").removeClass("selected");
+	}
+}
+
+function onMapPairsTapLeft(element) {
+	if (!$(element).hasClass("correct")) {
+		$("div.objectPair div.leftObject").removeClass("selected");
+		$(element).addClass("selected");
+	}
+}
+
+function onMapPairsTapRight(element, callbackToCorrect) {
+	if (!$(element).hasClass("correct")) {
+		$("div.objectPair div.rightObject").removeClass("selected");
+		$(element).addClass("selected");
+		callbackToCorrect();
+	}
+}
+
+
+// Drag/Drop
 
 function onDragDropDrop(dropzone, draggable) {
   $(dropzone).append(draggable);
