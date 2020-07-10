@@ -6,13 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"search1",
-		"search2",
-		"modules",
-		"selectedToccaunit",
-		"searchQuery",
-		"modulesList"
+		"modules"
 	],
-	"name" : "VIAModuleFinderComponent",
+	"name" : "VIAModulesListComponent",
 	"type" : "normal"
 }

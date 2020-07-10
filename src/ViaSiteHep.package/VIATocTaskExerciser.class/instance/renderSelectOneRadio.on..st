@@ -1,17 +1,19 @@
 rendering-visitor
 renderSelectOneRadio: aSelectOneInput on: html
-	| div answerValue input orderedChoices |
+	| div answerValue input orderedChoices choicesGroups columnsCount buttonId |
 
 	answerValue := exercise answerOf: aSelectOneInput.
-	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectOneInput.
+"	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectOneInput."
+
+	choicesGroups := aSelectOneInput choicesGroups copy.
+	columnsCount := choicesGroups size.
 
 	self renderHintSymbolOf: aSelectOneInput on: html.
 
 	div := html div.
-	div 
+	div
+		ensureId;
 		class: 'selectOneInput'.
-"		class: 'wrong' if: answerValue isWrong;
-		class: 'correct' if: answerValue isCorrect."
 
 	div with: [
 		input := html radioGroup
@@ -27,25 +29,37 @@ renderSelectOneRadio: aSelectOneInput on: html
 
 		input
 			with: [:rg |
-				orderedChoices ifNotBlank: [
-					orderedChoices do: [:choice |
-						| isChozen isWrongChoice isCorrect |
-						isChozen := answerValue value = choice.
-						isCorrect := answerValue isCorrect.
-						isWrongChoice := (isChozen and: [isCorrect not]).
-
+				html ukGrid class: ('uk-grid-small uk-child-width-1-', columnsCount asString); with: [
+					choicesGroups do: [ :choices |
 						html div: [
-							html label
-								class: 'wrong' if: (self isca: isWrongChoice);
-								class: 'correct' if: (self isca: (isChozen and: [isCorrect]));
-								with: [
-									self ifca: isWrongChoice t: [
-										html span class: 'wrongIcon'; with: [html iconWrong].
-									].
-									rg radioButton value: choice.
-									html space.
-									html span: [
-										html pillarString: choice]].
-	]]]]].
+							html ukGrid class: ('uk-grid-small uk-child-width-1-1'); with: [
+								choices do: [:choice |
+
+	"				orderedChoices ifNotBlank: [
+						orderedChoices do: [:choice |"
+									| isChozen isWrongChoice isCorrect |
+									isChozen := answerValue value = choice.
+									isCorrect := answerValue isCorrect.
+									isWrongChoice := (isChozen and: [isCorrect not]).
+
+									html div: [
+										html label
+											id: (buttonId := html nextId);
+											class: 'active' if: isChozen;
+											class: 'bigButton';
+											class: 'wrong' if: (self isca: isWrongChoice);
+											class: 'correct' if: (self isca: (isChozen and: [isCorrect]));
+											with: [
+												self ifca: isWrongChoice t: [
+													html span class: 'wrongIcon'; with: [html iconWrong].
+												].
+												rg radioButton
+													style: 'display: none';
+													onClick: (
+														(((html jQuery id: div id) find: '.bigButton') removeClass: 'active'),
+														(html jQuery id: buttonId) addClass: 'active');
+													value: choice.
+												html pillarString: choice].
+		]]]]]]]].
 
 	self renderCorrection: answerValue showWrong: false on: html

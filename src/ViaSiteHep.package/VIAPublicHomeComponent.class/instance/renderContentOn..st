@@ -1,7 +1,12 @@
 rendering
 renderContentOn: html
-	html bigAnchorButton
-		callback: [ self app openLoginDialog ];
-		t: 'publicHome:login'.
+	html div class: 'toccaBanner'; with: [
+		html div class: 'title'; with: [
+			html text: 'Tocca'; break; text: 'a te'].
+		html bigAnchorButton
+			callback: [ self app openLoginDialog ];
+			t: 'publicHome:login'.
+	].
 		
-	self renderInfoOn: html
+	html ukContainer: [
+		self renderInfoOn: html ]

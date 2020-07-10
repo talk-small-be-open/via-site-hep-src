@@ -20,33 +20,34 @@ renderSelectMany: aSelectManyInput on: html
 		html ukGrid class: ('uk-grid-small uk-child-width-1-', columnsCount asString); with: [
 			choicesGroups do: [ :choices |
 				html div: [
-					choices do: [:choice |
-						| isCorrect isChozen isWrongChoice |
-						isChozen := answerCollection includes: choice.
-						isCorrect := aSelectManyInput isSolution: choice.
-						isWrongChoice := (isChozen and: [isCorrect not]).
+					html ukGrid class: ('uk-grid-small uk-child-width-1-1'); with: [
+						choices do: [:choice |
+							| isCorrect isChozen isWrongChoice |
+							isChozen := answerCollection includes: choice.
+							isCorrect := aSelectManyInput isSolution: choice.
+							isWrongChoice := (isChozen and: [isCorrect not]).
 
-						html label
-							id: (buttonId := html nextId);
-							class: 'active' if: isChozen;
-							class: 'bigButton';
-							class: 'wrong' if: (self isca: isWrongChoice);
-							class: 'correct' if: (self isca: (isChozen and: [isCorrect]));
-							with: [
-								html span: [
-									self ifca: isWrongChoice t: [
-										html span class: 'wrongIcon'; with: [html iconWrong].
+							html div: [
+								html label
+									id: (buttonId := html nextId);
+									class: 'active' if: isChozen;
+									class: 'bigButton';
+									class: 'wrong' if: (self isca: isWrongChoice);
+									class: 'correct' if: (self isca: (isChozen and: [isCorrect]));
+									with: [
+										html span: [
+											self ifca: isWrongChoice t: [
+												html span class: 'wrongIcon'; with: [html iconWrong].
+											].
+											html pillarString: choice].
+										html checkbox
+											style: 'display: none';
+											onClick: ((html jQuery id: buttonId) toggleClass: 'active');
+											onTrue: [answerCollection addIfNotPresent: choice]
+											onFalse: [answerCollection remove: choice ifAbsent: []];
+											class: 'selectManyInput';
+											value: isChozen.
 									].
-									html pillarString: choice].
-								html checkbox
-									style: 'display: none';
-									onClick: ((html jQuery id: buttonId) toggleClass: 'active');
-									onTrue: [answerCollection addIfNotPresent: choice]
-									onFalse: [answerCollection remove: choice ifAbsent: []];
-									class: 'selectManyInput';
-									value: isChozen.
-							].
-						html break.
-		]]]].
+		]]]]]].
 			
 		self renderCorrection: answerValue showWrong: false on: html]

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAMapPairsExerciserBase",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"exerciseId"
+	],
+	"name" : "VIATocMapPairsExerciser",
+	"type" : "normal"
+}

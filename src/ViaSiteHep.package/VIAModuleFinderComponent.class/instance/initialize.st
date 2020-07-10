@@ -1,9 +1,13 @@
 initialization
 initialize
 	super initialize.
-	searchText := nil.
 
 	"TODO: Von Session oder User voreinstellen"
-	selectedToccaunit := 3.
+	selectedToccaunit := self currentUser propertyAt: #preferredToccaunit.
+	search1 := selectedToccaunit ifNil: [ '' ] ifNotNil: [ :i | i asString].
+	search2 := ''.
 	
+	searchQuery := VIAModuleSearchQuery new.
+	searchQuery website: self website.
+
 	self addContainerDiv

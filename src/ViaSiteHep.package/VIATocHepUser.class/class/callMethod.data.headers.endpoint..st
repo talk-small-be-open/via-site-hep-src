@@ -14,7 +14,7 @@ callMethod: aMethod data: aDictionaryLike headers: aHeadersCollection endpoint: 
 	cmd := String streamContents: [ :s |
 		s << 'curl -X '.
 		s << aMethod asUppercase.
-		s << ' --header "Content-Type: application/json; charset=UTF-8" --header "Accept: application/json" '.
+		s << ' --silent --header "Content-Type: application/json; charset=UTF-8" --header "Accept: application/json" '.
 
 		aHeadersCollection ifNotBlank: [
 			aHeadersCollection do: [:each |
