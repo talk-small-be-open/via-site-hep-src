@@ -18,11 +18,13 @@ function swapElement(a, b) {
 
 // Map Pairs
 
-function onMapPairsSelectionResult(correct, exerciseId, rightObjectId) {
+function onMapPairsSelectionResult(correct, exerciseId) {
 	var objectPair = $('#'+exerciseId).find('div.objectPair').has('div.leftObject.selected');
 	var leftObject = objectPair.find('div.leftObject.selected');
+
 	var oldRightObject = objectPair.find('div.rightObject');
-	var newRightObject = $('#'+rightObjectId);
+	// var newRightObject = $('#'+rightObjectId);
+	var newRightObject = $('#'+exerciseId).find('div.rightObject.selected');
 
 	if (correct) {
 		swapElement(oldRightObject, newRightObject);
@@ -34,18 +36,25 @@ function onMapPairsSelectionResult(correct, exerciseId, rightObjectId) {
 	}
 }
 
-function onMapPairsTapLeft(element) {
-	if (!$(element).hasClass("correct")) {
-		$("div.objectPair div.leftObject").removeClass("selected");
-		$(element).addClass("selected");
+function mapPairsCheck(exercise, callbackToCorrect) {
+	if ($('#'+exercise).find('div.leftObject.selected, div.rightObject.selected').length == 2) {
+		callbackToCorrect();
 	}
 }
 
-function onMapPairsTapRight(element, callbackToCorrect) {
+function onMapPairsTapLeft(exercise, element, callbackToCorrect) {
+	if (!$(element).hasClass("correct")) {
+		$("div.objectPair div.leftObject").removeClass("selected");
+		$(element).addClass("selected");
+		mapPairsCheck(exercise, callbackToCorrect);
+	}
+}
+
+function onMapPairsTapRight(exercise, element, callbackToCorrect) {
 	if (!$(element).hasClass("correct")) {
 		$("div.objectPair div.rightObject").removeClass("selected");
 		$(element).addClass("selected");
-		callbackToCorrect();
+		mapPairsCheck(exercise, callbackToCorrect);
 	}
 }
 

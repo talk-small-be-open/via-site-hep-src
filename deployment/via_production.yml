@@ -27,14 +27,14 @@ via:
     metacelloUrl: "github://talk-small-be-open/via-site-hep/src"
 
   # Your organization names
-  organizationName: 'hep verlag ag'
+  organizationName: 'hep Verlag AG'
   organizationShortName: 'hep'
 
   # Your domain of the web application (Must be reachable in your network!). Example: media.myorg.com
-  appDomain: "tocca.mindclue11.mindclue.ch"
+  appDomain: "vm1.hepverlag.ungleich.cloud"
 
   # Domain where your organization emails are from. Example: myorg.com
-  emailDomain: "tocca.mindclue11.mindclue.ch"
+  emailDomain: "vm1.hepverlag.ungleich.cloud"
 
   # Email address of the via Administrator. Use your own email, I guess.
   adminEmail: "andreas.brodbeck@mindclue.ch"
@@ -50,7 +50,7 @@ via:
   identityProviders: [local, google, facebook]
 
   # Internal ports where the application gems will be listening behind the nginx reverse proxy
-  gemPorts: [8087, 8088]
+  gemPorts: [8087, 8088, 8089]
 
   # ===== ADVANCED SETTINGS (Leave them untouched, if unsure) ==============
 
@@ -61,7 +61,7 @@ via:
   # Is your via instance not ready for production? If you would like to hide your application behind an extra HTTP basic authentication, use this feature.
   # HTTP Basic Auth Username is "betatester", choose password here:
   isBeta: true
-  betaPassword: "beta"
+  betaPassword: "heptocca"
 
   # Alternative domain name
   appDomain2: ""
