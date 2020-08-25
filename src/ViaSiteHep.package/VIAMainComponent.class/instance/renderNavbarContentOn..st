@@ -6,13 +6,13 @@ renderNavbarContentOn: html
 	html div class: 'uk-navbar-right t-menubar'; with: [
 		html anchor
 			callback: [ self gotoSearchModule ];
-			with: [ html ukIcon: 'search'].
+			with: [ html iconSearch].
 "		html anchor
 			callback: [ self goUp ];
 			with: [ html ukIcon: 'home']."
 		html anchor
 			callback: [ self gotoMyPortfolio ];
-			with: [ html span: 'PF'. "ukIcon: 'user'"].
+			with: [ html iconPortfolio].
 		html anchor
 			class: 'mainMenuToggler';
 			ukToggleTarget: '#mainMenu';
@@ -26,7 +26,10 @@ renderNavbarContentOn: html
 		a: 'uk-offcanvas' p: 'flip: true; overlay: true';
 		with: [
 			html div class: 'uk-offcanvas-bar'; with: [
-				html button class: 'uk-offcanvas-close'; a: 'uk-close'.
+				html div
+					class: 'uk-offcanvas-close';
+"					a: 'uk-close';"
+					with: [ html iconClose ].
 				self renderMenuOn: html.
 "				self renderAccountMenuOn: html."
 	]]
