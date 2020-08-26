@@ -90,6 +90,18 @@
 						min-height: 500px;
 				}
 		}
+
+		div.VIATocTaskExerciser {
+				div.exercise {
+						div.audioPlayer {
+								width: 50%;
+						}
+
+						div.videoPlayer {
+								max-width: 50%;
+						}
+				}
+		}
 }
 
 // Only very small phones
@@ -606,6 +618,7 @@ div.VIATocModuleExerciser {
 				}
 				
 				&.isOpen {
+						background-color: #eee;
 						.accToggle {
 								.doOpen {display:none}
 								.doClose {display:inline}
@@ -634,144 +647,207 @@ div.VIATocModuleExerciser {
 
 
 		// Exercise displayer for every task (in a module)
-		div.VIATocTaskExerciser {
-				padding-left: 0.2em;
-				padding-right: 0.2em;
-
-				margin-bottom: 1em;
+}
 
 
-				// Styles inside the content of tasks
-				div.exercise {
-						
-						@dropTargetHoverColor: yellow;
-						
-						margin-bottom: 50px;
+// Not inside the VIATocModuleExerciser, because it could be stand alone (e.g. in the backend testdrive)
+div.VIATocTaskExerciser {
+		padding-left: 0.2em;
+		padding-right: 0.2em;
 
-						div.topToolbar {
-								//								float: right;
-								.bigButton.ignoreTask {
-										height: 1.5em;
-								}
+		margin-bottom: 1em;
+
+
+		// Styles inside the content of tasks
+		div.exercise {
+				
+				@dropTargetHoverColor: yellow;
+				
+				margin-bottom: 50px;
+
+				div.topToolbar {
+						//								float: right;
+						.bigButton.ignoreTask {
+								height: 1.5em;
+						}
+				}
+
+				// Titles inside task content, should not be as big as official titles
+				h1 {
+						font-size: 120%;
+				}
+
+				h2 {
+						font-size: 110%;
+				}
+
+				h3 {
+						font-size: 100%;
+				}
+
+				table {
+//						border: 1px solid #999;
+						border-collapse: collapse;
+
+						tr {
+								border-bottom: 1px solid #999;								
 						}
 
-						// Titles inside task content, should not be as big as official titles
-						h1 {
-								font-size: 120%;
+						td, th {
+								padding-top: 5px;
+								padding-bottom: 5px;
+								padding-right: 2px;
 						}
 
-						h2 {
-								font-size: 110%;
+						td + td, th + th {
+								border-left: 1px solid #999;
+								padding-left: 2px;
+						}
+				}
+
+				
+				input[type=text] {
+						font: inherit;
+						padding: 0 2px;
+						margin: -2px 0;
+				}
+
+				input[type=text].clozeTextPlaceholder {
+						.clozeTextPlaceholder;
+
+						&:focus {
+								outline: 1px solid #ccc;
+								background-color: #ffd;
 						}
 
-						h3 {
-								font-size: 100%;
+						// Intentionally set as empty by user
+						&.markedAsEmpty {
+								background-color: black;
+						}
+				}
+
+				
+				input, select, textarea {
+						// font-family: @base-body-font-family;
+				}
+
+				p {
+						margin-top: 3px;
+						margin-bottom: 3px;
+				}
+
+
+				
+				div.selectOneInput, div.selectPointsInput {
+						margin-bottom: 10px;
+
+						label:hover {
+								background-color: #eee;
 						}
 
-						table {
-								border: 1px solid #999;
-								border-collapse: collapse;
-								
-								td, th {
-										border: 1px solid #999;
-										padding: 2px 5px;
-								}
-						}
-
-						
-						input[type=text] {
-								font: inherit;
-								padding: 0 2px;
-								margin: -2px 0;
-						}
-
-						input[type=text].clozeTextPlaceholder {
-								.clozeTextPlaceholder;
-
-								&:focus {
-										outline: 1px solid #ccc;
-										background-color: #ffd;
-								}
-
-								// Intentionally set as empty by user
-								&.markedAsEmpty {
-										background-color: black;
-								}
-						}
-
-						
-						input, select, textarea {
-								// font-family: @base-body-font-family;
-						}
-
-						p {
-								margin-top: 3px;
-								margin-bottom: 3px;
+						span.wrongIcon {
+								// position: absolute;
+								// left: -15px;
 						}
 
 
-						
-						div.selectOneInput, div.selectPointsInput {
-								margin-bottom: 10px;
+				}
 
-								label:hover {
-										background-color: #eee;
-								}
+				div.selectOneInput {
+						.bigButtonStyle(@t-color-blue);
 
-								span.wrongIcon {
-										// position: absolute;
-										// left: -15px;
-								}
-
-
+						select.selectOneInput {
+								max-width: 100%;
 						}
+
+
+				}
+
+				div.selectMany {
+						label:hover {
+								background-color: #eee;
+						}
+
+						span.wrongIcon {
+								position: absolute;
+								left: -15px;
+						}
+
+						.bigButtonStyle(@t-color-blue);
+
+				}
+				
+				div.clozeText {
+						line-height: 1.8em;
 
 						div.selectOneInput {
-								.bigButtonStyle(@t-color-blue);
-
-								select.selectOneInput {
-										max-width: 100%;
-								}
-
-
+								display: inline-block;
 						}
 
-						div.selectMany {
-								label:hover {
-										background-color: #eee;
+
+						span.dragDropDraggable {
+								.draggable();
+								
+								background-color: #eee;
+								padding: 1px 2px;
+								border: 1px solid #ccc;
+
+								// margin-bottom: 10px;
+								// line-height: normal;
+								display: inline-block;
+
+								&:hover {
+										border: 1px solid black;
 								}
 
-								span.wrongIcon {
-										position: absolute;
-										left: -15px;
+								figure.inlineAssetImage {
+										display: inline-block;
+
+										figcaption {
+												display: none;
+										}
 								}
-
-								.bigButtonStyle(@t-color-blue);
-
+								
 						}
 						
-						div.clozeText {
-								line-height: 1.8em;
+						span.dragDropTarget {
+								display: inline-block;
+								min-width: 100px;
+								background-color: #eee;
+								padding-left: 5px;
+								padding-bottom: 1px;
+								min-height: 1em;
+								border-top: none;
+								border-left: none;
+								border-right: none;
+								border-bottom: @borderBottomClozePlaceholders;
 
-								div.selectOneInput {
-										display: inline-block;
+								.dropHover();
+
+								span.draggableContainer {
+										white-space: nowrap;
+										// Drag element in a drop container
+										span.dragDropDraggable {
+												margin-right: 10px;
+										}
 								}
+						}
 
+						div.dragDropDraggables {
+								background-color: #eee;
+								border: 1px dotted black;
+								margin: 10px 0;
+								padding: 1px 5px;
+								min-height: 20px;
 
+								.dropHover();
+								
 								span.dragDropDraggable {
 										.draggable();
 										
-										background-color: #eee;
-										padding: 1px 2px;
-										border: 1px solid #ccc;
-
-										// margin-bottom: 10px;
+										margin-right: 5px;
 										// line-height: normal;
 										display: inline-block;
-
-										&:hover {
-												border: 1px solid black;
-										}
 
 										figure.inlineAssetImage {
 												display: inline-block;
@@ -779,398 +855,353 @@ div.VIATocModuleExerciser {
 												figcaption {
 														display: none;
 												}
+												
+												// span.assetInfo {
+												// 		.uk-text-muted();
+												// 		cursor: pointer;
+												// 		float: right;
+												// }
 										}
 										
 								}
-								
-								span.dragDropTarget {
-										display: inline-block;
-										min-width: 100px;
-										background-color: #eee;
-										padding-left: 5px;
-										min-height: 1em;
-										border-top: none;
-										border-left: none;
-										border-right: none;
-										border-bottom: @borderBottomClozePlaceholders;
-
-										.dropHover();
-
-										// Drag element in a drop container
-										span.dragDropDraggable {
-												margin-right: 5px;
-										}
-								}
-
-								div.dragDropDraggables {
-										background-color: #eee;
-										border: 1px dotted black;
-										margin: 10px 0;
-										padding: 1px 5px;
-										min-height: 20px;
-
-										.dropHover();
-										
-										span.dragDropDraggable {
-												.draggable();
-												
-												margin-right: 5px;
-												// line-height: normal;
-												display: inline-block;
-
-												figure.inlineAssetImage {
-														display: inline-block;
-
-														figcaption {
-																display: none;
-														}
-														
-														// span.assetInfo {
-														// 		.uk-text-muted();
-														// 		cursor: pointer;
-														// 		float: right;
-														// }
-												}
-												
-										}
-								}
-
 						}
 
-						div.buttons {
+				}
 
-								margin-top: 15px;
+				div.buttons {
 
-								// input.submit, button {
-								// 		&.check, &.reset, &.recheck, &.revealAnswers, &.save {
-								// 				background: #f00;
-								// 				color: #fff;
-								// 				border:  0px;
-								// 				padding: 10px;
-								// 				font-size: 1.2em;
-								// 				cursor: pointer;
-								// 		}
-								// }
+						margin-top: 15px;
 
-								
-						}
+						// input.submit, button {
+						// 		&.check, &.reset, &.recheck, &.revealAnswers, &.save {
+						// 				background: #f00;
+						// 				color: #fff;
+						// 				border:  0px;
+						// 				padding: 10px;
+						// 				font-size: 1.2em;
+						// 				cursor: pointer;
+						// 		}
+						// }
+
+						
+				}
 
 
-						div.audioPlayer {
-								//				width: 50%;
-								margin: 10px 0px;
-								span.assetInfo {
-										float: right;
-								}
-
-								
-								div.transcriptionContainer {
-
-										div.transcriptionText {
-												font-size: 90%;
-												line-height: normal;
-										}
-
-										
-										div.audioTranscription {
-												&.disabled {
-														.uk-hidden();
-												}
-
-												button.printThis {
-														float: right;
-												}
-										}
-								}
+				div.audioPlayer {
+						//				width: 50%;
+						margin: 10px 0px;
+						span.assetInfo {
+								float: right;
 						}
 
 						
-						div.videoPlayer {
+						div.transcriptionContainer {
+
+								div.transcriptionText {
+										font-size: 90%;
+										line-height: normal;
+								}
+
 								
-								div.videoContainer {
-										margin-right: 10px;
-								}
-
-								div.transcriptionContainer {
-
-										div.videoTranscription {
-												&.disabled {
-														.uk-hidden();
-												}
-
-												button.printThis {
-														float: right;
-												}
+								div.audioTranscription {
+										&.disabled {
+												.uk-hidden();
 										}
 
-										div.transcriptionText {
-												font-size: 90%;
-												line-height: normal;
+										button.printThis {
+												float: right;
 										}
-								}
-
-								span.assetInfo {
-										float: right;
 								}
 						}
+				}
 
-						div.imageDisplayer {
-								span.image {
-										display: inline-block;
-										text-align: right;
-										img {
-												display: block;
+				
+				div.videoPlayer {
+						
+						div.videoContainer {
+								margin-right: 10px;
+						}
+
+						div.transcriptionContainer {
+
+								div.videoTranscription {
+										&.disabled {
+												.uk-hidden();
 										}
-										span.assetInfo {
+
+										button.printThis {
+												float: right;
 										}
-										
+								}
+
+								div.transcriptionText {
+										font-size: 90%;
+										line-height: normal;
 								}
 						}
 
 						span.assetInfo {
-								.uk-text-muted();
-								cursor: pointer;
+								float: right;
 						}
+				}
 
-						span.hintSymbol {
+				div.imageDisplayer {
+						span.image {
 								display: inline-block;
-								margin: 0.2em;
-								vertical-align: middle;
-						}
-
-
-						div.mapPairs {
-								@pairBorder: 1px solid black;
-								
-								border-top: @pairBorder;
-								display: table;
-								border-collapse: collapse;
-								
-								div.objectPair {
-										display: table-row;
-										border-bottom: @pairBorder;
-
-										.dropHover();
-
-										span.hintSymbol {
-												float:left;
-												margin-left: -20px;
-												margin-top: 10px;
-										}
-										
-										div.leftObject {
-												display: table-cell;
-												padding-left: 10px;
-										}
-
-										div.middleColumn {
-												display: table-cell;
-										}
-
-										div.rightObject {
-												@dragHandleOffset: 25px;
-
-												display: table-cell;
-												padding: 5px 10px 5px (@dragHandleOffset + 10px);
-
-												div.objectPairDraggable {
-														background-color: #eee;
-														padding: 10px;
-														border: 1px solid #ddd;
-														margin-bottom: 10px;
-
-														.draggable();
-
-														&:hover {
-																border: 1px solid #333;
-														}
-
-														&:only-child {
-																margin-bottom: 0;
-														}
-
-														&:not(:first-child) {
-																background-color: #f99;
-														}
-
-														span.dragHandle {
-																position: absolute;
-																margin-left: -@dragHandleOffset;
-														}
-
-												}
-										}
+								text-align: right;
+								img {
+										display: block;
 								}
-						}
-
-
-						div.mapPairsClickClick {
-								@pairBorder: 1px solid black;
-								
-								border-top: @pairBorder;
-								display: table;
-								border-collapse: collapse;
-
-								
-								div.objectPair {
-										display: table-row;
-										border-bottom: @pairBorder;
-
-										.selection() {
-												&.selected {
-														background-color: yellow;
-												}
-										}
-										
-										span.hintSymbol {
-												float:left;
-												margin-left: -20px;
-												margin-top: 10px;
-										}
-										
-										div.leftObject {
-												display: table-cell;
-												padding-left: 10px;
-												cursor: pointer;
-												.selection();
-										}
-
-										div.middleColumn {
-												display: table-cell;
-										}
-
-										div.rightObject {
-												display: table-cell;
-												padding: 5px 10px 5px 10px;
-												cursor: pointer;
-												.selection();
-
-										}
+								span.assetInfo {
 								}
+								
 						}
+				}
+
+				span.assetInfo {
+						.uk-text-muted();
+						cursor: pointer;
+				}
+
+				span.hintSymbol {
+						display: inline-block;
+						margin: 0.2em;
+						vertical-align: middle;
+				}
+
+
+				div.mapPairs {
+						@pairBorder: 1px solid black;
 						
-								div.score {
-										margin-top: 2em;
-										// background-color: white;
-										font-weight: bold;
-								}
+						border-top: @pairBorder;
+						display: table;
+						border-collapse: collapse;
+						
+						div.objectPair {
+								display: table-row;
+								border-bottom: @pairBorder;
 
+								.dropHover();
 
-						div.objectPairDragHelper {
-								padding: 10px;
-								border: 1px solid black;
-						}
-
-						div.highlightAreas {
-
-								.noUserSelect();
-								.noTouch();
-								letter-spacing: 0.1em;
-								//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
-								padding: 10px;
-								margin: 15px 0;
-								border: 1px solid #aaa;
-
-								span.highlightArea.solution {
-										border: 1px solid #333;
-										padding-left: 1px;
-								}
-
-								div.pillarParagraph:first-child {
-										margin-top: 0;
+								span.hintSymbol {
+										float:left;
+										margin-left: -20px;
+										margin-top: 10px;
 								}
 								
-								span.selChar {
-										cursor: url('/files/images/horizontal-text-select.cur'), text;
-										&.highlighted {
-												background-color: green;
-												color: white;
-												padding-top: 1px;
+								div.leftObject {
+										display: table-cell;
+										padding-left: 10px;
+								}
+
+								div.middleColumn {
+										display: table-cell;
+								}
+
+								div.rightObject {
+										@dragHandleOffset: 25px;
+
+										display: table-cell;
+										padding: 5px 10px 5px (@dragHandleOffset + 10px);
+
+										div.objectPairDraggable {
+												background-color: #eee;
+												padding: 10px;
+												border: 1px solid #ddd;
+												margin-bottom: 10px;
+
+												.draggable();
+
+												&:hover {
+														border: 1px solid #333;
+												}
+
+												&:only-child {
+														margin-bottom: 0;
+												}
+
+												&:not(:first-child) {
+														background-color: #f99;
+												}
+
+												span.dragHandle {
+														position: absolute;
+														margin-left: -@dragHandleOffset;
+												}
+
 										}
+								}
+						}
+				}
+
+
+				div.mapPairsClickClick {
+						@pairBorder: 1px solid black;
+						
+						border-top: @pairBorder;
+						display: table;
+						border-collapse: collapse;
+
+						
+						div.objectPair {
+								display: table-row;
+								border-bottom: @pairBorder;
+
+								.selection() {
 										&.selected {
-												background-color: red;
+												background-color: yellow;
 										}
-								}		
-						}
-
-						div.taskGroup {
+								}
 								
-								div.taskGroupItem {
-										margin: 10px 0px;
+								span.hintSymbol {
+										float:left;
+										margin-left: -20px;
+										margin-top: 10px;
+								}
+								
+								div.leftObject {
+										display: table-cell;
+										padding-left: 10px;
+										cursor: pointer;
+										.selection();
+								}
+
+								div.middleColumn {
+										display: table-cell;
+								}
+
+								div.rightObject {
+										display: table-cell;
+										padding: 5px 10px 5px 10px;
+										cursor: pointer;
+										.selection();
+
 								}
 						}
-
-						button.taskBrickGroupToggler {
-								background-color: #999;
-
-								&:hover {
-										background: black;
-								}
-						}
-
-						div.taskBrickGroup {
-								// border: 1px solid black;
-								padding: 5px;
-						}
-						
-						
 				}
-
-
 				
-				// Tandem sequence
-				div.VIATandemSequenceExerciser {
-						div.question {
-								background-color: @t-color-tandem-question;
-								padding: 2em;
-								margin-bottom: 2em;
-
-								div.explanation {
-										margin-bottom: 2em;
-								}
-						}
-
-						div.answer {
-								margin: 2em 0;
-						}
-
-						div.navigation {
-								position: sticky;
-								bottom: 0;
-								background-color: white;
-								font-size: 200%;
-								display: flex;
-								justify-content: space-between;
-								align-items: center;
-
-								a {
-										color: inherit;
-								}
-
-								// span.leftRight {
-								// 		width: 15%;
-								// 		a {
-								// 				color: inherit;
-								// 		}
-								// }
-
-								
-						}
-						
+				div.score {
+						margin-top: 2em;
+						// background-color: white;
+						font-weight: bold;
 				}
 
-				div.orderItems {
-						ul.orderItemsList {
-								list-style: none;
-								padding: 0;
 
-								li.orderItem {
-										cursor: move;
+				div.objectPairDragHelper {
+						padding: 10px;
+						border: 1px solid black;
+				}
+
+				div.highlightAreas {
+
+						.noUserSelect();
+						.noTouch();
+						letter-spacing: 0.1em;
+						//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
+						padding: 10px;
+						margin: 15px 0;
+						border: 1px solid #aaa;
+
+						span.highlightArea.solution {
+								border: 1px solid #333;
+								padding-left: 1px;
+						}
+
+						div.pillarParagraph:first-child {
+								margin-top: 0;
+						}
+						
+						span.selChar {
+								cursor: url('/files/images/horizontal-text-select.cur'), text;
+								&.highlighted {
+										background-color: green;
+										color: white;
+										padding-top: 1px;
 								}
+								&.selected {
+										background-color: red;
+								}
+						}		
+				}
+
+				div.taskGroup {
+						
+						div.taskGroupItem {
+								margin: 10px 0px;
+						}
+				}
+
+				button.taskBrickGroupToggler {
+						background-color: #999;
+
+						&:hover {
+								background: black;
+						}
+				}
+
+				div.taskBrickGroup {
+						// border: 1px solid black;
+						padding: 5px;
+				}
+				
+				
+		}
+
+
+		
+		// Tandem sequence
+		div.VIATandemSequenceExerciser {
+				div.question {
+						background-color: @t-color-tandem-question;
+						padding: 2em;
+						margin-bottom: 2em;
+
+						div.explanation {
+								margin-bottom: 2em;
+						}
+				}
+
+				div.answer {
+						margin: 2em 0;
+				}
+
+				div.navigation {
+						position: sticky;
+						bottom: 0;
+						background-color: white;
+						font-size: 200%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+
+						a {
+								color: inherit;
+						}
+
+						// span.leftRight {
+						// 		width: 15%;
+						// 		a {
+						// 				color: inherit;
+						// 		}
+						// }
+
+						
+				}
+				
+		}
+
+		div.orderItems {
+				ul.orderItemsList {
+						list-style: none;
+						padding: 0;
+
+						li.orderItem {
+								cursor: move;
 						}
 				}
 		}
 }
+
 
 div.VIAUnitComponent {
 
@@ -1211,6 +1242,18 @@ figure.inlineAssetImage {
 		}
 }
 
+span.inlineAssetAudio {
+		audio {
+				display: inline-block;
+				width: 5em;
+		}
+
+		div.mejs__container {
+				display: inline-block;
+				width: 5em;
+		}
+}
+
 .correct {
 		background-color: #cfc;
 }
@@ -1228,7 +1271,7 @@ span.correctIcon {
 }
 
 span.wrongIcon {
-		color: #666;
+		color: red;
 		padding-left: 4px;
 		padding-right: 2px;
 }
