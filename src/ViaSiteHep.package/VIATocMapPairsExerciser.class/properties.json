@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"exerciseId"
+		"exerciseId",
+		"jsEventHandler"
 	],
 	"name" : "VIATocMapPairsExerciser",
 	"type" : "normal"

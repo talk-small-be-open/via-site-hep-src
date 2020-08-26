@@ -10,10 +10,10 @@ renderNavbarContentOn: html
 			with: [ html ukIcon: 'home']."
 		html anchor
 			callback: [ self gotoSearchModule ];
-			with: [ html ukIcon: 'search'].
+			with: [ html iconSearch].
 		html anchor
 			callback: [ self openLoginDialog ];
-			with: [ html span: 'LOG'. "ukIcon: 'home'"].
+			with: [ html iconLogin].
 		html anchor
 			class: 'mainMenuToggler';
 			ukToggleTarget: '#mainMenu';

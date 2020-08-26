@@ -8,7 +8,7 @@ renderDragDropInteractJs: aDragDropInput on: html
 
 	self renderHintSymbolOf: aDragDropInput on: html.
 
-	self renderCorrection: answerValue on: html.
+"	self renderCorrection: answerValue showWrong: false on: html."
 	
 	dropTargetId := html nextId.
 
@@ -30,4 +30,13 @@ renderDragDropInteractJs: aDragDropInput on: html
 				ifBlank: [html space. "Für richtige Höhe"]
 				ifNotBlank: [:col |
 					col do: [:each |
-						self renderDragDropDraggable: each on: html]]]
+						| isCorrect |
+						isCorrect := aDragDropInput isSolution: each.
+						html span class: 'draggableContainer'; with: [
+							self ifca: isCorrect not t: [
+								html span class: 'wrongIcon'; with: [html iconWrong].
+							].
+							self ifca: isCorrect t: [
+								html span class: 'correctIcon'; with: [html iconCorrect].
+							].
+							self renderDragDropDraggable: each on: html]]]]
