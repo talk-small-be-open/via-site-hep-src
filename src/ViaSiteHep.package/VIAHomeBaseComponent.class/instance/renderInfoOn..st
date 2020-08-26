@@ -6,7 +6,7 @@ renderInfoOn: html
 			#(#(teacher faq) #(press about) #(support contact)) do: [ :each |
 				{ each first. each second } do: [ :key |
 					html div: [
-						html bigAnchorButton
+						html anchor
 							callback: [ self app showText: 'page:', key ];
 							with: [
 								html sT: ('home:info:', key).
