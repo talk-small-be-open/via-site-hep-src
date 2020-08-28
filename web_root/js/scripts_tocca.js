@@ -67,6 +67,8 @@ function onDragDropDrop(dropzone, draggable) {
 }
 
 
+// Text input
+
 function textinput_markAsEmpty(event, elementId) {
 	var element = $('#'+elementId);
 	event.stopPropagation();
@@ -80,6 +82,19 @@ function textinput_markAsEmpty(event, elementId) {
 		$(event.target).removeClass('active');
 		element.val('')		
 	}	
+}
+
+
+// Select many
+
+function selectmany_preventTooManyChecks(regionId, buttonId, number, message) {
+	if ($('#'+regionId+' input:checkbox:checked').length > number) {
+		alert(message);
+		return false;
+	}
+	$('#'+buttonId).toggleClass('active');
+
+	return true;
 }
 
 
