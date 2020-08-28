@@ -27,6 +27,8 @@
 // Our SITE own uikit theme (overrides to the via base uikit theme)
 @import "uikit_theme/_import.less";
 
+@import "testdrive.less";
+
 // =======================================================================
 // Variables
 // =======================================================================
@@ -38,14 +40,15 @@
 @t-color-unit1: #ca4947;
 @t-color-unit2: #f08c2d;
 @t-color-unit3: #8aa95b;
-@t-color-tandem-question: #CDE5F2;
+@t-color-tandem-question: #f08c2d;
+@t-color-tandem-answer: #CDE5F2;
 
 
 @wrongColor: inherited;
 @correctColor: #efe;
 
 
-@t-header-height:             3rem;
+@t-header-height:             4rem;
 @t-header-height-small:       5vh;
 @t-header-background:         @t-color-black;
 @t-header-small-background:   @t-color-black;
@@ -128,7 +131,7 @@
 
 // Tocca big button base styles
 .bigButton {
-		text-transform: uppercase;
+//		text-transform: uppercase;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
@@ -339,14 +342,15 @@ body {
 }
 
 // General button styling
-input.submit, button, button.uk-button, a.uk-button {
+//WEG: Conflict with mediaelement and anyway to general: button
+input.submit, button.uk-button, a.uk-button {
 		.button();
 }
 
 // All buttons get the color of the tocca unit, if inside a div with tocca module number
 div {
 		.toccamoduleButton("input.submit");
-		.toccamoduleButton("button");
+//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
 		.toccamoduleButton(".bigButton");
 		.toccamoduleButton("button.uk-button");
 		.toccamoduleButton("a.uk-button");
@@ -360,6 +364,7 @@ div.t-header {
     
 		background-color: @t-header-background;
 		padding: @t-header-padding;
+		height: @t-header-height;
 
 		a.t-logo {
 				font-size: 1.5rem;
@@ -442,19 +447,26 @@ div.VIAPublicHomeComponent {
 		padding-bottom: 1em;
 		
 		div.toccaBanner {
-				background-color: @t-color-red;
-				padding: 0.5em;
-				margin-bottom: 1em;
+				// background-color: @t-color-red;
+				// background-image: url(/site/images/public_banner.jpg);
+				// background-repeat: no-repeat;
+				// background-size: cover;
+				padding: 0;
+				margin: 1rem 0;
 
 				div.title {
+						background-image: url(/site/images/public_banner.jpg);
+						background-repeat: no-repeat;
+						background-size: cover;
 						font-size: 4rem;
 						line-height: 4rem;
 						color: white;
 						padding: 1em 0;
 						text-align: center;
+						margin-bottom: 1rem;
 				}
 
-				.bigButtonStyle(white, @t-color-red);
+				.bigButtonStyle(@t-color-red, white);
 
 		}
 
@@ -489,8 +501,15 @@ div.VIATocLoginComponent {
 		}
 }
 
-div.VIAModuleFinderComponent {
+div.VIAToccaStartComponent {
 		margin: 2em 0;
+
+		div.VIAModuleFinderComponent {
+				margin-bottom: 2em;
+		}
+}
+
+div.VIAModuleFinderComponent {
 
 		div.searchBar {
 				border: 1px solid black;
@@ -584,7 +603,9 @@ div.VIATocModuleExerciser {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-
+				position: sticky;
+				top: @t-header-height;
+				
 				span.leftRight {
 						width: 15%;
 						a {
@@ -596,6 +617,7 @@ div.VIATocModuleExerciser {
 		h2.moduleTitle {
 				color: @t-color-blue;
 				text-align: center;
+				margin-top: 0.5em;
 				margin-bottom: 1em;
 		}
 
@@ -970,6 +992,7 @@ div.VIATocTaskExerciser {
 				}
 
 
+				// Obsolete? Wir haben nur click-click und kein drag-drop bei tocca
 				div.mapPairs {
 						@pairBorder: 1px solid black;
 						
@@ -1068,6 +1091,7 @@ div.VIATocTaskExerciser {
 
 								div.middleColumn {
 										display: table-cell;
+										padding: 0 1em;
 								}
 
 								div.rightObject {
@@ -1077,6 +1101,11 @@ div.VIATocTaskExerciser {
 										.selection();
 
 								}
+
+								div.endColumn {
+										display: table-cell;
+								}
+
 						}
 				}
 				
@@ -1161,8 +1190,12 @@ div.VIATocTaskExerciser {
 						}
 				}
 
-				div.answer {
-						margin: 2em 0;
+				div.questionAndAnswer {
+						background-color: @t-color-tandem-answer;
+						padding: 1em;
+						div.answer {
+								margin-top: 2em;
+						}
 				}
 
 				div.navigation {
@@ -1251,6 +1284,7 @@ span.inlineAssetAudio {
 		div.mejs__container {
 				display: inline-block;
 				width: 5em;
+				vertical-align: middle;
 		}
 }
 
@@ -1375,7 +1409,6 @@ div.moduleBody {
 		position: relative; // Wichtig, damit eingebettete versteckte absolute-Elemente die Breite korrekt berechnen können
 }
 
-// }}}
 
 // Keep this for Emacs editor!
 // NOT origami-fold-style: triple-braces
