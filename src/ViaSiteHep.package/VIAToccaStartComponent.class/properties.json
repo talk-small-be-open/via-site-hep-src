@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"finder"
+		"finder",
+		"showFinder"
 	],
 	"name" : "VIAToccaStartComponent",
 	"type" : "normal"

@@ -1,7 +1,8 @@
 rendering
 renderContentOn: html
 
-	html render: finder.
+	showFinder ifTrue: [
+		html render: finder ].
 
 	html ukContainer: [
 		"All units 1-6"

@@ -8,9 +8,9 @@ gotoFirstScreen
 		self session clearGotoModule.
 		self gotoModule: m. ^self]."
 
-	self currentPortfolio isEmpty
-		ifTrue: [self gotoHome]
-		ifFalse: [self gotoMyPortfolio]
+	self currentPortfolio lastOpenedModule
+		ifNotNil: [:m | self gotoModule: m ]
+		ifNil: [self gotoHome]
 		
 	"DEV"
 "	self gotoModule: self wd modules anyOne"

@@ -2,7 +2,9 @@ actions
 openModule: aModule
 	| exerciser |
 
-	self currentPortfolio addModule: aModule.
+	self currentPortfolio
+		addModule: aModule;
+		lastOpenedModule: aModule.
 
 	exerciser := (VIATocModuleExerciser fromModule: aModule).
 	exerciser previousModule: aModule previousByIndexCode.

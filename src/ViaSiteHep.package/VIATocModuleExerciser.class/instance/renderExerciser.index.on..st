@@ -24,7 +24,7 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 				html heading level3; class: 'accTitle'; with: title.
 				html span class: 'accToggle'; with: [
 					html span class: 'doOpen'; with: [html iconDropdown].
-					html span class: 'doClose'; with: [html iconClose].
+					html span class: 'doClose'; with: [html iconDropup].
 				].
 	"			html div class: 'uk-visible@s acc-subtitle'; with: aTaskExerciser task title."
 		"		self renderScoreTask: aTaskExerciser exercise on: html"].

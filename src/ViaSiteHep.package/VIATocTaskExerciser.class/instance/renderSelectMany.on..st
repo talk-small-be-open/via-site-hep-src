@@ -42,7 +42,13 @@ renderSelectMany: aSelectManyInput on: html
 											html pillarString: choice].
 										html checkbox
 											style: 'display: none';
-											onClick: ((html jQuery id: buttonId) toggleClass: 'active');
+"											onClick: ((html jQuery id: buttonId) toggleClass: 'active');"
+											onClick: ('return selectmany_preventTooManyChecks("',
+												regionDiv id, '","',
+												buttonId, '",',
+												aSelectManyInput solutions size greaseString,
+												',"', ('exerciser:selectMany:tooManyChecks' t),'")');
+
 											onTrue: [answerCollection addIfNotPresent: choice]
 											onFalse: [answerCollection remove: choice ifAbsent: []];
 											class: 'selectManyInput';
