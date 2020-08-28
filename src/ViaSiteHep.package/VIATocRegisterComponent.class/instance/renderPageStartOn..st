@@ -26,10 +26,10 @@ renderPageStartOn: html
 		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:passwordConfirmation'.
 			html div class: 'uk-form-controls'; with: [html ukPasswordInput class: ''; on: #passwordConfirmation of: self]].
-		html div class: 'uk-margin-small'; with: [
+"		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:invitationCode'.
 			html div class: 'uk-form-controls'; with: [
-				html ukTextInput class: ''; id: 'invitationCode'; on: #invitationCode of: self]].
+				html ukTextInput class: ''; id: 'invitationCode'; on: #invitationCode of: self]]."
 
 
 "		html div class: 'uk-margin-small'; with: [
@@ -42,20 +42,15 @@ renderPageStartOn: html
 		self renderDisclaimerOn: html.
 
 		html div class: 'uk-margin-small'; with: [
-			html label class: 'uk-form-label'; t: 'register:termsAccepted'.
 			html div class: 'uk-form-controls'; with: [
 				html label: [
 					html ukCheckbox on: #termsAccepted of: self.
 					html space.
-					html t: 'general:yes']]].
+					html t: 'register:termsAccepted']]].
 		
 		html div class: 'uk-margin-small'; with: [
 			html ukSubmitButton
 				callback: [self checkForm];
 				t: 'register:registerNow'.
-			html space.
-			html anchor
-				callback: [self cancel];
-				t: 'cancel'.
 		].
 	]

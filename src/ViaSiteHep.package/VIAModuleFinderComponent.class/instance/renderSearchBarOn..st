@@ -5,8 +5,8 @@ renderSearchBarOn: html
 	inputId1 := html nextId.
 	inputId2 := html nextId.
 	
-	html paragraph: 'Hilfe: Tippe einen Anfang der Übungsnummer und suche. Oder tippe die ganze Nummer. Oder suche nach "P" für Palloncini. Oder, oder ...'.
-	html form noAutocomplete; with: [ 
+	html paragraph with: [html t: 'moduleFinder:info' ].
+	html form noAutocomplete; with: [
 		html div class: 'searchBar'; with: [
 			html textInput
 				id: inputId1;

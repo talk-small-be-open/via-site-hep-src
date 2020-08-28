@@ -23,9 +23,9 @@ renderVideoPlayer: aVideoPlayer on: html
 				id: videoId;
 "zu viel autoplay				a: 'uk-video';"
 "				preload: 'auto';"
-				preload: 'none'; "redommended by mediaelement.js"
+				preload: 'none'; "recommended by mediaelement.js"
 "				url: aVideoPlayer videoUrl;"
-"					poster: aVideoPlayer posterUrl;"
+				poster: aVideoPlayer posterUrl;
 				noTab;
 				controls: true;
 				autoplay: false;
