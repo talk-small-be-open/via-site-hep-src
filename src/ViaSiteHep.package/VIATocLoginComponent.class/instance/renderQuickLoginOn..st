@@ -1,6 +1,6 @@
 rendering
 renderQuickLoginOn: html
-	html div: 'DEVELOPMENT: Einloggen als: '.
+	html div: 'DEVELOPMENT Einloggen als: '.
 	html unorderedList
 		list: self wd users;
 		labels: [:each | each fullName];

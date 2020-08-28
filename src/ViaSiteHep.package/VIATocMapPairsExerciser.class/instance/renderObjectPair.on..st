@@ -26,7 +26,8 @@ renderObjectPair: anObjectPair on: html
 					self renderWithParent: leftObject on: html].
 
 			html div class: 'middleColumn'; with: [
-				self renderCorrection: answerHolder on: html ].
+				html iconLeftRight
+			].
 
 			html div
 				class: 'rightObject';
@@ -40,4 +41,9 @@ renderObjectPair: anObjectPair on: html
 						) asFunction: #(event))
 				);
 				with: [
-					self renderWithParent: rightObject on: html]].
+					self renderWithParent: rightObject on: html].
+				
+			html div class: 'endColumn'; with: [
+				self renderCorrection: answerHolder on: html ].
+
+			].

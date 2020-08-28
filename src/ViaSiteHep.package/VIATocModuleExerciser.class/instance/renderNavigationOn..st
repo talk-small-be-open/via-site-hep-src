@@ -1,6 +1,6 @@
 rendering
 renderNavigationOn: html
-	html heading level1; class: 'moduleNavigation'; with: [
+	html heading level1; class: 'moduleNavigation'; "a: 'uk-sticky' p: 'offset: 30';" with: [
 		html span class: 'leftRight'; with: [
 			previousModule
 				ifNotNil: [html anchor callback: [self gotoPreviousModule]; with: [html iconLeft] ] ].

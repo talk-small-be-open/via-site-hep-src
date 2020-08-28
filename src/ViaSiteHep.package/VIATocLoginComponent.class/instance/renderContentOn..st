@@ -12,13 +12,14 @@ renderContentOn: html
 		self renderHepLoginOn: html.
 
 		html div: [ 
-			html anchor
-				callback: [ self devLoginAnyone ];
-				with: [ html iconRight; text: 'TEST-LOGIN: Direkt einloggen'].
-			html break.
+"			self ifDevelopment: [ 
+				html anchor
+					callback: [ self devLoginAnyone ];
+					with: [ html iconRight; text: 'TEST-LOGIN: Direkt einloggen'].
+				html break ]."
 			html anchor
 				callback: [ self registerNewUser ];
-				with: [ html iconRight; text: 'Registrieren']
+				with: [ html iconRight; t: 'login:register']
 		].
 
 		self ifDevelopment: [
