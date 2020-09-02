@@ -1,0 +1,8 @@
+# Tocca production server tasks
+
+- name: Allow monitoring system access
+  ufw:
+    rule: allow
+    port: "9100"
+    proto: tcp
+    src: 2a0a:e5c0:2:2:0:c8ff:fe68:bf3b

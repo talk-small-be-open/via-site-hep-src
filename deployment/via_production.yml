@@ -32,9 +32,11 @@ via:
 
   # Your domain of the web application (Must be reachable in your network!). Example: media.myorg.com
   appDomain: "vm1.hepverlag.ungleich.cloud"
+#  appDomain: "app.tocca-a-te.ch"
 
   # Domain where your organization emails are from. Example: myorg.com
   emailDomain: "vm1.hepverlag.ungleich.cloud"
+#  appDomain: "tocca-a-te.ch"
 
   # Email address of the via Administrator. Use your own email, I guess.
   adminEmail: "andreas.brodbeck@mindclue.ch"
@@ -64,6 +66,7 @@ via:
   betaPassword: "heptocca"
 
   # Alternative domain name
+  #appDomain2: "vm1.hepverlag.ungleich.cloud"
   appDomain2: ""
   
   # Installation folder of via application
