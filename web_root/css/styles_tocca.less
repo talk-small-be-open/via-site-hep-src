@@ -387,9 +387,11 @@ div.t-header {
 				margin-top: 1em;
 		}
 
+
 		div.t-menubar {
 				a {
 						color: white;
+						vertical-align: middle;
 
 						+ a {
 								margin-left: 1rem;
@@ -401,6 +403,25 @@ div.t-header {
 								}
 						}
 				}
+
+				form.searchForm {
+						display: inline-block;
+//						margin-right: 1em;
+						
+						input.searchInput {
+								background-color: transparent;
+								color: white;
+								// border: 1px solid white;
+								// font-size: 1.2rem;
+								// padding: 0.2em;
+//								line-height: 2em;
+
+								// &:focus {
+								// 		background-color: white;
+								// }
+						}
+				}
+				
 		}
 		
 
@@ -617,12 +638,24 @@ div.VIATocModuleExerciser {
 				position: sticky;
 				top: @t-header-height;
 				z-index: 99;
+
+				a {
+						color: inherit;
+				}
+
+				span {
+						vertical-align: middle;
+				}
+
+				span.left, span.right {
+						display: inline-block;
+						width: 3em;						
+				}
 				
-				span.leftRight {
-						width: 15%;
-						a {
-								color: inherit;
-						}
+				span.arrow {
+						margin: 0 1em;
+						display: inline-block;
+						width: 2em;
 				}
 		}
 
@@ -711,6 +744,7 @@ div.VIATocTaskExerciser {
 				div.topToolbar {
 						//								float: right;
 						.bigButton.ignoreTask {
+								margin-top: 0.5em;
 								height: 1.5em;
 						}
 				}
