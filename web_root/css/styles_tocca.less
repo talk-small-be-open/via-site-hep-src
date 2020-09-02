@@ -137,7 +137,7 @@
 		flex-direction: column;
 		justify-content: center;
 		padding: auto;
-		height: 3em;
+		height: 2em;
 		//		padding: 2em;
 //		margin: 0.1em;
 		cursor: pointer;
@@ -162,10 +162,21 @@
 				border-color: @color;
 				color: @color;
 
-				&:active, &:hover, &.active {
+				&:active, &.active {
 						background-color: @color;
 						color: @inverseColor;
 				}
+
+				&:hover {
+						background-color: lighten(@color, 50%);
+						color: @inverseColor;
+						border-color: black;
+				}
+
+				&.active:hover {
+						background-color: @color;
+				}
+				
 		}
 
 }
@@ -635,6 +646,15 @@ div.VIATocModuleExerciser {
 						color: @t-color-blue;
 				}
 
+				span.accIcons {
+						margin-left: 1em;
+						img.iconActivityType {
+								vertical-align: bottom;
+								width: 2em;
+								height: auto;
+						}
+				}
+
 				&.ignored {
 						background-color: #eee;
 						text-decoration: line-through;
@@ -787,9 +807,9 @@ div.VIATocTaskExerciser {
 				}
 
 				div.selectMany {
-						label:hover {
-								background-color: #eee;
-						}
+						// label:hover {
+						// 		background-color: #eee;
+						// }
 
 						span.wrongIcon {
 								position: absolute;
@@ -1259,7 +1279,21 @@ ul.modulesList {
 		li {
 				.catalogListItem();
 
+				&.inWork {
+						background-color: #FEEE35;
+				}
+
+				&.finished {
+						background-color: #57DA48;
+				}
+
 				span.indexCode {
+						display: inline-block;
+						width: 3em;
+						font-weight: bold;
+				}
+
+				span.duration {
 						display: inline-block;
 						width: 3em;
 						font-weight: bold;
@@ -1376,13 +1410,13 @@ span.dictionaryEntry {
 }
 
 
-.finished {
-		background-color: #999;
-}
+// .finished {
+// 		background-color: #999;
+// }
 
-.inWork {
-		background-color: #999;
-}
+// .inWork {
+// 		background-color: #999;
+// }
 
 // div.moduleScore {
 // //		float: right;
