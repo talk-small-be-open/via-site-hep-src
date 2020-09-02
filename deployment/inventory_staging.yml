@@ -3,3 +3,4 @@ all:
     mindclue11.mindclue.ch:
       ansible_user: ubuntu
       ansible_python_interpreter: /usr/bin/python3
+      via_user: ubuntu

@@ -77,7 +77,7 @@ function textinput_markAsEmpty(event, elementId) {
 
 	if (element.hasClass('markedAsEmpty')) {
 		$(event.target).addClass('active');
-		element.val('---')
+		element.val('BLANK')
 	} else {
 		$(event.target).removeClass('active');
 		element.val('')		
