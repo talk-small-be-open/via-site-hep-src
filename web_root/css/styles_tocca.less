@@ -605,6 +605,7 @@ div.VIATocModuleExerciser {
 				align-items: center;
 				position: sticky;
 				top: @t-header-height;
+				z-index: 99;
 				
 				span.leftRight {
 						width: 15%;
@@ -1180,6 +1181,12 @@ div.VIATocTaskExerciser {
 		
 		// Tandem sequence
 		div.VIATandemSequenceExerciser {
+
+				.randomCode {
+						font-size: 200%;
+						margin: 0.3em;
+				}
+				
 				div.question {
 						background-color: @t-color-tandem-question;
 						padding: 2em;
