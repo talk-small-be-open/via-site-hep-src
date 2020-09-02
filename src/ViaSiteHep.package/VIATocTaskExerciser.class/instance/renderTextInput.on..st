@@ -15,16 +15,18 @@ renderTextInput: aPlaceholder on: html
 		class: 'markedAsEmpty' if: (answerHolder isExplicitBlank);
 		style: ('width: ', solutionMaxSize greaseString, 'em;');
 		callback: [:value |
-			value = '---' ifTrue: [ answerHolder beExplicitBlank ] ifFalse: [
+			value = 'BLANK' ifTrue: [ answerHolder beExplicitBlank ] ifFalse: [
 				answerHolder value: (self sanitizeClozeInput: value) ] ].
 	
-	(aPlaceholder isAutoShowHint and: [aPlaceholder hasHintText]) ifTrue: [
+	((aPlaceholder isAutoShowHint and: [aPlaceholder hasHintText]) or: [ aPlaceholder offerBlankChoice ]) ifTrue: [
 		| popoverHtml |
 		popoverHtml := String streamContents: [:s |
 			s << (VIAHelper inlineHtmlFromPillar: aPlaceholder hintText).
-			s << ('&nbsp;<span class="markAsEmpty" onclick="textinput_markAsEmpty(event, ''', clozeInput id,'''); return false">').
-			s << ('exerciser:clozeInput:beEmpty't).
-			s << '</span>'. ].
+			aPlaceholder offerBlankChoice ifTrue: [ 
+				s << ('&nbsp;<span class="markAsEmpty" onclick="textinput_markAsEmpty(event, ''', clozeInput id,'''); return false">').
+				s << ('exerciser:clozeInput:beEmpty't).
+				s << '</span>'].
+		].
 		
 		popoverOptions := {
 			#title->''.

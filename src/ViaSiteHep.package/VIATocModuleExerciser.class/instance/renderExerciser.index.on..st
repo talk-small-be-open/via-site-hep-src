@@ -1,9 +1,10 @@
 rendering
 renderExerciser: aTaskExerciser index: anInteger on: html
-	| id title hasTitle |
+	| id title hasTitle task |
 	id := html nextId.
 
-	title := aTaskExerciser task title.
+	task := aTaskExerciser task.
+	title := task title.
 	hasTitle := title notBlank.
 	
 	hasTitle ifTrue: [	
@@ -22,6 +23,8 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 						html iconActivityType: each]
 					]."
 				html heading level3; class: 'accTitle'; with: title.
+				html span class: 'accIcons'; with: [
+					task classification activityTypeTags do: [:each | html iconActivityType: each ]].
 				html span class: 'accToggle'; with: [
 					html span class: 'doOpen'; with: [html iconDropdown].
 					html span class: 'doClose'; with: [html iconDropup].
