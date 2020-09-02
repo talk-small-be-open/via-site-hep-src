@@ -2,15 +2,18 @@ rendering
 renderContentOn: html
 	html ukContainer with: [
 		html heading level1; with: [
-			html t: 'tocca:unit'.
-			html space.
-			html text: unitNumber asString].
+			html t: ('tocca:unit', unitNumber asString)].
 		
 		html unorderedList class: 'modulesList uk-list uk-list-collapse'; with: [
 			modules do: [ :each |
-				html listItem: [
-					html anchor
-						callback: [ self gotoModule: each];
-						with: [
-							html span class: 'indexCode'; with: each indexCodeString.
-							html span class: 'moduleTitle'; with: each title] ] ] ] ]
+				html listItem
+					class: 'inWork' if: (self currentPortfolio isInWorkModule: each);
+					class: 'finished' if: (self currentPortfolio isDoneModule: each);
+					with: [
+						html anchor
+							callback: [ self gotoModule: each];
+							with: [
+								html span class: 'indexCode'; with: each indexCodeString.
+								html span class: 'duration'; with: [ 
+									html iconDurationTag: each durationTag ].
+								html span class: 'moduleTitle'; with: each title] ] ] ] ]

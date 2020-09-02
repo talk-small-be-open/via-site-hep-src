@@ -14,6 +14,7 @@ renderHepLoginOn: html
 				html ukTextInput
 					placeholder: ('login:email't);
 					id: 'loginEmail';
+					autocomplete: 'username';
 					script: (html jQuery this triggerFocus);
 					on: #email of: self]].
 		html div class: 'uk-margin-small'; with: [
@@ -21,6 +22,7 @@ renderHepLoginOn: html
 			html div class: 'uk-form-controls'; with: [
 				html ukPasswordInput
 					placeholder: ('login:password't);
+					autocomplete: 'current-password';
 					id: 'loginPassword';
 					callback: [:value | self hepLoginWithPassword: value]]].
 		html div class: 'uk-margin'; with: [
