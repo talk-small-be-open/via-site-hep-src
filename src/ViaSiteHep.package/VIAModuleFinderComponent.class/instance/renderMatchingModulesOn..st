@@ -4,4 +4,4 @@ renderMatchingModulesOn: html
 	
 	modules ifEmpty: [ html paragraph t: 'moduleFinder:noResults' ].
 
-	html render: modulesList
+"	html render: modulesList"

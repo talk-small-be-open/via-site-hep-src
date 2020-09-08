@@ -8,44 +8,54 @@ renderKeyboardInputOn: html
 				html div: [
 					html span
 						onClick: 'kbd.type("', label, '")';
-						class: 'button keyboardButton';
+						class: 'keyboardButton';
 						with: label ]
 		].
 
 		html div: [
 			html span
 				onClick: 'kbd.clear(); kbd.type("P")';
-				class: 'button keyboardButton';
+				class: 'keyboardButton';
 				with: 'P'].
 
 		html div: [
 			html span
 				onClick: 'kbd.type("0")';
-				class: 'button keyboardButton';
+				class: 'keyboardButton';
 				with: '0' ].
 
 		html div: [
 			html span
 				onClick: 'kbd.clear(); kbd.type("V")';
-				class: 'button keyboardButton';
+				class: 'keyboardButton';
 				with: 'V' ].
 
 		html div: [
 			html span
 				onClick: 'kbd.backspace()';
-				class: 'button keyboardButton';
-				with: '<-' ].
+				class: 'keyboardButton';
+				with: [ html iconBackspace ] ].
 
-		html div: [
+"		html div: [
 			html span
 				onClick: 'kbd.dot()';
-				class: 'button keyboardButton';
-				with: '.' ].
+				class: 'keyboardButton';
+				with: '.' ]."
 
 		html div: [
+		].
+
+"		html div: [
 			html span
 				onClick: 'kbd.clear()';
-				class: 'button keyboardButton';
-				with: 'X' ].
+				class: 'keyboardButton';
+				with: [ html iconDelete ] ]."
+
+		html div: [
+			html button
+				beSubmit;
+				class: 'keyboardButton go';
+				callback: [ self goAhead ];
+				t: 'moduleFinder:go' ].
 
 	]]

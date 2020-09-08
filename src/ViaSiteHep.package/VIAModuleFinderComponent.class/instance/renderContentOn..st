@@ -1,6 +1,6 @@
 rendering
 renderContentOn: html
-	html ukContainer: [
+	html ukContainer id: (containerId := html nextId); with: [
 		self renderSearchBarOn: html.
 
 		self renderMatchingModulesOn: html.
@@ -12,4 +12,6 @@ renderContentOn: html
 "		(1 to: 9) groupsOf: 3 atATimeDo: [ :a :b :c |"
 
 		self renderKeyboardInputOn: html.
-	]
+	].
+
+	html script: ('var kbd = new Keyboard("', containerId, '")').

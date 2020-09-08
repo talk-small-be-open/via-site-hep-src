@@ -4,23 +4,26 @@ renderNavbarContentOn: html
 		self renderLogoOn: html.
 	].
 
-	html div class: 'uk-navbar-right t-menubar'; with: [
+	html div class: 'uk-navbar-right'; with: [
 "		html anchor
 			callback: [  ];
 			with: [ html ukIcon: 'home']."
-		html anchor
+"		html anchor
 			callback: [ self gotoSearchModule ];
-			with: [ html iconSearch].
-		html anchor
-			callback: [ self openLoginDialog ];
-			with: [ html iconLogin].
-		html anchor
-			class: 'mainMenuToggler';
-			ukToggleTarget: '#mainMenu';
-			with: [
-				html iconMenu.
-"				html t: 'general:menu'"]
-	].
+			with: [ html iconSearch]."
+		html unorderedList class: 'uk-navbar-nav'; with: [
+			html listItem: [
+				html anchor
+					callback: [ self openLoginDialog ];
+					with: [ html iconLogin] ].
+			html listItem: [
+				html anchor
+					class: 'mainMenuToggler';
+					ukToggleTarget: '#mainMenu';
+					with: [
+						html iconMenu.
+		"				html t: 'general:menu'"]]
+	]].
 	
 	html div
 		id: 'mainMenu';

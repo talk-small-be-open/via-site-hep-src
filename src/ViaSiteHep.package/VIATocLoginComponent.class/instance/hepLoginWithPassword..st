@@ -11,7 +11,7 @@ hepLoginWithPassword: aPassword
 	].
 
 	viaUser ifNotNil: [
-		self session loginUser: viaUser.
+		self session loginUser: viaUser remember: rememberMe.
 		loginOk := true.
 		self answerLoginOk
 	]

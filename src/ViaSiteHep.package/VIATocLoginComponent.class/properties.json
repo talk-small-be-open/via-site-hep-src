@@ -9,7 +9,8 @@
 		"loginOk",
 		"messageKey",
 		"local",
-		"email"
+		"email",
+		"rememberMe"
 	],
 	"name" : "VIATocLoginComponent",
 	"type" : "normal"

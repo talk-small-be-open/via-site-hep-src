@@ -1,3 +1,3 @@
 as yet unclassified
 finish
-	self inform: 'moduleExerciser:exerciseIsFinished'
+"	self inform: 'moduleExerciser:exerciseIsFinished'"
