@@ -15,6 +15,15 @@ function swapElement(a, b) {
   aNext.remove();
 }
 
+function swapContent(a, b) {
+
+	var as = a.children();
+
+	b.children().appendTo(a);
+	as.appendTo(b);
+	
+}
+
 
 // Map Pairs
 
@@ -22,18 +31,16 @@ function onMapPairsSelectionResult(correct, exerciseId) {
 	var objectPair = $('#'+exerciseId).find('div.objectPair').has('div.leftObject.selected');
 	var leftObject = objectPair.find('div.leftObject.selected');
 
-	var oldRightObject = objectPair.find('div.rightObject');
-	// var newRightObject = $('#'+rightObjectId);
+	var rightObject = objectPair.find('div.rightObject');
 	var newRightObject = $('#'+exerciseId).find('div.rightObject.selected');
 
 	if (correct) {
-		swapElement(oldRightObject, newRightObject);
+		swapContent(rightObject, newRightObject);
 
-		leftObject.removeClass('selected').addClass('correct');
-		newRightObject.removeClass('selected').addClass('correct');
-	} else {
-		$("div.objectPair div.selected").removeClass("selected");
+		leftObject.addClass('correct');
+		rightObject.addClass('correct');
 	}
+	$("#" + exerciseId + " div.objectPair div.selected").removeClass("selected");
 }
 
 function mapPairsCheck(exercise, callbackToCorrect) {
