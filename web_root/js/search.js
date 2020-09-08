@@ -2,29 +2,54 @@
 
 class Keyboard {
 
-	// Constructor, takes two jQuery-ied HTML input elements
-	constructor(in1, in2) {
-		this.input1 = in1;
-		this.input2 = in2;
+	// Constructor, takes two hidden HTML input element ids, and two DOM element id for display
+	constructor(id) {
+		var self = this;
+		var container = $("#"+id);
+		this.input1 = container.find("input.input1");
+		this.input2 = container.find("input.input2");
+		this.keyboard = container.find("div.keyboard");
+		this.inputText = container.find("input.searchInputText");
+		this.display1 = container.find("span.searchInput1");
+		this.display2 = container.find("span.searchInput2");
 
-		// Copy initial values from HTML
+		// Copy initial values from form input (if any)
 		this.text1 = this.input1.val();
 		this.text2 = this.input2.val();
 
-		// Input is on field 1
+		this.display1.click(function(){self.focus(1)});
+		this.display2.click(function(){self.focus(2)});
+
+		this.inputText.focus(function(){
+			self.keyboard.addClass("disabled");
+			self.lightsOut();
+		});
+		this.inputText.blur(function(){self.keyboard.removeClass("disabled")});
+		
+		this.focusNumber = 1;
+		
+		this.update();
+		
+		// Goto field 2 if field 1 is set
 		if (this.text1) {
 			this.focus(2)
-		} else {
-			this.focus(1)
+		// } else {
+		// 	this.focus(1)
 		}
 	}
 
+	lightsOut() {
+			this.display2.removeClass("focused");
+			this.display1.removeClass("focused");
+	}
+	
 	focus(number) {
 		this.focusNumber = number;
+		this.lightsOut();
 		if (number == 1) {
-			this.input1.focus();
+			this.display1.addClass("focused");
 		} else {
-			this.input2.focus();
+			this.display2.addClass("focused");
 		}
 	}
 	// Type something into the searchbar
@@ -77,5 +102,7 @@ class Keyboard {
 	update() {
 		this.input1.val(this.text1);
 		this.input2.val(this.text2);
+		this.display1.text(this.text1);
+		this.display2.text(this.text2);
 	}
 }

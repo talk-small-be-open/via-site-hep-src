@@ -42,9 +42,9 @@
 @t-color-unit3: #8aa95b;
 @t-color-tandem-question: #f08c2d;
 @t-color-tandem-answer: #CDE5F2;
+@t-color-selection: @t-color-blue;
 
-
-@wrongColor: inherited;
+@wrongColor: @t-color-red;
 @correctColor: #efe;
 
 
@@ -374,6 +374,7 @@ div {
 div.t-header {
     
 		background-color: @t-header-background;
+		color: white;
 		padding: @t-header-padding;
 		height: @t-header-height;
 
@@ -383,18 +384,26 @@ div.t-header {
 				color: white;
 		}
 
-		ul.uk-navbar-nav {
-				margin-top: 1em;
-		}
+		// ul.uk-navbar-nav {
+		// 		margin-top: 1em;
+		// }
 
 
-		div.t-menubar {
+		nav.t-menubar {
+				button {
+						color: white;
+						vertical-align: middle;
+						background-color: transparent;
+						border: none;
+						cursor: pointer;
+				}
+
 				a {
 						color: white;
 						vertical-align: middle;
 
 						+ a {
-								margin-left: 1rem;
+								margin-left: 0.5rem;
 						}
 						
 						&.mainMenuToggler {
@@ -419,6 +428,11 @@ div.t-header {
 								// &:focus {
 								// 		background-color: white;
 								// }
+
+								&::placeholder {
+//										padding-top: 0.3em;
+										font-size: 75%;
+								}
 						}
 				}
 				
@@ -543,35 +557,69 @@ div.VIAToccaStartComponent {
 
 div.VIAModuleFinderComponent {
 
+		max-width: 50em;
+
+		.goButton() {
+				background-color: red;
+				color: white;
+		}
+
+		.focus() {
+				background-color: @t-color-selection;
+				color: white;
+				outline: none;				
+		}
+
 		div.searchBar {
 				border: 1px solid black;
-				padding: 0 0 0 1em;
+				padding: 0 0 0 0.1em;
 				position: relative;
 				@fontsize: 2rem;
+				line-height: 1.5em;
+				font-size: @fontsize;
 				
 				input[type=text] {
 						font-size: @fontsize;
+						border: none;
+						display: inline-block;
+						
+
+						&.searchInputText {
+						}
+
+						&:focus {
+								.focus();
+								border: none;
+						}
+				}
+
+
+				span.searchInput {
+						font-size: @fontsize;
+						display: inline-block;
+						line-height: 1em;
+						height: 1em;
+						padding: 0.1em;
+						margin: 0.1em;
+						vertical-align: bottom;
 						
 						&.searchInput1 {
 								width: 0.7em;
-				//				text-align: right;
 						}
 
 						&.searchInput2 {
 								width: 3em;
 						}
 
-						&.searchInput1, &.searchInput2 {
-								display: inline-block;
-								border: none;
-						}
+						// &.searchInput1, &.searchInput2, &.searchInputText {
+						// }
 
-						&:focus {
-								border: none;
-								outline: none;
+						&.focused {
+								.focus();
 						}
 				}
 
+				
 				span.dot {
 						font-size: @fontsize;
 						display: inline-block;
@@ -582,11 +630,11 @@ div.VIAModuleFinderComponent {
 				}
 
 				button.go {
+						.goButton();
 						font-size: @fontsize;
-						background-color: red;
-						color: white;
 						border: none;
 						position: absolute;
+						top: 0;
 						height: 100%;
 						right: 0;
 				}
@@ -594,10 +642,14 @@ div.VIAModuleFinderComponent {
 
 		div.keyboard {
 				.noUserSelect();
-
 				margin: 1em 0;
-				span.keyboardButton {
-						@color: #333;
+
+				&.disabled {
+						visibility: hidden;
+				}
+				
+				.keyboardButton {
+						@color: #666;
 						
 						font-size: 1.5rem;
 						padding: 0.4em 0;
@@ -606,9 +658,18 @@ div.VIAModuleFinderComponent {
 						text-align: center;
 						display: inline-block;
 						width: 100%;
+						height: 1.2em;
+						border: none;
+						margin: 0;
+						box-sizing: content-box;
+						cursor: pointer;
 
 						&:hover {
 								background-color: lighten(@color, 30%);
+						}
+
+						&.go {
+								.goButton();
 						}
 				}
 		}
@@ -645,6 +706,7 @@ div.VIATocModuleExerciser {
 
 				span {
 						vertical-align: middle;
+						white-space: nowrap;
 				}
 
 				span.left, span.right {
@@ -653,7 +715,7 @@ div.VIATocModuleExerciser {
 				}
 				
 				span.arrow {
-						margin: 0 1em;
+						// margin: 0 0.5em;
 						display: inline-block;
 						width: 2em;
 				}
@@ -688,9 +750,17 @@ div.VIATocModuleExerciser {
 						}
 				}
 
+
 				&.ignored {
-						background-color: #eee;
-						text-decoration: line-through;
+//						background-color: #eee;
+
+						.accTitle {
+								color: #666;
+						}
+						
+						text-decoration-line: line-through;
+						text-decoration-color: black;
+						text-decoration-style: double;
 				}
 				
 				&.isOpen {
@@ -700,7 +770,12 @@ div.VIATocModuleExerciser {
 								.doClose {display:inline}
 						}
 				}
-				
+
+				span.accActions {
+						float: right;
+						margin: 0 1em;
+				}
+
 				.accToggle {
 						float: right;
 
@@ -1178,6 +1253,8 @@ div.VIATocTaskExerciser {
 
 				div.highlightAreas {
 
+						@highlightColor: green;
+						
 						.noUserSelect();
 						.noTouch();
 						letter-spacing: 0.1em;
@@ -1196,16 +1273,33 @@ div.VIATocTaskExerciser {
 						}
 						
 						span.selChar {
-								cursor: url('/files/images/horizontal-text-select.cur'), text;
+								cursor: url('/images/horizontal-text-select.cur'), text;
 								&.highlighted {
-										background-color: green;
+										background-color: @wrongColor;
+
+										&.touchedNow {
+												background-color: @highlightColor;
+										}
+										
 										color: white;
 										padding-top: 1px;
 								}
 								&.selected {
-										background-color: red;
+										background-color: @t-color-selection !important;
 								}
-						}		
+						}
+
+						span.highlightArea.correct {
+								span.selChar.highlighted {
+										background-color: @highlightColor;
+								}
+						}
+
+						&.firstTake {
+								span.selChar.highlighted {
+										background-color: @highlightColor;		
+								}
+						}
 				}
 
 				div.taskGroup {
@@ -1368,7 +1462,8 @@ span.inlineAssetAudio {
 }
 
 .wrong {
-		background-color: @wrongColor;
+		// why?!
+		background-color: transparent;
 }
 
 span.partiallyCorrectIcon {
