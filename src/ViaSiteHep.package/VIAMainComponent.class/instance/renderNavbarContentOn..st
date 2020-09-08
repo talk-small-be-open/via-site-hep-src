@@ -4,23 +4,33 @@ renderNavbarContentOn: html
 		self renderLogoOn: html.
 	].
 	html div class: 'uk-navbar-right t-menubar'; with: [
-		html anchor
-			callback: [ self gotoSearchModule ];
-			with: [ html iconSearch].
+		html form class: 'uk-navbar-item searchForm uk-form-horizontal'; with: [
+			html div class: 'uk-inline'; with: [
+				html anchor
+					class: 'uk-form-icon';
+					callback: [ self gotoSearchModule ];
+					with: [ html iconSearch].
+				html textInput
+					class: 'searchInput uk-input uk-form-width-small'.
+			] ].
 "		html anchor
 			callback: [ self goUp ];
 			with: [ html ukIcon: 'home']."
-		html anchor
-			callback: [ self gotoMyPortfolio ];
-			with: [ html iconPortfolio].
-		html anchor
-			class: 'mainMenuToggler';
-			ukToggleTarget: '#mainMenu';
+		html span
+			class: 'uk-navbar-item';
 			with: [
-				html iconMenu.
-				"html t: 'general:menu'"]
+				html anchor
+					callback: [ self gotoMyPortfolio ];
+					with: [ html iconPortfolio].
+				html anchor
+					class: 'mainMenuToggler';
+					ukToggleTarget: '#mainMenu';
+					with: [
+						html iconMenu.
+						"html t: 'general:menu'"]
+			]
 	].
-	
+
 	html div
 		id: 'mainMenu';
 		a: 'uk-offcanvas' p: 'flip: true; overlay: true';
