@@ -11,7 +11,9 @@
 		"modules",
 		"selectedToccaunit",
 		"searchQuery",
-		"modulesList"
+		"modulesList",
+		"searchText",
+		"containerId"
 	],
 	"name" : "VIAModuleFinderComponent",
 	"type" : "normal"

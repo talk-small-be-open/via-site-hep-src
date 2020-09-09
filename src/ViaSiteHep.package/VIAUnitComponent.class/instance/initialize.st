@@ -7,3 +7,5 @@ initialize
 	modules := self wd findPublicModulesByFirstIndexCode: unitNumber.
 
 	modules := modules sortedBy: [ :each | each indexCode ].
+	
+	self session preferredToccaunit: unitNumber.

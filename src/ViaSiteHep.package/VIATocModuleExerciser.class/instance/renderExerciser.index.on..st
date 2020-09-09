@@ -1,11 +1,12 @@
 rendering
 renderExerciser: aTaskExerciser index: anInteger on: html
-	| id title hasTitle task |
+	| id title hasTitle task exercise |
 	id := html nextId.
 
 	task := aTaskExerciser task.
 	title := task title.
 	hasTitle := title notBlank.
+	exercise := aTaskExerciser exercise.
 	
 	hasTitle ifTrue: [	
 		html div
@@ -13,7 +14,7 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 			onClick: (html jQuery ajax
 				callback: [aTaskExerciser toggleOpen]), (html jQuery this toggleClass: 'isOpen');
 			class: 'accBar';
-			class: 'ignored' if: aTaskExerciser exercise isIgnored;
+			class: 'ignored' if: exercise isIgnored;
 			class: 'isOpen' if: aTaskExerciser isOpen;
 	"		class: 'level-', model exerciseLevel asLowercase;"
 			with: [
@@ -25,10 +26,26 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 				html heading level3; class: 'accTitle'; with: title.
 				html span class: 'accIcons'; with: [
 					task classification activityTypeTags do: [:each | html iconActivityType: each ]].
+
 				html span class: 'accToggle'; with: [
 					html span class: 'doOpen'; with: [html iconDropdown].
 					html span class: 'doClose'; with: [html iconDropup].
 				].
+
+				html span class: 'accActions'; with: [
+					model isIgnoreTaskAllowed ifTrue: [
+						html anchor
+							class: 'ignoreTask';
+							callback: [aTaskExerciser toggleIgnore ];
+							with: [
+								exercise isIgnored
+									ifTrue: [ html iconToggleOff ]
+									ifFalse: [ html iconToggleOn ] ].
+			"				t: (exercise isIgnored ifTrue: ['moduleExerciser:deignoreTask'] ifFalse: ['exerciser:ignoreTask'])."
+				
+				]].
+
+
 	"			html div class: 'uk-visible@s acc-subtitle'; with: aTaskExerciser task title."
 		"		self renderScoreTask: aTaskExerciser exercise on: html"].
 	].

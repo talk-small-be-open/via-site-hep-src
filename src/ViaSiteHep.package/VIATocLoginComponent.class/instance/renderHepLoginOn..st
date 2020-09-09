@@ -25,6 +25,15 @@ renderHepLoginOn: html
 					autocomplete: 'current-password';
 					id: 'loginPassword';
 					callback: [:value | self hepLoginWithPassword: value]]].
+		html div class: 'uk-margin-small'; with: [
+"			html label class: 'uk-form-label'; t: 'login:password'."
+			html div class: 'uk-form-controls'; with: [
+				html label with: [
+					html ukCheckbox
+						on: #rememberMe of: self.
+					html space.
+					html t: 'login:rememberMe'.
+		]]].
 		html div class: 'uk-margin'; with: [
 			html ukSubmitButton t: 'login:loginNow'].
 	].

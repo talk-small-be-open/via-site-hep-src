@@ -14,6 +14,6 @@ renderContentOn: html
 							callback: [ self gotoModule: each];
 							with: [
 								html span class: 'indexCode'; with: each indexCodeString.
-								html span class: 'duration'; with: [ 
-									html iconDurationTag: each durationTag ].
+"Im Moment nicht gewünscht								html span class: 'duration'; with: [ 
+									html iconDurationTag: each durationTag ]."
 								html span class: 'moduleTitle'; with: each title] ] ] ] ]

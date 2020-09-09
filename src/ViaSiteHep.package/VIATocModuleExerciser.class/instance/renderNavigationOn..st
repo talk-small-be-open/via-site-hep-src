@@ -6,7 +6,7 @@ renderNavigationOn: html
 				callback: [ self app goUp ];
 				with: [html iconBack]
 		].
-		html span: [
+		html span class: 'center'; with: [
 			html span class: 'arrow'; with: [
 				previousModule
 					ifNotNil: [html anchor callback: [self gotoPreviousModule]; with: [html iconLeft] ] ].

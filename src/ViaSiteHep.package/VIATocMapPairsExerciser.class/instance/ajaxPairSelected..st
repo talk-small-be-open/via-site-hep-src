@@ -4,7 +4,7 @@ ajaxPairSelected: aCollection
 	
 	aCollection ifBlank: [ ^ self ].
 	aCollection size = 2 ifFalse: [ ^ self ].
-	
+
 	pair := aCollection first.
 	chosenAnswerHolder := aCollection second.
 	
