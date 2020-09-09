@@ -34,6 +34,7 @@
 // =======================================================================
 
 
+@t-color-primary: @t-color-red;
 @t-color-black: #333;
 @t-color-blue: #117CBE;
 @t-color-red: #CE5C5B;
@@ -59,7 +60,7 @@
 
 // Redefine basics for this via sub-website
 @via-basic-color: @t-color-black;
-@via-basic-background-color: @t-color-red;
+@via-basic-background-color: @t-color-primary;
 // @via-coloredbutton-color: #555;
 // @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
 
@@ -259,11 +260,11 @@ body {
 		}
 
 
-		&.wantRedBackground {
-				background-color: @t-color-red;
+		&.wantColorBackground {
+				background-color: @t-color-primary;
 				div.coreContainer {
 //						padding-top: 2em;
-						background-color: @t-color-red;
+						background-color: @t-color-primary;
 				}
 		}
 
@@ -319,8 +320,29 @@ div.pillarParagraph {
 // =======================================================================
 // UI components
 // =======================================================================
-// {{{
 
+
+div.VIADeviceDetectorComponent {
+		background-color: @t-color-primary;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		.spinner {
+				color: black;
+				font-size: 3rem;
+				// width: 33vw;
+				// height: 33vw;
+		}
+		
+		a.spinnerMessage {
+				.uk-text-muted();
+				color: #666;
+				font-size: 80%;
+		}
+}
 
 //
 // header 
@@ -1610,12 +1632,28 @@ div.moduleBody {
 // Only large screens
 @media (min-width: @breakpoint-large) {
 
+		html {
+				min-height: 100vh;
+				background-color: #EFEBE8;
+		}
+		
+		body {
+				background-color: #EFEBE8;
+		}
+		
 		div.coreContainer {
+				background-color: #EFEBE8;
 				padding-left: 10%;
 				padding-right: 10%;
+
+				div.core {
+						background-color: white;
+				}
 		}
 
 		div.t-header {
+				padding-left: 10%;
+				padding-right: 10%;
 
 				nav.t-menubar {
 						form.searchForm {
@@ -1637,6 +1675,11 @@ div.moduleBody {
 								max-width: 75%;
 						}
 				}
+		}
+
+		div.footer {
+				position: fixed;
+				bottom: 0;
 		}
 
 		
