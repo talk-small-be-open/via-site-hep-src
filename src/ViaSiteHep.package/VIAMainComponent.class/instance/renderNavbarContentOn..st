@@ -12,7 +12,7 @@ renderNavbarContentOn: html
 				html textInput
 					callback: [ :value | self gotoSmartFromString: value ];
 					placeholder: 'main:searchPlaceholder't;
-					class: 'searchInput uk-input uk-form-width-small uk-visible@m'.
+					class: 'searchInput uk-input uk-visible@m'.
 				html button
 					beSubmit;
 					class: '';
@@ -27,7 +27,7 @@ renderNavbarContentOn: html
 			html listItem: [
 				html anchor
 					callback: [ self gotoMyPortfolio ];
-					with: [ html iconPortfolio] ].
+					with: [ html iconUser] ].
 			html listItem: [
 				html anchor
 					class: 'mainMenuToggler';

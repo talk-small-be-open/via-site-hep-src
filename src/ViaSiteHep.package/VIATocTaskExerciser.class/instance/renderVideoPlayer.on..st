@@ -12,7 +12,7 @@ renderVideoPlayer: aVideoPlayer on: html
 		videoContainer := html div class: 'videoContainer'.
 		
 		aVideoPlayer width ifNotBlank: [
-			videoContainer style: ('max-width:', (aVideoPlayer width greaseString, 'px')).
+"			videoContainer style: ('max-width:', (aVideoPlayer width greaseString, 'px'))."
 	"		tag style: ('max-height:', (aVideoPlayer height greaseString, 'px'))."
 		].
 		
@@ -21,10 +21,7 @@ renderVideoPlayer: aVideoPlayer on: html
 			videoTag := html video.
 			videoTag
 				id: videoId;
-"zu viel autoplay				a: 'uk-video';"
-"				preload: 'auto';"
-				preload: 'none'; "recommended by mediaelement.js"
-"				url: aVideoPlayer videoUrl;"
+				preload: 'metadata'; "none = recommended by mediaelement.js"
 				poster: aVideoPlayer posterUrl;
 				noTab;
 				controls: true;
@@ -33,10 +30,12 @@ renderVideoPlayer: aVideoPlayer on: html
 
 			aVideoPlayer width ifNotBlank: [
 				videoTag
-					width: (aVideoPlayer width greaseString, 'px');
-					height: (aVideoPlayer height greaseString, 'px');
-					style: ('max-width:', (aVideoPlayer width greaseString, 'px'));
-					style: ('max-height:', (aVideoPlayer height greaseString, 'px')).
+"					width: '100%';
+					height: 'auto'."
+"					width: (aVideoPlayer width greaseString, 'px');
+					height: (aVideoPlayer height greaseString, 'px')."
+"					style: ('max-width:', (aVideoPlayer width greaseString, 'px'));
+					style: ('max-height:', (aVideoPlayer height greaseString, 'px'))."
 			].
 				
 			videoTag with: [

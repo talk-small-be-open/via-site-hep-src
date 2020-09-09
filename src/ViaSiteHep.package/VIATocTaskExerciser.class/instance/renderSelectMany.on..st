@@ -9,14 +9,13 @@ renderSelectMany: aSelectManyInput on: html
 
 	answerCollection := answerValue value.
 
-	self renderHintSymbolOf: aSelectManyInput on: html.
-	
 	regionDiv := html div
 		class: 'selectMany';
 		id: html nextId;
 		yourself.
 
 	regionDiv with: [
+		self renderHintSymbolOf: aSelectManyInput on: html.
 		html ukGrid class: ('uk-grid-small uk-child-width-1-', columnsCount asString); with: [
 			choicesGroups do: [ :choices |
 				html div: [
