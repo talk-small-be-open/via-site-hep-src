@@ -3,6 +3,25 @@
 //
 // ========================================================================
 
+// Breakpoints
+// ========================================================================
+
+// Phone Portrait:   Galaxy (360x640), iPhone 6 (375x667), iPhone 6+ (414x736)
+// Phone Landscape:  Galaxy (640x360), iPhone 6 (667x375), iPhone 6+ (736x414)
+// Tablet Portrait:  iPad (768x1024), Galaxy Tab (800x1280),
+// Tablet Landscape: iPad (1024x768), iPad Pro (1024x1366),
+// Desktop:          Galaxy Tab (1280x800), iPad Pro (1366x1024)
+
+@breakpoint-small:                             280px;  // Old Phone
+@breakpoint-medium:                            400px;  // Normal. New Phone
+@breakpoint-large:                             700px; // Tablet
+@breakpoint-xlarge:                            1200px; // Desktop
+
+@breakpoint-xsmall-max:                        (@breakpoint-small - 1);
+@breakpoint-small-max:                         (@breakpoint-medium - 1);
+@breakpoint-medium-max:                        (@breakpoint-large - 1);
+@breakpoint-large-max:                         (@breakpoint-xlarge - 1);
+
 
 // Global variables
 // ========================================================================
@@ -77,18 +96,15 @@
 @global-xlarge-margin:                          140px;
 
 // Used in grid, column, container, align, card, padding
-@global-gutter:                                 30px;
-@global-small-gutter:                           15px;
-@global-medium-gutter:                          40px;
-@global-large-gutter:                           70px;
+@global-gutter:                                 20px;
+@global-small-gutter:                           10px;
+@global-medium-gutter:                          30px;
+@global-large-gutter:                           40px;
 
 //
 // Controls
 //
 
-// @global-control-height:                         40px;
-// @global-control-small-height:                   30px;
-// @global-control-large-height:                   55px;
 @global-control-height:                         30px;
 @global-control-small-height:                   22px;
 @global-control-large-height:                   40px;

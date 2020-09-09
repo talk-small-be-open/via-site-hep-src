@@ -114,7 +114,7 @@ $(document).ready(function(){
 	});	
 
 	$('.popover').webuiPopover({trigger:'hover'});
-	$('span.dictionaryEntry').webuiPopover({trigger:'hover'});
+	$('span.dictionaryEntry').webuiPopover({trigger:'hover', placement:'auto-top'});
 	$('input.clozeTextPlaceholder').plusAsTab();
 
   $("textarea").autosize();

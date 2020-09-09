@@ -49,7 +49,6 @@
 
 
 @t-header-height:             4rem;
-@t-header-height-small:       5vh;
 @t-header-background:         @t-color-black;
 @t-header-small-background:   @t-color-black;
 @t-header-shadow-sticky:      0 0 50px 1px rgba(0,0,0,0.2);
@@ -71,63 +70,10 @@
 
 
 
-// =======================================================================
-// UI Breakpoints
-// =======================================================================
-// {{{
-
-
-// Small and bigger
-
-@media (min-width: @breakpoint-small) {
-		div.coreContainer {
-				padding-left: 2em;
-				padding-right: 2em;
-		}
-}
-
-// Not small phones
-@media (min-width: @breakpoint-small-max) {
-		body.loggedIn {
-				div.core {
-						min-height: 500px;
-				}
-		}
-
-		div.VIATocTaskExerciser {
-				div.exercise {
-						div.audioPlayer {
-								width: 50%;
-						}
-
-						div.videoPlayer {
-								max-width: 50%;
-						}
-				}
-		}
-}
-
-// Only very small phones
-@media (max-width: @breakpoint-small) {
-		div.coreContainer {
-				padding-left: 0;
-				padding-right: 0;
-		}
-
-		div.footer {
-				// position: sticky;
-				// bottom: 0;
-						
-		}
-
-}
-
-// }}}
 
 // =======================================================================
 // Mixins
 // =======================================================================
-// {{{
 
 // Tocca big button base styles
 .bigButton {
@@ -302,16 +248,11 @@ svg.svg-icon {
 
 // Styles for the non-logged in public UI
 body {
-//bad		height: 100%;
 		
-		div.coreContainer {
-//bad				height: 100%;
-
-				div.core {
-//bad						height: 100%;
-						
-				}
-		}
+		// div.coreContainer {
+		// 		div.core {
+		// 		}
+		// }
 
 		div.footer {
 				padding: 0.5em;
@@ -367,6 +308,19 @@ div {
 		.toccamoduleButton("a.uk-button");
 }
 
+div.pillarParagraph {
+		+ div.pillarParagraph {
+				margin-top: 1em;
+		}
+}
+
+
+
+// =======================================================================
+// UI components
+// =======================================================================
+// {{{
+
 
 //
 // header 
@@ -420,6 +374,7 @@ div.t-header {
 						input.searchInput {
 								background-color: transparent;
 								color: white;
+								width: 3em;
 								// border: 1px solid white;
 								// font-size: 1.2rem;
 								// padding: 0.2em;
@@ -472,13 +427,6 @@ div.t-header {
 		}
 }
 
-// }}}
-
-
-// =======================================================================
-// UI components
-// =======================================================================
-// {{{
 
 div.inputDialog {
 		input[type=text] {
@@ -558,6 +506,7 @@ div.VIAToccaStartComponent {
 div.VIAModuleFinderComponent {
 
 		max-width: 50em;
+		margin-top: 2em;
 
 		.goButton() {
 				background-color: red;
@@ -574,7 +523,7 @@ div.VIAModuleFinderComponent {
 				border: 1px solid black;
 				padding: 0 0 0 0.1em;
 				position: relative;
-				@fontsize: 2rem;
+				@fontsize: 1.5rem;
 				line-height: 1.5em;
 				font-size: @fontsize;
 				
@@ -752,7 +701,8 @@ div.VIATocModuleExerciser {
 
 
 				&.ignored {
-//						background-color: #eee;
+						//						background-color: #eee;
+						cursor: default;
 
 						.accTitle {
 								color: #666;
@@ -920,6 +870,12 @@ div.VIATocTaskExerciser {
 						// 		background-color: #eee;
 						// }
 
+						span.hintSymbol {
+								display: inline-block;
+								margin: 1em 0;
+						}
+
+
 						span.wrongIcon {
 								position: absolute;
 								left: -15px;
@@ -1072,6 +1028,12 @@ div.VIATocTaskExerciser {
 						
 						div.videoContainer {
 								margin-right: 10px;
+
+								video {
+										width: 100%;
+										height: auto;
+										//box-sizing: border-box;
+								}
 						}
 
 						div.transcriptionContainer {
@@ -1395,6 +1357,8 @@ div.VIAUnitComponent {
 
 		.toccamoduleBorderColor('ul.modulesList li');
 		.toccamoduleColor('h1');
+
+		margin-top: 1em;
 		
 }
 
@@ -1578,6 +1542,106 @@ div.moduleBody {
 		clear: both;
 		position: relative; // Wichtig, damit eingebettete versteckte absolute-Elemente die Breite korrekt berechnen können
 }
+
+
+
+
+// =======================================================================
+// UI Breakpoints (leave at end of file, for CSS precedence)
+// =======================================================================
+
+
+// Not small phones
+@media (min-width: @breakpoint-medium) {
+		body.loggedIn {
+				div.core {
+						min-height: 500px;
+				}
+		}
+		
+}
+
+// Only small phones
+@media (max-width: @breakpoint-small-max) {
+
+		@t-header-height-small: @t-header-height * 0.8;
+		
+		div.coreContainer {
+				padding-left: 0;
+				padding-right: 0;
+		}
+
+		div.footer {
+				// position: sticky;
+				// bottom: 0;
+						
+		}
+
+		div.t-header {
+
+				padding-top: @t-header-padding / 2;
+				padding-bottom: @t-header-padding / 2;
+				height: @t-header-height-small;
+
+				a.t-logo {
+						font-size: 1rem;
+				}
+
+
+				// nav.t-menubar {
+				// 		form.searchForm {
+				// 				input.searchInput {
+				// 						width: 2em;
+				// 				}
+				// 		}
+				// }
+				
+		}
+
+		div.VIATocModuleExerciser {
+				h1.moduleNavigation {
+						top: @t-header-height-small;
+				}
+		}
+
+		
+}
+
+// Only large screens
+@media (min-width: @breakpoint-large) {
+
+		div.coreContainer {
+				padding-left: 10%;
+				padding-right: 10%;
+		}
+
+		div.t-header {
+
+				nav.t-menubar {
+						form.searchForm {
+								input.searchInput {
+										width: 10em;
+								}
+						}
+				}
+				
+		}
+
+		div.VIATocTaskExerciser {
+				div.exercise {
+						div.audioPlayer {
+								width: 50%;
+						}
+
+						div.videoPlayer {
+								max-width: 75%;
+						}
+				}
+		}
+
+		
+}
+
 
 
 // Keep this for Emacs editor!
