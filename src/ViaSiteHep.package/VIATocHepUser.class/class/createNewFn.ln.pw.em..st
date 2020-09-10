@@ -1,6 +1,6 @@
 as yet unclassified
 createNewFn: aFirstName ln: aLastName pw: aPassword em: anEmail
-	| postData response cmd tempFile |
+	| postData response |
 
 	postData := {
 		'customer'->{

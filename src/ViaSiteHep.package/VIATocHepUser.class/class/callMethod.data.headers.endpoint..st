@@ -34,10 +34,11 @@ callMethod: aMethod data: aDictionaryLike headers: aHeadersCollection endpoint: 
 
 	response := VIAHelper fromJson: (MCLPlatform runShellCommand: cmd).
 
-	"Fehler abfangen"
+	"Signal error and keep tempfile JSON"
 	response isDictionary ifTrue: [
 		response at: 'message' ifPresent: [ :m | VIATocHepUserError signal: m ]].
 	
-	tempFile ifNotNil: [tempFile delete ].
+	"If no error then delete JSON temp file"
+	tempFile ifNotNil: [tempFile delete].
 	
 	^ response

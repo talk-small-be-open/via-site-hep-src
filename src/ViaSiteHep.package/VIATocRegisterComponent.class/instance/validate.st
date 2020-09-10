@@ -2,11 +2,13 @@ as yet unclassified
 validate
 	| beInvalid recaptchaResponse remoteIp |
 
+	"OPTIMIZE: Use VIAUserRegistrationValidator"
+
 	beInvalid := [:text | self errorMessage: text t. ^false].
 
 	antibotCode ~= antibotCodeOrigin ifTrue: [ beInvalid value: 'register:error:youAreNotHuman'].
 
-	(email includesSubstring: '@') ifFalse: [beInvalid value: 'register:error:emailFormat'].
+	(VIAHelper isValidEmail: email) ifFalse: [beInvalid value: 'register:error:emailFormat'].
 
 "This check will be done at the hep-Server"
 "	(self wd findUserByEmail: email) ifNotNil: [beInvalid value: 'register:error:emailAlreadyUsed']."
