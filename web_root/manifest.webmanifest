@@ -1,0 +1,24 @@
+{
+	"name": "Tocca a te! - App",
+	"short_name": "Tocca",
+	"lang": "it",
+	"dir": "ltr",
+	"description": "App zum Lehrmittel 'Tocca a te!' des hep Verlags",
+	"icons": [
+		{
+			"src": "/site/pwa/icon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/site/pwa/icon-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/app",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#3E4EB8",
+	"theme_color": "#2F3BA2"
+}

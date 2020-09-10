@@ -1,6 +1,0 @@
-all:
-  hosts:
-    vm1.hepverlag.ungleich.cloud:
-      ansible_user: root
-      ansible_python_interpreter: /usr/bin/python3
-      via_user: via
