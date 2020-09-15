@@ -26,6 +26,7 @@ renderVideoPlayer: aVideoPlayer on: html
 				noTab;
 				controls: true;
 				autoplay: false;
+				attributeAt: 'playsinline' put: true;
 				a: 'muted' p: aVideoPlayer noSound.
 
 			aVideoPlayer width ifNotBlank: [

@@ -1,3 +1,3 @@
 accessing
 lastName: anObject
-	lastName := anObject
+	lastName := anObject trimBoth
