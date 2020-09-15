@@ -5,6 +5,9 @@ renderAudioPlayer: anAudioPlayer on: html
 	
 	html div class: 'audioPlayer'; with: [
 		html audio
+			preload: 'metadata'; "none = recommended by mediaelement.js"
+			noTab;
+			autoplay: false;
 			id: audioId;
 			controls: true;
 			url: anAudioPlayer audioUrl.
