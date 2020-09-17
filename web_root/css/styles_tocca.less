@@ -78,66 +78,58 @@
 
 // Tocca big button base styles
 .bigButton {
-//		text-transform: uppercase;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: auto;
-		height: 2em;
-		//		padding: 2em;
-//		margin: 0.1em;
+		padding: 0.1em;
+		min-height: 1.5em;
 		cursor: pointer;
 		font-size: 200%;
-		//		background-color: transparent;
 		border: 2px solid @global-color;
+		line-height: 1em;
 
 		&:hover {
 				text-decoration: none;
 		}
 
-		// // Adjacent buttons get margin
-		// + .bigButton {
-				
-		// }
-
 }
 
 // Mixin, to define the style of a big button inside a region
-.bigButtonStyle(@color, @inverseColor: white) {
+.bigButtonStyle(@color, @inverseColor: white, @isInversed: false) {
 		.bigButton {
-				border-color: @color;
-				color: @color;
+				@color1: if(@isInversed, @inverseColor, @color);
+				@color2: if(@isInversed, @color, @inverseColor);
+
+				background-color: @color2;
+				border-color: if(@isInversed, @color2, @color1);
+				color: @color1;
 
 				&:active, &.active {
-						background-color: @color;
-						color: @inverseColor;
+						background-color: @color1;
+						color: @color2;
 				}
 
 				&:hover {
-						background-color: lighten(@color, 50%);
-						color: @inverseColor;
-						border-color: black;
+						background-color: @color1;
+						color: @color2;
+//						border-color: if(@isInversed, @color2, @color1);
 				}
 
 				&.active:hover {
-						background-color: @color;
+						background-color: lighten(@color1, 20%);
 				}
-				
 		}
-
 }
 
 // Siehe auch button.less im ui kit theme
 .button {
 		text-transform: uppercase;
-		// padding: 1em;
-		// margin: 0.1em;
 		cursor: pointer;
 		border: 2px solid @global-color;
-
 }
 
+// Items in a basic global list
 .catalogListItem() {
 		border-top-width: 2px;
 		border-top-style: solid;
@@ -202,8 +194,8 @@
 		&.toccamodule3 {@{s} {.style(@t-color-unit3)}}
 }
 
+// Prevent that the user can select text
 .noUserSelect() {
-		
 		user-select: none;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -211,6 +203,7 @@
 		cursor: default;
 }
 
+// Prevent touch actions
 .noTouch() {
 		touch-action: none;
 }
@@ -229,12 +222,9 @@
 
 
 
-// }}}
-
 // =======================================================================
 // General Styles
 // =======================================================================
-// {{{
 
 html {
 //bad		height: 100%;
@@ -242,12 +232,10 @@ html {
 
 svg.svg-icon {
 		width: 1.1em;
-//		height: 1.1em;
 		stroke: currentcolor;
 		font-size: 1.25em;
 }
 
-// Styles for the non-logged in public UI
 body {
 		
 		// div.coreContainer {
@@ -261,19 +249,15 @@ body {
 
 
 		&.wantColorBackground {
+				min-height: 100vh;
 				background-color: @t-color-primary;
 				div.coreContainer {
-//						padding-top: 2em;
 						background-color: @t-color-primary;
 				}
 		}
 
+		// Styles for the non-logged in public UI
 		&.public {
-				//		background-color: @t-color-red;
-				div.coreContainer {
-						//				padding-top: 2em;
-						//				background-color: @t-color-red;
-				}
 
 				h1, h2, h3 {
 						color: white;
@@ -360,11 +344,6 @@ div.t-header {
 				color: white;
 		}
 
-		// ul.uk-navbar-nav {
-		// 		margin-top: 1em;
-		// }
-
-
 		nav.t-menubar {
 				button {
 						color: white;
@@ -391,28 +370,17 @@ div.t-header {
 
 				form.searchForm {
 						display: inline-block;
-//						margin-right: 1em;
 						
 						input.searchInput {
 								background-color: transparent;
 								color: white;
 								width: 3em;
-								// border: 1px solid white;
-								// font-size: 1.2rem;
-								// padding: 0.2em;
-//								line-height: 2em;
-
-								// &:focus {
-								// 		background-color: white;
-								// }
 
 								&::placeholder {
-//										padding-top: 0.3em;
 										font-size: 75%;
 								}
 						}
 				}
-				
 		}
 		
 
@@ -431,8 +399,6 @@ div.t-header {
 								}
 
 						}
-
-						
 
 				}
 
@@ -482,21 +448,21 @@ div.VIAPublicHomeComponent {
 						margin-bottom: 1rem;
 				}
 
-				.bigButtonStyle(@t-color-red, white);
+				.bigButtonStyle(@t-color-primary, white, true);
 
 		}
 
-		div.infoButtons {
-				.bigButtonStyle(@t-color-red);
-		}
+		// div.infoButtons {
+		// 		.bigButtonStyle(@t-color-red);
+		// }
 
 }
 
 div.VIAMyHomeComponent {
 
 		div.startArea {
-				background-color: @t-color-red;
-				.bigButtonStyle(white, @t-color-red);
+				background-color: @t-color-primary;
+				.bigButtonStyle(white, @t-color-primary);
 				
 		}
 		
@@ -510,7 +476,7 @@ div.VIAMyHomeComponent {
 
 div.VIATocLoginComponent {
 		height: 100%;
-		background-color: @t-color-red;
+//		background-color: @t-color-primary;
 		
 		h1 {
 				text-align: center;
@@ -870,8 +836,8 @@ div.VIATocTaskExerciser {
 						}
 
 						span.wrongIcon {
-								// position: absolute;
-								// left: -15px;
+								position: relative;
+								left: -15px;
 						}
 
 
@@ -899,7 +865,7 @@ div.VIATocTaskExerciser {
 
 
 						span.wrongIcon {
-								position: absolute;
+								position: relative;
 								left: -15px;
 						}
 
@@ -967,7 +933,7 @@ div.VIATocTaskExerciser {
 								background-color: #eee;
 								border: 1px dotted black;
 								margin: 10px 0;
-								padding: 1px 5px;
+								padding: 0.5em 5px;
 								min-height: 20px;
 
 								.dropHover();
@@ -975,7 +941,7 @@ div.VIATocTaskExerciser {
 								span.dragDropDraggable {
 										.draggable();
 										
-										margin-right: 5px;
+										margin: 5px;
 										// line-height: normal;
 										display: inline-block;
 
@@ -999,26 +965,11 @@ div.VIATocTaskExerciser {
 				}
 
 				div.buttons {
-
 						margin-top: 15px;
-
-						// input.submit, button {
-						// 		&.check, &.reset, &.recheck, &.revealAnswers, &.save {
-						// 				background: #f00;
-						// 				color: #fff;
-						// 				border:  0px;
-						// 				padding: 10px;
-						// 				font-size: 1.2em;
-						// 				cursor: pointer;
-						// 		}
-						// }
-
-						
 				}
 
 
 				div.audioPlayer {
-						//				width: 50%;
 						margin: 10px 0px;
 						span.assetInfo {
 								float: right;
@@ -1294,10 +1245,13 @@ div.VIATocTaskExerciser {
 				}
 
 				button.taskBrickGroupToggler {
-						background-color: #999;
+						background-color: black;
+						color: white;
+						border: none;
+						text-transform: none;
 
 						&:hover {
-								background: black;
+								background: #999;
 						}
 				}
 
@@ -1457,7 +1411,7 @@ span.inlineAssetAudio {
 
 .wrong {
 		// why?!
-		background-color: transparent;
+//		background-color: transparent;
 }
 
 span.partiallyCorrectIcon {
@@ -1470,8 +1424,8 @@ span.correctIcon {
 
 span.wrongIcon {
 		color: red;
-		padding-left: 4px;
-		padding-right: 2px;
+		// padding-left: 4px;
+		// padding-right: 2px;
 }
 
 div.webui-popover {
