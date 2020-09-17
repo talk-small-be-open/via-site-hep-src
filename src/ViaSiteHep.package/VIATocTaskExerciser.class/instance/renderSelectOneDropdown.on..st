@@ -10,7 +10,7 @@ renderSelectOneDropdown: aSelectOneInput on: html
 		id: id;
 		list: orderedChoices;
 		beOptional;
-		class: 'selectOneInput';
+		class: 'uk-select uk-width-auto selectOneInput';
 		class: 'wrong' if: (self isca: answerValue isWrong);
 		class: 'correct' if: (self isca: answerValue isCorrect);
 		callback: [:value | answerValue value: value].

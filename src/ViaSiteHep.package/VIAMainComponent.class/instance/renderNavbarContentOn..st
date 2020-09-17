@@ -27,7 +27,7 @@ renderNavbarContentOn: html
 			html listItem: [
 				html anchor
 					callback: [ self gotoMyPortfolio ];
-					with: [ html iconUser] ].
+					with: [ html iconUserSmart] ].
 			html listItem: [
 				html anchor
 					class: 'mainMenuToggler';

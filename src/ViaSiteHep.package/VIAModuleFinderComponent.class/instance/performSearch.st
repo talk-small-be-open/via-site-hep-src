@@ -4,9 +4,8 @@ performSearch
 
 	searchQuery clear.
 	
-	search1 isAllDigits ifTrue: [ self selectedToccaunit: search1 asInteger ].
-	
 	search1 ifNotBlank: [
+		search1 isAllDigits ifTrue: [ self selectedToccaunit: search1 asInteger ].
 		searchQuery indexCodePartial: search1, '.', search2 ].
 
 	searchQuery text: searchText.

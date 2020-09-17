@@ -1,6 +1,6 @@
 rendering-visitor
 renderSelectOneRadio: aSelectOneInput on: html
-	| div answerValue input orderedChoices choicesGroups columnsCount buttonId |
+	| div answerValue input choicesGroups columnsCount buttonId |
 
 	answerValue := exercise answerOf: aSelectOneInput.
 "	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectOneInput."
@@ -37,11 +37,11 @@ renderSelectOneRadio: aSelectOneInput on: html
 
 	"				orderedChoices ifNotBlank: [
 						orderedChoices do: [:choice |"
-									| isChozen isWrongChoice isCorrect |
+									| isChozen isWrongChoice isCorrect isCorrectChoice |
 									isChozen := answerValue value = choice.
 									isCorrect := answerValue isCorrect.
 									isWrongChoice := (isChozen and: [isCorrect not]).
-
+									isCorrectChoice := (isChozen and: [isCorrect]).
 									html div: [
 										html label
 											id: (buttonId := html nextId);
@@ -50,16 +50,18 @@ renderSelectOneRadio: aSelectOneInput on: html
 											class: 'wrong' if: (self isca: isWrongChoice);
 											class: 'correct' if: (self isca: (isChozen and: [isCorrect]));
 											with: [
-												self ifca: isWrongChoice t: [
-													html span class: 'wrongIcon'; with: [html iconWrong].
-												].
-												rg radioButton
-													style: 'display: none';
-													onClick: (
-														(((html jQuery id: div id) find: '.bigButton') removeClass: 'active'),
-														(html jQuery id: buttonId) addClass: 'active');
-													value: choice.
-												html pillarString: choice].
+												html span: [
+													rg radioButton
+														style: 'display: none';
+														onClick: (
+															(((html jQuery id: div id) find: '.bigButton') removeClass: 'active'),
+															(html jQuery id: buttonId) addClass: 'active');
+														value: choice.
+													self ifca: isWrongChoice t: [
+														html span class: 'wrongIcon'; with: [html iconWrong]].
+													self ifca: isCorrectChoice t: [
+														html span class: 'correctIcon'; with: [html iconCorrect]].
+													html pillarString: choice]].
 		]]]]]]]].
 
-	self renderCorrection: answerValue showWrong: false on: html
+"	self renderCorrection: answerValue showWrong: false on: html"

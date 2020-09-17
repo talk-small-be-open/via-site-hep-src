@@ -21,10 +21,11 @@ renderSelectMany: aSelectManyInput on: html
 				html div: [
 					html ukGrid class: ('uk-grid-small uk-child-width-1-1'); with: [
 						choices do: [:choice |
-							| isCorrect isChozen isWrongChoice |
+							| isCorrect isChozen isWrongChoice isCorrectChoice |
 							isChozen := answerCollection includes: choice.
 							isCorrect := aSelectManyInput isSolution: choice.
 							isWrongChoice := (isChozen and: [isCorrect not]).
+							isCorrectChoice := (isChozen and: [isCorrect]).
 
 							html div: [
 								html label
@@ -32,12 +33,13 @@ renderSelectMany: aSelectManyInput on: html
 									class: 'active' if: isChozen;
 									class: 'bigButton';
 									class: 'wrong' if: (self isca: isWrongChoice);
-									class: 'correct' if: (self isca: (isChozen and: [isCorrect]));
+									class: 'correct' if: (self isca: isCorrectChoice);
 									with: [
 										html span: [
 											self ifca: isWrongChoice t: [
-												html span class: 'wrongIcon'; with: [html iconWrong].
-											].
+												html span class: 'wrongIcon'; with: [html iconWrong]].
+											self ifca: isCorrectChoice t: [
+												html span class: 'correctIcon'; with: [html iconCorrect]].
 											html pillarString: choice].
 										html checkbox
 											style: 'display: none';
@@ -55,4 +57,5 @@ renderSelectMany: aSelectManyInput on: html
 									].
 		]]]]]].
 			
-		self renderCorrection: answerValue showWrong: false on: html]
+"		self renderCorrection: answerValue showWrong: false on: html"
+	]
