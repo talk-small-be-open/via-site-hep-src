@@ -5,7 +5,7 @@ renderTaskBrickGroup: aTaskBrickGroup on: html
 
 	html ukButton
 		ukToggleFadeTarget: ('#', id);
-		class: 'taskBrickGroupToggler';
+		class: 'taskBrickGroupToggler uk-width-1-1@s uk-width-auto@l';
 		with: [
 			html text: aTaskBrickGroup title.
 			html space; iconDropdown].

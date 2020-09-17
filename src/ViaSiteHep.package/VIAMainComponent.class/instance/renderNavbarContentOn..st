@@ -8,8 +8,9 @@ renderNavbarContentOn: html
 	].
 	html div class: 'uk-navbar-right'; with: [
 		html div class: 'uk-navbar-item'; with: [
-			html form class: 'searchForm uk-form-horizontal'; with: [
+			html form noAutocomplete; class: 'searchForm uk-form-horizontal'; with: [
 				html textInput
+					noAutocomplete;
 					callback: [ :value | self gotoSmartFromString: value ];
 					placeholder: 'main:searchPlaceholder't;
 					class: 'searchInput uk-input uk-visible@m'.
@@ -27,7 +28,7 @@ renderNavbarContentOn: html
 			html listItem: [
 				html anchor
 					callback: [ self gotoMyPortfolio ];
-					with: [ html iconUser] ].
+					with: [ html iconUserSmart] ].
 			html listItem: [
 				html anchor
 					class: 'mainMenuToggler';

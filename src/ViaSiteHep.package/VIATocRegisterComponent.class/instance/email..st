@@ -1,3 +1,4 @@
 accessing
 email: anObject
-	email := anObject trimBoth
+	"anObject is a WAEmailAddress coming from the WAEmailInput tag"
+	email := anObject greaseString trimBoth
