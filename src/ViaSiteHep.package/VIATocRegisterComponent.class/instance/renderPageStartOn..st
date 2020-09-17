@@ -5,13 +5,13 @@ renderPageStartOn: html
 
 	html form noAutocomplete; class: 'uk-form uk-form-stacked'; with: [
 		html div class: 'uk-margin-small'; style: 'height: 0.01px; color: transparent; overflow: hidden'; with: [
-			html label class: 'uk-form-label'; style: 'height: 0.01px;'; with: 'F* off you bloody bot'.
+			html label class: 'uk-form-label'; style: 'height: 0.01px;'; with: 'Are you a bot?'.
 			html div class: 'uk-form-controls'; style: 'height: 0.01px;'; with: [
 				html ukTextInput style: 'height: 0.01px;'; class: 'name username mandatory required'; id: 'name'; on: #antibotCode of: self]].
 		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:email'.
 			html div class: 'uk-form-controls'; with: [
-				html ukTextInput class: ''; id: 'email'; on: #email of: self]].
+				html emailInput class: 'uk-input'; id: 'email'; required; on: #email of: self]].
 		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:firstName'.
 			html div class: 'uk-form-controls'; with: [
@@ -22,10 +22,15 @@ renderPageStartOn: html
 				html ukTextInput class: ''; id: 'lastName'; on: #lastName of: self]].
 		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:password'.
-			html div class: 'uk-form-controls'; with: [html ukPasswordInput class: ''; on: #password of: self]].
+			html div class: 'uk-form-controls'; with: [
+				html ukPasswordInput
+					required;
+					pattern: '(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$';
+					class: '';
+					on: #password of: self]].
 		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:passwordConfirmation'.
-			html div class: 'uk-form-controls'; with: [html ukPasswordInput class: ''; on: #passwordConfirmation of: self]].
+			html div class: 'uk-form-controls'; with: [html ukPasswordInput required; class: ''; on: #passwordConfirmation of: self]].
 "		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:invitationCode'.
 			html div class: 'uk-form-controls'; with: [
