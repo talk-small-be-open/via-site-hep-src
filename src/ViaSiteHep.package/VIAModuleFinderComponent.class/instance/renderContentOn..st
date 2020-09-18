@@ -14,4 +14,5 @@ renderContentOn: html
 		self renderKeyboardInputOn: html.
 	].
 
-	html script: ('var kbd = new Keyboard("', containerId, '")').
+	html script: 'var kbd;'.
+	html scriptDefer: ('kbd = new Keyboard("', containerId, '")').

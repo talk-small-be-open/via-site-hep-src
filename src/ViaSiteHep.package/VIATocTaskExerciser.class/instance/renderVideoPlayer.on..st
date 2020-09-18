@@ -49,6 +49,6 @@ renderVideoPlayer: aVideoPlayer on: html
 
 		self renderVideoTranscription: aVideoPlayer on: html.
 
-		html script: (self jsForVideoPlayer: aVideoPlayer id: videoId).
+		html scriptDefer: (self jsForVideoPlayer: aVideoPlayer id: videoId).
 
 	].

@@ -15,4 +15,4 @@ renderAudioPlayer: anAudioPlayer on: html
 
 		self renderAudioTranscription: anAudioPlayer on: html.
 
-		html script: (self jsForAudioPlayer: anAudioPlayer id: audioId)]
+		html scriptDefer: (self jsForAudioPlayer: anAudioPlayer id: audioId)]
