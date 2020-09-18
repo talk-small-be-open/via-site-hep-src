@@ -127,6 +127,8 @@
 		text-transform: uppercase;
 		cursor: pointer;
 		border: 2px solid @global-color;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 }
 
 // Items in a basic global list
@@ -494,7 +496,7 @@ div.VIAToccaStartComponent {
 div.VIAModuleFinderComponent {
 
 		max-width: 50em;
-		margin-top: 2em;
+		margin-top: 0.5em;
 
 		.goButton() {
 				background-color: red;
@@ -1374,6 +1376,24 @@ ul.modulesList {
 						width: 3em;
 						font-weight: bold;
 				}
+		}
+}
+
+div.backButton {
+	//	.uk-container();
+		margin: 0.1em 0 1em 1em;
+
+		a.backButtonAnchor {
+				.button();
+				// background-color: @global-primary-background;
+				// color: #fff;
+				// font-weight: normal;
+				// font-size: 1em;
+
+				// &:hover {
+				// 		color: #ddd;   
+				// }
+				
 		}
 }
 
