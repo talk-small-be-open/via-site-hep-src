@@ -1,0 +1,136 @@
+// UI Breakpoints
+
+
+// Not small phones
+@media (min-width: @breakpoint-medium) {
+		body.loggedIn {
+				div.core {
+						min-height: 500px;
+				}
+		}
+		
+}
+
+// Only small phones
+@media (max-width: @breakpoint-small-max) {
+
+		@t-header-height-small: @t-header-height * 0.8;
+		
+		div.coreContainer {
+				padding-left: 0;
+				padding-right: 0;
+		}
+
+		div.footer {
+				// position: sticky;
+				// bottom: 0;
+						
+		}
+
+		div.t-header {
+
+				padding-top: @t-header-padding / 2;
+				padding-bottom: @t-header-padding / 2;
+				height: @t-header-height-small;
+
+				a.t-logo {
+						font-size: 1rem;
+				}
+
+
+				// nav.t-menubar {
+				// 		form.searchForm {
+				// 				input.searchInput {
+				// 						width: 2em;
+				// 				}
+				// 		}
+				// }
+				
+		}
+
+		div.VIATocModuleExerciser {
+				h1.moduleNavigation {
+						top: @t-header-height-small;
+				}
+		}
+
+		
+}
+
+// Only large screens
+@media (min-width: @breakpoint-large) {
+
+		@backgroundcolor: #EFEBE8;
+		
+		html {
+				min-height: 100vh;
+				background-color: @backgroundcolor;
+		}
+		
+		body {
+				background-color: @backgroundcolor;
+
+				div.coreContainer {
+						background-color: @backgroundcolor;
+						padding-left: 10%;
+						padding-right: 10%;
+
+						div.core {
+								background-color: white;
+						}
+				}
+
+				
+				&.wantColorBackground {
+						background-color: @t-color-primary;
+						div.coreContainer {
+								background-color: @t-color-primary;
+								div.core {
+										background-color: @t-color-primary;
+								}
+						}
+				}
+
+
+		}
+		
+
+		div.t-header {
+				padding-left: 10%;
+				padding-right: 10%;
+
+				nav.t-menubar {
+						form.searchForm {
+								input.searchInput {
+										width: 10em;
+								}
+						}
+				}
+				
+		}
+
+		div.VIATocTaskExerciser {
+				div.exercise {
+						div.audioPlayer {
+								width: 50%;
+						}
+
+						div.videoPlayer {
+								max-width: 75%;
+						}
+				}
+		}
+
+		div.footer {
+				position: fixed;
+				bottom: 0;
+		}
+
+		
+}
+
+
+// Keep this for Emacs editor!
+// Local Variables:
+// less-css-compile-at-save: t
+// End:
