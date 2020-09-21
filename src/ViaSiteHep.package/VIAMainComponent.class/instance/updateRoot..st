@@ -4,4 +4,4 @@ updateRoot: anHtmlRoot
 	anHtmlRoot bodyAttributes addClass: 'loggedIn'.
 	
 	self ifProduction: [
-		anHtmlRoot script beJavascript; with: self googleAnalyticsJs].
+		anHtmlRoot javascript defer; with: self googleAnalyticsJs].

@@ -2,4 +2,4 @@ updating
 updateRoot: anHtmlRoot
 	super updateRoot: anHtmlRoot.
 	
-	anHtmlRoot javascript url: '/site/js/search.js'
+	anHtmlRoot javascript defer; url: '/site/js/search.js'

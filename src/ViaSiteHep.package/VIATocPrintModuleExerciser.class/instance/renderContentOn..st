@@ -11,4 +11,4 @@ renderContentOn: html
 		callback: [self close];
 		t: 'close'.
 		
-	html script: '$("#moduleToPrint").printThis()'
+	html scriptDefer: '$("#moduleToPrint").printThis()'
