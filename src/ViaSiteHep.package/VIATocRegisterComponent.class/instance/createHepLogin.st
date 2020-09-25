@@ -14,4 +14,8 @@ createHepLogin
 	user := hepUser findOrCreateViaUserWebsite: self website.
 	user beTermsAccepted.
 
+	"Some initializations after registration"
+	"Autologin default on if mobile device"
+	user useAutologin: (self session isMobileDevice).
+
 	self gotoPage: #yourHepAccount.

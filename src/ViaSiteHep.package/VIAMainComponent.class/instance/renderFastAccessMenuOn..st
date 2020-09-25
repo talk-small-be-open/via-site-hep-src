@@ -1,22 +1,33 @@
 rendering
 renderFastAccessMenuOn: html
+	| moduleType |
 "	self currentPortfolio lastOpenedModule ifNotNil: [:m |
 		html div class: 'uk-navbar-item'; with: [
 			html span: m indexCodeString
 		].
 	]."
 
-	html unorderedList class: 'uk-navbar-nav'; with: [
-		html listItem: [
+	moduleType := self currentModuleType.
+	html unorderedList class: 'uk-navbar-nav fastAccess'; with: [
+		html listItem class: 'active' if: (moduleType = 'R'); with: [
 			html anchor
 				callback: [ self gotoSmartUnit ];
-				with: 'U'].
-		html listItem: [
+				with: [
+					html span: 'U'.
+					html span class: 'uk-visible@l'; t: 'main:fastAccess:unita']
+		].
+		html listItem class: 'active' if: (moduleType = 'P'); with: [
 			html anchor
 				callback: [ self gotoSmartPalloncini ];
-				with: 'P'].
-		html listItem: [
+				with: [
+					html span: 'P'.
+					html span class: 'uk-visible@l'; t: 'main:fastAccess:palloncini']
+		].
+		html listItem class: 'active' if: (moduleType = 'V'); with: [
 			html anchor
 				callback: [ self gotoSmartVocabolario ];
-				with: 'V']
+				with: [
+					html span: 'V'.
+					html span class: 'uk-visible@l'; t: 'main:fastAccess:vocabolario']
+		]
 	].

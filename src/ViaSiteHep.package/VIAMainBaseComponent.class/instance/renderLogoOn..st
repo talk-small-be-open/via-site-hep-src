@@ -4,7 +4,9 @@ renderLogoOn: html
 "		html image
 			class: 'tocca-logo';
 			url: ('/site/images/', self website logoFilename)."
-		html text: 'Tocca a te!'
+		html text: 'Tocca a te!'.
+		self ifTeacher: [ html superscript: '+' ].
+		
 "			height: 'auto';
 			width: '120px'"
 		]

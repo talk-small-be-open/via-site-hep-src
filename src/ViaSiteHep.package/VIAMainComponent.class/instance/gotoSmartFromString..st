@@ -7,15 +7,15 @@ gotoSmartFromString: aString
 		
 	aString ifBlank: [ ^ self ].
 	
-"	aString size = 1 ifTrue: [
-		search1 := aString.
-		self performSearch.
-		^ self
-	]."
-
-	
 	aString isAllDigits ifTrue: [
 		component search2: aString.
+		component goAhead.
+		^ self
+	].
+
+	aString size = 1 ifTrue: [
+		component search1: aString first asString.
+		component search2: ''.
 		component goAhead.
 		^ self
 	].

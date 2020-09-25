@@ -2,10 +2,14 @@ rendering
 initializeInfoMenu
 	| subMenu |
 	subMenu := mainMenu addSubMenu.
-	mainMenu addDivider.
+	subMenu
+		css: 'uk-parent'.
 
-	subMenu mainEntry: (VIATextMenuEntry label: 'menu:info').
+"	mainMenu addDivider."
+
+	subMenu mainEntry: ((VIATextMenuEntry label: 'menu:info') icon: 'menuInfo'; yourself).
 
 	#(teacher faq press about support contact) do: [ :each |
-		subMenu addEntry: 'menu:info:', each send: #showText: to: self arg: 'page:', each.
+		(subMenu addEntry: ('menu:info:', each) send: #showText: to: self arg: ('page:', each))
+			icon: 'menuInfoPage'.
 	]

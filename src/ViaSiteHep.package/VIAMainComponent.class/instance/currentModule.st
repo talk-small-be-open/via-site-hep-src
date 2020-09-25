@@ -1,3 +1,3 @@
 as yet unclassified
 currentModule
-	^ coreComponent currentModule
+	^ self isExercising ifTrue: [coreComponent currentModule] ifFalse: [ nil ]

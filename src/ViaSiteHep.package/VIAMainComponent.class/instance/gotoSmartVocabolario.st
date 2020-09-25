@@ -1,5 +1,5 @@
 as yet unclassified
 gotoSmartVocabolario
-	"TBD: Goto Last accessed Voca"
-	
-	self gotoToccaunit: 'V'
+	lastOpenedVocabolario
+		ifNotNil: [ self openModule: lastOpenedVocabolario remember: false]
+		ifNil: [self gotoToccaunit: 'V']
