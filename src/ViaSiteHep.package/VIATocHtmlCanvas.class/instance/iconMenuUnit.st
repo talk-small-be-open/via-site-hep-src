@@ -1,3 +1,3 @@
-as yet unclassified
+icons
 iconMenuUnit
 	self fasIcon: 'book'

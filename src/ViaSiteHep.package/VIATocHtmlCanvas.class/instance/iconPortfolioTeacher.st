@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconPortfolioTeacher
 	self svgIcon: 'portfolioTeacher' with: '
 <g>

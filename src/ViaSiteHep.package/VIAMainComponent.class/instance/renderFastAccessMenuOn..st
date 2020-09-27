@@ -13,21 +13,21 @@ renderFastAccessMenuOn: html
 			html anchor
 				callback: [ self gotoSmartUnit ];
 				with: [
-					html span: 'U'.
+					html iconUnita.
 					html span class: 'uk-visible@l'; t: 'main:fastAccess:unita']
 		].
 		html listItem class: 'active' if: (moduleType = 'P'); with: [
 			html anchor
 				callback: [ self gotoSmartPalloncini ];
 				with: [
-					html span: 'P'.
+					html iconPalloncini.
 					html span class: 'uk-visible@l'; t: 'main:fastAccess:palloncini']
 		].
 		html listItem class: 'active' if: (moduleType = 'V'); with: [
 			html anchor
 				callback: [ self gotoSmartVocabolario ];
 				with: [
-					html span: 'V'.
+					html iconVocabolario.
 					html span class: 'uk-visible@l'; t: 'main:fastAccess:vocabolario']
 		]
 	].

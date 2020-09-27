@@ -1,3 +1,3 @@
 icons
-iconPalloncini
+iconUnita
 	self fasIcon: 'book'

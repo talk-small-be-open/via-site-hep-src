@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconClose
 	self svgIcon: 'close' with: '
 <g>

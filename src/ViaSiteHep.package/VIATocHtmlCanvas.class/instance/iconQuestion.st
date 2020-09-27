@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconQuestion
 	self svgIcon: 'question' with: '
 <g>

@@ -1,3 +1,3 @@
-as yet unclassified
+icons
 iconVocabolario
 	self fasIcon: 'book'

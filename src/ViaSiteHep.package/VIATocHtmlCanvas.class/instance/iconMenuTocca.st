@@ -1,3 +1,3 @@
-as yet unclassified
+icons
 iconMenuTocca
 	self fasIcon: 'book'

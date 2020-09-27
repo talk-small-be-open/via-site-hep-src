@@ -1,3 +1,3 @@
-as yet unclassified
+icons
 iconMenuHome
 	self fasIcon: 'home'

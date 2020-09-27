@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconPuzzle
 	self svgIcon: 'puzzle' with: '
     <path

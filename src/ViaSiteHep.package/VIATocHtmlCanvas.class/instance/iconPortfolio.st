@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconPortfolio
 	self
 		ifTeacher: [ self iconPortfolioTeacher ]

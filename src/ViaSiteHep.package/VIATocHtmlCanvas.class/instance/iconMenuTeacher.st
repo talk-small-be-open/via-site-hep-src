@@ -1,3 +1,3 @@
-as yet unclassified
+icons
 iconMenuTeacher
 	self fasIcon: 'school'

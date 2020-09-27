@@ -6,10 +6,11 @@ renderContentOn: html
 		ifTrue: [
 			html paragraph t: 'myPortfolio:isEmpty']
 		ifFalse: [
-			html ukAnchorButton
-				callback: [self clearPortfolio];
-				with: [ 
-					html iconRemove; space.
-					html sT: 'myPortfolio:removeAll' ].
 			self renderMyModulesOn: html.
+			html div: [
+				html ukAnchorButton
+					callback: [self clearPortfolio];
+					with: [ 
+						html iconRemove; space.
+						html sT: 'myPortfolio:removeAll' ]].
 		]

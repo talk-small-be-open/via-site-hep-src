@@ -1,3 +1,3 @@
-as yet unclassified
+icons
 iconMenuInfoPage
 	self fasIcon: 'file'
