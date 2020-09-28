@@ -1,3 +1,4 @@
 icons
 iconVocabolario
-	self fasIcon: 'book'
+	self span: 'V'
+"	self fasIcon: 'book'"

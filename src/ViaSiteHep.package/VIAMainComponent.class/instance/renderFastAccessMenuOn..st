@@ -14,20 +14,27 @@ renderFastAccessMenuOn: html
 				callback: [ self gotoSmartUnit ];
 				with: [
 					html iconUnita.
-					html span class: 'uk-visible@l'; t: 'main:fastAccess:unita']
+					html span class: 'uk-visible@l'; with: [
+						html space.
+						html sT: 'main:fastAccess:unita']]
 		].
 		html listItem class: 'active' if: (moduleType = 'P'); with: [
 			html anchor
 				callback: [ self gotoSmartPalloncini ];
 				with: [
 					html iconPalloncini.
-					html span class: 'uk-visible@l'; t: 'main:fastAccess:palloncini']
+					html span class: 'uk-visible@l'; with: [
+						html space.
+						html sT: 'main:fastAccess:palloncini']]
 		].
 		html listItem class: 'active' if: (moduleType = 'V'); with: [
 			html anchor
 				callback: [ self gotoSmartVocabolario ];
 				with: [
 					html iconVocabolario.
-					html span class: 'uk-visible@l'; t: 'main:fastAccess:vocabolario']
+					html span class: 'uk-visible@l'; with: [
+						html space.
+						html sT: 'main:fastAccess:vocabolario'
+					]]
 		]
 	].

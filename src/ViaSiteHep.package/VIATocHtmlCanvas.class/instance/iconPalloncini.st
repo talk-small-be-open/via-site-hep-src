@@ -1,3 +1,4 @@
 icons
 iconPalloncini
-	self fasIcon: 'book'
+	self span: 'P'
+"	self fasIcon: 'book'"
