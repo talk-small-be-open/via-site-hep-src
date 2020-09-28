@@ -1,5 +1,5 @@
 as yet unclassified
 gotoSmartPalloncini
-	"TBD: Goto Last accessed Palloncini"
-	
-	self gotoToccaunit: 'P'
+	lastOpenedPalloncini
+		ifNotNil: [ self openModule: lastOpenedPalloncini remember: false]
+		ifNil: [self gotoToccaunit: 'P']

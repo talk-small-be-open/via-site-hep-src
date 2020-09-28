@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconMenu
 	self svgIcon: 'menu' with: '
 <rect x="5" y="7" width="20" height="1"/>

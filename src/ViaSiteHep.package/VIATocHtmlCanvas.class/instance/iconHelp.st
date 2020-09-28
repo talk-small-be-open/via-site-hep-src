@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconHelp
 	self svgIcon: 'help' with: '
 <g>

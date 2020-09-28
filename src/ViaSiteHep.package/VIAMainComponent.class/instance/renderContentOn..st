@@ -5,4 +5,5 @@ renderContentOn: html
 	html div class: 'coreContainer'; with: [
 		self renderFlashMessagesOn: html.
 		self renderCoreOn: html].
-	self renderFooterOn: html
+	self isExercising ifFalse: [
+		self renderFooterOn: html ]

@@ -1,4 +1,4 @@
-as yet unclassified
+icons
 iconLogin
 	self svgIcon: 'login' with: '
 <g>

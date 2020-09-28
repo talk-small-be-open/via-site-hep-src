@@ -10,7 +10,8 @@
 		"exerciserComponents",
 		"subtitleTags",
 		"previousModule",
-		"nextModule"
+		"nextModule",
+		"isAllMothertongue"
 	],
 	"name" : "VIATocModuleExerciser",
 	"type" : "normal"

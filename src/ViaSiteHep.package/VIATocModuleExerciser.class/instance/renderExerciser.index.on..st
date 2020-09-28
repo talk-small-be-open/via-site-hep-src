@@ -1,6 +1,6 @@
 rendering
 renderExerciser: aTaskExerciser index: anInteger on: html
-	| id title hasTitle task exercise |
+	| id title hasTitle task exercise tag |
 	id := html nextId.
 
 	task := aTaskExerciser task.
@@ -17,11 +17,14 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 				ukToggleTarget: ('#', id) class: 'hiddenTaskExercise' "animation: 'uk-animation-fade'";
 				onClick: (html jQuery ajax
 					callback: [aTaskExerciser toggleOpen]), (html jQuery this toggleClass: 'isOpen') ].
-		div
+		tag := div
 			class: 'accBar';
 			class: 'ignored' if: exercise isIgnored;
-			class: 'isOpen' if: aTaskExerciser isOpen;
-			with: [
+			class: 'isOpen' if: aTaskExerciser isOpen.
+			
+		task classification contextTags do: [ :each | tag class: each code ].
+		
+		tag with: [
 				html heading level3; class: 'accTitle'; with: title.
 				html span class: 'accIcons'; with: [
 					task classification activityTypeTags do: [:each | html iconActivityType: each ]].

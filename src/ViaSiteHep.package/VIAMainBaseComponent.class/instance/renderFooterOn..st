@@ -4,7 +4,8 @@ renderFooterOn: html
 		self website renderFooterContentOn: html.
 
 		html div class: 'footnotes'; with: [
-			html anchor url: 'https://www.hep-verlag.ch'; target: '_blank'; with: 'hep Verlag'.
+			html anchor url: 'https://www.hep-verlag.ch'; target: '_blank'; with: [
+				html logoHep].
 			html text: ' | '.
 			html anchor
 				callback: [self openImprint];
