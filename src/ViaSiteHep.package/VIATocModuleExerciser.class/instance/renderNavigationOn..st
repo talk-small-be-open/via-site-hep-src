@@ -6,7 +6,7 @@ renderNavigationOn: html
 				callback: [ self gotoUnitOverview ];
 				with: [
 					html iconBack.
-					html span class: 'backText uk-visible@l'; t: 'moduleExerciser:gotoOverview'
+"					html span class: 'backText uk-visible@l'; t: 'moduleExerciser:gotoOverview'"
 				]
 		].
 		html span class: 'center'; with: [
