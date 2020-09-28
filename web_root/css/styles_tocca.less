@@ -44,6 +44,7 @@
 @t-color-tandem-question: #f08c2d;
 @t-color-tandem-answer: #CDE5F2;
 @t-color-selection: @t-color-blue;
+@t-color-mothertongue: orange;
 
 @wrongColor: @t-color-red;
 @correctColor: #efe;
@@ -76,152 +77,7 @@
 // Mixins
 // =======================================================================
 
-// Tocca big button base styles
-.bigButton {
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 0.1em;
-		min-height: 1.5em;
-		cursor: pointer;
-		font-size: 200%;
-		border: 2px solid @global-color;
-		line-height: 1em;
-
-		&:hover {
-				text-decoration: none;
-		}
-
-}
-
-// Mixin, to define the style of a big button inside a region
-.bigButtonStyle(@color, @inverseColor: white, @isInversed: false) {
-		.bigButton {
-				@color1: if(@isInversed, @inverseColor, @color);
-				@color2: if(@isInversed, @color, @inverseColor);
-
-				background-color: @color2;
-				border-color: if(@isInversed, @color2, @color1);
-				color: @color1;
-
-				&:active, &.active {
-						background-color: @color1;
-						color: @color2;
-				}
-
-				&:hover {
-						background-color: @color1;
-						color: @color2;
-//						border-color: if(@isInversed, @color2, @color1);
-				}
-
-				&.active:hover {
-						background-color: lighten(@color1, 20%);
-				}
-		}
-}
-
-// Siehe auch button.less im ui kit theme
-.button {
-		text-transform: uppercase;
-		cursor: pointer;
-		border: 2px solid @global-color;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-}
-
-// Items in a basic global list
-.catalogListItem() {
-		border-top-width: 2px;
-		border-top-style: solid;
-		border-top-color: #333;
-		padding: 1em 0;
-		margin: 0;
-		cursor: pointer;
-
-		a {
-				color: inherit;
-		}
-}
-
-// Use this on html elements which are decorated with a "toccamoduleX" css class, to set
-// the background color to the unit's main color
-// Example: .toccamoduleBackgroundColor("div.control span.button")
-.toccamoduleBackgroundColor(@selector){
-		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccamodule1 {@{s} {background-color: @t-color-unit1;}}
-		&.toccamodule2 {@{s} {background-color: @t-color-unit2;}}
-		&.toccamodule3 {@{s} {background-color: @t-color-unit3;}}
-}
-
-// Use this on html elements which are decorated with a "toccamoduleX" css class, to set
-// the border color to the unit's main color
-// Example: .toccamoduleBorderColor("div.control span.button")
-.toccamoduleBorderColor(@selector){
-		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccamodule1 {@{s} {border-color: @t-color-unit1;}}
-		&.toccamodule2 {@{s} {border-color: @t-color-unit2;}}
-		&.toccamodule3 {@{s} {border-color: @t-color-unit3;}}
-}
-
-// Use this on html elements which are decorated with a "toccamoduleX" css class, to set
-// the text color to the unit's main color
-// Example: .toccamoduleColor("h1")
-.toccamoduleColor(@selector){
-		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccamodule1 {@{s} {color: @t-color-unit1;}}
-		&.toccamodule2 {@{s} {color: @t-color-unit2;}}
-		&.toccamodule3 {@{s} {color: @t-color-unit3;}}
-}
-
-.toccamoduleButton(@selector){
-		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-
-		.style(@localColor) {
-				border-color: @localColor;
-				color: @localColor;
-				background-color: white;
-
-				&:hover, &:active {
-						background-color: @localColor;
-						color: white;
-						text-decoration: none;
-				}
-
-		}
-		
-		&.toccamodule1 {@{s} {.style(@t-color-unit1)}}
-		&.toccamodule2 {@{s} {.style(@t-color-unit2)}}
-		&.toccamodule3 {@{s} {.style(@t-color-unit3)}}
-}
-
-// Prevent that the user can select text
-.noUserSelect() {
-		user-select: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		cursor: default;
-}
-
-// Prevent touch actions
-.noTouch() {
-		touch-action: none;
-}
-
-.draggable() {
-		.noUserSelect();
-		.noTouch();
-		cursor: move;
-}
-
-.dropHover() {
-		&.dropHover {
-				background-color: @dropTargetHoverColor;
-		}
-}
-
+@import "styles_tocca_mixins.less";
 
 
 // =======================================================================
@@ -232,10 +88,15 @@ html {
 //bad		height: 100%;
 }
 
-svg.svg-icon {
-		width: 1.1em;
-		stroke: currentcolor;
-		font-size: 1.25em;
+span.svg-icon {
+		text-align: center;
+		svg.svg-icon {
+				//				width: 1.1em;
+				height: 1em;
+				stroke: currentcolor;
+				//				font-size: 1.25em;
+				font-size: 1em;
+		}
 }
 
 body {
@@ -247,6 +108,10 @@ body {
 
 		div.footer {
 				padding: 0.5em;
+
+				img.hepLogo {
+						width: 5em;
+				}
 		}
 
 
@@ -347,6 +212,16 @@ div.t-header {
 		}
 
 		nav.t-menubar {
+
+				span.svg-icon {
+						svg.svg-icon {
+								width: 1.1em;
+//								stroke: currentcolor;
+								font-size: 1.25em;
+						}
+				}
+
+				
 				button {
 						color: white;
 						vertical-align: middle;
@@ -374,12 +249,22 @@ div.t-header {
 						display: inline-block;
 						
 						input.searchInput {
-								background-color: transparent;
-								color: white;
-								width: 3em;
+								background-color: white;
+								color: black;
+								//width: 3em;
 
 								&::placeholder {
 										font-size: 75%;
+								}
+						}
+				}
+
+				ul.fastAccess {
+						li.active {
+								a {
+										font-size: 150%;
+										color: green;
+								//								background-color: #666;
 								}
 						}
 				}
@@ -405,12 +290,27 @@ div.t-header {
 				}
 
 				&.uk-offcanvas {
-						color: white;
+//						color: white;
 						ul.uk-nav {
 								li {
 										a {
-												color: white;
+//												color: white;
+
+												span.svg-icon, i.icon {
+														text-align: center;
+														display: inline-block;
+														width: 1.5em;
+														height: 1em;
+												}
 										}
+								}
+						}
+
+						div.mainMenuFooter {
+								padding: 1em;
+
+								img.hepLogo {
+										width: 75%;
 								}
 						}
 				}
@@ -624,7 +524,7 @@ div.VIAModuleFinderComponent {
 div.VIATocModuleExerciser {
 
 		// Header gets units background color
-		.toccamoduleBackgroundColor("h1.moduleNavigation");
+		.toccamoduleBackgroundColor("h1.moduleNavigation, div.moduleBottomNavigation");
 		
 		h1.moduleNavigation {
 				margin: 0;
@@ -658,13 +558,44 @@ div.VIATocModuleExerciser {
 						display: inline-block;
 						width: 2em;
 				}
+
+				span.backText {
+						font-weight: normal;
+				}
 		}
 
+
+		div.moduleBottomNavigation {
+				margin: 1em 0 0 0;
+				color: white;
+				text-align: center;
+				padding: 0.3em;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				a {
+						color: inherit;
+				}
+
+				span {
+						vertical-align: middle;
+						white-space: nowrap;
+				}
+		}
+
+
+		
 		h2.moduleTitle {
 				color: @t-color-blue;
 				text-align: center;
 				margin-top: 0.5em;
 				margin-bottom: 1em;
+
+				&.allMothertongue {
+						color: @t-color-mothertongue;
+				}
 		}
 
 		div.moduleBody {
@@ -673,11 +604,26 @@ div.VIATocModuleExerciser {
 
 		// Accordion top line
 		div.accBar {
-				.catalogListItem();
+				border-top-width: 2px;
+				border-top-style: solid;
+				border-top-color: #333;
+				padding: 1em 0;
+				margin: 0;
+				cursor: pointer;
+
+				a {
+						color: inherit;
+				}
 
 				.accTitle {
 						display: inline;
 						color: @t-color-blue;
+				}
+
+				&.mothertongue {
+						.accTitle {
+								color: @t-color-mothertongue;
+						}
 				}
 
 				span.accIcons {
@@ -1291,13 +1237,24 @@ div.VIATocTaskExerciser {
 						div.explanation {
 								margin-bottom: 2em;
 						}
+
+						div.questionIcon {
+								font-size: 200%;
+						}
 				}
 
 				div.questionAndAnswer {
 						background-color: @t-color-tandem-answer;
 						padding: 1em;
+
 						div.answer {
 								margin-top: 2em;
+
+								div.answerIcon {
+										font-size: 300%;
+										cursor: pointer;
+										text-align: center;
+								}
 						}
 				}
 
