@@ -88,14 +88,22 @@ html {
 //bad		height: 100%;
 }
 
+// Our own SVG icon set
 span.svg-icon {
 		text-align: center;
+		font-size: 1em;
+		//height: 1em;
+		width: 1em;
+		display: inline-block;
 		svg.svg-icon {
 				//				width: 1.1em;
-				height: 1em;
+				// height: 1em;
+				width: 100%;
+				height: 100%;
 				stroke: currentcolor;
+				fill: currentcolor;
 				//				font-size: 1.25em;
-				font-size: 1em;
+				// font-size: 1em;
 		}
 }
 
@@ -164,8 +172,13 @@ div.pillarParagraph {
 		+ div.pillarParagraph {
 				margin-top: 1em;
 		}
-}
 
+		&.border {
+				padding: 0.5em;
+				margin: 0.5em;
+				border: 1px solid black;
+		}
+}
 
 
 // =======================================================================
@@ -213,13 +226,14 @@ div.t-header {
 
 		nav.t-menubar {
 
-				span.svg-icon {
-						svg.svg-icon {
-								width: 1.1em;
-//								stroke: currentcolor;
-								font-size: 1.25em;
-						}
-				}
+				// ul.uk-navbar-nav {
+				// 		span.svg-icon {
+				// 				svg.svg-icon {
+				// 						width: 1.1em;
+				// 						font-size: 1.25em;
+				// 				}
+				// 		}
+				// }
 
 				
 				button {
@@ -262,7 +276,7 @@ div.t-header {
 				ul.fastAccess {
 						li.active {
 								a {
-										font-size: 150%;
+										// font-size: 150%;
 										color: green;
 								//								background-color: #666;
 								}
@@ -275,12 +289,12 @@ div.t-header {
 		#mainMenu {
 				ul.uk-nav {
 						li {
-								font-size: 1.5rem;
+								font-size: 1.1rem;
 								font-weight: bold;
 
 								ul.uk-nav-sub {
 										li {
-												font-size: 1.5rem;
+												font-size: 1.1rem;
 												font-weight: normal;
 										}
 								}
@@ -290,7 +304,13 @@ div.t-header {
 				}
 
 				&.uk-offcanvas {
-//						color: white;
+						//						color: white;
+						div.uk-offcanvas-close {
+								span.svg-icon {
+										font-size: 2em;
+								}
+						}
+						
 						ul.uk-nav {
 								li {
 										a {
@@ -299,8 +319,8 @@ div.t-header {
 												span.svg-icon, i.icon {
 														text-align: center;
 														display: inline-block;
-														width: 1.5em;
-														height: 1em;
+														width: 1.5rem;
+														height: 1rem;
 												}
 										}
 								}
@@ -664,6 +684,7 @@ div.VIATocModuleExerciser {
 
 				.accToggle {
 						float: right;
+						font-size: 2rem;
 
 						.doOpen {display:inline}
 						.doClose {display:none}
@@ -774,6 +795,10 @@ div.VIATocTaskExerciser {
 						margin-bottom: 3px;
 				}
 
+				hr.divider {
+						border-color: #999;
+						margin: 2em 0;
+				}
 
 				
 				div.selectOneInput, div.selectPointsInput {
@@ -791,8 +816,45 @@ div.VIATocTaskExerciser {
 
 				}
 
-				div.selectOneInput {
+
+				div.selectOneInput, div.selectMany {
+
 						.bigButtonStyle(@t-color-blue);
+
+						label.bigButton {
+								position: relative;
+								padding-left: 1em;
+								padding-right: 1em;
+								i.checkedIcon {
+										visibility: hidden;
+										position: absolute;
+										left: 0.3em;
+										
+								}
+								&.active {
+										i.checkedIcon {
+												visibility: visible;
+										}
+
+										&.wrong {
+												background-color: @wrongColor;
+												// i.checkedIcon {
+												// 		visibility: hidden;
+												// }
+										}
+
+										&.correct {
+												background-color: green;
+										}
+
+
+								}
+
+						}
+
+				}
+				
+				div.selectOneInput {
 
 						select.selectOneInput {
 								max-width: 100%;
@@ -811,13 +873,10 @@ div.VIATocTaskExerciser {
 								margin: 1em 0;
 						}
 
-
-						span.wrongIcon {
-								position: relative;
-								left: -15px;
-						}
-
-						.bigButtonStyle(@t-color-blue);
+						// span.wrongIcon {
+						// 		position: relative;
+						// 		left: -15px;
+						// }
 
 				}
 				
@@ -1364,9 +1423,9 @@ div.backButton {
 figure.inlineAssetImage {
 		display: inline-block;
 
-		figcaption {
-				display: none;
-		}
+		// figcaption {
+		// 		display: none;
+		// }
 }
 
 span.inlineAssetAudio {
