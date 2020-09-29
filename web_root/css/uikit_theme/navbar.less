@@ -8,10 +8,14 @@
 // ========================================================================
 
 
+@navbar-background:                             @t-header-background;
+@navbar-color-mode:                             light;
+
+
 @navbar-nav-item-height:                        40px;
 @navbar-nav-item-padding-horizontal:            5px;
 
-@navbar-nav-item-color:                         @global-color;
+@navbar-nav-item-color:                         white;
 @navbar-item-color:                             white;
 
 
@@ -26,7 +30,7 @@
 
 //@navbar-dropdown-margin:                        15px;
 //@navbar-dropdown-padding:                       25px;
-@navbar-dropdown-background:                    @global-primary-background;
+@navbar-dropdown-background:                    @navbar-background;
 
 @navbar-dropdown-nav-item-color:                @global-background;
 
@@ -57,6 +61,13 @@
 
 // @navbar-dropdown-grid-divider-border-width:     @global-border-width;
 // @navbar-dropdown-grid-divider-border:           @navbar-dropdown-nav-divider-border;
+
+@navbar-dropdown-dropbar-margin-top:            0;
+@navbar-dropdown-dropbar-margin-bottom:         @navbar-dropdown-dropbar-margin-top;
+
+@navbar-dropbar-background:                     @navbar-background;
+@navbar-dropbar-z-index:                        @global-z-index - 20;
+
 
 
 // Component
