@@ -1,10 +1,8 @@
 rendering
 renderContentOn: html
 	html ukContainer with: [
-"		html heading level1; with: [
-			html t: 'tocca:unit'.
-			html space.
-			html text: unitNumber asString]."
+		html heading level1; with: [
+			html t: titleKey].
 		
 		html unorderedList class: 'modulesList'; with: [
 			modules do: [ :each |

@@ -3,7 +3,7 @@ renderTaskBrickGroup: aTaskBrickGroup on: html
 	| id |
 	id := html nextId.
 
-	html ukButton
+	html div
 		ukToggleFadeTarget: ('#', id);
 		class: 'taskBrickGroupToggler uk-width-1-1@s uk-width-auto@l';
 		with: [
