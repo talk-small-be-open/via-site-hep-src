@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"modules"
+		"modules",
+		"titleKey"
 	],
 	"name" : "VIAModulesListComponent",
 	"type" : "normal"
