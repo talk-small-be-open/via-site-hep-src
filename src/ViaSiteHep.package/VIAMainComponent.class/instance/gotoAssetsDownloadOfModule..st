@@ -1,4 +1,5 @@
 actions
 gotoAssetsDownloadOfModule: aModule
 
-	self coreComponentWithBackButton: (VIAModuleAssetsComponent model: aModule)
+"Not in use by Tocca"
+"	self coreComponentWithBackButton: (VIAModuleAssetsComponent model: aModule)"
