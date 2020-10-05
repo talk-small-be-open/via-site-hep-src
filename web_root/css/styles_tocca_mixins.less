@@ -75,33 +75,36 @@
 }
 
 // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
+// a properts to the unit's main color
+// Example: .toccamoduleBackgroundColor("div.control span.button")
+.toccamoduleColorProperty(@selector, @property){
+		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
+		@p: e(@property);
+		&.toccamodule1 { @{s} { @{p}: @t-color-toccamodule1;} }
+		&.toccamodule2 { @{s} { @{p}: @t-color-toccamodule2;} }
+		&.toccamodule3 { @{s} { @{p}: @t-color-toccamodule3;} }
+		&.toccamoduleExtras { @{s} { @{p}: @t-color-toccamoduleExtras;} }
+}
+
+// Use this on html elements which are decorated with a "toccamoduleX" css class, to set
 // the background color to the unit's main color
 // Example: .toccamoduleBackgroundColor("div.control span.button")
 .toccamoduleBackgroundColor(@selector){
-		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccamodule1 {@{s} {background-color: @t-color-unit1;}}
-		&.toccamodule2 {@{s} {background-color: @t-color-unit2;}}
-		&.toccamodule3 {@{s} {background-color: @t-color-unit3;}}
+		.toccamoduleColorProperty(@selector, "background-color");
 }
 
 // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
 // the border color to the unit's main color
 // Example: .toccamoduleBorderColor("div.control span.button")
 .toccamoduleBorderColor(@selector){
-		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccamodule1 {@{s} {border-color: @t-color-unit1;}}
-		&.toccamodule2 {@{s} {border-color: @t-color-unit2;}}
-		&.toccamodule3 {@{s} {border-color: @t-color-unit3;}}
+		.toccamoduleColorProperty(@selector, "border-color");
 }
 
 // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
 // the text color to the unit's main color
 // Example: .toccamoduleColor("h1")
 .toccamoduleColor(@selector){
-		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-		&.toccamodule1 {@{s} {color: @t-color-unit1;}}
-		&.toccamodule2 {@{s} {color: @t-color-unit2;}}
-		&.toccamodule3 {@{s} {color: @t-color-unit3;}}
+		.toccamoduleColorProperty(@selector, "color");
 }
 
 .toccamoduleButton(@selector){
@@ -119,10 +122,19 @@
 				}
 
 		}
-		
-		&.toccamodule1 {@{s} {.style(@t-color-unit1)}}
-		&.toccamodule2 {@{s} {.style(@t-color-unit2)}}
-		&.toccamodule3 {@{s} {.style(@t-color-unit3)}}
+
+		// Button WITHIN a toccamodule scope gets colors
+		&.toccamodule1 {@{s} {.style(@t-color-toccamodule1)}}
+		&.toccamodule2 {@{s} {.style(@t-color-toccamodule2)}}
+		&.toccamodule3 {@{s} {.style(@t-color-toccamodule3)}}
+		&.toccamoduleExtras {@{s} {.style(@t-color-toccamoduleExtras)}}
+
+		// If button ITSELF is attributed with toccamoduleX then this gets precedence
+		@{s}.toccamodule1 {.style(@t-color-toccamodule1)}
+		@{s}.toccamodule2 {.style(@t-color-toccamodule2)}
+		@{s}.toccamodule3 {.style(@t-color-toccamodule3)}
+		@{s}.toccamoduleExtras {.style(@t-color-toccamoduleExtras)}
+
 }
 
 // Prevent that the user can select text
