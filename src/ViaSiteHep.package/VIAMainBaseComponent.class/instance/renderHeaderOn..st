@@ -1,7 +1,7 @@
 rendering
 renderHeaderOn: html
 	html div class: 't-header'; a: 'uk-sticky'; with: [ 
-		(html ukNavbarOptions: 'dropbar: true; dropbar-mode: push; mode: click;')
+		(html ukNavbarOptions: 'dropbar: true; mode: click;')
 			class: 'uk-navbar-transparent uk-light t-menubar';
 			with: [
 				self ifViewportSmall: [

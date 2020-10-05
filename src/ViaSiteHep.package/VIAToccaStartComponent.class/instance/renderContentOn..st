@@ -13,32 +13,31 @@ renderContentOn: html
 			class: 'uk-child-width-1-2';
 			with: [
 				VIATocHelper toccaunits pairsDo: [ :first :second |
-					| tmNumber |
-					tmNumber := (VIATocHelper toccamoduleFromToccaunit: first) asString.
-					"html heading level2; with: [ html t: 'myHome:module'; space; text: tmNumber]."
+					| css |
+					css := (VIATocHelper toccamoduleCssOfToccaunit: first) asString.
 
 					{ first. second } do: [ :index |
-						html div class: ('toccamodule', tmNumber); with: [
-							html div: [
-								html bigAnchorButton
-									callback: [ self gotoToccaunit: index ];
-									with: [
-										html sT: 'myHome:unit'.
-										html text: index asString] ].
+						html div: [
+							html bigAnchorButton
+								class: css;
+								callback: [ self gotoToccaunit: index ];
+								with: [
+									html sT: 'myHome:unit'.
+									html text: index asString].
 		]]]].
 	
 		html heading level2; with: [ html t: 'myHome:extras'].
-		html div class: ('toccamoduleExtras'); with: [
-			html ukGrid
-				class: 'uk-child-width-1-2';
-				with: [
-					html div: [
-						html bigAnchorButton
-							callback: [ self gotoToccaunit: 'P' ];
-							with: [html sT: 'myHome:palloncini']].
-					html div: [
-						html bigAnchorButton
-							callback: [ self gotoToccaunit: 'V' ];
-							with: [html sT: 'myHome:vocabolario']].
-						]]
-	]
+		html ukGrid
+			class: 'uk-child-width-1-2';
+			with: [
+				html div: [
+					html bigAnchorButton
+						class: 'toccamoduleExtras';
+						callback: [ self gotoToccaunit: 'P' ];
+						with: [html sT: 'myHome:palloncini']].
+				html div: [
+					html bigAnchorButton
+						class: 'toccamoduleExtras';
+						callback: [ self gotoToccaunit: 'V' ];
+						with: [html sT: 'myHome:vocabolario']].
+					]]

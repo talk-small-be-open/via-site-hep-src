@@ -1,5 +1,5 @@
 as yet unclassified
-preferredToccaunit: aNumber
+currentToccaunit: aNumber
 	| unit |
 	unit := aNumber asInteger.
 	

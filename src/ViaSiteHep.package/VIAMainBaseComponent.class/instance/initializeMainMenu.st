@@ -1,5 +1,5 @@
 as yet unclassified
-initializeMenu
+initializeMainMenu
 	mainMenu := VIAMenu new.
 	menuRenderer := self ifViewportSmall: [ VIAOffcanvasMenuRenderer new ] else: [ VIADropdownMenuRenderer new ].
 	

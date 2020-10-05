@@ -4,7 +4,7 @@ gotoSmartUnit
 	self currentPortfolio lastOpenedModule ifNotBlank: [ :m |
 		self gotoModule: m. ^ self ].
 	
-	self session preferredToccaunit ifNotBlank: [ :unit |
+	self session currentToccaunit ifNotBlank: [ :unit |
 		self gotoToccaunit: unit. ^ self ].
 	
 	self gotoToccaunit: 1
