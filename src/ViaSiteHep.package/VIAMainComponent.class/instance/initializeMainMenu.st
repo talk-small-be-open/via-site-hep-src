@@ -1,7 +1,7 @@
 rendering
-initializeMenu
+initializeMainMenu
 	| userLabel |
-	super initializeMenu.
+	super initializeMainMenu.
 
 
 	self initializeToccaMenu.

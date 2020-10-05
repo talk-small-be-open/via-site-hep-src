@@ -9,7 +9,7 @@ renderNavbarContentOn: html
 				html anchor
 					callback: [ self gotoToccaStart ];
 					with: [
-						html iconUnita.
+						html iconHome.
 						html span class: 'uk-visible@l'; with: [
 							html space.
 							html sT: 'main:fastAccess:start']]
@@ -21,15 +21,16 @@ renderNavbarContentOn: html
 		]."
 
 		html unorderedList class: 'uk-navbar-nav'; with: [
+			html listItem: [
+				html anchor
+					callback: [ self gotoMyPortfolio ];
+					with: [ html iconPortfolio]
+			].
 			html listItem: [ 
 				html anchor
 					with: [ html iconSearch].
 				self renderDropbarOn: html.
 			].
-			html listItem: [
-				html anchor
-					callback: [ self gotoMyPortfolio ];
-					with: [ html iconUserSmart] ].
 			html listItem: [
 				html anchor
 					class: 'mainMenuToggler';

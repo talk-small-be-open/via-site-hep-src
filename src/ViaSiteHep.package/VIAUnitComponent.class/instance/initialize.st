@@ -8,4 +8,4 @@ initialize
 
 	modules := modules sortedBy: [ :each | each indexCode ].
 	
-	self session preferredToccaunit: unitNumber.
+	self session currentToccaunit: unitNumber.

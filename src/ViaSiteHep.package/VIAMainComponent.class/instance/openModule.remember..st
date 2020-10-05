@@ -7,7 +7,9 @@ openModule: aModule remember: aBoolean
 			ifTrue: [
 				self currentPortfolio
 					addModule: aModule;
-					lastOpenedModule: aModule ]
+					lastOpenedModule: aModule.
+				self session currentModule: aModule. 
+			]
 			ifFalse: [
 				(VIATocHelper isVocabolarioModule: aModule) ifTrue: [ 
 					lastOpenedVocabolario := aModule

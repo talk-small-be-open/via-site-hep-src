@@ -5,7 +5,7 @@ renderNavigationOn: html
 			html anchor
 				callback: [ self gotoUnitOverview ];
 				with: [
-					html iconBack.
+					html iconBackUp.
 "					html span class: 'backText uk-visible@l'; t: 'moduleExerciser:gotoOverview'"
 				]
 		].

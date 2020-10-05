@@ -2,4 +2,4 @@ accessing
 selectedToccaunit: anObject
 	selectedToccaunit := anObject asInteger.
 	
-	self session preferredToccaunit: selectedToccaunit
+"	self session preferredToccaunit: selectedToccaunit"

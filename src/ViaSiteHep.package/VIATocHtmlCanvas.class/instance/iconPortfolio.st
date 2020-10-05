@@ -1,5 +1,8 @@
 icons
 iconPortfolio
-	self
-		ifTeacher: [ self iconPortfolioTeacher ]
-		else: [ self iconPortfolioStudent ]
+	self svgIcon: 'portfolio' with: '<g>
+	<path d="M21.5,8V6h-3V4h-11v4h-3v17h21V8H21.5z M20.5,7v1h-9V7H20.5z M8.5,5h9v1h-7v2h-2V5z M24.5,24h-19V9h19V24z"/>
+	<path d="M15,16c1.4,0,2.5-1.1,2.5-2.5S16.4,11,15,11s-2.5,1.1-2.5,2.5S13.6,16,15,16z M15,12c0.8,0,1.5,0.7,1.5,1.5S15.8,15,15,15
+		s-1.5-0.7-1.5-1.5S14.2,12,15,12z"/>
+	<path d="M10.5,20c0-1.1,0.8-2,1.8-2h5.3c1,0,1.8,0.9,1.8,2v2h1v-2c0-1.7-1.3-3-2.8-3h-5.3c-1.6,0-2.8,1.3-2.8,3v2h1V20z"/>
+</g>'

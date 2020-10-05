@@ -8,8 +8,10 @@
 	"instvars" : [
 		"coreComponent",
 		"flashMessages",
+		"topMenu",
 		"mainMenu",
-		"menuRenderer"
+		"menuRenderer",
+		"topMenuRenderer"
 	],
 	"name" : "VIAMainBaseComponent",
 	"type" : "normal"

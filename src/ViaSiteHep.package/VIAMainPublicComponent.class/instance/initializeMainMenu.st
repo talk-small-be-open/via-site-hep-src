@@ -1,6 +1,6 @@
 as yet unclassified
-initializeMenu
-	super initializeMenu.
+initializeMainMenu
+	super initializeMainMenu.
 
 	self initializeInfoMenu.
 

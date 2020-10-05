@@ -9,9 +9,9 @@ renderDropbarOn: html
 					noAutocomplete;
 					callback: [ :value | self gotoSmartFromString: value ];
 					placeholder: 'main:searchPlaceholder't;
-					class: 'searchInput uk-input uk-width-1-1'.
+					class: 'searchInput uk-input uk-width-5-6'.
 				html ukSubmitButton
 					beSubmit;
-					class: '';
-					with: [ html iconSearch].
+					class: 'uk-width-1-6';
+					with: [ html iconSearch ].
 			]]

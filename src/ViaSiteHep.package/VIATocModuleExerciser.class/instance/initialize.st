@@ -11,6 +11,7 @@ initialize
 	self addForm
 		removeButtons.
 
+	"OPTIMIZE Maybe obsolete, since we decorate the current Toccamodule in the main component"
 	self addContainerDiv addClass: (VIATocHelper toccamoduleCssOfModule: model).
 	
 "	classification := model overallClassification."
