@@ -34,28 +34,30 @@
 // =======================================================================
 
 
-@t-color-primary: @t-color-red;
+@t-color-primary: #d53d46;
 @t-color-black: #333;
-@t-color-blue: #117CBE;
-@t-color-red: #CE5C5B;
-@t-color-unit1: #ca4947;
-@t-color-unit2: #f08c2d;
-@t-color-unit3: #8aa95b;
+@t-color-blue: #3a4d98;
+@t-color-red: @t-color-primary;
+@t-color-toccamodule1: #e0be00;
+@t-color-toccamodule2: #85ba6a;
+@t-color-toccamodule3: #5ca9d6;
+@t-color-toccamoduleExtras: @t-color-black;
 @t-color-tandem-question: #f08c2d;
 @t-color-tandem-answer: #CDE5F2;
+@t-color-mothertongue: #d48625;
+@t-color-vocabolario: #b30061;
+@t-color-highlight: #ffe100;
+@t-color-text: @t-color-black;
+@t-color-background: #d8cec5;
+
 @t-color-selection: @t-color-blue;
-@t-color-mothertongue: orange;
-
-@wrongColor: @t-color-red;
-@correctColor: #efe;
-
 
 @t-header-height:             4rem;
 @t-header-background:         @t-color-black;
 @t-header-small-background:   @t-color-black;
 @t-header-shadow-sticky:      0 0 50px 1px rgba(0,0,0,0.2);
 @t-header-shadow-teaser:      0 0 150px 1px rgba(0,0,0,0.5);
-@t-header-padding:            1rem;
+@t-header-padding:            0;
 
 
 
@@ -64,6 +66,8 @@
 @via-basic-background-color: @t-color-primary;
 // @via-coloredbutton-color: #555;
 // @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
+@wrongColor: @t-color-red;
+@correctColor: #efe;
 
 
 // =======================================================================
@@ -90,10 +94,11 @@ html {
 
 // Our own SVG icon set
 span.svg-icon {
+		@size: 1.3em;
 		text-align: center;
-		font-size: 1em;
+		font-size: @size;
 		//height: 1em;
-		width: 1em;
+		width: @size;
 		display: inline-block;
 		svg.svg-icon {
 				//				width: 1.1em;
@@ -109,10 +114,19 @@ span.svg-icon {
 
 body {
 		
-		// div.coreContainer {
-		// 		div.core {
-		// 		}
-		// }
+		div.coreContainer {
+
+				// Generally all buttons get the color of the tocca unit, if inside a div with tocca module number
+				.toccamoduleButton("input.submit");
+				//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+				.toccamoduleButton(".bigButton");
+				.toccamoduleButton("button.uk-button");
+				.toccamoduleButton("a.uk-button");
+				
+
+				div.core {
+				}
+		}
 
 		div.footer {
 				padding: 0.5em;
@@ -159,14 +173,14 @@ input.submit, button.uk-button, a.uk-button {
 		.button();
 }
 
-// All buttons get the color of the tocca unit, if inside a div with tocca module number
-div {
-		.toccamoduleButton("input.submit");
-//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
-		.toccamoduleButton(".bigButton");
-		.toccamoduleButton("button.uk-button");
-		.toccamoduleButton("a.uk-button");
-}
+// // Generally all buttons get the color of the tocca unit, if inside a div with tocca module number
+// div {
+// 		.toccamoduleButton("input.submit");
+// //Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+// 		.toccamoduleButton(".bigButton");
+// 		.toccamoduleButton("button.uk-button");
+// 		.toccamoduleButton("a.uk-button");
+// }
 
 div.pillarParagraph {
 		+ div.pillarParagraph {
@@ -180,11 +194,27 @@ div.pillarParagraph {
 		}
 }
 
+.level-l1 {
+		color: blue;
+}
+
+.level-l2 {
+		color: lightblue;
+}
+
+.level-l3 {
+		color: orange;
+}
 
 // =======================================================================
 // UI components
 // =======================================================================
 
+div.mainContainer {
+		.toccamoduleBorderColor("div.t-header nav.t-menubar ul.uk-navbar-nav li.active");
+		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'stroke');
+		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'fill');				
+}
 
 div.VIADeviceDetectorComponent {
 		background-color: @t-color-primary;
@@ -222,64 +252,89 @@ div.t-header {
 				font-size: 1.5rem;
 				font-weight: bold;
 				color: white;
+
+				svg.toccaLogo {
+						//stroke: currentcolor;
+						fill: currentcolor;
+						width: 2em;
+				}
 		}
 
-		nav.t-menubar {
+		nav {
+				height: @t-header-height;
 
-				// ul.uk-navbar-nav {
-				// 		span.svg-icon {
-				// 				svg.svg-icon {
-				// 						width: 1.1em;
-				// 						font-size: 1.25em;
-				// 				}
-				// 		}
-				// }
-
+				div.uk-navbar-left {
+						padding-left: 0.5em;
+				}
 				
-				// button {
-				// 		color: white;
-				// 		vertical-align: middle;
-				// 		background-color: transparent;
-				// 		border: none;
-				// 		cursor: pointer;
-				// }
+				&.t-menubar {
 
-				a {
-						color: white;
-						vertical-align: middle;
+						ul.uk-navbar-nav {
+								height: @t-header-height;
 
-						+ a {
-								margin-left: 0.5rem;
+								
+								li {
+										padding-top: 1em;
+
+										&.active {
+												//										background-color: @t-color-toccamodule1;
+												border-bottom-width: 5px;
+												border-bottom-style: solid;
+												// a {
+												// 		svg {
+												// 				stroke: @t-color-toccamodule1;
+												// 				fill: @t-color-toccamodule1;
+												// 		}
+														
+												// }
+												
+										}
+								}
+								// span.svg-icon {
+								// 		svg.svg-icon {
+								// 				width: 1.1em;
+								// 				font-size: 1.25em;
+								// 		}
+								// }
 						}
+
 						
-						&.mainMenuToggler {
-								span.uk-icon {
-										margin-right: 0.2em;
+						// button {
+						// 		color: white;
+						// 		vertical-align: middle;
+						// 		background-color: transparent;
+						// 		border: none;
+						// 		cursor: pointer;
+						// }
+
+						a {
+								color: white;
+								vertical-align: middle;
+
+								+ a {
+										margin-left: 0.5rem;
+								}
+								
+								&.mainMenuToggler {
+										span.uk-icon {
+												margin-right: 0.2em;
+										}
 								}
 						}
-				}
 
-				form.searchForm {
-						
-						input.searchInput {
-								background-color: white;
-								color: black;
-								//width: 3em;
+						form.searchForm {
+								
+								input.searchInput {
+										background-color: white;
+										color: black;
+										//width: 3em;
 
-								&::placeholder {
-										font-size: 75%;
+										&::placeholder {
+												font-size: 75%;
+										}
 								}
 						}
-				}
 
-				ul.fastAccess {
-						li.active {
-								a {
-										// font-size: 150%;
-										color: green;
-								//								background-color: #666;
-								}
-						}
 				}
 		}
 		
@@ -1466,6 +1521,10 @@ span.wrongIcon {
 }
 
 div.webui-popover {
+		div.webui-popover-content {
+				word-break: break-word;
+		}
+		
 		span.markAsEmpty {
 				cursor: pointer;
 				border: 2px solid green;
