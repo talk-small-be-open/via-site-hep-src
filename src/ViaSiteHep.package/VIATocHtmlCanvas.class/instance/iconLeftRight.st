@@ -1,3 +1,3 @@
 icons
 iconLeftRight
-	self farIcon: 'arrows-alt-h'
+	self fasIcon: 'arrows-alt-h'

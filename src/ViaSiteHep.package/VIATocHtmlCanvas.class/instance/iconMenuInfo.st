@@ -1,3 +1,3 @@
 icons
 iconMenuInfo
-	self fasIcon: 'info'
+	self iconInfo

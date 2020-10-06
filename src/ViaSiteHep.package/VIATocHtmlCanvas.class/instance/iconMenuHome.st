@@ -1,3 +1,3 @@
 icons
 iconMenuHome
-	self fasIcon: 'home'
+	self iconHome

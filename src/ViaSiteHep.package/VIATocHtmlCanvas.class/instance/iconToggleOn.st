@@ -1,3 +1,3 @@
 icons
 iconToggleOn
-	self farIcon: 'toggle-on'
+	self fasIcon: 'toggle-on'

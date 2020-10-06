@@ -18,22 +18,19 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 				onClick: (html jQuery ajax
 					callback: [aTaskExerciser toggleOpen]), (html jQuery this toggleClass: 'isOpen') ].
 		tag := div
-			class: 'accBar';
+			class: 'accBar uk-clearfix';
 			class: 'ignored' if: exercise isIgnored;
 			class: 'isOpen' if: aTaskExerciser isOpen.
 			
 		task classification contextTags do: [ :each | tag class: each code ].
 		
 		tag with: [
+			html span class: 'uk-float-left'; with: [
 				html heading level3; class: 'accTitle'; with: title.
 				html span class: 'accIcons'; with: [
-					task classification activityTypeTags do: [:each | html iconActivityType: each ]].
+					task classification activityTypeTags do: [:each | html iconActivityType: each ]]].
 
-				html span class: 'accToggle'; with: [
-					html span class: 'doOpen'; with: [html iconDropdown].
-					html span class: 'doClose'; with: [html iconDropup].
-				].
-
+			html span class: 'uk-float-right'; with: [
 				html span class: 'accActions'; with: [
 					model isIgnoreTaskAllowed ifTrue: [
 						html anchor
@@ -44,7 +41,15 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 								exercise isIgnored
 									ifTrue: [ html iconToggleOff ]
 									ifFalse: [ html iconToggleOn ] ].
-	]]]].
+					]
+				].
+				html span class: 'accToggle'; with: [
+					html span class: 'doOpen'; with: [html iconDropdown].
+					html span class: 'doClose'; with: [html iconDropup].
+				].
+
+			]
+	]].
 
 	exercise isIgnored ifFalse: [
 		html div
