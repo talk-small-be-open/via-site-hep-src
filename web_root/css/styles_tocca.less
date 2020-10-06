@@ -598,7 +598,8 @@ div.VIAModuleFinderComponent {
 div.VIATocModuleExerciser {
 
 		// Header gets units background color
-		.toccamoduleBackgroundColor("h1.moduleNavigation, div.moduleBottomNavigation");
+//		.toccamoduleBackgroundColor("h1.moduleNavigation, div.moduleBottomNavigation");
+		.toccamoduleBackgroundColor("h1.moduleNavigation");
 		
 		h1.moduleNavigation {
 				margin: 0;
@@ -622,7 +623,14 @@ div.VIATocModuleExerciser {
 						white-space: nowrap;
 				}
 
-				span.left, span.right {
+				span.left {
+						text-align: left;
+						display: inline-block;
+						width: 3em;						
+				}
+
+				span.right {
+						text-align: right;
 						display: inline-block;
 						width: 3em;						
 				}
@@ -641,7 +649,7 @@ div.VIATocModuleExerciser {
 
 		div.moduleBottomNavigation {
 				margin: 1em 0 0 0;
-				color: white;
+//				color: ;
 				text-align: center;
 				padding: 0.3em;
 
