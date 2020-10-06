@@ -94,7 +94,7 @@ html {
 
 // Our own SVG icon set
 span.svg-icon {
-		@size: 1.3em;
+		@size: 1.1em;
 		text-align: center;
 		font-size: @size;
 		//height: 1em;
@@ -117,11 +117,13 @@ body {
 		div.coreContainer {
 
 				// Generally all buttons get the color of the tocca unit, if inside a div with tocca module number
-				.toccamoduleButton("input.submit");
-				//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
-				.toccamoduleButton(".bigButton");
-				.toccamoduleButton("button.uk-button");
-				.toccamoduleButton("a.uk-button");
+				div {
+						.toccamoduleButton("input.submit");
+						//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+						.toccamoduleButton(".bigButton");
+						.toccamoduleButton("button.uk-button");
+						.toccamoduleButton("a.uk-button");
+				}
 				
 
 				div.core {
@@ -278,7 +280,7 @@ div.t-header {
 
 										&.active {
 												//										background-color: @t-color-toccamodule1;
-												border-bottom-width: 5px;
+												border-bottom-width: 8px;
 												border-bottom-style: solid;
 												// a {
 												// 		svg {
@@ -290,12 +292,10 @@ div.t-header {
 												
 										}
 								}
-								// span.svg-icon {
-								// 		svg.svg-icon {
-								// 				width: 1.1em;
-								// 				font-size: 1.25em;
-								// 		}
-								// }
+								span.svg-icon {
+										width: 1.3em;
+										font-size: 1.3em;
+								}
 						}
 
 						
@@ -330,7 +330,7 @@ div.t-header {
 										//width: 3em;
 
 										&::placeholder {
-												font-size: 75%;
+												color: #999;
 										}
 								}
 						}
@@ -370,7 +370,7 @@ div.t-header {
 										a {
 //												color: white;
 
-												span.svg-icon, i.icon {
+												span.svg-icon, svg.svg-inline--fa.icon {
 														text-align: center;
 														display: inline-block;
 														width: 1.5rem;
@@ -689,7 +689,7 @@ div.VIATocModuleExerciser {
 				border-top-width: 2px;
 				border-top-style: solid;
 				border-top-color: #333;
-				padding: 1em 0;
+//				padding: 1em 0;
 				margin: 0;
 				cursor: pointer;
 
@@ -698,7 +698,9 @@ div.VIATocModuleExerciser {
 				}
 
 				.accTitle {
-						display: inline;
+						padding: 0.5em 0;
+						margin: 0;
+						display: inline-block;
 						color: @t-color-blue;
 				}
 
@@ -711,24 +713,25 @@ div.VIATocModuleExerciser {
 				span.accIcons {
 						margin-left: 1em;
 						img.iconActivityType {
-								vertical-align: bottom;
+								vertical-align: text-top;
 								width: 2em;
 								height: auto;
 						}
 				}
 
-
+				@ignoredColor: #666;
+				
 				&.ignored {
 						//						background-color: #eee;
 						cursor: default;
 
 						.accTitle {
-								color: #666;
+								color: @ignoredColor;
+								text-decoration-line: line-through;
+								text-decoration-color: black;
+								text-decoration-style: double;
 						}
 						
-						text-decoration-line: line-through;
-						text-decoration-color: black;
-						text-decoration-style: double;
 				}
 				
 				&.isOpen {
@@ -740,14 +743,34 @@ div.VIATocModuleExerciser {
 				}
 
 				span.accActions {
-						float: right;
-						margin: 0 1em;
+						vertical-align: middle;
+						display: inline-block;
+						font-size: 1.5rem;
+						margin: 0.3em 1em;
+
+						a.ignoreTask {
+								svg.fa-toggle-off {
+										color: @ignoredColor;
+								}
+								svg.fa-toggle-on {
+										color: green;
+								}
+						}
 				}
 
 				.accToggle {
-						float: right;
+						vertical-align: middle;
+						display: inline-block;
 						font-size: 2rem;
 
+						// display: inline-flex;
+						// justify-content: space-between;
+						// align-items: center;
+						
+						// .icon {
+						// 		vertical-align: middle;
+						// }
+						
 						.doOpen {display:inline}
 						.doClose {display:none}
 				}
@@ -787,10 +810,10 @@ div.VIATocTaskExerciser {
 
 				div.topToolbar {
 						//								float: right;
-						.bigButton.ignoreTask {
-								margin-top: 0.5em;
-								height: 1.5em;
-						}
+						// .bigButton.ignoreTask {
+						// 		margin-top: 0.5em;
+						// 		height: 1.5em;
+						// }
 				}
 
 				// Titles inside task content, should not be as big as official titles
@@ -887,20 +910,20 @@ div.VIATocTaskExerciser {
 								position: relative;
 								padding-left: 1em;
 								padding-right: 1em;
-								i.checkedIcon {
+								.checkedIcon {
 										visibility: hidden;
 										position: absolute;
 										left: 0.3em;
 										
 								}
 								&.active {
-										i.checkedIcon {
+										.checkedIcon {
 												visibility: visible;
 										}
 
 										&.wrong {
 												background-color: @wrongColor;
-												// i.checkedIcon {
+												// .checkedIcon {
 												// 		visibility: hidden;
 												// }
 										}
