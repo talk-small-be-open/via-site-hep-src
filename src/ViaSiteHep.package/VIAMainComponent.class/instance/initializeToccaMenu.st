@@ -11,7 +11,7 @@ initializeToccaMenu
 
 	VIATocHelper toccaunits do: [ :each |
 		entry := subMenu addEntry: ('menu:tocca:unit't, ' ', each asString) send: #gotoToccaunit: to: self arg: each.
-		entry icon: 'menuUnit'
+		entry icon: ('unita', each asString)
 	].
 
 	entry := subMenu addEntry: 'menu:tocca:vocabolario' send: #gotoVocabolario to: self.

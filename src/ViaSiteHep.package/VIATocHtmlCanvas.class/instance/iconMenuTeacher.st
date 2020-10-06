@@ -1,3 +1,3 @@
 icons
 iconMenuTeacher
-	self fasIcon: 'school'
+	self iconUserTeacher
