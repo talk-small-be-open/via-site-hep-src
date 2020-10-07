@@ -42,8 +42,10 @@
 @t-color-toccamodule2: #85ba6a;
 @t-color-toccamodule3: #5ca9d6;
 @t-color-toccamoduleExtras: @t-color-black;
-@t-color-tandem-question: #f08c2d;
-@t-color-tandem-answer: #CDE5F2;
+@t-color-tandem-player1: #8FC3E1;
+@t-color-tandem-player2: #ABCE99;
+@t-color-tandem-player1-light: #CFE5F2;
+@t-color-tandem-player2-light: #DAEAD3;
 @t-color-mothertongue: #d48625;
 @t-color-vocabolario: #b30061;
 @t-color-highlight: #ffe100;
@@ -94,7 +96,7 @@ html {
 
 // Our own SVG icon set
 span.svg-icon {
-		@size: 1.3em;
+		@size: 1.1em;
 		text-align: center;
 		font-size: @size;
 		//height: 1em;
@@ -117,11 +119,13 @@ body {
 		div.coreContainer {
 
 				// Generally all buttons get the color of the tocca unit, if inside a div with tocca module number
-				.toccamoduleButton("input.submit");
-				//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
-				.toccamoduleButton(".bigButton");
-				.toccamoduleButton("button.uk-button");
-				.toccamoduleButton("a.uk-button");
+				div {
+						.toccamoduleButton("input.submit");
+						//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+						.toccamoduleButton(".bigButton");
+						.toccamoduleButton("button.uk-button");
+						.toccamoduleButton("a.uk-button");
+				}
 				
 
 				div.core {
@@ -278,7 +282,7 @@ div.t-header {
 
 										&.active {
 												//										background-color: @t-color-toccamodule1;
-												border-bottom-width: 5px;
+												border-bottom-width: 8px;
 												border-bottom-style: solid;
 												// a {
 												// 		svg {
@@ -290,12 +294,10 @@ div.t-header {
 												
 										}
 								}
-								// span.svg-icon {
-								// 		svg.svg-icon {
-								// 				width: 1.1em;
-								// 				font-size: 1.25em;
-								// 		}
-								// }
+								span.svg-icon {
+										width: 1.3em;
+										font-size: 1.3em;
+								}
 						}
 
 						
@@ -330,7 +332,7 @@ div.t-header {
 										//width: 3em;
 
 										&::placeholder {
-												font-size: 75%;
+												color: #999;
 										}
 								}
 						}
@@ -370,7 +372,7 @@ div.t-header {
 										a {
 //												color: white;
 
-												span.svg-icon, i.icon {
+												span.svg-icon, svg.svg-inline--fa.icon {
 														text-align: center;
 														display: inline-block;
 														width: 1.5rem;
@@ -689,7 +691,7 @@ div.VIATocModuleExerciser {
 				border-top-width: 2px;
 				border-top-style: solid;
 				border-top-color: #333;
-				padding: 1em 0;
+//				padding: 1em 0;
 				margin: 0;
 				cursor: pointer;
 
@@ -698,7 +700,9 @@ div.VIATocModuleExerciser {
 				}
 
 				.accTitle {
-						display: inline;
+						padding: 0.5em 0;
+						margin: 0;
+						display: inline-block;
 						color: @t-color-blue;
 				}
 
@@ -711,24 +715,25 @@ div.VIATocModuleExerciser {
 				span.accIcons {
 						margin-left: 1em;
 						img.iconActivityType {
-								vertical-align: bottom;
+								vertical-align: text-top;
 								width: 2em;
 								height: auto;
 						}
 				}
 
-
+				@ignoredColor: #666;
+				
 				&.ignored {
 						//						background-color: #eee;
 						cursor: default;
 
 						.accTitle {
-								color: #666;
+								color: @ignoredColor;
+								text-decoration-line: line-through;
+								text-decoration-color: black;
+								text-decoration-style: double;
 						}
 						
-						text-decoration-line: line-through;
-						text-decoration-color: black;
-						text-decoration-style: double;
 				}
 				
 				&.isOpen {
@@ -740,14 +745,34 @@ div.VIATocModuleExerciser {
 				}
 
 				span.accActions {
-						float: right;
-						margin: 0 1em;
+						vertical-align: middle;
+						display: inline-block;
+						font-size: 1.5rem;
+						margin: 0.3em 1em;
+
+						a.ignoreTask {
+								svg.fa-toggle-off {
+										color: @ignoredColor;
+								}
+								svg.fa-toggle-on {
+										color: green;
+								}
+						}
 				}
 
 				.accToggle {
-						float: right;
+						vertical-align: middle;
+						display: inline-block;
 						font-size: 2rem;
 
+						// display: inline-flex;
+						// justify-content: space-between;
+						// align-items: center;
+						
+						// .icon {
+						// 		vertical-align: middle;
+						// }
+						
 						.doOpen {display:inline}
 						.doClose {display:none}
 				}
@@ -787,10 +812,10 @@ div.VIATocTaskExerciser {
 
 				div.topToolbar {
 						//								float: right;
-						.bigButton.ignoreTask {
-								margin-top: 0.5em;
-								height: 1.5em;
-						}
+						// .bigButton.ignoreTask {
+						// 		margin-top: 0.5em;
+						// 		height: 1.5em;
+						// }
 				}
 
 				// Titles inside task content, should not be as big as official titles
@@ -887,20 +912,20 @@ div.VIATocTaskExerciser {
 								position: relative;
 								padding-left: 1em;
 								padding-right: 1em;
-								i.checkedIcon {
+								.checkedIcon {
 										visibility: hidden;
 										position: absolute;
 										left: 0.3em;
 										
 								}
 								&.active {
-										i.checkedIcon {
+										.checkedIcon {
 												visibility: visible;
 										}
 
 										&.wrong {
 												background-color: @wrongColor;
-												// i.checkedIcon {
+												// .checkedIcon {
 												// 		visibility: hidden;
 												// }
 										}
@@ -1339,6 +1364,13 @@ div.VIATocTaskExerciser {
 		// Tandem sequence
 		div.VIATandemSequenceExerciser {
 
+				@radius: 0.5em;
+				
+				.card {
+						display: block;
+						border-radius: @radius;	
+				}
+				
 				.randomCode {
 						font-size: 200%;
 						margin: 0.3em;
@@ -1351,34 +1383,119 @@ div.VIATocTaskExerciser {
 								text-align: center;
 						}
 				}
-				
-				div.question {
-						background-color: @t-color-tandem-question;
-						padding: 2em;
-						margin-bottom: 2em;
 
-						div.explanation {
-								margin-bottom: 2em;
+				.player1 {
+						background-color: @t-color-tandem-player1;
+						&.question {
+								background-color: @t-color-tandem-player1-light;
 						}
-
-						div.questionIcon {
-								font-size: 200%;
-						}
+						// &.answer  {
+						// 		background-color: @t-color-tandem-player1;
+						// }
 				}
 
+				.player2 {
+						background-color: @t-color-tandem-player2;
+						&.question {
+								background-color: @t-color-tandem-player2-light;
+						}
+						// &.answer {
+						// 		background-color: @t-color-tandem-player2;
+						// }
+				}
+
+				a.chooser {
+						.card();
+						padding: 0.5em;
+	
+						span.playerLabel {
+								float:right;
+						}
+
+						span.button {
+								margin-top: 1em;
+								display: inline-block;
+						}
+
+						.icon {
+								font-size: 1.5em;
+						}
+						
+				}
+				
 				div.questionAndAnswer {
-						background-color: @t-color-tandem-answer;
-						padding: 1em;
+//						padding: 1em;
+						@biggerFont: 130%;
+						@padding: 1rem;
+						@iconSize: 2rem;
 
-						div.answer {
-								margin-top: 2em;
+						div.body {
+								padding-top: 0.5em;
+						}
 
-								div.answerIcon {
-										font-size: 300%;
-										cursor: pointer;
-										text-align: center;
+						div.question {
+								.card();
+								padding: @padding;
+								//								margin-bottom: 2em;
+								position: relative;
+								z-index: 10;
+
+								div.explanation {
+										margin-bottom: 2em;
+								}
+
+								div.questionIcon {
+										font-weight: bold;
+										.icon {
+												font-size: @iconSize;
+												margin-right: 0.1em;
+										}
 								}
 						}
+
+						
+						div.answer {
+								.card();
+								position: relative;
+								z-index: 5;
+								top: -1.5 * @radius;
+								padding: @padding;
+								padding-top: 2.5 * @radius;
+								margin-top: 0;
+//								font-size: @biggerFont;
+
+								div.answerIcon {
+										font-weight: bold;
+										cursor: pointer;
+										.icon {
+												font-size: @iconSize;
+										}
+								}
+
+						}
+
+						&.hiddenAnswer {
+								div.question {
+//										font-size: @biggerFont;
+								}
+								div.answer {
+										height: 2em;
+										padding: 0;
+								}
+						}
+
+						&.current {
+								&.hiddenAnswer {
+										div.question {
+												font-size: @biggerFont;
+										}
+								}
+								
+								div.answer {
+										font-size: @biggerFont;
+								}
+						}
+								
 				}
 
 				div.navigation {
