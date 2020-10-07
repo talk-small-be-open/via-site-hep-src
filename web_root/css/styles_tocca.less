@@ -42,8 +42,10 @@
 @t-color-toccamodule2: #85ba6a;
 @t-color-toccamodule3: #5ca9d6;
 @t-color-toccamoduleExtras: @t-color-black;
-@t-color-tandem-question: #f08c2d;
-@t-color-tandem-answer: #CDE5F2;
+@t-color-tandem-player1: #8FC3E1;
+@t-color-tandem-player2: #ABCE99;
+@t-color-tandem-player1-light: #CFE5F2;
+@t-color-tandem-player2-light: #DAEAD3;
 @t-color-mothertongue: #d48625;
 @t-color-vocabolario: #b30061;
 @t-color-highlight: #ffe100;
@@ -1362,6 +1364,13 @@ div.VIATocTaskExerciser {
 		// Tandem sequence
 		div.VIATandemSequenceExerciser {
 
+				@radius: 0.5em;
+				
+				.card {
+						display: block;
+						border-radius: @radius;	
+				}
+				
 				.randomCode {
 						font-size: 200%;
 						margin: 0.3em;
@@ -1374,34 +1383,119 @@ div.VIATocTaskExerciser {
 								text-align: center;
 						}
 				}
-				
-				div.question {
-						background-color: @t-color-tandem-question;
-						padding: 2em;
-						margin-bottom: 2em;
 
-						div.explanation {
-								margin-bottom: 2em;
+				.player1 {
+						background-color: @t-color-tandem-player1;
+						&.question {
+								background-color: @t-color-tandem-player1-light;
 						}
-
-						div.questionIcon {
-								font-size: 200%;
-						}
+						// &.answer  {
+						// 		background-color: @t-color-tandem-player1;
+						// }
 				}
 
+				.player2 {
+						background-color: @t-color-tandem-player2;
+						&.question {
+								background-color: @t-color-tandem-player2-light;
+						}
+						// &.answer {
+						// 		background-color: @t-color-tandem-player2;
+						// }
+				}
+
+				a.chooser {
+						.card();
+						padding: 0.5em;
+	
+						span.playerLabel {
+								float:right;
+						}
+
+						span.button {
+								margin-top: 1em;
+								display: inline-block;
+						}
+
+						.icon {
+								font-size: 1.5em;
+						}
+						
+				}
+				
 				div.questionAndAnswer {
-						background-color: @t-color-tandem-answer;
-						padding: 1em;
+//						padding: 1em;
+						@biggerFont: 130%;
+						@padding: 1rem;
+						@iconSize: 2rem;
 
-						div.answer {
-								margin-top: 2em;
+						div.body {
+								padding-top: 0.5em;
+						}
 
-								div.answerIcon {
-										font-size: 300%;
-										cursor: pointer;
-										text-align: center;
+						div.question {
+								.card();
+								padding: @padding;
+								//								margin-bottom: 2em;
+								position: relative;
+								z-index: 10;
+
+								div.explanation {
+										margin-bottom: 2em;
+								}
+
+								div.questionIcon {
+										font-weight: bold;
+										.icon {
+												font-size: @iconSize;
+												margin-right: 0.1em;
+										}
 								}
 						}
+
+						
+						div.answer {
+								.card();
+								position: relative;
+								z-index: 5;
+								top: -1.5 * @radius;
+								padding: @padding;
+								padding-top: 2.5 * @radius;
+								margin-top: 0;
+//								font-size: @biggerFont;
+
+								div.answerIcon {
+										font-weight: bold;
+										cursor: pointer;
+										.icon {
+												font-size: @iconSize;
+										}
+								}
+
+						}
+
+						&.hiddenAnswer {
+								div.question {
+//										font-size: @biggerFont;
+								}
+								div.answer {
+										height: 2em;
+										padding: 0;
+								}
+						}
+
+						&.current {
+								&.hiddenAnswer {
+										div.question {
+												font-size: @biggerFont;
+										}
+								}
+								
+								div.answer {
+										font-size: @biggerFont;
+								}
+						}
+								
 				}
 
 				div.navigation {
