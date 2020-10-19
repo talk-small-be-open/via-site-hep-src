@@ -1,3 +1,3 @@
 testing
 isOpen
-	^exercise isOpen
+	^exerciseGSRENAME isOpen

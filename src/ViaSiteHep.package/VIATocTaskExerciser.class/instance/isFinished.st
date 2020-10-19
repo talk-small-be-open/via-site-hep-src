@@ -1,3 +1,3 @@
 testing
 isFinished
-	^exercise isFinished
+	^exerciseGSRENAME isFinished

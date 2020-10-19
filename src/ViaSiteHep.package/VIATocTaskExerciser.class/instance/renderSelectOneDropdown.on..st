@@ -2,8 +2,8 @@ rendering-visitor
 renderSelectOneDropdown: aSelectOneInput on: html
 	| answerValue input orderedChoices id |
 
-	answerValue := exercise answerOf: aSelectOneInput.
-	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectOneInput.
+	answerValue := exerciseGSRENAME answerOf: aSelectOneInput.
+	orderedChoices := exerciseGSRENAME propertyAt: #orderedChoices of: aSelectOneInput.
 
 	id := html nextId.
 	input := html select

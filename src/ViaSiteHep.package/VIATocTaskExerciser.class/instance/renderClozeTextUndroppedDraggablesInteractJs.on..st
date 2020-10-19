@@ -6,7 +6,7 @@ renderClozeTextUndroppedDraggablesInteractJs: aClozeText on: html
 
 	dragDropInputs ifNotEmpty: [
 
-		shuffledDragDropChoices := exercise propertyAt: #shuffledDragDropChoices of: aClozeText.
+		shuffledDragDropChoices := exerciseGSRENAME propertyAt: #shuffledDragDropChoices of: aClozeText.
 
 		jsEventHandler := (html jQuery ajax
 			callback: [:values | self ajaxUndrop: values in: aClozeText]
@@ -23,7 +23,7 @@ renderClozeTextUndroppedDraggablesInteractJs: aClozeText on: html
 			with: [
 				| usedDraggables |
 				usedDraggables := dragDropInputs gather: [:eachDragDrop |
-					(exercise answerOf: eachDragDrop) value ifNil: [#()]].
+					(exerciseGSRENAME answerOf: eachDragDrop) value ifNil: [#()]].
 
 				(shuffledDragDropChoices copyWithoutAll: usedDraggables) do: [:each |
 					self renderDragDropDraggable: each on: html.

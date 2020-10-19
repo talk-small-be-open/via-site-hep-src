@@ -4,9 +4,9 @@ renderScoreOn: html
 	
 	self isFirstTake ifTrue: [^self].
 	
-	points := exercise points.
-	max := exercise maxPoints.
-	percent := exercise percentFinished.
+	points := exerciseGSRENAME points.
+	max := exerciseGSRENAME maxPoints.
+	percent := exerciseGSRENAME percentFinished.
 	
 	html div class: 'score'; with: [
 

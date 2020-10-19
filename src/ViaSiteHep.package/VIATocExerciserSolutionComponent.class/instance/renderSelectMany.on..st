@@ -2,7 +2,7 @@ rendering
 renderSelectMany: aSelectManyInput on: html
 	| answerValue answerCollection |
 
-	answerValue := exercise answerOf: aSelectManyInput.
+	answerValue := exerciseGSRENAME answerOf: aSelectManyInput.
 	answerCollection := answerValue value.
 	
 	html div with: [
