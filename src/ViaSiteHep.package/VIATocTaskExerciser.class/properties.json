@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"exercise",
 		"onFinishBlock",
 		"onCheckButtonBlock",
 		"parentComponent"
