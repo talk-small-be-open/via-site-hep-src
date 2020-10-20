@@ -3,7 +3,7 @@ renderOrderItems: anOrderItems on: html
 	| answerHolder listId items |
 
 	html div class: 'orderItems'; with: [
-		answerHolder := exercise answerOf: anOrderItems.
+		answerHolder := exerciseGSRENAME answerOf: anOrderItems.
 		items := answerHolder value.
 
 		listId := html nextId.

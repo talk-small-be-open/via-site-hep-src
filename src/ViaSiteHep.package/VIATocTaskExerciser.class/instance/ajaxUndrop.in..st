@@ -1,3 +1,3 @@
 ajax
 ajaxUndrop: aCollection in: aClozeText
-	aClozeText undropItems: aCollection keepIn: #() exercise: exercise
+	aClozeText undropItems: aCollection keepIn: #() exercise: exerciseGSRENAME

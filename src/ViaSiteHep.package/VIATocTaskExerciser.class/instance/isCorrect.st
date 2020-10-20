@@ -1,3 +1,3 @@
 testing
 isCorrect
-	^exercise isCorrect
+	^exerciseGSRENAME isCorrect

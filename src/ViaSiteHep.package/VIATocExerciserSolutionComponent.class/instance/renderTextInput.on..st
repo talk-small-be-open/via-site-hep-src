@@ -2,7 +2,7 @@ rendering
 renderTextInput: aPlaceholder on: html
 	|  clozeInput answerValue solutionMaxSize |
 
-	answerValue := exercise answerOf: aPlaceholder.
+	answerValue := exerciseGSRENAME answerOf: aPlaceholder.
 	solutionMaxSize := (aPlaceholder solutions collect: [:each | each size])
 		ifEmpty: [5]
 		ifNotEmpty: [:c | c max max: 3].

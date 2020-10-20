@@ -2,7 +2,7 @@ rendering
 renderDragDrop: aDragDropInput on: html
 	| answerValue  |
 
-	answerValue := exercise answerOf: aDragDropInput.
+	answerValue := exerciseGSRENAME answerOf: aDragDropInput.
 
 "	self renderHintSymbolOf: aDragDropInput on: html."
 

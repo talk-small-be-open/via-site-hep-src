@@ -2,7 +2,7 @@ rendering-visitor
 renderSelectPoints: aSelectPointsInput on: html
 	| answerValue  |
 
-	answerValue := exercise answerOf: aSelectPointsInput.
+	answerValue := exerciseGSRENAME answerOf: aSelectPointsInput.
 
 	html div
 		class: 'selectPointsInput';

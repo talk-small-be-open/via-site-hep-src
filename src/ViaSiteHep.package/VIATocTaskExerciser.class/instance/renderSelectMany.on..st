@@ -2,7 +2,7 @@ rendering-visitor
 renderSelectMany: aSelectManyInput on: html
 	| answerValue regionDiv  answerCollection  choicesGroups columnsCount buttonId |
 
-	answerValue := exercise answerOf: aSelectManyInput.
+	answerValue := exerciseGSRENAME answerOf: aSelectManyInput.
 "TODO	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectManyInput."
 	choicesGroups := aSelectManyInput choicesGroups copy.
 	columnsCount := choicesGroups size.

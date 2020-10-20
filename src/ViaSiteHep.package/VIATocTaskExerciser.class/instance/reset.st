@@ -1,5 +1,5 @@
 actions
 reset
 	(self confirmYesNo: 'exerciser:reallyReset?') ifTrue: [
-		exercise reset.
+		exerciseGSRENAME reset.
 		self restart]
