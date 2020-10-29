@@ -4,7 +4,7 @@ renderContentOn: html
 		html heading level1; with: [
 			html sT: ('tocca:unit', unitNumber asString)].
 		
-		html unorderedList class: 'modulesList uk-list uk-list-collapse'; with: [
+		html ukList class: 'modulesList'; with: [
 			modules do: [ :each |
 				| tag |
 				tag := html listItem

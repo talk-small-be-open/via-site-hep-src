@@ -2,16 +2,23 @@ as yet unclassified
 hepLoginWithPassword: aPassword
 	| viaUser hepUser |
 	loginOk := false.
+	messageKey := 'login:loginError'.
 	[
 		hepUser := VIATocHepUser loginUsername: email password: aPassword.
-		viaUser := hepUser findOrCreateViaUserWebsite: self website.
+		viaUser := hepUser syncViaUserFromWebsite: self website.
 	] on: VIATocHepUserError do: [ :error |
-		"TODO: Message anzeigen"
-		loginOk := false
+		loginOk := false.
+		messageKey := 'login:hepLoginError'.
 	].
 
 	viaUser ifNotNil: [
-		self session loginUser: viaUser remember: rememberMe.
-		loginOk := true.
-		self answerLoginOk
+		"Check, if Email is verified by hep. Except for invitees, which are always OK"
+		(hepUser isEmailConfirmed not and: [ viaUser isInvitee not ]) ifTrue: [
+			loginOk := false.
+			messageKey := 'login:accountNotVerified'.
+		] ifFalse: [
+			self session loginUser: viaUser remember: rememberMe.
+			loginOk := true.
+			self answerLoginOk
+		]
 	]

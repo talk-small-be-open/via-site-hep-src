@@ -31,10 +31,10 @@ renderPageStartOn: html
 		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:passwordConfirmation'.
 			html div class: 'uk-form-controls'; with: [html ukPasswordInput required; class: ''; on: #passwordConfirmation of: self]].
-"		html div class: 'uk-margin-small'; with: [
+		html div class: 'uk-margin-small'; with: [
 			html label class: 'uk-form-label'; t: 'register:invitationCode'.
 			html div class: 'uk-form-controls'; with: [
-				html ukTextInput class: ''; id: 'invitationCode'; on: #invitationCode of: self]]."
+				html ukTextInput class: ''; id: 'invitationCode'; on: #invitationCode of: self]].
 
 
 "		html div class: 'uk-margin-small'; with: [

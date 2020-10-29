@@ -18,4 +18,8 @@ createHepLogin
 	"Autologin default on if mobile device"
 	user useAutologin: (self session isMobileDevice).
 
+	self isInvited ifTrue: [ 
+		invitationCommand executeOnApplication: self app currentUser: user.
+	].
+
 	self gotoPage: #yourHepAccount.

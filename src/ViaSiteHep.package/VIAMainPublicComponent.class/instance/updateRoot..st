@@ -7,5 +7,5 @@ updateRoot: anHtmlRoot
 		anHtmlRoot javascript defer; with: self googleAnalyticsJs].
 	
 	"Login credentials für hello.js"
-	self wd hasSocialLogin ifTrue: [
-		anHtmlRoot javascript defer; with: self wd helloJavascript ]
+"	self wd hasSocialLogin ifTrue: [
+		anHtmlRoot javascript defer; with: self wd helloJavascript ]"
