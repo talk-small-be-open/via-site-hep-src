@@ -13,8 +13,5 @@ createNewFn: aFirstName ln: aLastName pw: aPassword em: anEmail
 	} aD.
 
 	response := self postData: postData endpoint: 'deutsch/V1/customers'.
-	
-	"TODO: Fehler abfangen, ^ nil"
-"	response at: 'message' ifPresent: [ :m | self error: m ]."
 
 	^ self fromDictionary: response

@@ -11,7 +11,9 @@
 		"lastname",
 		"groupId",
 		"isEmailConfirmed",
-		"email"
+		"email",
+		"apiToken",
+		"confirmationKey"
 	],
 	"name" : "VIATocHepUser",
 	"type" : "normal"

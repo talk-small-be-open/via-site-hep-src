@@ -1,6 +1,6 @@
 as yet unclassified
 hepLoginWithPassword: aPassword
-	| viaUser hepUser |
+	| viaUser hepUser skipVerification |
 	loginOk := false.
 	messageKey := 'login:loginError'.
 	[
@@ -12,13 +12,18 @@ hepLoginWithPassword: aPassword
 	].
 
 	viaUser ifNotNil: [
-		"Check, if Email is verified by hep. Except for invitees, which are always OK"
-		(hepUser isEmailConfirmed not and: [ viaUser isInvitee not ]) ifTrue: [
-			loginOk := false.
-			messageKey := 'login:accountNotVerified'.
-		] ifFalse: [
+		"Auto-activate invited users"
+		viaUser isInvitee ifTrue: [
+			hepUser isEmailConfirmed ifFalse: [ hepUser sendEmailConfirmed ] ].
+		
+		"Check, if Email is verified by hep."
+		skipVerification := self isProduction and: [VIATocHepUser isApiStaging].
+		(skipVerification or: [hepUser isEmailConfirmed]) ifTrue: [
 			self session loginUser: viaUser remember: rememberMe.
 			loginOk := true.
 			self answerLoginOk
+		] ifFalse: [
+			loginOk := false.
+			messageKey := 'login:accountNotVerified'.
 		]
 	]

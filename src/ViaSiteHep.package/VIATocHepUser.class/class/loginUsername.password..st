@@ -1,6 +1,6 @@
 as yet unclassified
 loginUsername: aUsername password: aPasswordString
-	| postData response token data |
+	| postData response data apiToken instance |
 
 	postData := {
 		'username'->aUsername.
@@ -8,10 +8,13 @@ loginUsername: aUsername password: aPasswordString
 	} aD.
 	
 	response := self postData: postData endpoint: 'deutsch/V1/integration/customer/token'.
-	token := response.
+	apiToken := response.
 
-	"TODO Evt. immer user daten holen? und abgleichen? overhead?"
-	data := self getUserData: token.
+	"Get users data. Needed for validation-ok, email changes, ..."
+	data := self getUserData: apiToken.
 	
-	"TODO User oder token oder was?"
-	^ self fromDictionary: data
+	instance := self fromDictionary: data.
+	
+	instance apiToken: apiToken.
+	
+	^ instance
