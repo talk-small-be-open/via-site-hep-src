@@ -4,7 +4,7 @@ renderHepLoginOn: html
 	html form id: 'loginForm'; class: 'uk-form uk-form-stacked'; with: [
 
 		loginOk = false ifTrue: [
-			html ukLabelDanger t: 'login:loginError'.
+			html ukLabelDanger t: messageKey.
 			html break.
 		].
 

@@ -5,5 +5,5 @@ createInvitationCode
 		website: self website;
 		store;
 		yourself.
-		
-	self inform: invitationCommand invitationCode
+
+	self showInvitationCode

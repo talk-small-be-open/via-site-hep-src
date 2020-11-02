@@ -7,6 +7,5 @@ initializeFromDictionary: aDictionary
 	firstname := aDictionary at: 'firstname'.
 	lastname := aDictionary at: 'lastname'.
 	email := aDictionary at: 'email'.
-	
-	isEmailConfirmed := true.
-	aDictionary at: 'confirmation' ifPresent: [ :c | c ifNotBlank: [ isEmailConfirmed := false ] ].
+
+	confirmationKey := aDictionary at: 'confirmation' ifAbsent: [ nil ].

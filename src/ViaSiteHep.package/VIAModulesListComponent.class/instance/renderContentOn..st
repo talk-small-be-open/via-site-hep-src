@@ -4,7 +4,7 @@ renderContentOn: html
 		html heading level1; with: [
 			html t: titleKey].
 		
-		html unorderedList class: 'modulesList'; with: [
+		html ukList class: 'modulesList'; with: [
 			modules do: [ :each |
 				html listItem: [
 					html anchor

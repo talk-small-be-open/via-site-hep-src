@@ -2,7 +2,7 @@ rendering
 renderMyModulesOn: html
 	self currentPortfolio notDoneModuleExercises ifNotEmpty: [:collection |
 		html heading level4; t: 'myPortfolio:myModules'.
-		html unorderedList class: 'modulesList'; with: [
+		html ukList class: 'modulesList'; with: [
 			collection do: [:each |
 				html listItem: [
 					self renderModule: each module on: html.

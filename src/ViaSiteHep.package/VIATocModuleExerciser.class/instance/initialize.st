@@ -18,7 +18,6 @@ initialize
 "	subtitleTags := classification contextTags,
 		classification grammarTopicTags,
 		classification topicTags."
-	isAllMothertongue := model tasks allSatisfy: [ :each |
-		each classification contextTags anySatisfy: [ :eachTag | eachTag code = 'mothertongue' ]].
+	isAllMothertongue := model isMothertongue.
 
 	self build
