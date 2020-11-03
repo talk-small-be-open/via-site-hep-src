@@ -46,7 +46,11 @@
 @t-color-tandem-player2: #ABCE99;
 @t-color-tandem-player1-light: #CFE5F2;
 @t-color-tandem-player2-light: #DAEAD3;
-@t-color-mothertongue: #d48625;
+
+@t-color-level-normal: @t-color-blue;
+@t-color-level-intermediate: @t-color-blue;
+@t-color-level-mothertongue: #d48625;
+
 @t-color-vocabolario: #b30061;
 @t-color-highlight: #ffe100;
 @t-color-text: @t-color-black;
@@ -199,15 +203,15 @@ div.pillarParagraph {
 }
 
 .level-l1 {
-		color: blue;
+		color: @t-color-level-normal;
 }
 
 .level-l2 {
-		color: lightblue;
+		color: @t-color-level-intermediate;
 }
 
 .level-l3 {
-		color: orange;
+		color: @t-color-level-mothertongue;
 }
 
 // =======================================================================
@@ -678,7 +682,7 @@ div.VIATocModuleExerciser {
 				margin-bottom: 1em;
 
 				&.allMothertongue {
-						color: @t-color-mothertongue;
+						color: @t-color-level-mothertongue;
 				}
 		}
 
@@ -708,7 +712,7 @@ div.VIATocModuleExerciser {
 
 				&.mothertongue {
 						.accTitle {
-								color: @t-color-mothertongue;
+								color: @t-color-level-mothertongue;
 						}
 				}
 
@@ -1123,6 +1127,21 @@ div.VIATocTaskExerciser {
 
 						span.assetInfo {
 								float: right;
+						}
+				}
+
+				div.youtubePlayer, div.vimeoPlayer {
+						position: relative;
+						width: 100%;
+						height: 0;
+						padding-bottom: 56.25%;
+
+						iframe {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
 						}
 				}
 
@@ -1549,12 +1568,59 @@ div.VIAUnitComponent {
 		.toccamoduleBorderColor('ul.modulesList li');
 		.toccamoduleColor('h1');
 
+		h1.unitNavigation {
+				// margin: 0;
+				// color: white;
+				// text-align: center;
+				// padding: 0;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				// position: sticky;
+				// top: @t-header-height;
+				// z-index: 99;
+
+				a {
+						color: inherit;
+				}
+
+				span {
+						vertical-align: middle;
+						white-space: nowrap;
+				}
+
+				span.left {
+						text-align: left;
+						display: inline-block;
+						width: 3em;						
+				}
+
+				span.right {
+						text-align: right;
+						display: inline-block;
+						width: 3em;						
+				}
+				
+				// span.arrow {
+				// 		// margin: 0 0.5em;
+				// 		display: inline-block;
+				// 		width: 2em;
+				// }
+
+				// span.backText {
+				// 		font-weight: normal;
+				// }
+		}
+
+
+		
 		margin-top: 1em;
 		
 }
 
 ul.modulesList {
-		.uk-list();
+//		.uk-list();
 		
 		padding-left: 0;
 		list-style-type: none;
@@ -1562,12 +1628,25 @@ ul.modulesList {
 		li {
 				.catalogListItem();
 
-				&.inWork {
-						background-color: #FEEE35;
-				}
+				// color: @t-color-blue;
+				// font-weight: bold;
+				
+				// &.inWork {
+				// 		background-color: #FEEE35;
+				// }
 
-				&.finished {
-						background-color: #57DA48;
+				// &.finished {
+				// 		background-color: #57DA48;
+				// }
+
+				&.level-l1 {
+						font-weight: bold;
+				}
+				&.level-l2 {
+						font-weight: normal;
+				}
+				&.level-l3 {
+						font-weight: bold;
 				}
 
 				span.indexCode {
@@ -1576,11 +1655,17 @@ ul.modulesList {
 						font-weight: bold;
 				}
 
-				span.duration {
-						display: inline-block;
-						width: 3em;
-						font-weight: bold;
+				span.moduleStatus {
+						margin-top: 0.2em;
+						color: black;
+						float: right;
 				}
+
+				// span.duration {
+				// 		display: inline-block;
+				// 		width: 3em;
+				// 		font-weight: bold;
+				// }
 		}
 }
 
@@ -1602,6 +1687,32 @@ div.backButton {
 		}
 }
 
+div.VIATocTeacherMyCockpit {
+		h1, h2, h3 {
+				text-align: left;
+		}
+		
+//		ul.studentsGroups {
+		li {
+				.catalogListItem()
+		}
+//		}
+
+		a.invitationCode {
+				font-family: monospace;
+				font-size: 120%;
+				border: 1px solid black;
+		}
+}
+
+
+div.lightboxModal {
+		div.invitationCode {
+				font-size: 300%;
+				text-align: center;
+				font-family: monospace;
+		}
+}
 
 // ============================================
 // Misc
