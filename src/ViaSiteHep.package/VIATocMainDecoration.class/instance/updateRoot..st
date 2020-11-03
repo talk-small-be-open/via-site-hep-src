@@ -2,6 +2,7 @@ as yet unclassified
 updateRoot: anHtmlRoot
 	super updateRoot: anHtmlRoot.
 
+	"Font zeitung pro"
 	anHtmlRoot stylesheet url: 'https://use.typekit.net/yba2pyn.css'.
 
 	"We use some outofthebox components"
