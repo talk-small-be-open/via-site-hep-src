@@ -1,3 +1,3 @@
 testing
 isUnchecked
-	^exerciseGSRENAME isUnchecked
+	^exercise isUnchecked

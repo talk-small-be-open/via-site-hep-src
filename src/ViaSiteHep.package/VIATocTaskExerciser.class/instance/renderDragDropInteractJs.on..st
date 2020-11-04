@@ -2,7 +2,7 @@ rendering-visitor
 renderDragDropInteractJs: aDragDropInput on: html
 	| answerValue answerCollection jsEventHandler dropTargetId |
 
-	answerValue := exerciseGSRENAME answerOf: aDragDropInput.
+	answerValue := exercise answerOf: aDragDropInput.
 
 	answerCollection := answerValue value.
 

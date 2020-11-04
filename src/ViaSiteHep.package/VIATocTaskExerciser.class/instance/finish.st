@@ -4,11 +4,11 @@ finish
 	"Mehrfach-Robustheit"
 	self isFinished ifTrue: [^self].
 	
-	exerciseGSRENAME beFinished.
+	exercise beFinished.
 "	self removeDecoration: formDecoration.
 	formDecoration := nil."
 	
-	self show: ((VIATocExerciserFinishedComponent exercise: exerciseGSRENAME)
+	self show: ((VIATocExerciserFinishedComponent exercise: exercise)
 		displayCongratulation;
 		yourself) onAnswer: [self close].
 	onFinishBlock ifNotNil: [onFinishBlock value]

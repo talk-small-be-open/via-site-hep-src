@@ -2,7 +2,7 @@ rendering-visitor
 renderSelectOneRadio: aSelectOneInput on: html
 	| div answerValue input choicesGroups columnsCount buttonId |
 
-	answerValue := exerciseGSRENAME answerOf: aSelectOneInput.
+	answerValue := exercise answerOf: aSelectOneInput.
 "	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectOneInput."
 
 	choicesGroups := aSelectOneInput choicesGroups copy.

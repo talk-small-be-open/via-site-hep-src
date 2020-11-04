@@ -16,5 +16,12 @@ renderContentOn: html
 		class: 'mapPairsClickClick';
 		id: exerciseId;
 		with: [
+			html div class: 'head'; with: [
+				html div class: ''; with: [ html iconClickDown ].
+				html div.
+				html div class: ''; with: [ html iconClickDown ].
+				html div.
+			].
+			
 			taskBrick pairInputs do: [:each |
 				self renderObjectPair: each on: html]]

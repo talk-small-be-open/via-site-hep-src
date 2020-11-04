@@ -2,7 +2,7 @@ rendering-visitor
 renderTextInput: aPlaceholder on: html
 	| answerHolder clozeInput popoverOptions solutionMaxSize |
 
-	answerHolder := exerciseGSRENAME answerOf: aPlaceholder.
+	answerHolder := exercise answerOf: aPlaceholder.
 	solutionMaxSize := (aPlaceholder solutions collect: [:each | each size])
 		ifEmpty: [5]
 		ifNotEmpty: [:c | c max max: 3].
@@ -32,7 +32,7 @@ renderTextInput: aPlaceholder on: html
 			#title->''.
 			#content->popoverHtml.
 			#closeable->false.
-			#placement->'top'.
+			#placement->'auto-top'.
 			#trigger->'manual'.
 			#multi->true.
 			#padding->true.

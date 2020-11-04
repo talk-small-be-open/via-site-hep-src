@@ -3,7 +3,7 @@ renderOrderItems: anOrderItems on: html
 	| answerHolder listId items |
 
 	html div class: 'orderItems'; with: [
-		answerHolder := exerciseGSRENAME answerOf: anOrderItems.
+		answerHolder := exercise answerOf: anOrderItems.
 		items := answerHolder value.
 
 		listId := html nextId.
@@ -24,7 +24,10 @@ renderOrderItems: anOrderItems on: html
 			
 				items do: [:each |
 					html listItem passenger: each; class: 'orderItem'; with: [
-						each acceptRenderingVisitor: self on: html]]].
+						html div class: 'orderSymbol'; with: [
+							html iconOrderBullet ].
+						html div class: 'orderContent'; with: [
+							each acceptRenderingVisitor: self on: html]]]].
 
 		self renderCorrection: answerHolder on: html.
 		].

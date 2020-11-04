@@ -2,7 +2,7 @@ rendering
 renderSelectOne: aSelectOneInput on: html
 	| answerValue choice |
 	
-	answerValue := exerciseGSRENAME answerOf: aSelectOneInput.
+	answerValue := exercise answerOf: aSelectOneInput.
 
 	choice := answerValue value.
 	
