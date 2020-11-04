@@ -1,4 +1,4 @@
 actions
 toggleIgnore
-	exerciseGSRENAME isIgnored: exerciseGSRENAME isIgnored not.
-	exerciseGSRENAME isIgnored ifTrue: [ exerciseGSRENAME beClosed ].
+	exercise isIgnored: exercise isIgnored not.
+	exercise isIgnored ifTrue: [ exercise beClosed ].

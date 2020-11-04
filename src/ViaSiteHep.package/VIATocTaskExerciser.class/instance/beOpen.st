@@ -1,3 +1,3 @@
 as yet unclassified
 beOpen
-	exerciseGSRENAME beOpen
+	exercise beOpen

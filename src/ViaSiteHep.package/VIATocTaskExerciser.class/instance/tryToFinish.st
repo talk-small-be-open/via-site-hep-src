@@ -1,3 +1,3 @@
 as yet unclassified
 tryToFinish
-	exerciseGSRENAME isCorrect ifTrue: [self finish]
+	exercise isCorrect ifTrue: [self finish]

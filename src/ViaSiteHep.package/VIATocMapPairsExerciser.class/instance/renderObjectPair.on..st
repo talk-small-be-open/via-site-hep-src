@@ -26,7 +26,8 @@ renderObjectPair: anObjectPair on: html
 					self renderWithParent: leftObject on: html].
 
 			html div class: 'middleColumn'; with: [
-				html iconLeftRight
+"				html iconClick."
+				html iconLeftRight.
 			].
 
 			html div

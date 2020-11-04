@@ -1,3 +1,3 @@
 testing
 isFirstTake
-	^exerciseGSRENAME isFirstTake
+	^exercise isFirstTake

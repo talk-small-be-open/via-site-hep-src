@@ -2,7 +2,7 @@ rendering
 renderHighlightArea: aHighlightArea on: html
 	|  answerHolder  |
 
-	answerHolder := exerciseGSRENAME answerOf: aHighlightArea.
+	answerHolder := exercise answerOf: aHighlightArea.
 
 	html span
 		class: 'highlightArea solution';

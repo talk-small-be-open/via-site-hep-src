@@ -1,4 +1,4 @@
 actions
 check
-	exerciseGSRENAME checkAnswers.
+	exercise checkAnswers.
 	self tryToFinish.

@@ -1,3 +1,3 @@
 as yet unclassified
 toggleOpen
-	exerciseGSRENAME toggleOpen
+	exercise toggleOpen
