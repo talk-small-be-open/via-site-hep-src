@@ -2,6 +2,8 @@ javascript
 jsForVimeoVideoPlayer: aVideoPlayer id: aVideoId
 	| options |
 	
+	"See https://developer.vimeo.com/player/sdk"
+	
 	options := {
 		'id'->aVideoPlayer videoId.
 		'height'->aVideoPlayer height asString.
