@@ -7,6 +7,8 @@ initialize
 	self session viewportWidth: 600.
 	
 	flashMessages := OrderedCollection new.
+	backtraced := Array new: 1.
+	
 	self initializeMenus.
 	
 "	self addDecoration: VIAMainDecoration new."

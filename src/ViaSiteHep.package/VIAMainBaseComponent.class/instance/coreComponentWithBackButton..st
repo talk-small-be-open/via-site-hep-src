@@ -1,7 +1,10 @@
 accessing
 coreComponentWithBackButton: aComponent
-	coreComponent ifNil: [coreComponent := aComponent. ^self].
+	"obsolete?"
+	
+	self coreComponent ifNil: [
+		self coreComponent: aComponent. ^self].
 	
 	aComponent addBackButton.
 	
-	coreComponent show: aComponent
+	self coreComponent show: aComponent

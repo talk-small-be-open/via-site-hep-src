@@ -6,12 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"coreComponent",
 		"flashMessages",
 		"topMenu",
 		"mainMenu",
 		"menuRenderer",
-		"topMenuRenderer"
+		"topMenuRenderer",
+		"backtraced"
 	],
 	"name" : "VIAMainBaseComponent",
 	"type" : "normal"

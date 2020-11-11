@@ -36,6 +36,7 @@ renderContentOn: html
 					html span class: 'moduleStatus'; with: [ 
 "						(self currentPortfolio isInWorkModule: each) ifTrue: [ html span: 'W' ].
 						(self currentPortfolio isDoneModule: each) ifTrue: [ html span: 'D' ]."
-						html iconProgressFromPercent: (self currentPortfolio percentDoneModule: each).
+						showProgress ifTrue: [
+							html iconProgressFromPercent: (self currentPortfolio percentDoneModule: each) ].
 					]
 				] ] ] ]

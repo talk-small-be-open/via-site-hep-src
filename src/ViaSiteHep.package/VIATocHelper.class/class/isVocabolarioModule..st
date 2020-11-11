@@ -1,3 +1,3 @@
 testing
 isVocabolarioModule: aModule
-	^ aModule indexCode first = 'V'
+	^ self isVocabolarioCode: aModule indexCode first
