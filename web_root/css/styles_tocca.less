@@ -1018,12 +1018,15 @@ div.VIATocTaskExerciser {
 
 								.dropHover();
 
+								// Drag element in a drop container
+								span.dragDropDraggable {
+										margin-right: 10px;
+								}
+
+								// Container, combining correction and element
 								span.draggableContainer {
 										white-space: nowrap;
-										// Drag element in a drop container
-										span.dragDropDraggable {
-												margin-right: 10px;
-										}
+										display: inline-block;
 								}
 						}
 
@@ -1247,11 +1250,21 @@ div.VIATocTaskExerciser {
 				div.mapPairsClickClick {
 						@pairBorder: 1px solid black;
 						
-						border-top: @pairBorder;
+//						border-top: @pairBorder;
 						display: table;
 						border-collapse: collapse;
 
-						
+
+						div.head {
+								display: table-row;
+								border-bottom: @pairBorder;
+								div {
+										display: table-cell;
+										text-align: center;
+										padding-bottom: 5px;
+								}
+						}
+
 						div.objectPair {
 								display: table-row;
 								border-bottom: @pairBorder;
@@ -1259,6 +1272,10 @@ div.VIATocTaskExerciser {
 								.selection() {
 										&.selected {
 												background-color: yellow;
+										}
+
+										&:hover {
+												background-color: lightyellow;
 										}
 								}
 								
@@ -1564,7 +1581,36 @@ div.VIATocTaskExerciser {
 						padding: 0;
 
 						li.orderItem {
+								@pairBorder: 1px solid black;
+								@pad: 0.3em;
+
+								&:hover {
+										background-color: #eee;
+								}
+								
+								border-top: @pairBorder;
+								&:last-child {
+										border-bottom: @pairBorder;
+								}
+								
 								cursor: move;
+								display: flex;
+								justify-content: flex-start;
+								align-items: flex-start;
+								margin-top: 0;
+								margin-bottom: 0;
+								padding: @pad 0;
+
+								div.orderSymbol {
+										// width: 2em;
+										// display: inline-block;
+										flex: 0 0 2rem;
+								}
+
+								div.orderContent {
+//										display: inline-block;
+//										flex-basis: auto;
+								}
 						}
 				}
 		}
@@ -1730,10 +1776,15 @@ div.lightboxModal {
 
 figure.inlineAssetImage {
 		display: inline-block;
+		margin: 0;
 
-		// figcaption {
-		// 		display: none;
-		// }
+		figcaption {
+				line-height: 1em;
+				span.assetInfo {
+						font-size: 75%;
+						float: right;
+				}
+		}
 }
 
 span.inlineAssetAudio {
@@ -1768,13 +1819,14 @@ span.correctIcon {
 
 span.wrongIcon {
 		color: red;
-		// padding-left: 4px;
-		// padding-right: 2px;
+		padding-left: 2px;
+		padding-right: 2px;
 }
 
 div.webui-popover {
 		div.webui-popover-content {
 				word-break: break-word;
+				max-width: 20em;
 		}
 		
 		span.markAsEmpty {
