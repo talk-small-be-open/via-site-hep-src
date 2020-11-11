@@ -1,3 +1,3 @@
 rendering
 children
-	^Array with: coreComponent with: menuRenderer
+	^Array with: self coreComponent with: menuRenderer

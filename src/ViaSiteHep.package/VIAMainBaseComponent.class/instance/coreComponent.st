@@ -1,3 +1,3 @@
 accessing
 coreComponent
-	^ coreComponent
+	^ backtraced at: 1

@@ -3,6 +3,8 @@ renderPageStartOn: html
 	html heading t: 'register:title'.
 	html paragraph: [html t: 'register:info'].
 
+	self renderTeacherRegistrationOn: html.
+
 	html form noAutocomplete; class: 'uk-form uk-form-stacked'; with: [
 		html div class: 'uk-margin-small'; style: 'height: 0.01px; color: transparent; overflow: hidden'; with: [
 			html label class: 'uk-form-label'; style: 'height: 0.01px;'; with: 'Are you a bot?'.

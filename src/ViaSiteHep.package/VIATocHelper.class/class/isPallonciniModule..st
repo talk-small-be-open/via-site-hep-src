@@ -1,3 +1,3 @@
 testing
 isPallonciniModule: aModule
-	^ aModule indexCode first = 'P'
+	^ self isPallonciniCode: aModule indexCode first

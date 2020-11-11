@@ -9,3 +9,5 @@ initialize
 	modules := modules sortedBy: [ :each | each indexCode ].
 	
 	self session currentToccaunit: unitNumber.
+	
+	showProgress := (VIATocHelper isVocabolarioCode: unitNumber) not.
