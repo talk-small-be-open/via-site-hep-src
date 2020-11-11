@@ -108,14 +108,17 @@ function selectmany_preventTooManyChecks(regionId, buttonId, number, message) {
 /* Haupt JS init */
 $(document).ready(function(){
 
-	JoelPurra.PlusAsTab.setOptions({
-		// Use the enter key as tab keys
-		key: [13]
-	});	
+	if ( ! (typeof JoelPurra === 'undefined') ) {
+		JoelPurra.PlusAsTab.setOptions({
+			// Use the enter key as tab keys
+			key: [13]
+		});
+
+		$('input.clozeTextPlaceholder').plusAsTab();
+	}
 
 	$('.popover').webuiPopover({trigger:'hover', placement:'auto'});
 	$('span.dictionaryEntry').webuiPopover({trigger:'hover', placement:'auto-top'});
-	$('input.clozeTextPlaceholder').plusAsTab();
 
   $("textarea").autosize();
 
