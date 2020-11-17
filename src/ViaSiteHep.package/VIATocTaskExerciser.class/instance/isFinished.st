@@ -1,3 +1,0 @@
-testing
-isFinished
-	^exercise isFinished

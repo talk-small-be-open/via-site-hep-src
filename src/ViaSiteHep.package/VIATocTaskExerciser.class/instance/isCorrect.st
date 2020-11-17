@@ -1,3 +1,0 @@
-testing
-isCorrect
-	^exercise isCorrect
