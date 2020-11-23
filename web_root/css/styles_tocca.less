@@ -860,7 +860,8 @@ div.VIATocTaskExerciser {
 
 				
 				input[type=text] {
-						font: inherit;
+						font-family: inherit;
+						font-size: inherit;
 						padding: 0 2px;
 						margin: -2px 0;
 				}
@@ -1404,220 +1405,330 @@ div.VIATocTaskExerciser {
 				}
 				
 				
-		}
 
+				div.VIAUserPairingComponent {
 
-		
-		// Tandem sequence
-		div.VIATandemSequenceExerciser {
-
-				@radius: 0.5em;
-				
-				.card {
-						display: block;
-						border-radius: @radius;	
-				}
-				
-				.randomCode {
-						font-size: 200%;
-						margin: 0.5em 0;
-				}
-
-				div.randomCodes {
-						margin: 0.5em 0;
-
-						.randomCode {
-								text-align: center;
-						}
-				}
-
-				.player1 {
-						background-color: @t-color-tandem-player1;
-						&.question {
-								background-color: @t-color-tandem-player1-light;
-						}
-						// &.answer  {
-						// 		background-color: @t-color-tandem-player1;
-						// }
-				}
-
-				.player2 {
-						background-color: @t-color-tandem-player2;
-						&.question {
-								background-color: @t-color-tandem-player2-light;
-						}
-						// &.answer {
-						// 		background-color: @t-color-tandem-player2;
-						// }
-				}
-
-				a.chooser {
-						.card();
-						padding: 0.5em;
-	
-						span.playerLabel {
-								float:right;
+						.pairingCode() {
+								border: 2px solid black;
+								padding: 0.5em;
 								font-size: 200%;
 						}
 
-						span.button {
-								margin-top: 1em;
-								display: inline-block;
-						}
+						div.pairingStatus {
+								margin: 1em 0;
 
-						.icon {
-								font-size: 1.5em;
+								div.pairingMessage {
+										margin: 1em 0;
+										color: green;
+								}
 						}
 						
+						&.VIAUserPairingPassiveComponent {
+								div.yourId {
+										.pairingCode();
+										
+										margin: 1em 0;
+
+										span.message {
+										}
+										
+										span.theId {
+										}
+								}
+						}
+
+						&.VIAUserPairingActiveComponent {
+								div.explanation {
+										margin: 0.5em 0;
+								}
+								input.codeInput {
+										.pairingCode();
+										width: 3em;
+								}
+						}
 				}
 				
-				div.questionAndAnswer {
-//						padding: 1em;
-						@biggerFont: 130%;
-						@padding: 1rem;
-						@iconSize: 2rem;
+				
+				// Tandem sequence
+				div.VIATandemSequenceExerciser {
 
-						div.body {
-								padding-top: 0.5em;
+						@radius: 0.5em;
+
+						.ajaxAction {
+								display: contents;
+								cursor: pointer;
 						}
+						
+						.card {
+								display: block;
+								border-radius: @radius;
+								padding: 0.5em;
+						}
+						
+						// .randomCode {
+						// 		font-size: 200%;
+						// 		margin: 0.5em 0;
+						// }
 
-						div.question {
+						// div.randomCodes {
+						// 		margin: 0.5em 0;
+
+						// 		.randomCode {
+						// 				text-align: center;
+						// 		}
+						// }
+
+						a.chooser {
 								.card();
-								padding: @padding;
-								//								margin-bottom: 2em;
-								position: relative;
-								z-index: 10;
-
+								padding: 0.5em;
+								
 								span.playerLabel {
 										float:right;
-										font-size: 120%;
-										font-weight: bold;
+										font-size: 200%;
 								}
 
-								div.explanation {
+								span.button {
 										margin-top: 1em;
-										margin-bottom: 1em;
+										display: inline-block;
 								}
 
-								div.questionIcon {
-										font-weight: bold;
-										.icon {
-												font-size: @iconSize;
-												margin-right: 0.1em;
-										}
+								.icon {
+										font-size: 1.5em;
 								}
+								
 						}
-
 						
-						div.answer {
-								.card();
-								position: relative;
-								z-index: 5;
-								top: -1.5 * @radius;
-								padding: @padding;
-								padding-top: 2.5 * @radius;
-								margin-top: 0;
-//								font-size: @biggerFont;
+						div.questionAndAnswer {
+								//						padding: 1em;
+								@biggerFont: 130%;
+								@padding: 1rem;
+								@iconSize: 2rem;
 
-								div.answerIcon {
-										font-weight: bold;
-										cursor: pointer;
-										.icon {
-												font-size: @iconSize;
+								div.body {
+										padding-top: 0.5em;
+								}
+
+								div.question {
+										.card();
+
+										&.history {
+												background-color: #ddd;
+										}
+
+										padding: @padding;
+										//								margin-bottom: 2em;
+										position: relative;
+										z-index: 10;
+
+										span.playerLabel {
+												float:right;
+												font-size: 120%;
+												font-weight: bold;
+										}
+
+										div.explanation {
+												margin-top: 1em;
+												margin-bottom: 1em;
+										}
+
+										div.questionIcon {
+												font-weight: bold;
+												.icon {
+														font-size: @iconSize;
+														margin-right: 0.1em;
+												}
 										}
 								}
 
-						}
+								
+								div.answer {
+										.card();
+										position: relative;
+										z-index: 5;
+										top: -1.5 * @radius;
+										padding: @padding;
+										padding-top: 2.5 * @radius;
+										margin-top: 0;
+										//								font-size: @biggerFont;
 
-						&.hiddenAnswer {
-								div.question {
-//										font-size: @biggerFont;
+										&.history {
+												background-color: #eee;
+										}
+
+										div.answerIcon {
+												font-weight: bold;
+												cursor: pointer;
+												.icon {
+														font-size: @iconSize;
+												}
+										}
+
+										div.correction {
+												margin: 1em 0;
+										}
+
 								}
-								// div.answer {
-								// 		height: 2em;
-								// 		padding: 0;
-								// }
-						}
 
-						&.current {
 								&.hiddenAnswer {
 										div.question {
+												//										font-size: @biggerFont;
+										}
+										// div.answer {
+										// 		height: 2em;
+										// 		padding: 0;
+										// }
+								}
+
+								&.current {
+										&.hiddenAnswer {
+												div.question {
+														font-size: @biggerFont;
+												}
+										}
+										
+										div.answer {
 												font-size: @biggerFont;
 										}
 								}
 								
-								div.answer {
-										font-size: @biggerFont;
+						}
+
+						.player1 {
+								background-color: @t-color-tandem-player1;
+								&.question {
+										background-color: @t-color-tandem-player1-light;
+								}
+								// &.answer  {
+								// 		background-color: @t-color-tandem-player1;
+								// }
+						}
+
+						.player2 {
+								background-color: @t-color-tandem-player2;
+								&.question {
+										background-color: @t-color-tandem-player2-light;
+								}
+								// &.answer {
+								// 		background-color: @t-color-tandem-player2;
+								// }
+						}
+
+						div.step2Instructions {
+								.card();
+								background-color: #ddd;
+						}
+
+						div.summary {
+								.card();
+								background-color: #ddd;
+
+								div.points {
+										font-size: 200%;
+										margin: 1em 0;
 								}
 						}
+						
+						div.navigation {
+								position: sticky;
+								bottom: 0;
+								background-color: white;
+								font-size: 200%;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+
+								a {
+										color: inherit;
+								}
+
+								// span.leftRight {
+								// 		width: 15%;
+								// 		a {
+								// 				color: inherit;
+								// 		}
+								// }
+
 								
-				}
-
-				div.navigation {
-						position: sticky;
-						bottom: 0;
-						background-color: white;
-						font-size: 200%;
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-
-						a {
-								color: inherit;
 						}
 
-						// span.leftRight {
-						// 		width: 15%;
-						// 		a {
-						// 				color: inherit;
-						// 		}
-						// }
-
+						div.toolbar {
+								margin: 1em 0;
+								
+								div.p2pStatus {
+										margin: 0 0.5em;
+										float: right;
+								}
+						}
 						
 				}
-				
-		}
 
-		div.orderItems {
-				ul.orderItemsList {
-						list-style: none;
-						padding: 0;
+				div.orderItems {
+						ul.orderItemsList {
+								list-style: none;
+								padding: 0;
 
-						li.orderItem {
-								@pairBorder: 1px solid black;
-								@pad: 0.3em;
+								li.orderItem {
+										@pairBorder: 1px solid black;
+										@pad: 0.3em;
 
-								&:hover {
-										background-color: #eee;
+										&:hover {
+												background-color: #eee;
+										}
+										
+										border-top: @pairBorder;
+										&:last-child {
+												border-bottom: @pairBorder;
+										}
+										
+										cursor: move;
+										display: flex;
+										justify-content: flex-start;
+										align-items: flex-start;
+										margin-top: 0;
+										margin-bottom: 0;
+										padding: @pad 0;
+
+										div.orderSymbol {
+												// width: 2em;
+												// display: inline-block;
+												flex: 0 0 2rem;
+										}
+
+										div.orderContent {
+												//										display: inline-block;
+												//										flex-basis: auto;
+										}
 								}
-								
-								border-top: @pairBorder;
-								&:last-child {
-										border-bottom: @pairBorder;
-								}
-								
-								cursor: move;
-								display: flex;
-								justify-content: flex-start;
-								align-items: flex-start;
-								margin-top: 0;
-								margin-bottom: 0;
-								padding: @pad 0;
+						}
+				}
 
-								div.orderSymbol {
-										// width: 2em;
-										// display: inline-block;
-										flex: 0 0 2rem;
-								}
+				div.p2pStatus {
 
-								div.orderContent {
-//										display: inline-block;
-//										flex-basis: auto;
-								}
+						
+						border: 2px solid green;
+						//				margin: 0.5em;
+						padding: 0.3em;
+						display: inline-block;
+						font-size: 60%;
+						color: #eee;
+
+						&.open {
+								//						background-color: grey;
+								color: black;
+						}
+
+						&.data {
+								background-color: green;
+						}
+
+						&.error {
+								border: 2px solid red;
 						}
 				}
 		}
 }
+
+
 
 
 div.VIAUnitComponent {
@@ -1792,6 +1903,7 @@ div.VIACaptchaComponent {
 				padding: 0.2em;
 		}
 }
+
 
 // Cookiebar redefinitions
 // #cookie-bar-button {
