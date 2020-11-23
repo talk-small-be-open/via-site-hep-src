@@ -104,6 +104,25 @@ function selectmany_preventTooManyChecks(regionId, buttonId, number, message) {
 	return true;
 }
 
+/**
+ * Element.requestFullScreen() polyfill
+ * @author Chris Ferdinandi
+ * @license MIT
+ */
+if (!Element.prototype.requestFullscreen) {
+	Element.prototype.requestFullscreen = Element.prototype.mozRequestFullscreen || Element.prototype.webkitRequestFullscreen || Element.prototype.msRequestFullscreen;
+	document.fullscreenElement = function () { return document.mozFullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement };
+	document.exitFullscreen = document.mozExitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+}
+Element.prototype.toggleFullscreen = function () {
+	if (document.fullscreenElement) { 
+		document.exitFullscreen();
+	} else {
+		this.requestFullscreen();
+	}
+};
+
+
 
 /* Haupt JS init */
 $(document).ready(function(){
