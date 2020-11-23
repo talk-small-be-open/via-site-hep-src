@@ -137,10 +137,12 @@ body {
 		}
 
 		div.footer {
-				padding: 0.5em;
+				padding: 0.5em 1em;
+				background-color: inherit;
 
 				img.hepLogo {
-						width: 5em;
+						vertical-align: bottom; 
+						width: 4em;
 				}
 		}
 
@@ -167,9 +169,10 @@ body {
 
 				a {
 						color: black;
+//						text-decoration: underline;
 
 						&:hover {
-								color: black;
+								color: #666;
 						}
 				}
 		}
@@ -390,7 +393,7 @@ div.t-header {
 								padding: 1em;
 
 								img.hepLogo {
-										width: 75%;
+										width: 50%;
 								}
 						}
 				}
@@ -1767,6 +1770,33 @@ div.lightboxModal {
 				font-family: monospace;
 		}
 }
+
+div.VIAInformationComponent {
+		div.message {
+				margin-bottom: 1em;
+		}
+}
+
+div.VIAStaticTextDisplayerComponent {
+		padding: 1em;
+}
+
+div.VIACaptchaComponent {
+		pre.captcha {
+				line-height: 1.1em;
+		}
+		input.captcha {
+				font-size: 200%;
+				font-family: monospace;
+				border: 2px solid green;
+				padding: 0.2em;
+		}
+}
+
+// Cookiebar redefinitions
+// #cookie-bar-button {
+// 		background-color:  !important;
+// }
 
 // ============================================
 // Misc
