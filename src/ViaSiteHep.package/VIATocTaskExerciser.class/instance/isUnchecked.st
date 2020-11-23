@@ -1,3 +1,0 @@
-testing
-isUnchecked
-	^exercise isUnchecked

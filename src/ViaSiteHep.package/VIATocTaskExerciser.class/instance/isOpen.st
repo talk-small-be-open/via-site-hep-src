@@ -1,3 +1,0 @@
-testing
-isOpen
-	^exercise isOpen

@@ -1,3 +1,0 @@
-testing
-isFirstTake
-	^exercise isFirstTake
