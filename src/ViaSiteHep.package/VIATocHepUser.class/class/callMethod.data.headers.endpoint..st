@@ -15,7 +15,7 @@ callMethod: aMethod data: aDictionaryLike headers: aHeadersCollection endpoint: 
 		"Catch curl errors"
 		s << 'if '.
 
-		s << 'curl --fail --request '.
+		s << 'curl --request '.
 		s << aMethod asUppercase.
 		s << ' --silent --header "Content-Type: application/json; charset=UTF-8" --header "Accept: application/json" '.
 
@@ -50,7 +50,7 @@ callMethod: aMethod data: aDictionaryLike headers: aHeadersCollection endpoint: 
 	response isDictionary ifTrue: [
 		"OPTIMIZE: Its strange that a message is always an error?! Is that really the API?
 		Or should we check the HTTP response status too?"
-		response at: 'message' ifPresent: [ :m | VIATocHepUserError signal: m ]].
+		response at: 'message' ifPresent: [ :m | self signalError: m ]].
 	
 	"If no error then delete JSON temp file"
 	tempFile ifNotNil: [tempFile delete].
