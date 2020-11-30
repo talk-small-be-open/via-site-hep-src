@@ -2,6 +2,8 @@ rendering-visitor
 renderFileDownloader: aFileDownloader on: html
 	| asset |
 	asset := aFileDownloader asset.
+
+	asset ifNil: [ ^ self ].
 	
 	html div class: 'fileDownloader'; with: [
 		html anchor
