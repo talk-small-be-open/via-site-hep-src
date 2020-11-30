@@ -880,6 +880,16 @@ div.VIATocTaskExerciser {
 						}
 				}
 
+				span.markAsEmpty {
+						cursor: pointer;
+						// border: 2px solid black;
+//						padding: 0 3px;
+
+						// &.active {
+						// 		background-color: green;
+						// }
+				}
+
 				
 				input, select, textarea {
 						// font-family: @base-body-font-family;
@@ -1181,7 +1191,7 @@ div.VIATocTaskExerciser {
 				span.hintSymbol {
 						display: inline-block;
 						margin: 0.2em;
-						vertical-align: middle;
+//						vertical-align: middle;
 				}
 
 
@@ -1511,9 +1521,6 @@ div.VIATocTaskExerciser {
 								div.question {
 										.card();
 
-										&.history {
-												background-color: #ddd;
-										}
 
 										padding: @padding;
 										//								margin-bottom: 2em;
@@ -1551,9 +1558,6 @@ div.VIATocTaskExerciser {
 										margin-top: 0;
 										//								font-size: @biggerFont;
 
-										&.history {
-												background-color: #eee;
-										}
 
 										div.answerIcon {
 												font-weight: bold;
@@ -1619,13 +1623,31 @@ div.VIATocTaskExerciser {
 						}
 
 						div.summary {
-								.card();
-								background-color: #ddd;
 
-								div.points {
-										font-size: 200%;
-										margin: 1em 0;
+								div.pointsSummary {
+										.card();
+										.uk-margin-top();
+										.uk-margin-bottom();
+										background-color: #f0f0f0;
+										div.points {
+												font-size: 200%;
+												margin: 1em 0;
+										}
 								}
+
+								div.history {
+										.uk-margin-top();
+										.uk-margin-bottom();
+
+										div.question {
+												background-color: #ddd;
+										}
+										
+										div.answer {
+												background-color: #eee;
+										}
+								}
+								
 						}
 						
 						div.navigation {
@@ -1820,7 +1842,7 @@ ul.modulesList {
 				span.indexCode {
 						display: inline-block;
 						width: 3em;
-						font-weight: bold;
+//						font-weight: bold;
 				}
 
 				span.moduleStatus {
@@ -1981,22 +2003,37 @@ div.webui-popover {
 		}
 }
 
-// div.VIAExerciserSolutionComponent,
-// div.VIAExerciserFinishedComponent {
-// 		.solution {
-// 				// background-color: lightyellow;
 
-// 				&.answerWasWrong {
-// 						// background-color: @wrongColor;
-// 				}
+div.VIATocExerciserSolutionComponent {
+		.colors() {
+				// background-color: lightyellow;
 
-// 				&.answerWasCorrect {
-// 						background-color: @correctColor;
-// 				}
-// 		}
-// }
+				&.answerWasWrong {
+						// background-color: @wrongColor;
+				}
 
-// // div.VIAExerciserFinishedComponent {
+				&.answerWasCorrect {
+						background-color: @correctColor;
+				}
+
+		}
+
+		.solution {
+				.colors();
+		}
+
+
+		input.clozeTextPlaceholder.solution {
+				.colors();
+				
+				&.blankIsSolution {
+//						width: 2em;
+						color: transparent;
+				}
+		}
+}
+
+// // div.VIATocExerciserFinishedComponent {
 // // 		.solution {
 
 // // 				&.answerWasWrong {
