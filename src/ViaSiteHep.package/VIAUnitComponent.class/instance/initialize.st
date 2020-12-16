@@ -4,9 +4,7 @@ initialize
 	
 	self addContainerDiv addClass: (VIATocHelper toccamoduleCssOfToccaunit: unitNumber).
 	
-	modules := self wd findPublicModulesByFirstIndexCode: unitNumber.
-
-	modules := modules sortedBy: [ :each | each indexCode ].
+	self initializeModules.
 	
 	self session currentToccaunit: unitNumber.
 	

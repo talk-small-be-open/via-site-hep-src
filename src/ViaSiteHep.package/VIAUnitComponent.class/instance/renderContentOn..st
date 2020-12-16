@@ -29,14 +29,9 @@ renderContentOn: html
 					html anchor
 						callback: [ self gotoModule: each];
 						with: [
-							html span class: 'indexCode'; with: each indexCodeString.
-"Im Moment nicht gewünscht								html span class: 'duration'; with: [ 
-								html iconDurationTag: each durationTag ]."
-							html span class: 'moduleTitle'; with: each title].
+							self renderModule: each on: html ].
 					html span class: 'moduleStatus'; with: [ 
-"						(self currentPortfolio isInWorkModule: each) ifTrue: [ html span: 'W' ].
-						(self currentPortfolio isDoneModule: each) ifTrue: [ html span: 'D' ]."
 						showProgress ifTrue: [
 							html iconProgressFromPercent: (self currentPortfolio percentDoneModule: each) ].
 					]
-				] ] ] ]
+		]]]]

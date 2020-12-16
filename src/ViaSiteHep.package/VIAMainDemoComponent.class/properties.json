@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "VIAHomeBaseComponent",
+	"super" : "VIAMainComponent",
 	"category" : "ViaSiteHep-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "VIAMyHomeComponent",
+	"name" : "VIAMainDemoComponent",
 	"type" : "normal"
 }
