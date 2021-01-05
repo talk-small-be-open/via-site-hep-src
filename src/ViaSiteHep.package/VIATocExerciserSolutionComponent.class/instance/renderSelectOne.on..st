@@ -13,7 +13,7 @@ renderSelectOne: aSelectOneInput on: html
 		with: [
 			aSelectOneInput solutions do: [:each |
 				html iconSolution; space.
-				html text: each
+				html pillarString: each
 			] separatedBy: [html text: ' / ' ]
 		].
 

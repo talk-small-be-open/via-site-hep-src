@@ -18,12 +18,14 @@ renderSelectMany: aSelectManyInput on: html
 		self renderHintSymbolOf: aSelectManyInput on: html.
 		html ukGrid class: ('uk-grid-small uk-child-width-1-', columnsCount asString); with: [
 			choicesGroups do: [ :choices |
-				| autoColumnsCount |
-				autoColumnsCount := (((50//columnsCount) - (choices max: [ :each | each size ])) // 10) max: 1.
+				| subColumnsCount |
+				subColumnsCount := aSelectManyInput columns ifNil: [
+					(((50//columnsCount) - (choices max: [ :each | each size ])) // 10) max: 1 ].
+
 				html div: [
 					html ukGrid
-						class: ('uk-grid-small uk-child-width-1-', autoColumnsCount asString);
-						class: ('uk-child-width-1-', (autoColumnsCount*2) asString, '@l');
+						class: ('uk-grid-small uk-child-width-1-', subColumnsCount asString);
+						class: ('uk-child-width-1-', (subColumnsCount*2) asString, '@l');
 						with: [
 							choices do: [:choice |
 								| isCorrect isChozen isWrongChoice isCorrectChoice |
@@ -41,25 +43,27 @@ renderSelectMany: aSelectManyInput on: html
 										class: 'correct' if: (self isca: isCorrectChoice);
 										with: [
 											html span: [
+												html checkbox
+													style: 'display: none';
+		"											onClick: ((html jQuery id: buttonId) toggleClass: 'active');"
+													onClick: ('return selectmany_preventTooManyChecks("',
+														regionDiv id, '","',
+														buttonId, '",',
+														aSelectManyInput solutions size greaseString,
+														',"', ('exerciser:selectMany:tooManyChecks' t),'")');
+
+													onTrue: [answerCollection addIfNotPresent: choice]
+													onFalse: [answerCollection remove: choice ifAbsent: []];
+													class: 'selectManyInput';
+													value: isChozen.
+
+
 	"											self ifca: isWrongChoice t: [
 													html span class: 'wrongIcon'; with: [html iconWrong]].
 												self ifca: isCorrectChoice t: [
 													html span class: 'correctIcon'; with: [html iconCorrect]]."
 												html iconChecked class: 'checkedIcon'.
 												html pillarString: choice].
-											html checkbox
-												style: 'display: none';
-	"											onClick: ((html jQuery id: buttonId) toggleClass: 'active');"
-												onClick: ('return selectmany_preventTooManyChecks("',
-													regionDiv id, '","',
-													buttonId, '",',
-													aSelectManyInput solutions size greaseString,
-													',"', ('exerciser:selectMany:tooManyChecks' t),'")');
-
-												onTrue: [answerCollection addIfNotPresent: choice]
-												onFalse: [answerCollection remove: choice ifAbsent: []];
-												class: 'selectManyInput';
-												value: isChozen.
 										].
 			]]]]]].
 				

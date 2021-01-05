@@ -31,12 +31,17 @@ renderSelectOneRadio: aSelectOneInput on: html
 			with: [:rg |
 				html ukGrid class: ('uk-grid-small uk-child-width-1-', columnsCount asString); with: [
 					choicesGroups do: [ :choices |
-						| autoColumnsCount |
-						autoColumnsCount := (((50//columnsCount) - (choices max: [ :each | each size ])) // 10) max: 1.
+						| subColumnsCount |
+						
+						"Cheap solution: Calculate number of optimum column count, to distribute the items"
+						"Problem: Length of text is sometimes too big, because of Pillar syntax overhead"
+						subColumnsCount := aSelectOneInput columns ifNil: [
+							(((50//columnsCount) - (choices max: [ :each | each size ])) // 10) max: 1 ].
+
 						html div: [
 							html ukGrid
-								class: ('uk-grid-small uk-child-width-1-', autoColumnsCount asString);
-								class: ('uk-child-width-1-', (autoColumnsCount*2) asString, '@l');
+								class: ('uk-grid-small uk-child-width-1-', subColumnsCount asString);
+								class: ('uk-child-width-1-', (subColumnsCount*2) asString, '@l');
 								with: [
 
 									choices do: [:choice |

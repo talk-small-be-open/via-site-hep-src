@@ -17,7 +17,7 @@ renderSelectPoints: aSelectPointsInput on: html
 						html label: [
 							rg radioButton
 								value: each.
-							html text: (aSelectPointsInput labelForChoice: each)]
+							html pillarString: (aSelectPointsInput labelForChoice: each)]
 	]]]].
 
 	self renderHintSymbolOf: aSelectPointsInput on: html.

@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "VIAUnitComponent",
-	"category" : "ViaSiteHep-View",
+	"category" : "ViaSiteHep-View-Demo",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

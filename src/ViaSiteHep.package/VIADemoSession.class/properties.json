@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "VIATocDefaultSession",
-	"category" : "ViaSiteHep-View",
+	"category" : "ViaSiteHep-View-Demo",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
