@@ -24,7 +24,7 @@ renderHepLoginOn: html
 					placeholder: ('login:password't);
 					autocomplete: 'current-password';
 					id: 'loginPassword';
-					callback: [:value | self hepLoginWithPassword: value]]].
+					callback: [:value | self loginWithPassword: value]]].
 		html div class: 'uk-margin-small'; with: [
 "			html label class: 'uk-form-label'; t: 'login:password'."
 			html div class: 'uk-form-controls'; with: [
