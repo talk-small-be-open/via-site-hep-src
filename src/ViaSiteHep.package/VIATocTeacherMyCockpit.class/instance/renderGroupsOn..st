@@ -1,9 +1,12 @@
 rendering
 renderGroupsOn: html
 	html heading level2; t: 'teacherMyCockpit:studentGroups'.
+	html div class: 'uk-margin'; pT: 'teacherMyCockpit:studentGroupsInfo'.
 	html anchorButton
 		callback: [ self createStudentsGroup ];
-		t: 'teacherMyCockpit:createStudentGroups'.
+		with: [
+			html iconAdd; space.
+			html sT: 'teacherMyCockpit:createStudentGroups' ].
 	html ukList class: 'studentsGroups'; with: [
 		studentsGroups do: [ :each |
 			html listItem: [

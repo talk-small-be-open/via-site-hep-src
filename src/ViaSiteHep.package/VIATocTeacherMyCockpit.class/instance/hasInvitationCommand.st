@@ -1,0 +1,3 @@
+testing
+hasInvitationCommand
+	^ invitationCommand notNil

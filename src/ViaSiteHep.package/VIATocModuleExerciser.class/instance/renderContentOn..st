@@ -4,4 +4,5 @@ renderContentOn: html
 	self renderTitleOn: html.
 	self renderBodyOn: html.
 	self renderFooterOn: html.
+"	self renderTeacherAreaOn: html."
 	self renderBottomNavigationOn: html.

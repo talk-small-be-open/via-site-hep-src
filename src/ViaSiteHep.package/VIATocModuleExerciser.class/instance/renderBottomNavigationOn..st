@@ -2,7 +2,7 @@ rendering
 renderBottomNavigationOn: html
 	nextModule ifNotNil: [
 		html div class: 'moduleBottomNavigation'; with: [
-			html span class: 'left'.
+			html span class: 'left'; with: [self renderTeacherMenuOn: html ].
 			html span class: 'center'.
 			html span class: 'right'; with: [
 	"			html span class: 'arrow'; with: [
