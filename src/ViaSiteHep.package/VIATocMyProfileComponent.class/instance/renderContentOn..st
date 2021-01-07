@@ -14,9 +14,9 @@ renderContentOn: html
 
 	userGroups ifNotBlank: [
 		html heading level3; t: 'myProfile:myGroups'.
-		html div class: 'uk-margin'; with: [
+		html ukList class: 'uk-margin'; with: [
 			userGroups do: [ :each |
-				html div: each displayName
+				html listItem: each displayName
 			].
 		].
 	].
@@ -24,7 +24,11 @@ renderContentOn: html
 	html div class: 'uk-margin'; with: [
 		self ifNotTeacher: [
 			html anchor
+				callback: [ self enterInvitationCode ];
+				t: 'myProfile:enterInvitationCode'.
+"			html break.
+			html anchor
 				callback: [ self registerAsTeacher ];
-				t: 'myProfile:registerAsTeacher'
+				t: 'myProfile:registerAsTeacher'."
 		].
 	]
