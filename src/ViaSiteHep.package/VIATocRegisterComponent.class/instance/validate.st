@@ -1,6 +1,6 @@
 as yet unclassified
 validate
-	| beInvalid recaptchaResponse remoteIp |
+	| beInvalid |
 
 	"OPTIMIZE: Use VIAUserRegistrationValidator"
 
@@ -24,13 +24,6 @@ validate
 	invitationCode ifNotBlank: [
 		invitationCommand ifNil: [ beInvalid value: 'register:error:invitationCodeNotFound' ]
 	].
-
-	recaptchaResponse := self requestContext request at: 'g-recaptcha-response' ifAbsent: nil.
-	remoteIp := self requestContext request remoteAddress.
-
-"	self ifProduction: [
-		(VIAHelper verifyReCaptchaResponse: recaptchaResponse ip: remoteIp) ifFalse: [
-			beInvalid value: 'register:error:captcha' ]]."
 
 	termsAccepted = true ifFalse: [beInvalid value: 'register:error:termsNotAccepted'].
 

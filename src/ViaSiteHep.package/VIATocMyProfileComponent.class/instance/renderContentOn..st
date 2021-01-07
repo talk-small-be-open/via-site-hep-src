@@ -1,12 +1,30 @@
 rendering
 renderContentOn: html
 	html heading t: 'myProfile:title'.
-	html form: [
-		html label: [
+	html ukFormStacked: [
+		html ukFormLabel: [
 			html ukCheckbox on: #useAutologin of: user.
-			html span: 'autologin'].
+			html space.
+			html sT: 'myProfile:autologin'].
 		html div class: 'uk-margin-top'; with: [
 			html submitButton
 				t: 'form:save'
 		]
 	].
+
+	userGroups ifNotBlank: [
+		html heading level3; t: 'myProfile:myGroups'.
+		html div class: 'uk-margin'; with: [
+			userGroups do: [ :each |
+				html div: each displayName
+			].
+		].
+	].
+
+	html div class: 'uk-margin'; with: [
+		self ifNotTeacher: [
+			html anchor
+				callback: [ self registerAsTeacher ];
+				t: 'myProfile:registerAsTeacher'
+		].
+	]

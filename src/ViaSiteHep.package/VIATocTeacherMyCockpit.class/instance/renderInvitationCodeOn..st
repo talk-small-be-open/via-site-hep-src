@@ -7,20 +7,20 @@ renderInvitationCodeOn: html
 				html iconAdd; space.
 				html sT: 'teacherMyCockpit:createInvitationCode']
 	] ifTrue: [
-		| url mailto whatsapp |
-		url := invitationCommand url.
-		
-		mailto := (VIAHelper createMailtoUrlTo: nil cc: nil bcc: nil subject: 'Einladung zu "Tocca a te!"' body: ('Einladungslink zu "Tocca a te!":
+		| mailto whatsapp code |
+"We do not send the url so far, but just the code to type in		url := invitationCommand url."
+		code := invitationCommand invitationCode.		
+		mailto := (VIAHelper createMailtoUrlTo: nil cc: nil bcc: nil subject: 'Einladung zu "Tocca a te!"' body: ('Einladungscode zu "Tocca a te!":
 
-', url)).
-		whatsapp := ((WAUrl absolute: 'https://wa.me/') addField: 'text' value: url).
+', code)).
+		whatsapp := ((WAUrl absolute: 'https://wa.me/') addField: 'text' value: ('Tocca Einladungscode ', code)).
 		
 		html div: [
 			html heading level3; with: 'teacherMyCockpit:invitationCode'.
 			html div class: 'uk-margin'; pT: 'teacherMyCockpit:invitationCodeInfo'.
 			html span
 				class: 'invitationCode';
-				with: invitationCommand invitationCode.
+				with: code.
 			html space.
 			invitationCommand isExpired ifTrue: [
 				html ukLabelWarning: 'teacherMyCockpit:invitationCodeIsExpired' 
@@ -52,7 +52,5 @@ renderInvitationCodeOn: html
 			html anchor
 				callback: [ self showInvitationCode ];
 				t: 'teacherMyCockpit:showBigCode'.
-			
-"			html div: url."
 		]
 	].

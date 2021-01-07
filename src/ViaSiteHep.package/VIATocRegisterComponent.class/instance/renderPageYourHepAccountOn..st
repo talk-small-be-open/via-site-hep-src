@@ -4,7 +4,7 @@ renderPageYourHepAccountOn: html
 	html paragraph: [html t: 'register:hep:welcome'].
 	
 	self isInvited ifTrue: [
-		html paragraph: [ html t: 'register:hep:login' ]
+		html paragraph: [ html t: 'register:hep:pleaseLogin' ]
 	] ifFalse: [ 
 		html paragraph: [ html t: 'register:hep:pleaseActivate' ]
 	].

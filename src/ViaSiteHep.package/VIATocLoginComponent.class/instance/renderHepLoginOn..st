@@ -1,7 +1,7 @@
 rendering
 renderHepLoginOn: html
 
-	html form id: 'loginForm'; class: 'uk-form uk-form-stacked'; with: [
+	html ukFormStacked id: 'loginForm'; with: [
 
 		loginOk = false ifTrue: [
 			html ukLabelDanger t: messageKey.
@@ -10,7 +10,7 @@ renderHepLoginOn: html
 
 		html div class: 'uk-margin-small'; with: [
 "			html label class: 'uk-form-label'; t: 'login:email'."
-			html div class: 'uk-form-controls'; with: [
+			html ukFormControls: [
 				html ukTextInput
 					placeholder: ('login:email't);
 					id: 'loginEmail';
@@ -19,7 +19,7 @@ renderHepLoginOn: html
 					on: #email of: self]].
 		html div class: 'uk-margin-small'; with: [
 "			html label class: 'uk-form-label'; t: 'login:password'."
-			html div class: 'uk-form-controls'; with: [
+			html ukFormControls: [
 				html ukPasswordInput
 					placeholder: ('login:password't);
 					autocomplete: 'current-password';
@@ -27,7 +27,7 @@ renderHepLoginOn: html
 					callback: [:value | self loginWithPassword: value]]].
 		html div class: 'uk-margin-small'; with: [
 "			html label class: 'uk-form-label'; t: 'login:password'."
-			html div class: 'uk-form-controls'; with: [
+			html ukFormControls: [
 				html label with: [
 					html ukCheckbox
 						on: #rememberMe of: self.
