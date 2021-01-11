@@ -3,6 +3,8 @@ callMethod: aMethod data: aDictionaryLike headers: aHeadersCollection endpoint: 
 	| postData output response cmd tempFile url |
 
 	url := self apiUrl.
+
+	url ifBlank: [ self signalError: 'Authentication server not configured' ].
 	
 	aDictionaryLike ifNotBlank: [
 		postData := aDictionaryLike asDictionary.
