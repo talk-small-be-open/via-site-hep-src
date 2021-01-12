@@ -13,7 +13,7 @@ renderPageStartOn: html
 		html div class: 'uk-margin-small'; with: [
 			html ukFormLabel t: 'register:email'.
 			html ukFormControls: [
-				html emailInput class: 'uk-input'; id: 'email'; required; on: #email of: self]].
+				html ukEmailInput id: 'email'; required; on: #email of: self]].
 		html div class: 'uk-margin-small'; with: [
 			html ukFormLabel t: 'register:firstName'.
 			html ukFormControls: [
@@ -48,14 +48,14 @@ renderPageStartOn: html
 
 		self renderDisclaimerOn: html.
 
-		html div class: 'uk-margin-small'; with: [
+		html div class: 'uk-margin'; with: [
 			html ukFormControls: [
 				html label: [
 					html ukCheckbox on: #termsAccepted of: self.
 					html space.
 					html t: 'register:termsAccepted']]].
 		
-		html div class: 'uk-margin-small'; with: [
+		html div class: 'uk-margin-medium'; with: [
 			html ukSubmitButton
 				callback: [self checkForm];
 				t: 'register:registerNow'.

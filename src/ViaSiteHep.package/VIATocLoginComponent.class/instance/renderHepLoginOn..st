@@ -11,10 +11,12 @@ renderHepLoginOn: html
 		html div class: 'uk-margin-small'; with: [
 "			html label class: 'uk-form-label'; t: 'login:email'."
 			html ukFormControls: [
-				html ukTextInput
+				html ukEmailInput
 					placeholder: ('login:email't);
 					id: 'loginEmail';
 					autocomplete: 'username';
+					noAutocapitalize;
+					noAutocorrect;
 					script: (html jQuery this triggerFocus);
 					on: #email of: self]].
 		html div class: 'uk-margin-small'; with: [
