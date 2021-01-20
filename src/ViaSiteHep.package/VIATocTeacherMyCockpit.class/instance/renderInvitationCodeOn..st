@@ -7,13 +7,13 @@ renderInvitationCodeOn: html
 				html iconAdd; space.
 				html sT: 'teacherMyCockpit:createInvitationCode']
 	] ifTrue: [
-		| mailto whatsapp code |
+		| mailto code |
 "We do not send the url so far, but just the code to type in		url := invitationCommand url."
 		code := invitationCommand invitationCode.		
 		mailto := (VIAHelper createMailtoUrlTo: nil cc: nil bcc: nil subject: 'Einladung zu "Tocca a te!"' body: ('Einladungscode zu "Tocca a te!":
 
 ', code)).
-		whatsapp := ((WAUrl absolute: 'https://wa.me/') addField: 'text' value: ('Tocca Einladungscode ', code)).
+"		whatsapp := ((WAUrl absolute: 'https://wa.me/') addField: 'text' value: ('Tocca Einladungscode ', code))."
 		
 		html div: [
 			html heading level3; with: 'teacherMyCockpit:invitationCode'.
@@ -37,12 +37,12 @@ renderInvitationCodeOn: html
 
 		html div class: 'uk-margin-top'; pT: 'teacherMyCockpit:invitationCodeSharing'.
 		html div: [
-			html iconShare; space.
+"			html iconShare; space.
 			html anchor
 				url: whatsapp;
 				target: '_blank';
 				with: 'WhatsApp'.
-			html space; space.
+			html space; space."
 			html iconEmail; space.
 			html anchor
 				url: mailto;
