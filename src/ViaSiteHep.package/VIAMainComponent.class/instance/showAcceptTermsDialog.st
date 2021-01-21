@@ -6,6 +6,7 @@ showAcceptTermsDialog
 		cancelText: 'general:no';
 		message: 'main:pleaseAcceptTerms';
 		onConfirm: [ self currentUser beTermsAccepted ];
+		addCenterContainer;
 "		onReject: [ self gotoHome ];"
 		yourself).
 			

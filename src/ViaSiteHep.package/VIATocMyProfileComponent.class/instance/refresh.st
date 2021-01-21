@@ -1,3 +1,3 @@
 initialization
 refresh
-	userGroups := self wd findUserGroupsByMember: user
+	userGroups := user groupsInWebsite: self website

@@ -6,6 +6,7 @@ showRequestForInvitationCode
 		cancelText: 'general:no';
 		message: 'main:doYouHaveAnInvitationCodeQM';
 		onConfirm: [ self enterInvitationCode ];
+		addCenterContainer;
 "		onReject: [ self gotoHome ];"
 		yourself).
 			
