@@ -5,15 +5,17 @@ renderNavbarContentOn: html
 	].
 	html div class: 'uk-navbar-center'; with: [
 		html unorderedList class: 'uk-navbar-nav uk-margin-right'; with: [
-			html listItem: [
-				html anchor
-					callback: [ self gotoToccaStart ];
-					with: [
-						html iconHome.
-						html span class: 'uk-visible@l'; with: [
-							html space.
-							html sT: 'main:fastAccess:start']]
-		]].
+			html listItem
+				class: 'active' if: (self activeCoreComponent isKindOf: VIAToccaStartComponent);
+				with: [
+					html anchor
+						callback: [ self gotoToccaStart ];
+						with: [
+							html iconHome.
+							html span class: 'uk-visible@l'; with: [
+								html space.
+								html sT: 'main:fastAccess:start']]
+			]].
 		self renderFastAccessMenuOn: html.
 	].
 	html div class: 'uk-navbar-right'; with: [

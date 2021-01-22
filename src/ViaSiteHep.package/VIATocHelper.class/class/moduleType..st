@@ -7,5 +7,4 @@ moduleType: aModule
 
 	first := aModule indexCode first.
 	
-	first isNumber ifTrue: [ ^ 'R' ].
-	^ first
+	^ self moduleTypeFromFirstIndex: first

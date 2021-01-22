@@ -1,3 +1,7 @@
 as yet unclassified
 toccamoduleCssOfToccaunit: anInteger
-	^ 'toccamodule', (self toccamoduleFromToccaunit: anInteger) asString
+	| number |
+	number := (self toccamoduleFromToccaunit: anInteger).
+	number = 0 ifTrue: [ ^ 'toccamoduleExtras' ].
+	
+	^ 'toccamodule', number asString

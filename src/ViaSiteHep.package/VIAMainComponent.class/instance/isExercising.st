@@ -1,3 +1,3 @@
 testing
 isExercising
-	^ self coreComponent isKindOf: VIATocModuleExerciser
+	^ self activeCoreComponent isKindOf: VIATocModuleExerciser

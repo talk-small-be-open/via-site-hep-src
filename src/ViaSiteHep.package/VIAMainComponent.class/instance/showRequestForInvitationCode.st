@@ -6,8 +6,8 @@ showRequestForInvitationCode
 		cancelText: 'general:no';
 		message: 'main:doYouHaveAnInvitationCodeQM';
 		onConfirm: [ self enterInvitationCode ];
+		onReject: [ self gotoHome ];
 		addCenterContainer;
-"		onReject: [ self gotoHome ];"
 		yourself).
 			
-	self coreComponentThenGotoHome: dialog
+	self coreComponent: dialog
