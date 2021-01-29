@@ -1,9 +1,12 @@
 accessing
 number: anInteger
-	| class |
-	class := self session isDemo ifTrue: [ VIADemoUnitComponent ] ifFalse: [ self ].
+	"Factory method"
+	| theClass |
+	theClass := self.
+	self session isDemo ifTrue: [ theClass := VIADemoUnitComponent ].
+	self currentUser isBetatester ifTrue: [ theClass := VIABetatesterUnitComponent ].
 
-	^ class basicNew
+	^ theClass basicNew
 		setUnitNumber: anInteger;
 		initialize;
 		yourself

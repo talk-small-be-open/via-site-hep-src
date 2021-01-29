@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAUnitComponent",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VIABetatesterUnitComponent",
+	"type" : "normal"
+}

@@ -1,6 +1,6 @@
 rendering-visitor
 renderSelectMany: aSelectManyInput on: html
-	| answerValue regionDiv  answerCollection  choicesGroups columnsCount buttonId |
+	| answerValue regionDiv answerCollection  choicesGroups columnsCount buttonId |
 
 	answerValue := exercise answerOf: aSelectManyInput.
 "TODO	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectManyInput."
@@ -20,12 +20,13 @@ renderSelectMany: aSelectManyInput on: html
 			choicesGroups do: [ :choices |
 				| subColumnsCount |
 				subColumnsCount := aSelectManyInput columns ifNil: [
-					(((50//columnsCount) - (choices max: [ :each | each size ])) // 10) max: 1 ].
-
+					self calculateSubcolumnsFromCol: columnsCount choices: choices
+				].
+			
 				html div: [
 					html ukGrid
 						class: ('uk-grid-small uk-child-width-1-', subColumnsCount asString);
-						class: ('uk-child-width-1-', (subColumnsCount*2) asString, '@l');
+"						class: ('uk-child-width-1-', (subColumnsCount**2) asString, '@l');"
 						with: [
 							choices do: [:choice |
 								| isCorrect isChozen isWrongChoice isCorrectChoice |
