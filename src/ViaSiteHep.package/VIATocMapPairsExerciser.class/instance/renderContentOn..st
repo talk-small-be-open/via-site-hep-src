@@ -18,7 +18,6 @@ renderContentOn: html
 		with: [
 			html div class: 'head'; with: [
 				html div class: ''; with: [ html iconClickDown ].
-				html div.
 				html div class: ''; with: [ html iconClickDown ].
 				html div.
 			].

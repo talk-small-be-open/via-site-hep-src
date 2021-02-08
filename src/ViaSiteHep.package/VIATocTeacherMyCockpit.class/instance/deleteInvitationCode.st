@@ -1,4 +1,3 @@
 rendering
 deleteInvitationCode
-	invitationCommand delete.
-	invitationCommand := nil
+	selectedGroup deleteInvitationCommand

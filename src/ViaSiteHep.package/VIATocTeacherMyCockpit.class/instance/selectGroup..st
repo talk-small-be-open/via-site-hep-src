@@ -1,4 +1,3 @@
 actions
 selectGroup: aGroup
-	selectedGroup := aGroup.
-	invitationCommand := nil
+	selectedGroup := aGroup

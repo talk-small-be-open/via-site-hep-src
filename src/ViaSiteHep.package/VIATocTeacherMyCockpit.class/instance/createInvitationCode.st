@@ -1,9 +1,5 @@
 rendering
 createInvitationCode
-	invitationCommand := VIAInviteStudentToGroupCommand new
-		userGroup: selectedGroup;
-		website: self website;
-		store;
-		yourself.
+	selectedGroup createInvitationCommandWebsite: self website.
 
 	self showInvitationCode

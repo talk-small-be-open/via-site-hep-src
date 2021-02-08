@@ -1,6 +1,6 @@
 rendering-visitor
 renderOrderItems: anOrderItems on: html
-	| answerHolder listId items |
+	| answerHolder listId items listTag |
 
 	html div class: 'orderItems'; with: [
 		answerHolder := exercise answerOf: anOrderItems.
@@ -8,7 +8,9 @@ renderOrderItems: anOrderItems on: html
 
 		listId := html nextId.
 
-		html unorderedList
+		listTag := anOrderItems showNumbers ifTrue: [ html orderedList ] ifFalse: [ html unorderedList ].
+		
+		listTag
 			id: listId;
 			script: ((html jsSortable)
 				group: 'orderItemsSortableList';
@@ -24,10 +26,11 @@ renderOrderItems: anOrderItems on: html
 			
 				items do: [:each |
 					html listItem passenger: each; class: 'orderItem'; with: [
-						html div class: 'orderSymbol'; with: [
-							html iconOrderBullet ].
-						html div class: 'orderContent'; with: [
-							each acceptRenderingVisitor: self on: html]]]].
+						html div class: 'orderItemContent'; with: [
+							html div class: 'orderSymbol'; with: [
+								html iconOrderBullet ].
+							html div class: 'orderContent'; with: [
+								each acceptRenderingVisitor: self on: html]]]]].
 
 		self renderCorrection: answerHolder on: html.
 		].

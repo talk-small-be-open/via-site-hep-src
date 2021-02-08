@@ -25,10 +25,11 @@ renderObjectPair: anObjectPair on: html
 				with: [
 					self renderWithParent: leftObject on: html].
 
-			html div class: 'middleColumn'; with: [
-"				html iconClick."
-				html iconLeftRight.
-			].
+"			html div class: 'middleColumn'; with: [
+				html image url: '/site/images/puzzle-cut-black.svg';
+				style: 'position:relative;right:-2px;';
+				width: 20.
+			]."
 
 			html div
 				class: 'rightObject';
@@ -42,6 +43,7 @@ renderObjectPair: anObjectPair on: html
 						) asFunction: #(event))
 				);
 				with: [
+					html imgPuzzle.
 					self renderWithParent: rightObject on: html].
 				
 			html div class: 'endColumn'; with: [
