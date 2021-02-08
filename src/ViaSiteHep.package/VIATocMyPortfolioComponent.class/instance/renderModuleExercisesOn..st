@@ -23,9 +23,13 @@ renderModuleExercisesOn: html
 		self renderModuleExercises: extraExercises on: html.
 	].
 
+
+	html break; break; break.
+	
 	"Rest"
-	groupedExercises keysAndValuesDo: [ :mainIndexCode :exercises |
-		| unitNumber id |
+	groupedExercises keys reverseDo: [ :mainIndexCode |
+		| unitNumber id exercises |
+		exercises := (groupedExercises at: mainIndexCode).
 		id := html nextId.
 		
 		unitNumber := mainIndexCode first.
