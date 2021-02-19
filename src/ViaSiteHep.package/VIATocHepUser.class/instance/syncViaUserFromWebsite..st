@@ -4,7 +4,8 @@ syncViaUserFromWebsite: aWebsite
 	viaUser := self findOrCreateViaUserWebsite: aWebsite.
 	
 	viaUser ifNotNil: [ 
-		viaUser isTeacher: self isTeacher
+		viaUser
+			isTeacher: self isTeacher.
 		
 		"TODO: Maybe check the confirmation status? isEmailConfirmed"
 	].

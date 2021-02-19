@@ -2,6 +2,8 @@ as yet unclassified
 loginUsername: aUsername password: aPasswordString
 	| postData response data apiToken instance |
 
+	"hep username is email address"
+	
 	postData := {
 		'username'->aUsername.
 		'password'->aPasswordString.

@@ -3,12 +3,23 @@ hepLoginWithPassword: aPassword
 	| viaUser hepUser skipVerification |
 	loginOk := false.
 	messageKey := 'login:loginError'.
+	hepErrorMessage := nil.
 	[
 		hepUser := VIATocHepUser loginUsername: email password: aPassword.
 		viaUser := hepUser syncViaUserFromWebsite: self website.
 	] on: VIATocHepUserError do: [ :error |
 		loginOk := false.
 		messageKey := 'login:hepLoginError'.
+		hepErrorMessage := error messageText.
+		
+		"Special case: If the user is local present, then he might need to reregister at hep"
+		(self wd findUserByEmail: email) ifNotNil: [
+			"If does not exist at hep, then probably reregister"
+			(VIATocHepUser checkEmailExists: email) ifFalse: [
+				messageKey := 'login:tryReRegisterAtHep'.
+				hepErrorMessage := nil.
+			].
+		]
 	].
 
 	viaUser ifNotNil: [

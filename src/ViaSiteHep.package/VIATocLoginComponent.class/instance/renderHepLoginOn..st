@@ -5,6 +5,9 @@ renderHepLoginOn: html
 
 		loginOk = false ifTrue: [
 			html ukLabelDanger t: messageKey.
+			hepErrorMessage ifNotBlank: [ 
+				html ukLabelDanger t: hepErrorMessage.
+			].
 			html break.
 		].
 

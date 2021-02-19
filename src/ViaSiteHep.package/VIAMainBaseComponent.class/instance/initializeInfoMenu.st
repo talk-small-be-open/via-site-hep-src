@@ -16,3 +16,5 @@ initializeInfoMenu
 
 	(subMenu addEntry: 'menu:info:disclaimer' send: #openDisclaimer to: self)
 		icon: 'menuInfoPage'.
+
+	^ subMenu
