@@ -1,4 +1,4 @@
-rendering
+initialization
 initializeToccaMenu
 	| subMenu entry |
 

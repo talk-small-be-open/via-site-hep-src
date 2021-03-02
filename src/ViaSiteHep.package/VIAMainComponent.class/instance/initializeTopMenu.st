@@ -1,4 +1,4 @@
-rendering
+initialization
 initializeTopMenu
 	| userLabel |
 	super initializeTopMenu.

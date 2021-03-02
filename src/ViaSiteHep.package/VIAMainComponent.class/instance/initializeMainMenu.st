@@ -1,4 +1,4 @@
-rendering
+initialization
 initializeMainMenu
 	| userLabel |
 	super initializeMainMenu.
@@ -33,5 +33,8 @@ initializeMainMenu
 
 	mainMenu addDivider.
 
+	(mainMenu addEntry: 'menu:messageToSupport' send: #sendMessageToSupport to: self)
+		icon: 'menuSupport'.
+		
 	(mainMenu addEntry: 'menu:logout' send: #logout to: self)
 		icon: 'logout'
