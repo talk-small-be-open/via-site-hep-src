@@ -1,3 +1,3 @@
 rendering
 children
-	^ Array with: self coreComponent
+	^ Array with: self coreComponent with: controller
