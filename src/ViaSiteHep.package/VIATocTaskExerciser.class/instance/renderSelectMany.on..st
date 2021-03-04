@@ -11,6 +11,7 @@ renderSelectMany: aSelectManyInput on: html
 
 	regionDiv := html div
 		class: 'selectMany';
+		class: aSelectManyInput uiStyle;
 		id: html nextId;
 		yourself.
 

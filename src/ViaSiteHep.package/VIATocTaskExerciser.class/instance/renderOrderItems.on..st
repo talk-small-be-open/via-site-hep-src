@@ -2,7 +2,7 @@ rendering-visitor
 renderOrderItems: anOrderItems on: html
 	| answerHolder listId items listTag |
 
-	html div class: 'orderItems'; with: [
+	html div class: 'orderItems'; class: anOrderItems uiStyle; with: [
 		answerHolder := exercise answerOf: anOrderItems.
 		items := answerHolder value.
 

@@ -5,7 +5,7 @@ renderFileDownloader: aFileDownloader on: html
 
 	asset ifNil: [ ^ self ].
 	
-	html div class: 'fileDownloader'; with: [
+	html div class: 'fileDownloader'; class: aFileDownloader uiStyle; with: [
 		html anchor
 			callback: [ self downloadAsset: asset ];
 			with: [

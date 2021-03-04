@@ -13,6 +13,7 @@ renderSelectOneDropdown: aSelectOneInput on: html
 		class: 'uk-select uk-width-auto selectOneInput';
 		class: 'wrong' if: (self isca: answerValue isWrong);
 		class: 'correct' if: (self isca: answerValue isCorrect);
+		class: aSelectOneInput uiStyle;
 		callback: [:value | answerValue value: value].
 
 	self isHideWrongAnswers

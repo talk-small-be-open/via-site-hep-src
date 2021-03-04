@@ -13,7 +13,8 @@ renderSelectOneRadio: aSelectOneInput on: html
 	div := html div.
 	div
 		ensureId;
-		class: 'selectOneInput'.
+		class: 'selectOneInput';
+		class: aSelectOneInput uiStyle.
 
 	div with: [
 		input := html radioGroup

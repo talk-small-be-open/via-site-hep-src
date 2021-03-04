@@ -6,6 +6,7 @@ renderSelectPoints: aSelectPointsInput on: html
 
 	html div
 		class: 'selectPointsInput';
+		class: aSelectPointsInput uiStyle;
 		with: [
 
 		html radioGroup

@@ -11,6 +11,7 @@ renderTaskBrickGroup: aTaskBrickGroup on: html
 			html space; iconDropdown].
 	html div
 		class: 'taskGroup taskBrickGroup';
+		class: aTaskBrickGroup uiStyle;
 		beHidden;
 "		class: 'uk-hidden';"
 		id: id;

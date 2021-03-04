@@ -1,6 +1,6 @@
 rendering-visitor
 renderClozeText: aClozeText on: html
-	html div class: 'clozeText'; with: [
+	html div class: 'clozeText'; class: aClozeText uiStyle; with: [
 
 		self renderClozeTextUndroppedDraggables: aClozeText on: html.
 

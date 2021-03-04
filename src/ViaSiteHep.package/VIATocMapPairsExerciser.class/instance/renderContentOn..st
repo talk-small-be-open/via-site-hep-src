@@ -14,6 +14,7 @@ renderContentOn: html
 
 	html div
 		class: 'mapPairsClickClick';
+		class: taskBrick uiStyle;
 		id: exerciseId;
 		with: [
 			html div class: 'head'; with: [

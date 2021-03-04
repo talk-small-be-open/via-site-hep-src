@@ -13,6 +13,7 @@ renderTextInput: aPlaceholder on: html
 		class: 'wrong' if: (self isca: answerHolder isWrong);
 		class: 'correct' if: (self isca: answerHolder isCorrect);
 		class: 'markedAsEmpty' if: (answerHolder isExplicitBlank);
+		class: aPlaceholder uiStyle;
 		style: ('width: ', solutionMaxSize greaseString, 'em;');
 		callback: [:value |
 			value = 'BLANK' ifTrue: [ answerHolder beExplicitBlank ] ifFalse: [
