@@ -4,6 +4,7 @@ renderModuleExercise: aModuleExercise on: html
 	module := aModuleExercise module.
 	
 	html anchor
+		class: 'gotoModule';
 		callback: [ self showModuleExercise: aModuleExercise ];
 		with: [
 			html span class: 'indexCode'; with: module indexCodeString.

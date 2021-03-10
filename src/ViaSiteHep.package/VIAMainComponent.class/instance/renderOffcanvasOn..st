@@ -15,7 +15,7 @@ renderOffcanvasOn: html
 "				self renderAccountMenuOn: html."
 
 				html div class: 'uk-position-bottom mainMenuFooter'; with: [
-					html logoHepClaim
+					html logoHepClaimInv
 				]
 
 			].

@@ -10,7 +10,7 @@ initializeInfoMenu
 	subMenu mainEntry: ((VIATextMenuEntry label: 'menu:info') icon: 'menuInfo'; yourself).
 
 	#(teacher faq press about support contact imprint) do: [ :each |
-		(subMenu addEntry: ('menu:info:', each) send: #showText: to: self arg: ('page:', each))
+		(subMenu addEntry: ('menu:info:', each) send: #showTextWithBack: to: self arg: ('page:', each))
 			icon: 'menuInfoPage'.
 	].
 

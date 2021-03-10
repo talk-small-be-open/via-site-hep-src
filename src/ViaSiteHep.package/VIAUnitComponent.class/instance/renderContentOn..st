@@ -27,6 +27,7 @@ renderContentOn: html
 				
 				tag with: [
 					html anchor
+						class: 'gotoModule';
 						callback: [ self gotoModule: each];
 						with: [
 							self renderModule: each on: html ].

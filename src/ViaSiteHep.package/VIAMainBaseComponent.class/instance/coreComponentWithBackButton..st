@@ -1,6 +1,5 @@
 accessing
 coreComponentWithBackButton: aComponent
-	"obsolete?"
 	
 	self coreComponent ifNil: [
 		self coreComponent: aComponent. ^self].

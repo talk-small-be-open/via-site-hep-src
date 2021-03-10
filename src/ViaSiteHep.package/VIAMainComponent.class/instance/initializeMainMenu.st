@@ -29,12 +29,15 @@ initializeMainMenu
 "	mainMenu addEntry: 'menu:searchModule' send: #gotoSearchModule to: self.
 	mainMenu addDivider."
 
-	self initializeInfoMenu.
+	self initializeInfoMenu beCollapsed.
 
 	mainMenu addDivider.
 
 	(mainMenu addEntry: 'menu:messageToSupport' send: #sendMessageToSupport to: self)
 		icon: 'menuSupport'.
+
+	mainMenu addDivider.
 		
 	(mainMenu addEntry: 'menu:logout' send: #logout to: self)
-		icon: 'logout'
+		icon: 'logout';
+		css: 'logout'.

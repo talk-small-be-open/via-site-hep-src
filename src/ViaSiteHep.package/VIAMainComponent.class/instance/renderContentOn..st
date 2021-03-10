@@ -8,6 +8,7 @@ renderContentOn: html
 		"		self renderMenuOn: html."
 			html div class: 'coreContainer'; with: [
 				self renderFlashMessagesOn: html.
+				self renderSystemMessageOn: html.
 				self renderCoreOn: html].
 			self isExercising ifFalse: [
 				self renderFooterOn: html ]
