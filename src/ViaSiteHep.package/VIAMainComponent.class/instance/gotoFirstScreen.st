@@ -1,7 +1,7 @@
 actions
 gotoFirstScreen
 
-"	self currentUser termsAccepted ifFalse: [ self showAcceptTermsDialog. ^ self ]."
+	self currentUser termsAccepted ifFalse: [ self showAcceptTermsDialog. ^ self ].
 
 	"Very first login"
 	(self currentUser loginCount = 1) ifTrue: [

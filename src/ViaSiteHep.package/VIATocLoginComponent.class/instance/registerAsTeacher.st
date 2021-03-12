@@ -1,3 +1,3 @@
 rendering
 registerAsTeacher
-	self app showText: 'page:registerAsTeacher'
+	self app showTextWithBack: 'page:registerAsTeacher'

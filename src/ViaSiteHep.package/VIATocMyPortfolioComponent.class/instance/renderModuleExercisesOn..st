@@ -7,7 +7,7 @@ renderModuleExercisesOn: html
 	currentUnitaExercises ifNotBlank: [
 		| unitNumber |
 		unitNumber := currentUnita first.
-		html heading level4; class: 'unitNavigation'; with: [
+		html heading level4; class: 'currentUnit'; with: [
 			html sT: ('tocca:unit', unitNumber asString).
 		].
 
@@ -15,7 +15,7 @@ renderModuleExercisesOn: html
 	].
 
 	extraExercises ifNotBlank: [
-		html heading level4; class: 'unitNavigation'; with: [
+		html heading level4; with: [
 			html sT: ('tocca:unitP').
 			html text: ' / '.
 			html sT: ('tocca:unitV').
@@ -35,7 +35,6 @@ renderModuleExercisesOn: html
 		unitNumber := mainIndexCode first.
 		html heading
 			level4;
-			class: 'unitNavigation';
 "			ukToggle: ('#', id);"
 			with: [
 				html sT: ('tocca:unit', unitNumber asString).

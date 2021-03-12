@@ -8,6 +8,9 @@ renderModuleExercise: aModuleExercise on: html
 		callback: [ self showModuleExercise: aModuleExercise ];
 		with: [
 			html span class: 'indexCode'; with: module indexCodeString.
+			html span class: 'level'; with: [ 
+				html iconLevelTag: module levelTag
+			].
 			html span class: 'moduleTitle'; with: module title
 	].
 

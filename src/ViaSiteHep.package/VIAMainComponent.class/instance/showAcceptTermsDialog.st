@@ -1,21 +1,18 @@
 actions
 showAcceptTermsDialog
-	| dialog |
+	| dialog terms |
+	terms := VIADisclaimerComponent new
+		beEmbedded;
+		yourself.
+
 	dialog := (VIAConfirmationComponent new
 		confirmationText: 'general:yes';
 		cancelText: 'general:no';
 		message: 'main:pleaseAcceptTerms';
-		onConfirm: [ self currentUser beTermsAccepted ];
+		component: terms;
 		addCenterContainer;
-"		onReject: [ self gotoHome ];"
+		onConfirm: [ self currentUser beTermsAccepted ];
+		onReject: [ self logout ];
 		yourself).
 			
-	self coreComponentThenGotoHome: dialog.
-
-"	component := VIASetPasswordComponent new
-		addDecoration: VIACenterContainerDecoration new;
-		yourself."
-		
-"	self show: component  onAnswer: [:newPassword |
-		self currentUser password: newPassword.
-		self flashMessage: #main:successfullySetNewPassword]"
+	self coreComponentThenGotoHome: dialog

@@ -7,7 +7,7 @@ createNewFn: aFirstName ln: aLastName pw: aPassword em: anEmail
 			'firstname'->aFirstName.
 			'lastname'->aLastName.
 			'email'->anEmail.
-			'prefix'->'Tocca-User'.
+			'prefix'->' '. "Magento will was. OPTIMIZE"
 		} aD.
 		'password'->aPassword.
 	} aD.
