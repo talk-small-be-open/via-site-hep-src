@@ -4,11 +4,11 @@ renderHepLoginOn: html
 	html ukFormStacked id: 'loginForm'; with: [
 
 		loginOk = false ifTrue: [
-			html ukLabelDanger t: messageKey.
-			hepErrorMessage ifNotBlank: [ 
-				html ukLabelDanger t: hepErrorMessage.
-			].
-			html break.
+			html ukAlertDanger with: [
+				html pT: messageKey.
+				hepErrorMessage ifNotBlank: [
+					html div: hepErrorMessage.
+				]].
 		].
 
 		html div class: 'uk-margin-small'; with: [
