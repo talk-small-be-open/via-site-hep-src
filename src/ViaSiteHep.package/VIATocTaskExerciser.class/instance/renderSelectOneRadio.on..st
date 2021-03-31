@@ -3,9 +3,10 @@ renderSelectOneRadio: aSelectOneInput on: html
 	| div answerValue input choicesGroups columnsCount buttonId |
 
 	answerValue := exercise answerOf: aSelectOneInput.
-"	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectOneInput."
+	choicesGroups := exercise propertyAt: #orderedChoicesGroups of: aSelectOneInput.
 
-	choicesGroups := aSelectOneInput choicesGroups copy.
+"	choicesGroups := aSelectOneInput choicesGroups copy."
+
 	columnsCount := choicesGroups size.
 
 	self renderHintSymbolOf: aSelectOneInput on: html.

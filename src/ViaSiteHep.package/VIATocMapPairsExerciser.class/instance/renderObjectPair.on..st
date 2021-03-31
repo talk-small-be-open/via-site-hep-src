@@ -47,6 +47,6 @@ renderObjectPair: anObjectPair on: html
 					self renderWithParent: rightObject on: html].
 				
 			html div class: 'endColumn'; with: [
-				self renderCorrection: answerHolder on: html ].
+				self renderCorrection: answerHolder showWrong: false on: html ].
 
 			].

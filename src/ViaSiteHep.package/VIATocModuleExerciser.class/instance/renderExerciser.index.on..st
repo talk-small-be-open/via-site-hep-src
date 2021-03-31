@@ -20,20 +20,21 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		divTag
 			class: 'accBar uk-clearfix';
 			class: 'ignored' if: exercise isIgnored;
-			class: 'isOpen' if: aTaskExerciser isOpen.
+			class: 'isOpen' if: aTaskExerciser isOpen;
+			class: 'mothertongue' if: isAllMothertongue.
 			
 		task classification contextTags do: [ :each | divTag class: each code ].
 		
 		divTag with: [
 			html span class: 'uk-float-left'; with: [
-				html heading level3; class: 'accTitle'; with: title.
-				html span class: 'accIcons'; with: [
-					task classification activityTypeTags do: [:each | html iconActivityType: each ]]
-			].
+				html heading level3; class: 'accTitle'; with: title].
+			task classification activityTypeTags ifNotEmpty: [ :all |
+				html span class: 'accIcons uk-float-left'; with: [
+					all do: [:each | html iconActivityType: each ]]].
 
 			html span class: 'uk-float-right'; with: [
-				html span class: 'accActions'; with: [
-					model isIgnoreTaskAllowed ifTrue: [
+				model isIgnoreTaskAllowed ifTrue: [
+					html span class: 'accActions'; with: [
 						html anchor
 							class: 'ignoreTask';
 							script: (html jQuery this onClick: ('event.stopPropagation()' asFunction: #(event)));

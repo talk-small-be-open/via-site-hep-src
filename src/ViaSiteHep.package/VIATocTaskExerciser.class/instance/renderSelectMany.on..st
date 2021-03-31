@@ -3,8 +3,9 @@ renderSelectMany: aSelectManyInput on: html
 	| answerValue regionDiv answerCollection  choicesGroups columnsCount buttonId |
 
 	answerValue := exercise answerOf: aSelectManyInput.
-"TODO	orderedChoices := exercise propertyAt: #orderedChoices of: aSelectManyInput."
-	choicesGroups := aSelectManyInput choicesGroups copy.
+
+	choicesGroups := exercise propertyAt: #orderedChoicesGroups of: aSelectManyInput.
+"	choicesGroups := aSelectManyInput choicesGroups copy."
 	columnsCount := choicesGroups size.
 
 	answerCollection := answerValue value.
