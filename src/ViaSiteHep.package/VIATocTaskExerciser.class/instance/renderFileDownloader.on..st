@@ -9,6 +9,13 @@ renderFileDownloader: aFileDownloader on: html
 		html anchor
 			callback: [ self downloadAsset: asset ];
 			with: [
+				asset previewImageUrl ifNotBlank: [:url |
+					"OPTIMIZE: use scaled preview"
+					html image
+						class: 'downloadPreview';
+						url: url.
+					html break.
+				].
 				html iconDocument; text: asset title.
 				html space.
 				html text: '('.
