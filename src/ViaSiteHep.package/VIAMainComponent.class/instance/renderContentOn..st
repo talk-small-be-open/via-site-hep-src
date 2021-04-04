@@ -12,4 +12,6 @@ renderContentOn: html
 				self renderCoreOn: html].
 			self isExercising ifFalse: [
 				self renderFooterOn: html ]
-		]
+		].
+	
+	self renderAdminFrontendToolsOn: html

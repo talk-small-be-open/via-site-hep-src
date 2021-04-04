@@ -16,4 +16,6 @@ renderContentOn: html
 					with: 'TEST-LOGIN'."
 					
 				self renderCoreOn: html].
-			self renderFooterOn: html ]
+			self renderFooterOn: html ].
+		
+	self renderAdminFrontendToolsOn: html

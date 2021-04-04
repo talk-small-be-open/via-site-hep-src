@@ -11,6 +11,10 @@ renderPageStartOn: html
 			html ukFormControls style: 'height: 0.01px;'; with: [
 				html ukTextInput style: 'height: 0.01px;'; class: 'name username mandatory required'; id: 'name'; on: #antibotCode of: self]].
 		html div class: 'uk-margin-small'; with: [
+			html ukFormLabel t: 'register:invitationCode'.
+			html ukFormControls: [
+				html ukTextInput class: ''; id: 'invitationCode'; on: #invitationCode of: self]].
+		html div class: 'uk-margin-small'; with: [
 			html ukFormLabel t: 'register:email'.
 			html ukFormControls: [
 				html ukEmailInput id: 'email'; required; on: #email of: self]].
@@ -33,10 +37,6 @@ renderPageStartOn: html
 		html div class: 'uk-margin-small'; with: [
 			html ukFormLabel t: 'register:passwordConfirmation'.
 			html ukFormControls: [html ukPasswordInput required; class: ''; on: #passwordConfirmation of: self]].
-		html div class: 'uk-margin-small'; with: [
-			html ukFormLabel t: 'register:invitationCode'.
-			html ukFormControls: [
-				html ukTextInput class: ''; id: 'invitationCode'; on: #invitationCode of: self]].
 
 
 "		html div class: 'uk-margin-small'; with: [

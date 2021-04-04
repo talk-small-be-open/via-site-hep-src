@@ -23,6 +23,7 @@ renderContentOn: html
 								callback: [ self gotoToccaunit: index ];
 								with: [
 									html sT: 'myHome:unit'.
+									html space.
 									html text: index asString].
 		]]]].
 	

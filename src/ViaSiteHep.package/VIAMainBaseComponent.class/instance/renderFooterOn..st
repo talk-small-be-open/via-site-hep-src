@@ -14,17 +14,6 @@ renderFooterOn: html
 			html anchor
 				callback: [self openDisclaimer];
 				t: 'footer:disclaimer'.
-			self ifAdmin: [
-				html text: ' | '.
-				html anchor
-					callback: [self switchToUser];
-					with: 'su'].
-			self session hasBackgroundAdminUser ifTrue: [
-				html text: ' | '.
-				html anchor
-					callback: [self switchBackToAdmin];
-					with: 'bck'.
-			]
 		].
 
 		html div class: 'logos'; with: [
