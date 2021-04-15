@@ -1,6 +1,9 @@
 rendering-visitor
 renderTaskBrickGroup: aTaskBrickGroup on: html
 	| id |
+
+	(aTaskBrickGroup canViewByAnyRole: self currentUserRoles) ifFalse: [ ^ false ].
+	
 	id := html nextId.
 
 	html div
