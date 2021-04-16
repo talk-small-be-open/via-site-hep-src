@@ -4,6 +4,8 @@ calculateSubcolumnsFromCol: aMainColInteger choices: aChoicesCollection
 	| maxLength totalChars |
 	maxLength := (aChoicesCollection max: [ :each | pillarLengthEstimator estimateString: each ]).
 
+	maxLength ifNil: [ ^ 1 ].
+
 	"Min. 1 column and max 8 (UIkit)"
 	"Total characters per browser line"
 	"1000px = 100 chars. -> 15px per char"
