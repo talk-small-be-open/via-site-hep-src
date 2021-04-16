@@ -11,4 +11,5 @@ initialize
 		
 	antibotCodeOrigin := UUID new asString36 first: 5.
 		
-	self addCenterContainer
+	self addCenterContainer.
+	self addContainerDiv.

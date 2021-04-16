@@ -3,7 +3,7 @@ renderPageStartOn: html
 	html heading t: 'register:title'.
 	html paragraph: [html t: 'register:info'].
 
-	self renderTeacherRegistrationOn: html.
+"	self renderTeacherRegistrationOn: html."
 
 	html form noAutocomplete; class: 'uk-form uk-form-stacked'; with: [
 		html div class: 'uk-margin-small'; style: 'height: 0.01px; color: transparent; overflow: hidden'; with: [
@@ -46,7 +46,7 @@ renderPageStartOn: html
 					class: 'g-recaptcha';
 					attributeAt: 'data-sitekey' put: '6LehQygTAAAAAGcZ7Xd_mNPJXnku8A0RvejzIxeM']]."
 
-		self renderDisclaimerOn: html.
+"		self renderDisclaimerOn: html."
 
 		html div class: 'uk-margin'; with: [
 			html ukFormControls: [
