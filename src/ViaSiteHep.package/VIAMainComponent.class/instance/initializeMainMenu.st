@@ -13,7 +13,7 @@ initializeMainMenu
 
 	mainMenu addDivider.
 
-	userLabel := self currentUser fullName.
+	userLabel := self currentUser accountName.
 	(mainMenu addEntry: userLabel send: #gotoMyProfile to: self)
 		icon: 'user'.
 
