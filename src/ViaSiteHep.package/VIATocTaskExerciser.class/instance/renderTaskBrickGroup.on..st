@@ -7,16 +7,19 @@ renderTaskBrickGroup: aTaskBrickGroup on: html
 	id := html nextId.
 
 	html div
-		ukToggleFadeTarget: ('#', id);
+"		ukToggleFadeTarget: ('#', id);"
+		ukToggleTarget: ('#', id) class: 'hidden';
+
 		class: 'taskBrickGroupToggler uk-width-1-1@s uk-width-auto@l';
 		with: [
-			html text: aTaskBrickGroup title.
+			html pillarString: aTaskBrickGroup title.
 			html space; iconDropdown].
 	html div
 		class: 'taskGroup taskBrickGroup';
 		class: aTaskBrickGroup uiStyle;
-		beHidden;
-"		class: 'uk-hidden';"
+		class: 'hidden';
+"dont		beHidden;"
+"dont		class: 'uk-hidden';"
 		id: id;
 		with: [
 "			html heading level1; with: aTaskBrickGroup title."
