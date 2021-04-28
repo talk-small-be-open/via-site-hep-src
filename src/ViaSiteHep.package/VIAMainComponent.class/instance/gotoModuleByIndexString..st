@@ -2,7 +2,7 @@ actions
 gotoModuleByIndexString: aString
 	| module |
 	
-	module := self wd findPublicModuleByIndexCode: aString.
+	module := self wd findModuleByIndexCode: aString.
 
 	module ifNotNil: [
 		self gotoSmartModule: module]

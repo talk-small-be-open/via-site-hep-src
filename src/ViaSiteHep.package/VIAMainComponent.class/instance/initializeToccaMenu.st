@@ -14,7 +14,7 @@ initializeToccaMenu
 		entry icon: ('unita', each asString)
 	].
 
-	entry := subMenu addEntry: 'menu:tocca:vocabolario' send: #gotoVocabolario to: self.
+	entry := subMenu addEntry: 'menu:tocca:vocabolario' send: #gotoSmartVocabolario to: self.
 	entry icon: 'vocabolario'.
-	entry := subMenu addEntry: 'menu:tocca:palloncini' send: #gotoPalloncini to: self.
+	entry := subMenu addEntry: 'menu:tocca:palloncini' send: #gotoSmartPalloncini to: self.
 	entry icon: 'palloncini'
