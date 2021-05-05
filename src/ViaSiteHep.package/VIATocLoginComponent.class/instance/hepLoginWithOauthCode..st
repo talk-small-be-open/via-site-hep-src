@@ -1,17 +1,18 @@
 as yet unclassified
-hepLoginWithPassword: aPassword
+hepLoginWithOauthCode: aString
 	| viaUser hepUser skipVerification |
 	loginOk := false.
 	messageKey := 'login:loginError'.
 	hepErrorMessage := nil.
 	[
-		hepUser := VIATocHepOldUser loginUsername: email password: aPassword.
+		hepUser := VIATocHepUser loginOauthCode: aString.
 		viaUser := hepUser syncViaUserFromWebsite: self website.
 	] on: VIATocHepUserError do: [ :error |
 		loginOk := false.
 		messageKey := 'login:hepLoginError'.
 		hepErrorMessage := error messageText.
 		
+		"OBSOLETE?"
 		"Special case: If the user is local present, then he might need to reregister at hep"
 		(self wd findUserByEmail: email) ifNotNil: [
 			"If does not exist at hep, then probably reregister"

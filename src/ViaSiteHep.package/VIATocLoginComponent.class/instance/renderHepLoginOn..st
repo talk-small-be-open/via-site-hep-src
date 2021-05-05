@@ -1,6 +1,11 @@
 rendering
 renderHepLoginOn: html
 
+"WAIT	html anchor
+		url: (self oauthAuthorizeUrlOn: html);
+		target: '_self';
+		with: 'New OAuth login ...'."
+
 	html ukFormStacked id: 'loginForm'; with: [
 
 		loginOk = false ifTrue: [

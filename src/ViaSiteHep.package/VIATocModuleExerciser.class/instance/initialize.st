@@ -18,6 +18,6 @@ initialize
 "	subtitleTags := classification contextTags,
 		classification grammarTopicTags,
 		classification topicTags."
-	isAllMothertongue := model isMothertongue.
+"	isAllMothertongue := model isMothertongue."
 
 	self build

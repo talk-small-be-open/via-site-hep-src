@@ -1,3 +1,11 @@
 rendering
 renderSelectPoints: aSelectPointsInput on: html
-	"render nichts bei solution"
+	| answerValue  |
+
+	answerValue := exercise answerOf: aSelectPointsInput.
+
+	html div
+		class: 'selectPointsInput';
+		class: aSelectPointsInput uiStyle;
+		with: [
+			html pillarString: (aSelectPointsInput labelForChoice: answerValue value)]

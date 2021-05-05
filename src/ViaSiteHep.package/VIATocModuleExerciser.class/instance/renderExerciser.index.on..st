@@ -20,8 +20,8 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		divTag
 			class: 'accBar uk-clearfix';
 			class: 'ignored' if: exercise isIgnored;
-			class: 'isOpen' if: aTaskExerciser isOpen;
-			class: 'mothertongue' if: isAllMothertongue.
+			class: 'isOpen' if: aTaskExerciser isOpen.
+"			class: 'mothertongue' if: isAllMothertongue"
 			
 		task classification contextTags do: [ :each | divTag class: each code ].
 		

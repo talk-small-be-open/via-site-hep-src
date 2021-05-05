@@ -4,7 +4,7 @@ createHepLogin
 
 	"Send curl request"
 	[
-		hepUser := VIATocHepUser createNewFn: firstName ln: lastName pw: password em: email
+		hepUser := VIATocHepOldUser createNewFn: firstName ln: lastName pw: password em: email
 	] on: VIATocHepUserError do: [ :error |
 		hepMessage := error messageText.
 		self gotoPage: #hepRegistrationFailed.

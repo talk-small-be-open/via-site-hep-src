@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "AndreasBrodbeck 5/3/2021 11:24",
+	"super" : "VIAObject",
+	"category" : "ViaSiteHep-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"id",
+		"firstname",
+		"lastname",
+		"groupId",
+		"isEmailConfirmed",
+		"email",
+		"apiToken",
+		"confirmationKey"
+	],
+	"name" : "VIATocHepOldUser",
+	"type" : "normal"
+}
