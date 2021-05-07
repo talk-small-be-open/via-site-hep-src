@@ -2,6 +2,8 @@ rendering
 renderContentOn: html
 	html heading t: 'myPortfolio:title'.
 
+	html div pT: 'myPortfolio:portfolioInfo'.
+
 	self currentPortfolio isEmpty
 		ifTrue: [
 			html paragraph t: 'myPortfolio:isEmpty']

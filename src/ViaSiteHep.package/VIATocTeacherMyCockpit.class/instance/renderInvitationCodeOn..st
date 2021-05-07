@@ -10,9 +10,9 @@ renderInvitationCodeOn: html
 		| mailto code |
 "We do not send the url so far, but just the code to type in		url := invitationCommand url."
 		code := self invitationCommand invitationCode.		
-		mailto := (VIAHelper createMailtoUrlTo: nil cc: nil bcc: nil subject: 'Einladung zu "Tocca a te!"' body: ('Einladungscode zu "Tocca a te!":
+		mailto := VIAHelper createMailtoUrlTo: nil cc: nil bcc: nil subject: 'invitationMail:subject't body: ('invitationMail:body_code_'tp: {#code->code}).
 
-', code)).
+
 "		whatsapp := ((WAUrl absolute: 'https://wa.me/') addField: 'text' value: ('Tocca Einladungscode ', code))."
 		
 		html div: [
