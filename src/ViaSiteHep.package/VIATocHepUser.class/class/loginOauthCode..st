@@ -10,6 +10,7 @@ loginOauthCode: aString
 	} aD.
 	
 	response := self postData: postData endpoint: 'token'.
+	response := self callMethod: 'POST' data: postData headers: {'Authorization: Bearer ', self oauthId "or secret?"} endpoint: 'token'.
 	apiToken := response.
 
 	"Get users data. Needed for validation-ok, email changes, ..."
