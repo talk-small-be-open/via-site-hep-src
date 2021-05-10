@@ -1,7 +1,6 @@
 as yet unclassified
-currentToccaunit: aNumber
-	| unit |
-	unit := aNumber asInteger.
+currentToccaunit: aNumberOrString
+	currentToccaunit := aNumberOrString.
 	
-	unit ifNotNil: [
-		self user propertyAt: #preferredToccaunit put: unit ].
+	aNumberOrString isNumber ifTrue: [
+		self workingToccaunit: aNumberOrString asInteger ]

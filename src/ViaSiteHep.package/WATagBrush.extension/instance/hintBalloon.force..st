@@ -1,6 +1,6 @@
 *ViaSiteHep
 hintBalloon: aUiKeyPart force: aForceBoolean
-	| popoverOptions htmlString uiTextKey show onHideJs user |
+	| popoverOptions htmlString uiTextKey show onHideJs user id |
 
 	"Check, if user needs hint"
 	user := self session user.
@@ -14,8 +14,11 @@ hintBalloon: aUiKeyPart force: aForceBoolean
 	onHideJs := (canvas jQuery ajax callback: [ VIATocHelper dismissHint: aUiKeyPart user: user ])
 		asFunction: #(element).
 
+	id := self ensureId.
+	
 	popoverOptions := {
 		#title->'hintBalloon:title't.
+		#container->((canvas jQuery id: id) parent).
 		#placement->'auto'.
 		#closeable->true.
 		#trigger->'sticky'.

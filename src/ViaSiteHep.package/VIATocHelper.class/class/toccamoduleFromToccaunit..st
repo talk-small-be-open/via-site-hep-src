@@ -1,5 +1,6 @@
 as yet unclassified
-toccamoduleFromToccaunit: anInteger
-	anInteger isNumber ifFalse: [ ^0 ].
+toccamoduleFromToccaunit: anObject
+	"OPTIMIZE: Palloncini und Vocabolario sind eher eigene toccamoduls als P und V, statt 0"
+	anObject isNumber ifFalse: [ ^ anObject "^0" ].
 	
-	^ (anInteger + 1) // 2
+	^ (anObject + 1) // 2

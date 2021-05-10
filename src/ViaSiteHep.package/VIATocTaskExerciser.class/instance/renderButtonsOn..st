@@ -1,6 +1,11 @@
 rendering
 renderButtonsOn: html
-	self task isCheckable ifTrue: [
+	self task isCheckable
+	ifFalse: [
+		self task isSaveable ifTrue: [ 
+			self renderSaveOnlyButtonsOn: html]
+	]
+	ifTrue: [
 		html div class: 'buttons'; with: [
 			self isFirstTake
 				ifTrue: [self renderFirstTakeButtonsOn: html]

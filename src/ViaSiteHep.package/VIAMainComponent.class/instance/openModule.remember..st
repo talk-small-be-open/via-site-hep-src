@@ -8,7 +8,6 @@ openModule: aModule remember: aBoolean
 				self currentPortfolio
 					addModule: aModule;
 					lastOpenedModule: aModule.
-				self session currentModule: aModule. 
 			]
 			ifFalse: [
 				(VIATocHelper isVocabolarioModule: aModule) ifTrue: [ 
@@ -18,6 +17,8 @@ openModule: aModule remember: aBoolean
 					lastOpenedPalloncini := aModule
 				].
 	]].
+
+	self session currentModule: aModule. 
 
 	exerciser := (VIATocModuleExerciser fromModule: aModule).
 	exerciser previousModule: aModule previousByIndexCode.

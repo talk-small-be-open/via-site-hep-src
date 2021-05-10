@@ -14,7 +14,7 @@ renderFastAccessMenuOn: html
 			html anchor
 				callback: [ self gotoSmartUnit ];
 				with: [
-					html iconUnita: self session currentToccaunit active: active.
+					html iconUnita: self session workingToccaunit active: active.
 					html span class: 'uk-visible@l'; with: [
 						html space.
 						html sT: 'main:fastAccess:unita']]
