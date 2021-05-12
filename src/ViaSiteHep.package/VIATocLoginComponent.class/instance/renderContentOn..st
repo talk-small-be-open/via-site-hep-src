@@ -3,7 +3,8 @@ renderContentOn: html
 	html ukContainer: [
 		html heading level1; t: 'login:title'.
 
-		self renderHepLoginOn: html.
+		self renderLocalLoginOn: html.
+"Eventually here		self renderHepLoginOn: html."
 
 		html div: [ 
 			html anchor
@@ -21,4 +22,6 @@ renderContentOn: html
 
 		self ifDevelopment: [
 			html break; break.
-			self renderQuickLoginOn: html]]
+			self renderQuickLoginOn: html]].
+	
+	self renderHepLoginOn: html.

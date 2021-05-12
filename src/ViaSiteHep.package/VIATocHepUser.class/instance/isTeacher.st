@@ -1,3 +1,3 @@
 testing
 isTeacher
-	^ groupId = 4
+	^ groups includes: 'teacher'

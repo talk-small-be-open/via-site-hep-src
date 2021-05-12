@@ -28,4 +28,6 @@ hintBalloon: aUiKeyPart force: aForceBoolean
 		#onHide->onHideJs.
 	} asDictionary.
 
-	self script: (canvas jsWebuiPopover: htmlString options: popoverOptions)
+	self
+		onClick: (canvas jQuery this call: 'webuiPopover' with: 'show');
+		script: (canvas jsWebuiPopover: htmlString options: popoverOptions)

@@ -3,9 +3,11 @@ initializeFromDictionary: aDictionary
 	self initialize.
 	
 	id := (aDictionary at: 'id') asInteger.
-	groupId := (aDictionary at: 'group_id') asInteger.
-	firstname := aDictionary at: 'firstname'.
-	lastname := aDictionary at: 'lastname'.
+	groups := (aDictionary at: 'groups').
+	firstName := aDictionary at: 'first_name'.
+	lastName := aDictionary at: 'last_name'.
 	email := aDictionary at: 'email'.
 
-	confirmationKey := aDictionary at: 'confirmation' ifAbsent: [ nil ].
+	isEmailConfirmed := (aDictionary at: 'email_verified_at') notNil.
+	
+"	confirmationKey := aDictionary at: 'confirmation' ifAbsent: [ nil ]."

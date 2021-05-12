@@ -3,8 +3,8 @@ getUserData: aToken
 
 	| response |
 
-	response := self callMethod: 'GET' data: nil headers: {'Authorization: Bearer ', aToken} endpoint: 'V1/customers/me'.
+	response := self callMethod: 'GET' data: nil headers: {'Authorization: Bearer ', aToken} endpoint: '/api/auth/user'.
 
 	response isDictionary ifFalse: [ self signalError: 'No user data' ].
 
-	^response
+	^response at: 'data'

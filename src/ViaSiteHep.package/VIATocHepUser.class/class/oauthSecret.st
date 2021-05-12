@@ -1,3 +1,3 @@
 as yet unclassified
 oauthSecret
-	^ self wd propertyAt: #hep:oauth:secret
+	^ self db propertyAt: #hep:oauth:secret

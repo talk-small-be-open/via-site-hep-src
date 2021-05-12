@@ -1,11 +1,11 @@
-as yet unclassified
+obsolete
 hepLoginWithOauthCode: aString
 	| viaUser hepUser skipVerification |
 	loginOk := false.
 	messageKey := 'login:loginError'.
 	hepErrorMessage := nil.
 	[
-		hepUser := VIATocHepUser loginOauthCode: aString.
+		hepUser := VIATocHepUser loginOauthCode: aString website: self website.
 		viaUser := hepUser syncViaUserFromWebsite: self website.
 	] on: VIATocHepUserError do: [ :error |
 		loginOk := false.
@@ -15,11 +15,8 @@ hepLoginWithOauthCode: aString
 		"OBSOLETE?"
 		"Special case: If the user is local present, then he might need to reregister at hep"
 		(self wd findUserByEmail: email) ifNotNil: [
-			"If does not exist at hep, then probably reregister"
-			(VIATocHepOldUser checkEmailExists: email) ifFalse: [
-				messageKey := 'login:tryReRegisterAtHep'.
-				hepErrorMessage := nil.
-			].
+			messageKey := 'login:tryReRegisterAtHep'.
+			hepErrorMessage := nil.
 		]
 	].
 
@@ -29,7 +26,7 @@ hepLoginWithOauthCode: aString
 			hepUser isEmailConfirmed ifFalse: [ hepUser sendEmailConfirmed ] ].
 		
 		"Check, if Email is verified by hep."
-		skipVerification := self isProduction and: [VIATocHepOldUser isApiStaging].
+		skipVerification := self isProduction and: [VIATocHepUser isApiStaging].
 		(skipVerification or: [hepUser isEmailConfirmed]) ifTrue: [
 			self session loginUser: viaUser remember: rememberMe.
 			loginOk := true.
