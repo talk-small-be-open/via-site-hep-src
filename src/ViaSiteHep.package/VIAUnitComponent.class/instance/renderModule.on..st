@@ -6,6 +6,8 @@ renderModule: each on: html
 		html iconLevelTag: each levelTag
 	].
 	
-	html span class: 'moduleTitle'; with: each title.
+	html span class: 'moduleTitle'; with: [
+		html span: each title.
+		self renderAttributesModule: each on: html
+	].
 	
-	self renderAttributesModule: each on: html

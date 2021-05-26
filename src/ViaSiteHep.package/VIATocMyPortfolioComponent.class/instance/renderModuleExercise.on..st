@@ -14,11 +14,13 @@ renderModuleExercise: aModuleExercise on: html
 			html span class: 'moduleTitle'; with: module title
 	].
 
-	html anchor
-		class: 'deleteAction';
-		callback: [self removeModuleExercise: aModuleExercise];
-		with: [
-			html iconRemove.
-"			html t: 'myPortfolio:removeModule'"].
+
 	html span class: 'moduleStatus'; with: [ 
+		html anchor
+			class: 'deleteAction';
+			callback: [self removeModuleExercise: aModuleExercise];
+			with: [
+				html iconRemove.
+	"			html t: 'myPortfolio:removeModule'"].
+
 		html iconProgressFromPercent: (aModuleExercise percentDone) ].

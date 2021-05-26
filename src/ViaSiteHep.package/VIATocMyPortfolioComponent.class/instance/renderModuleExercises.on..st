@@ -12,5 +12,6 @@ renderModuleExercises: aCollection on: html
 					tag class: ('level-', lt code) ].
 				
 				tag with: [
-					self renderModuleExercise: each on: html.
+					html div class: 'moduleEntry'; with: [
+						self renderModuleExercise: each on: html ].
 		]]]]

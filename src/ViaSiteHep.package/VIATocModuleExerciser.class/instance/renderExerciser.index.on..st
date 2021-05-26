@@ -18,7 +18,7 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 				onClick: (html jQuery ajax
 					callback: [aTaskExerciser toggleOpen]), (html jQuery this toggleClass: 'isOpen') ].
 		divTag
-			class: 'accBar uk-clearfix';
+			class: 'accBar';
 			class: 'ignored' if: exercise isIgnored;
 			class: 'isOpen' if: aTaskExerciser isOpen.
 "			class: 'mothertongue' if: isAllMothertongue"
@@ -26,13 +26,14 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		task classification contextTags do: [ :each | divTag class: each code ].
 		
 		divTag with: [
-			html span class: 'uk-float-left'; with: [
-				html heading level3; class: 'accTitle'; with: title].
-			task classification activityTypeTags ifNotEmpty: [ :all |
-				html span class: 'accIcons uk-float-left'; with: [
-					all do: [:each | html iconActivityType: each ]]].
+			html div class: 'left'; with: [
+				html heading level3; class: 'accTitle'; with: title.
+				task classification activityTypeTags ifNotEmpty: [ :all |
+					html span class: 'accIcons'; with: [
+						all do: [:each | html iconActivityType: each ]]]
+			].
 
-			html span class: 'uk-float-right'; with: [
+			html div class: 'right'; with: [
 				model isIgnoreTaskAllowed ifTrue: [
 					html span class: 'accActions'; with: [
 						html anchor

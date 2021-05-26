@@ -26,13 +26,15 @@ renderContentOn: html
 					tag class: ('level-', lt code) ].
 				
 				tag with: [
-					html anchor
-						class: 'gotoModule';
-						callback: [ self gotoModule: each];
-						with: [
-							self renderModule: each on: html ].
-					html span class: 'moduleStatus'; with: [ 
-						showProgress ifTrue: [
-							html iconProgressFromPercent: (self currentPortfolio percentDoneModule: each) ].
+					html div class: 'moduleEntry'; with: [
+						html anchor
+							class: 'gotoModule';
+							callback: [ self gotoModule: each];
+							with: [
+								self renderModule: each on: html ].
+						html span class: 'moduleStatus'; with: [ 
+							showProgress ifTrue: [
+								html iconProgressFromPercent: (self currentPortfolio percentDoneModule: each) ].
+						]
 					]
 		]]]]

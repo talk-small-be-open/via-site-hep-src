@@ -12,7 +12,9 @@ loginOauthCode: aString website: aWebsite
 	} aD.
 	
 	response := self postData: postData endpoint: '/oauth/token'.
-	
+
+	response isDictionary ifFalse: [ self signalError: 'Invalid data from API' ].
+
 	response at: 'error' ifPresent: [:text | self signalError: ('Error from API: ', text) ].
 	
 	apiToken := response at: 'access_token'. "TODO: Save refresh_token also?"
