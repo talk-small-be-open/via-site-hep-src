@@ -11,6 +11,6 @@ renderFlashMessagesOn: html
 				flashMessages do: [:each |
 					html div: [
 						html iconFlashMessage; space.
-						html text: each]]]].
+						html tOrS: each]]]].
 
 		self clearFlashMessages]

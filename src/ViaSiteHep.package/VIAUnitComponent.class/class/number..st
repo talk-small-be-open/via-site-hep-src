@@ -4,7 +4,7 @@ number: anInteger
 	| theClass |
 	theClass := self.
 	self session isDemo ifTrue: [ theClass := VIADemoUnitComponent ].
-	self currentUser isBetatester ifTrue: [ theClass := VIABetatesterUnitComponent ].
+	self session isBetatest ifTrue: [ theClass := VIABetatesterUnitComponent ].
 
 	^ theClass basicNew
 		setUnitNumber: anInteger;

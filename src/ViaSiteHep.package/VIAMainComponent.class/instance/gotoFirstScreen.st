@@ -7,7 +7,7 @@ gotoFirstScreen
 	(self currentUser loginCount = 1) ifTrue: [
 		"If the user did not enter an invitation code so far,
 		we give a second change, just UX."
-		(self currentUser groupsInWebsite: self website) ifBlank: [
+		(self currentUser studentGroupsInWebsite: self website) ifBlank: [
 			self showRequestForInvitationCode ].
 		^ self
 	].

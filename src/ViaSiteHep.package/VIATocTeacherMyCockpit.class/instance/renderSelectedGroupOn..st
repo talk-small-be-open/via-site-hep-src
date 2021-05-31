@@ -15,7 +15,7 @@ renderSelectedGroupOn: html
 		self renderInvitationCodeOn: html.
 
 		isPristine ifFalse: [
-			html heading level3; with: 'teacherMyCockpit:students'.
+			html heading level3; t: 'teacherMyCockpit:students'.
 				html div class: 'uk-margin'; with: [ 
 					html anchor
 						callback: [  ];

@@ -20,6 +20,12 @@ renderContentOn: html
 		]
 	].
 
+	html heading level3; t: 'myProfile:permissions'.
+	user isTeacher ifTrue: [ html div t: 'myProfile:iAmTeacher' ].
+	user isStudent ifTrue: [ html div t: 'myProfile:iAmStudent' ].
+	self ifBetatest: [ html div t: 'myProfile:youAreLoggedInForBetatest' ].
+
+
 	userGroups ifNotBlank: [
 		html heading level3; t: 'myProfile:myGroups'.
 		html ukList class: 'uk-margin'; with: [
