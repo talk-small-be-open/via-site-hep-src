@@ -9,7 +9,7 @@ renderFastAccessMenuOn: html
 
 	moduleType := self currentModuleType.
 	active := (moduleType = 'R').
-	html unorderedList class: 'uk-navbar-nav fastAccess'; with: [
+"	html unorderedList class: 'uk-navbar-nav fastAccess'; with: ["
 		html listItem class: 'active' if: active; with: [
 			html anchor
 				callback: [ self gotoSmartUnit ];
@@ -40,4 +40,3 @@ renderFastAccessMenuOn: html
 						html sT: 'main:fastAccess:vocabolario'
 					]]
 		]
-	].

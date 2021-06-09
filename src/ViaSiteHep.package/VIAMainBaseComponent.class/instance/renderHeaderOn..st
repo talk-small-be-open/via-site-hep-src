@@ -7,6 +7,8 @@ renderHeaderOn: html
 				self ifViewportSmall: [
 					self renderNavbarSmallContentOn: html ]
 				else: [
-					self renderNavbarContentOn: html ]].
+					self renderNavbarContentOn: html ].
+				self renderOffcanvasOn: html.
+			].
 		html div class: 'uk-navbar-dropbar'
 	]

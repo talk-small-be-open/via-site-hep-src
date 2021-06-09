@@ -5,7 +5,7 @@ hintBalloon: aUiKeyPart force: aForceBoolean
 	"Check, if user needs hint"
 	user := self session user.
 	show := aForceBoolean ifFalse: [
-		(VIATocHelper isShowHint: aUiKeyPart user: user)
+		(user isShowHint: aUiKeyPart)
 			ifFalse: [ ^ self ] ].
 
 	uiTextKey := 'hintBalloon:', aUiKeyPart.

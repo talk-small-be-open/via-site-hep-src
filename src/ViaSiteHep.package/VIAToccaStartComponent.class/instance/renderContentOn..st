@@ -6,42 +6,7 @@ renderContentOn: html
 
 	html ukContainer: [
 
-		html heading level2; with: [ html t: 'myHome:lastVisited'].
-
-		html ukGrid
-			class: 'uk-child-width-1-3';
-			with: [
-				self currentPortfolio lastOpenedModule ifNotBlank: [ :m |
-					html div: [
-						html bigAnchorButton
-							class: (VIATocHelper toccamoduleCssOfModule: m);
-							callback: [ self gotoModule: m ];
-							with: [
-								html sT: 'myHome:gotoCurrentModule'.
-								html space.
-								html text: m indexCodeString].
-				]].
-				self currentPortfolio lastOpenedPalloncini ifNotBlank: [ :m |
-					html div: [
-						html bigAnchorButton
-							class: (VIATocHelper toccamoduleCssOfModule: m);
-							callback: [ self gotoModule: m ];
-							with: [
-								html sT: 'myHome:gotoCurrentPalloncini'.
-								html space.
-								html text: m indexCodeString].
-				]].
-				self currentPortfolio lastOpenedVocabolario ifNotBlank: [ :m |
-					html div: [
-						html bigAnchorButton
-							class: (VIATocHelper toccamoduleCssOfModule: m);
-							callback: [ self gotoModule: m ];
-							with: [
-								html sT: 'myHome:gotoCurrentVocabolario'.
-								html space.
-								html text: m indexCodeString].
-				]].
-			].
+		self renderLastUsedOn: html.
 
 		html heading level2; with: [ html t: 'myHome:units'].
 

@@ -8,21 +8,7 @@ renderContentOn: html
 		html break.
 		html span: self currentUser email ].
 
-	html heading level3; t: 'myProfile:settings'.
-	html ukFormStacked: [
-		html ukFormLabel: [
-			html ukCheckbox on: #useAutologin of: user.
-			html space.
-			html sT: 'myProfile:autologin'].
-		html div class: 'uk-margin-top'; with: [
-			html submitButton
-				t: 'form:save'
-		]
-	].
-	html div class: 'uk-margin'; with: [
-		html anchor
-			callback: [ self resetHints ];
-			t: 'myProfile:resetHints' ].
+	self renderSettingsOn: html.
 
 	html heading level3; t: 'myProfile:permissions'.
 	user isTeacher ifTrue: [ html div t: 'myProfile:iAmTeacher' ].

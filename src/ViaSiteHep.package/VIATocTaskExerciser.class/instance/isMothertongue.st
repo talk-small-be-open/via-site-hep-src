@@ -1,3 +1,4 @@
 accessing
 isMothertongue
-	^ isMothertongue ifNil: [ self module isMothertongue or: [ self task isMothertongue ] ]
+	^ isMothertongue ifNil: [
+		isMothertongue := self module isMothertongue or: [ self task isMothertongue ] ]

@@ -3,7 +3,9 @@ hintBox: aUiKeyPart
 	| user uiTextKey force id |
 	user := self session user.
 
-	force := (VIATocHelper isShowHint: aUiKeyPart user: user).
+	user enabledHintBoxes ifFalse: [ ^ self ].
+	
+	force := user isShowHint: aUiKeyPart.
 	
 	uiTextKey := 'hintBox:', aUiKeyPart.
 	id := self nextId.

@@ -1,10 +1,10 @@
 rendering
 renderNavbarContentOn: html
-	html div class: 'uk-navbar-left'; with: [
+	html div class: 'menubarLeft'; with: [
 		self renderLogoOn: html.
 	].
 
-	html div class: 'uk-navbar-right'; with: [
+	html div class: 'menubarRight'; with: [
 "		html anchor
 			callback: [  ];
 			with: [ html ukIcon: 'home']."
@@ -23,13 +23,4 @@ renderNavbarContentOn: html
 					with: [
 						html iconMenu.
 		"				html t: 'general:menu'"]]
-	]].
-	
-	html div
-		id: 'mainMenu';
-		a: 'uk-offcanvas' p: 'flip: true; overlay: true';
-		with: [
-			html div class: 'uk-offcanvas-bar'; with: [
-				html button class: 'uk-offcanvas-close'; a: 'uk-close'.
-				self renderMenuOn: html].
-	]
+	]]

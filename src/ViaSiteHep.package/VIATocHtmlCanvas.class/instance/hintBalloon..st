@@ -1,6 +1,6 @@
 rendering
 hintBalloon: aKey
-	(VIATocHelper isShowHint: aKey user: self session user) ifTrue: [
+	(self session user isShowHint: aKey) ifTrue: [
 		self span
 			hintBalloon: aKey force: true;
 			with: [ self iconInfo ]]

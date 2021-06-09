@@ -1,9 +1,11 @@
 rendering
 renderNavbarContentOn: html
-	html div class: 'uk-navbar-left'; with: [
+	"uk-navbar-left"
+	html div class: 'menubarLeft'; with: [
 		self renderLogoOn: html.
 	].
-	html div class: 'uk-navbar-center'; with: [
+"	html div class: 'uk-navbar-center'; with: ["
+	html div class: 'menubarCenter'; with: [
 		html unorderedList class: 'uk-navbar-nav uk-margin-right'; with: [
 			html listItem
 				class: 'active' if: (self activeCoreComponent isKindOf: VIAToccaStartComponent);
@@ -15,10 +17,11 @@ renderNavbarContentOn: html
 							html span class: 'uk-visible@l'; with: [
 								html space.
 								html sT: 'main:fastAccess:start']]
-			]].
-		self renderFastAccessMenuOn: html.
+			].
+			self renderFastAccessMenuOn: html.
+		].
 	].
-	html div class: 'uk-navbar-right'; with: [
+	html div class: 'menubarRight'; with: [
 "		html div class: 'uk-navbar-item'; with: [
 		]."
 
@@ -43,4 +46,4 @@ renderNavbarContentOn: html
 		]
 	].
 
-	self renderOffcanvasOn: html.
+"	self renderOffcanvasOn: html."
