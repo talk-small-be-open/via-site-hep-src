@@ -4,9 +4,6 @@ renderSelectOneRadio: aSelectOneInput on: html
 
 	answerValue := exercise answerOf: aSelectOneInput.
 	choicesGroups := exercise propertyAt: #orderedChoicesGroups of: aSelectOneInput.
-
-"	choicesGroups := aSelectOneInput choicesGroups copy."
-
 	columnsCount := choicesGroups size.
 
 	self renderHintSymbolOf: aSelectOneInput on: html.
@@ -18,6 +15,8 @@ renderSelectOneRadio: aSelectOneInput on: html
 		class: aSelectOneInput uiStyle.
 
 	div with: [
+		html hintBox: 'selectOne:seeTutorial'.
+
 		input := html radioGroup
 			callback: [:value | answerValue value: value];
 			yourself.
@@ -34,7 +33,7 @@ renderSelectOneRadio: aSelectOneInput on: html
 				html ukGrid class: ('uk-grid-small uk-child-width-1-', columnsCount asString); with: [
 					choicesGroups do: [ :choices |
 						| subColumnsCount |
-						
+
 						subColumnsCount := aSelectOneInput columns ifNil: [
 							self calculateSubcolumnsFromCol: columnsCount choices: choices
 						].
@@ -42,13 +41,8 @@ renderSelectOneRadio: aSelectOneInput on: html
 						html div: [
 							html ukGrid
 								class: ('uk-grid-small uk-child-width-1-', subColumnsCount asString);
-"								class: ('uk-child-width-1-', (subColumnsCount*2) asString, '@l');"
 								with: [
-
 									choices do: [:choice |
-
-	"				orderedChoices ifNotBlank: [
-							orderedChoices do: [:choice |"
 										| isChozen isWrongChoice isCorrect isCorrectChoice |
 										isChozen := answerValue value = choice.
 										isCorrect := answerValue isCorrect.
@@ -69,13 +63,7 @@ renderSelectOneRadio: aSelectOneInput on: html
 																(((html jQuery id: div id) find: '.bigButton') removeClass: 'active'),
 																(html jQuery id: buttonId) addClass: 'active');
 															value: choice.
-	"													self ifca: isWrongChoice t: [
-															html span class: 'wrongIcon'; with: [html iconWrong]].
-														self ifca: isCorrectChoice t: [
-															html span class: 'correctIcon'; with: [html iconCorrect]]."
 														html iconChecked class: 'checkedIcon'.
 														html pillarString: choice]
 													].
-		]]]]]]]].
-
-"	self renderCorrection: answerValue showWrong: false on: html"
+		]]]]]]]]

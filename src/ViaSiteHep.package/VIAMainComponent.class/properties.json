@@ -5,10 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"lastOpenedPalloncini",
-		"lastOpenedVocabolario"
-	],
+	"instvars" : [ ],
 	"name" : "VIAMainComponent",
 	"type" : "normal"
 }

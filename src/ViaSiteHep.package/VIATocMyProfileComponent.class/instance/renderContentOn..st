@@ -19,6 +19,10 @@ renderContentOn: html
 				t: 'form:save'
 		]
 	].
+	html div class: 'uk-margin'; with: [
+		html anchor
+			callback: [ self resetHints ];
+			t: 'myProfile:resetHints' ].
 
 	html heading level3; t: 'myProfile:permissions'.
 	user isTeacher ifTrue: [ html div t: 'myProfile:iAmTeacher' ].

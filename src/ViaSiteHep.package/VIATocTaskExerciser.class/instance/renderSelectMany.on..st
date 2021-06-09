@@ -5,7 +5,6 @@ renderSelectMany: aSelectManyInput on: html
 	answerValue := exercise answerOf: aSelectManyInput.
 
 	choicesGroups := exercise propertyAt: #orderedChoicesGroups of: aSelectManyInput.
-"	choicesGroups := aSelectManyInput choicesGroups copy."
 	columnsCount := choicesGroups size.
 
 	answerCollection := answerValue value.
@@ -17,6 +16,9 @@ renderSelectMany: aSelectManyInput on: html
 		yourself.
 
 	regionDiv with: [
+
+		html hintBox: 'selectMany:seeTutorial'.
+
 		self renderHintSymbolOf: aSelectManyInput on: html.
 		html ukGrid class: ('uk-grid-small uk-child-width-1-', columnsCount asString); with: [
 			choicesGroups do: [ :choices |
@@ -28,14 +30,15 @@ renderSelectMany: aSelectManyInput on: html
 				html div: [
 					html ukGrid
 						class: ('uk-grid-small uk-child-width-1-', subColumnsCount asString);
-"						class: ('uk-child-width-1-', (subColumnsCount**2) asString, '@l');"
 						with: [
 							choices do: [:choice |
 								| isCorrect isChozen isWrongChoice isCorrectChoice |
 								isChozen := answerCollection includes: choice.
-								isCorrect := aSelectManyInput isSolution: choice.
-								isWrongChoice := (isChozen and: [isCorrect not]).
-								isCorrectChoice := (isChozen and: [isCorrect]).
+
+								aSelectManyInput isCheckable ifTrue: [
+									isCorrect := aSelectManyInput isSolution: choice.
+									isWrongChoice := (isChozen and: [isCorrect not]).
+									isCorrectChoice := (isChozen and: [isCorrect])].
 
 								html div: [
 									html label
@@ -46,29 +49,20 @@ renderSelectMany: aSelectManyInput on: html
 										class: 'correct' if: (self isca: isCorrectChoice);
 										with: [
 											html span: [
-												html checkbox
+												| cb |
+												cb := html checkbox
 													style: 'display: none';
-		"											onClick: ((html jQuery id: buttonId) toggleClass: 'active');"
+													onTrue: [answerCollection addIfNotPresent: choice]
+													onFalse: [answerCollection remove: choice ifAbsent: []];
+													class: 'selectManyInput';
 													onClick: ('return selectmany_preventTooManyChecks("',
 														regionDiv id, '","',
 														buttonId, '",',
 														aSelectManyInput solutions size greaseString,
 														',"', ('exerciser:selectMany:tooManyChecks' t),'")');
-
-													onTrue: [answerCollection addIfNotPresent: choice]
-													onFalse: [answerCollection remove: choice ifAbsent: []];
-													class: 'selectManyInput';
 													value: isChozen.
 
-
-	"											self ifca: isWrongChoice t: [
-													html span class: 'wrongIcon'; with: [html iconWrong]].
-												self ifca: isCorrectChoice t: [
-													html span class: 'correctIcon'; with: [html iconCorrect]]."
 												html iconChecked class: 'checkedIcon'.
 												html pillarString: choice].
 										].
-			]]]]]].
-				
-	"		self renderCorrection: answerValue showWrong: false on: html"
-		]
+	]]]]]]]

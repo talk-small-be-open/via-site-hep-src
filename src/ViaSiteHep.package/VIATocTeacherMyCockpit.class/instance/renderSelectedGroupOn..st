@@ -8,8 +8,7 @@ renderSelectedGroupOn: html
 		html heading level2; with: selectedGroup displayName.
 
 		isPristine ifTrue: [
-			html div class: 'uk-margin'; with: [
-				html ukLabel sT: 'teacherMyCockpit:noStudents']
+			html div class: 'uk-margin'; pT: 'teacherMyCockpit:noStudents'
 		].
 
 		self renderInvitationCodeOn: html.

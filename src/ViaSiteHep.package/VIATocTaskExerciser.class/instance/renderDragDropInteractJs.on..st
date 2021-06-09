@@ -3,8 +3,9 @@ renderDragDropInteractJs: aDragDropInput on: html
 	| answerValue answerCollection jsEventHandler dropTargetId |
 
 	answerValue := exercise answerOf: aDragDropInput.
-
 	answerCollection := answerValue value.
+
+"	html hintBox: 'dragDrop:seeTutorial'."
 
 	self renderHintSymbolOf: aDragDropInput on: html.
 

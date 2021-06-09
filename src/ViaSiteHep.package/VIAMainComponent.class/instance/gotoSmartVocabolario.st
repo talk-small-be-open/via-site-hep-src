@@ -1,5 +1,7 @@
 as yet unclassified
 gotoSmartVocabolario
-	lastOpenedVocabolario
+"	lastOpenedVocabolario
 		ifNotNil: [ self openModule: lastOpenedVocabolario remember: false]
-		ifNil: [self gotoToccaunit: 'V']
+		ifNil: [self gotoToccaunit: 'V']."
+		
+	self gotoToccaunit: 'V'

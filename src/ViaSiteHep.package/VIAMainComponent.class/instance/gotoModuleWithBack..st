@@ -1,3 +1,3 @@
 actions
-openModule: aModule
+gotoModuleWithBack: aModule
 	self openModule: aModule taskNumber: nil remember: true backToMe: true

@@ -1,5 +1,7 @@
 as yet unclassified
 gotoSmartPalloncini
-	lastOpenedPalloncini
+"	lastOpenedPalloncini
 		ifNotNil: [ self openModule: lastOpenedPalloncini remember: false]
-		ifNil: [self gotoToccaunit: 'P']
+		ifNil: [self gotoToccaunit: 'P']"
+		
+	self gotoToccaunit: 'P'

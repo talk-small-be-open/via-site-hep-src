@@ -17,9 +17,11 @@ gotoFirstScreen
 		self session clearGotoModule.
 		self gotoModule: m. ^self]."
 
-	self currentPortfolio lastOpenedModule
+"	self currentPortfolio lastOpenedModule
 		ifNotNil: [:m | self gotoModule: m ]
-		ifNil: [self gotoHome]
+		ifNil: [self gotoHome]"
+
+	self gotoHome
 		
 	"DEV"
 "	self gotoModule: self wd modules anyOne"

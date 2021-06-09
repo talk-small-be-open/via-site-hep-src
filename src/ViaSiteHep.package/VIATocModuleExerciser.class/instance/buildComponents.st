@@ -10,8 +10,8 @@ buildComponents
 		taskExerciser := self buildExerciseComponentForTask: each.
 		taskExerciser
 			parent: self;
-			onFinish: [self gotoNextOrFinish];
-			onCheckButton: [self checkAllExcept: taskExerciser];
+"Kein auto-weiter			onFinish: [self gotoNextOrFinish];"
+"KEIN implizites checken der anderen			onCheckButton: [self checkAllExcept: taskExerciser];"
 			onAnswer: [self rebuild].
 		
 		exerciserComponents

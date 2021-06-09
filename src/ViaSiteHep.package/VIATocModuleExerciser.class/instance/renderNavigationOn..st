@@ -1,13 +1,9 @@
 rendering
 renderNavigationOn: html
-	html heading level1; class: 'moduleNavigation'; "a: 'uk-sticky' p: 'offset: 30';" with: [
+	"heading level1;"
+	html div class: 'moduleNavigation'; "a: 'uk-sticky' p: 'offset: 30';" with: [
 		html span class: 'left'; with: [
-			html anchor
-				callback: [ self gotoUnitOverview ];
-				with: [
-					html iconBackUp.
-"					html span class: 'backText uk-visible@l'; t: 'moduleExerciser:gotoOverview'"
-				]
+			self renderBackishButtonOn: html
 		].
 		html span class: 'center'; with: [
 			html span class: 'arrow'; with: [

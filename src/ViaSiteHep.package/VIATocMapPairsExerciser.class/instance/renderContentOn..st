@@ -17,6 +17,9 @@ renderContentOn: html
 		class: taskBrick uiStyle;
 		id: exerciseId;
 		with: [
+
+			html hintBox: 'mapPairs:seeTutorial'.
+
 			html div class: 'head'; with: [
 				html div class: ''; with: [ html iconClickDown ].
 				html div class: ''; with: [ html iconClickDown ].

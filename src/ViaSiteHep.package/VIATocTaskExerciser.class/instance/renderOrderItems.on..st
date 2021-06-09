@@ -3,6 +3,9 @@ renderOrderItems: anOrderItems on: html
 	| answerHolder listId items listTag |
 
 	html div class: 'orderItems'; class: anOrderItems uiStyle; with: [
+
+		html hintBox: 'orderItems:seeTutorial'.
+
 		answerHolder := exercise answerOf: anOrderItems.
 		items := answerHolder value.
 

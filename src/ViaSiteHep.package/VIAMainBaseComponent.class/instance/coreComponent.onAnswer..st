@@ -1,4 +1,5 @@
 accessing
 coreComponent: anObject onAnswer: aBlock
 	(self coreComponent: anObject)
-		onAnswer: aBlock
+		onAnswer: [:answer |
+			aBlock cull: answer]

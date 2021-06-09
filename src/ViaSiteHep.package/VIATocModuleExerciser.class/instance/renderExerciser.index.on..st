@@ -20,10 +20,10 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		divTag
 			class: 'accBar';
 			class: 'ignored' if: exercise isIgnored;
-			class: 'isOpen' if: aTaskExerciser isOpen.
-"			class: 'mothertongue' if: isAllMothertongue"
+			class: 'isOpen' if: aTaskExerciser isOpen;
+			class: 'mothertongue' if: aTaskExerciser isMothertongue.
 			
-		task classification contextTags do: [ :each | divTag class: each code ].
+"		task classification contextTags do: [ :each | divTag class: each code ]."
 		
 		divTag with: [
 			html div class: 'left'; with: [
@@ -56,7 +56,9 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 
 	exercise isIgnored ifFalse: [
 		html div
+			class: 'taskExercise';
 			class: 'hiddenTaskExercise' if: (hasTitle and: [aTaskExerciser isOpen not]);
+			class: 'noTitleTaskExercise' if: hasTitle not;
 			id: id;
 			with: aTaskExerciser
 	]

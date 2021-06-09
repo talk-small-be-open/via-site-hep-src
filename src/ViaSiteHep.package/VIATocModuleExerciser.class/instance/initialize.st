@@ -1,6 +1,5 @@
 initialization
 initialize
-	| classification |
 	
 	super initialize.
 
