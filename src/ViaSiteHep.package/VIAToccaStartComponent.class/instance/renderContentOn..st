@@ -12,7 +12,7 @@ renderContentOn: html
 
 		"All units 1-6"
 		html ukGrid
-			class: 'uk-child-width-1-2';
+			class: 'unitas uk-child-width-1-2';
 			with: [
 				VIATocHelper toccaunits pairsDo: [ :first :second |
 					| css |
