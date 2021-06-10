@@ -12,13 +12,13 @@ renderContentOn: html
 		onSuccess: (('onMapPairsSelectionResult(ok, "', exerciseId,'")') asFunction: #(ok status));
 		onError: (html javascript alert: 'Error with communication to application!')).
 
+	html hintBox: 'mapPairs:seeTutorial'.
+
 	html div
 		class: 'mapPairsClickClick';
 		class: taskBrick uiStyle;
 		id: exerciseId;
 		with: [
-
-			html hintBox: 'mapPairs:seeTutorial'.
 
 			html div class: 'head'; with: [
 				html div class: ''; with: [ html iconClickDown ].
