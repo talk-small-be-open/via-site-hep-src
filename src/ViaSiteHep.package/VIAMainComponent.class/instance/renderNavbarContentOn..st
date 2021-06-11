@@ -8,7 +8,7 @@ renderNavbarContentOn: html
 	html div class: 'menubarCenter'; with: [
 		html unorderedList class: 'uk-navbar-nav uk-margin-right'; with: [
 			html listItem
-				class: 'active' if: (self activeCoreComponent isKindOf: VIAToccaStartComponent);
+				class: 'activeHome' if: (self activeCoreComponent isKindOf: VIAToccaStartComponent);
 				with: [
 					html anchor
 						callback: [ self gotoToccaStart ];

@@ -13,7 +13,7 @@ renderLastUsedOn: html
 		class: 'uk-flex-center uk-child-width-1-1 uk-child-width-1-3@l';
 		with: [
 			empty ifTrue: [ 
-				html div class: 'uk-text-center'; t: 'myHome:lastVisited:none'
+				html div class: 'uk-text-center'; pT: 'myHome:lastVisited:none'
 			].
 			
 			m ifNotNil: [

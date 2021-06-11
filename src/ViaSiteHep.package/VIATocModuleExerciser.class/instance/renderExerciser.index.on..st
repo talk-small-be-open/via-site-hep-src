@@ -1,12 +1,15 @@
 rendering
 renderExerciser: aTaskExerciser index: anInteger on: html
-	| id title hasTitle task exercise |
+	| id title hasTitle task exercise initiallyHidden |
 	id := html nextId.
 
 	task := aTaskExerciser task.
 	title := task title.
 	hasTitle := title notBlank.
 	exercise := aTaskExerciser exercise.
+
+	"For lazy load, with AJAX"
+	initiallyHidden := (hasTitle and: [aTaskExerciser isOpen not]).
 	
 	hasTitle ifTrue: [
 		| divTag |
@@ -15,12 +18,22 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		exercise isIgnored ifFalse: [
 			divTag
 				ukToggleTarget: ('#', id) class: 'hiddenTaskExercise' "animation: 'uk-animation-fade'";
-				onClick: (html jQuery ajax
-					callback: [aTaskExerciser toggleOpen]), (html jQuery this toggleClass: 'isOpen') ].
+				onClick: 
+					(html jQuery this toggleClass: 'isOpen'),
+					(((html jQuery id: id) is: ':empty')
+						then: ((html jQuery id: id) load
+							html: [:h | aTaskExerciser toggleOpen. self renderExerciserBody: aTaskExerciser on: h];
+							onComplete: (JSStream on: 'processHtmlDocument(document.getElementById("', id, '"));')
+						)
+						else: (html jQuery ajax callback: [aTaskExerciser toggleOpen])
+					)
+		].
+	
 		divTag
 			class: 'accBar';
 			class: 'ignored' if: exercise isIgnored;
 			class: 'isOpen' if: aTaskExerciser isOpen;
+			class: 'facoltativo' if: aTaskExerciser isFacoltativo;
 			class: 'mothertongue' if: aTaskExerciser isMothertongue.
 			
 "		task classification contextTags do: [ :each | divTag class: each code ]."
@@ -57,8 +70,11 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 	exercise isIgnored ifFalse: [
 		html div
 			class: 'taskExercise';
-			class: 'hiddenTaskExercise' if: (hasTitle and: [aTaskExerciser isOpen not]);
+			class: 'hiddenTaskExercise' if: initiallyHidden;
 			class: 'noTitleTaskExercise' if: hasTitle not;
 			id: id;
-			with: aTaskExerciser
+			with: [
+				initiallyHidden ifFalse: [
+					self renderExerciserBody: aTaskExerciser on: html]
+			]
 	]

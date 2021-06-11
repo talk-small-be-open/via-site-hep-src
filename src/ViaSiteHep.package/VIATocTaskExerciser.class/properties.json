@@ -10,7 +10,8 @@
 		"onCheckButtonBlock",
 		"parentComponent",
 		"pillarLengthEstimator",
-		"isMothertongue"
+		"isMothertongue",
+		"isFacoltativo"
 	],
 	"name" : "VIATocTaskExerciser",
 	"type" : "normal"
