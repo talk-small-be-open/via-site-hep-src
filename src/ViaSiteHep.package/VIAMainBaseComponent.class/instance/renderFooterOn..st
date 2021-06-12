@@ -18,7 +18,7 @@ renderFooterOn: html
 					].
 				].
 				html div class: 'uk-width-1-1 uk-width-expand@l'; with: [
-					html div class: 'uk-flex uk-flex-between uk-flex-right@l'; with: [
+					html ukGrid class: 'uk-flex uk-flex-wrap uk-flex-between@m uk-flex-right@l'; with: [
 						html anchor
 							callback: [self openImprint];
 							t: 'footer:imprint'.

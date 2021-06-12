@@ -14,8 +14,8 @@ renderNavbarContentOn: html
 						callback: [ self gotoToccaStart ];
 						with: [
 							html iconHome.
-							html span class: 'uk-visible@l'; with: [
-								html space.
+							html span class: 'menuLabel uk-visible@l'; with: [
+								"html space."
 								html sT: 'main:fastAccess:start']]
 			].
 			self renderFastAccessMenuOn: html.
