@@ -20,6 +20,7 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 				ukToggleTarget: ('#', id) class: 'hiddenTaskExercise' "animation: 'uk-animation-fade'";
 				onClick: 
 					(html jQuery this toggleClass: 'isOpen'),
+					((html jQuery this hasClass: 'isOpen') then: (JSStream on: 'scrollToExerciseTask(this)')),
 					(((html jQuery id: id) is: ':empty')
 						then: ((html jQuery id: id) load
 							html: [:h | aTaskExerciser toggleOpen. self renderExerciserBody: aTaskExerciser on: h];

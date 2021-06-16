@@ -1,10 +1,11 @@
 rendering
 renderButtonsOn: html
 	self task isSelfCheckMode ifTrue: [
-			self renderSaveOnlyButtonsOn: html
+		html div class: 'exerciserMainButtons'; with: [
+			self renderSaveOnlyButtonsOn: html ]
 	].
 	self task isCheckable ifTrue: [
-		html div class: 'buttons'; with: [
+		html div class: 'exerciserMainButtons'; with: [
 			self isFirstTake
 				ifTrue: [self renderFirstTakeButtonsOn: html]
 				ifFalse: [
