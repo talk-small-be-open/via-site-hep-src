@@ -32,6 +32,10 @@ openModule: aModule taskNumber: aTaskNumber remember: aBoolean backToMe: aBackBo
 	self session currentModule: aModule. 
 
 	exerciser := (VIATocModuleExerciser fromModule: aModule).
+
+	"To make it UI-lightweight as possible. Just open one task"
+	exerciser closeAllTasksButLastUsed.
+	
 	exerciser previousModule: aModule previousByIndexCode.
 	exerciser nextModule: aModule nextByIndexCode.
 

@@ -18,16 +18,7 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		exercise isIgnored ifFalse: [
 			divTag
 				ukToggleTarget: ('#', id) class: 'hiddenTaskExercise' "animation: 'uk-animation-fade'";
-				onClick: 
-					(html jQuery this toggleClass: 'isOpen'),
-					((html jQuery this hasClass: 'isOpen') then: (JSStream on: 'scrollToExerciseTask(this)')),
-					(((html jQuery id: id) is: ':empty')
-						then: ((html jQuery id: id) load
-							html: [:h | aTaskExerciser toggleOpen. self renderExerciserBody: aTaskExerciser on: h];
-							onComplete: (JSStream on: 'processHtmlDocument(document.getElementById("', id, '"));')
-						)
-						else: (html jQuery ajax callback: [aTaskExerciser toggleOpen])
-					)
+				onClick: (self jsForClickExerciser: aTaskExerciser titleId: divTag ensureId bodyId: id on: html)
 		].
 	
 		divTag

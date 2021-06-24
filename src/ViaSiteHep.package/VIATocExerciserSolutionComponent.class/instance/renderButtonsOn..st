@@ -1,5 +1,5 @@
 rendering
 renderButtonsOn: html
 	self task isCheckable ifTrue: [
-		html div class: 'buttons'; with: [
+		html div class: 'exerciserMainButtons'; with: [
 			self renderSolutionButtonsOn: html]]
