@@ -4,13 +4,7 @@ renderNavbarContentOn: html
 		self renderLogoOn: html.
 	].
 
-	html div class: 'menubarRight'; with: [
-"		html anchor
-			callback: [  ];
-			with: [ html ukIcon: 'home']."
-"		html anchor
-			callback: [ self gotoSearchModule ];
-			with: [ html iconSearch]."
+"	html div class: 'menubarRight'; with: [
 		html unorderedList class: 'uk-navbar-nav'; with: [
 			html listItem: [
 				html anchor
@@ -22,5 +16,4 @@ renderNavbarContentOn: html
 					ukToggleTarget: '#mainMenu';
 					with: [
 						html iconMenu.
-		"				html t: 'general:menu'"]]
-	]]
+	]]]]"

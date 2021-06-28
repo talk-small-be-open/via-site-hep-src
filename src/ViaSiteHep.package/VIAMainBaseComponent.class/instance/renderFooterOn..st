@@ -20,13 +20,19 @@ renderFooterOn: html
 				html div class: 'uk-width-1-1 uk-width-expand@l'; with: [
 					html ukGrid class: 'uk-flex uk-flex-wrap uk-flex-between@m uk-flex-right@l'; with: [
 						html anchor
-							callback: [self openImprint];
+							url: (self wd propertyAt: #imprint:url);
+							target: '_blank';
+"							callback: [self openImprint];"
 							t: 'footer:imprint'.
 						html anchor
-							callback: [self openDisclaimer];
+							url: (self wd propertyAt: #disclaimer:url);
+							target: '_blank';
+"							callback: [self openDisclaimer];"
 							t: 'footer:disclaimer'.
 						html anchor
-							callback: [self openAgb];
+							url: (self wd propertyAt: #agb:url);
+							target: '_blank';
+"							callback: [self openAgb];"
 							t: 'footer:agb' ]
 		]]].
 	

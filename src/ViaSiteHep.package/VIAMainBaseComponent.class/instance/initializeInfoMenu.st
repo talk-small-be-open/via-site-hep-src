@@ -9,12 +9,19 @@ initializeInfoMenu
 
 	subMenu mainEntry: ((VIATextMenuEntry label: 'menu:info') icon: 'menuInfo'; yourself).
 
-	#(teacher faq press about support contact imprint) do: [ :each |
-		(subMenu addEntry: ('menu:info:', each) send: #showTextWithBack: to: self arg: ('page:', each))
-			icon: 'menuInfoPage'.
+	{'teacher'->'info'. 'faq'->'info'. 'press'->'info'. 'about'->'info'. 'support'->'unterstuetzung'} do: [ :each |
+		| entry |
+		entry := VIAUrlMenuEntry label: ('menu:info:', each key) url: ('https://www.tocca-a-te.ch/', each value).
+		entry icon: 'menuInfoPage'.
+		subMenu addEntry: entry.
 	].
 
-	(subMenu addEntry: 'menu:info:disclaimer' send: #openDisclaimer to: self)
-		icon: 'menuInfoPage'.
+"	#(teacher faq press about support) do: [ :each |
+		(subMenu addEntry: ('menu:info:', each) send: #showTextWithBack: to: self arg: ('page:', each))
+			icon: 'menuInfoPage'.
+	]."
+
+"	(subMenu addEntry: 'menu:info:disclaimer' send: #openDisclaimer to: self)
+		icon: 'menuInfoPage'."
 
 	^ subMenu

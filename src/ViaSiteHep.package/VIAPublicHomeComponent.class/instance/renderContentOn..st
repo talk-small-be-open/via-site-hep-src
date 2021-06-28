@@ -7,10 +7,14 @@ renderContentOn: html
 		html div class: 'loginSection'; with: [
 			html bigAnchorButton
 				callback: [ self app openLoginDialog ];
+"	VIATocHepUser isOauthEnabled ifTrue: ["
+"TODO If OAuth ready				url: self oauthAuthorizeUrl;"
+				target: '_self';
 				with: [
 					html span: [
 						html iconLogin; space.
 						html sT: 'publicHome:login' ] ] ].
-		
-		self renderInfoOn: html
+		html div pT: 'publicHome:info'.
+
+"		self renderInfoOn: html"
 	]
