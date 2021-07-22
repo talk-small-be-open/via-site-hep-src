@@ -29,6 +29,7 @@ renderContentOn: html
 					html div class: 'moduleEntry'; with: [
 						html anchor
 							class: 'gotoModule';
+							extraPath: each slugPath;
 							callback: [ self gotoModule: each];
 							with: [
 								self renderModule: each on: html ].

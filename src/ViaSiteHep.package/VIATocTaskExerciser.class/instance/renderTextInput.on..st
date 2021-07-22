@@ -9,6 +9,7 @@ renderTextInput: aPlaceholder on: html
 
 	clozeInput := html textInput
 		ensureId;
+		noAuto;
 		class: 'clozeTextPlaceholder';
 		class: 'wrong' if: (self isca: answerHolder isWrong);
 		class: 'correct' if: (self isca: answerHolder isCorrect);

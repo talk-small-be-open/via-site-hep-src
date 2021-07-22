@@ -12,12 +12,18 @@ gotoFirstScreen
 		^ self
 	].
 
-	"Modul von nicht-eingeloggtem Bereich anpeilen?"
-"	self session gotoModule ifNotNil: [:m |
+	"Modul von URL anpeilen?"
+	self session gotoModule ifNotNil: [:m |
+		| taskNumber |
+		taskNumber := self session gotoTask.
 		self session clearGotoModule.
-		self gotoModule: m. ^self]."
+		(m canView: self currentUser) ifTrue: [
+			self gotoModule: m taskNumber: taskNumber.
+			^self ]].
+	
 
-"	self currentPortfolio lastOpenedModule
+
+"Letztes Modul öffnen:	self currentPortfolio lastOpenedModule
 		ifNotNil: [:m | self gotoModule: m ]
 		ifNil: [self gotoHome]"
 

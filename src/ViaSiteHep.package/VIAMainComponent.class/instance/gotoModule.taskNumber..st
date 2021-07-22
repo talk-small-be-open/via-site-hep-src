@@ -1,6 +1,5 @@
 actions
 gotoModule: aModule taskNumber: anInteger
-	| myModuleInWork |
 	
 	"Suche ein Module, welches schon im Portfolio ist, auch wenn veraltet"
 "	myModuleInWork := (self currentPortfolio newestModuleOfFamily: aModule)

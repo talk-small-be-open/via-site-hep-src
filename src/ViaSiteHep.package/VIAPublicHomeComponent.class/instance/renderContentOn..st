@@ -16,7 +16,13 @@ renderContentOn: html
 							html sT: 'publicHome:login' ] ]
 			] ifFalse: [
 				html div pT: 'publicHome:loginDisabled'
-			]
+			].
+			self ifDevelopment: [
+				html div: [
+					html anchor
+						callback: [ self app openLoginDialog ];
+						with: 'DEV Login' ]].
+		
 				
 		].
 
