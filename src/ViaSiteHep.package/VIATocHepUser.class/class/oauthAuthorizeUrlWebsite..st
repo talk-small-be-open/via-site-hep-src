@@ -4,9 +4,7 @@ oauthAuthorizeUrlWebsite: aWebsite
 	
 	url := WAUrl absolute: (self apiUrl, '/oauth/authorize').
 	
-	redirectUrl := (WAUrl absolute: aWebsite url)
-		addToPath: 'sso';
-		yourself.
+	redirectUrl := self ssoCallbackUrl: aWebsite.
 	
 	url
 		addField: 'client_id' value: self oauthId;

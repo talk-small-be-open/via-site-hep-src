@@ -2,6 +2,7 @@ as yet unclassified
 loginOauthCode: aString website: aWebsite
 	| postData response data apiToken instance |
 
+	"OPTIMIZE: redirect_uri not needed but maybe API wants it? Check it."
 	postData := {
 		'client_id'->self oauthId.
 		'client_secret'->self oauthSecret.
