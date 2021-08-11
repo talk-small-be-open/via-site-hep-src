@@ -1,4 +1,4 @@
 as yet unclassified
 initializeMenus
-	self initializeTopMenu.
+"	self initializeTopMenu."
 	self initializeMainMenu.

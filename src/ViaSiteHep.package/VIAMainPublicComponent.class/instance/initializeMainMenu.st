@@ -1,8 +1,8 @@
 as yet unclassified
 initializeMainMenu
-	super initializeMainMenu.
+	"no menu, so far"
+"	super initializeMainMenu.
 
 	self initializeInfoMenu beExpanded.
 
-	self initializeLoginMenu.
-"	self renderExtraMenuOn: html."
+	self initializeLoginMenu."

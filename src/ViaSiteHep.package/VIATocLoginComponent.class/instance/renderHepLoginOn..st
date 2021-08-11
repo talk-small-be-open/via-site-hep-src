@@ -2,8 +2,8 @@ rendering
 renderHepLoginOn: html
 	VIATocHepUser isOauthEnabled ifTrue: [
 		html div class: 'uk-margin'; with: [
-			html anchor
+			html ukAnchorButton
 				url: self oauthAuthorizeUrl;
 				target: '_self';
-				with: 'New OAuth ...'.
+				sT: 'login:hepLogin'.
 		]]

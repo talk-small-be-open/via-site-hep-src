@@ -16,6 +16,6 @@ loginWithPassword: aPassword
 	(user notNil and: [ user hasLocalPassword ]) ifTrue: [
 		self localLoginWithPassword: aPassword ].
 
-	"... then login at hep"
-	self isLoggedIn ifFalse: [
-		self hepLoginWithPassword: aPassword ].
+	"OLD API login: ... then login at hep"
+"	self isLoggedIn ifFalse: [
+		self hepLoginWithPassword: aPassword ]."

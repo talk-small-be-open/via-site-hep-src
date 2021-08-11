@@ -1,12 +1,12 @@
 actions
 gotoFirstScreen
 
-	self currentUser termsAccepted ifFalse: [ self showAcceptTermsDialog. ^ self ].
+"	self currentUser termsAccepted ifFalse: [ self showAcceptTermsDialog. ^ self ]."
 
 	"Very first login"
 	(self currentUser loginCount = 1) ifTrue: [
 		"If the user did not enter an invitation code so far,
-		we give a second change, just UX."
+		we give a second chance, just UX."
 		(self currentUser studentGroupsInWebsite: self website) ifBlank: [
 			self showRequestForInvitationCode ].
 		^ self

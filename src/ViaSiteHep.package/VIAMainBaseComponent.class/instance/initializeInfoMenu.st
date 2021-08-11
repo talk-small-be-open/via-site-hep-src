@@ -9,7 +9,7 @@ initializeInfoMenu
 
 	subMenu mainEntry: ((VIATextMenuEntry label: 'menu:info') icon: 'menuInfo'; yourself).
 
-	{'teacher'->'info'. 'faq'->'info'. 'press'->'info'. 'about'->'info'. 'support'->'unterstuetzung'} do: [ :each |
+	{'teacher'->'lehrpersonen/didaktische-informationen'. 'faq'->'lehrpersonen/faq'. 'press'->'info'. 'about'->'info'. 'support'->'uber-tocca-a-te/unterstutzung'} do: [ :each |
 		| entry |
 		entry := VIAUrlMenuEntry label: ('menu:info:', each key) url: ('https://www.tocca-a-te.ch/', each value).
 		entry icon: 'menuInfoPage'.

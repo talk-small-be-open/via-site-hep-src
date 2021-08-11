@@ -6,3 +6,4 @@ initialize
 	self reset.
 	
 	rememberMe := true.
+	localEnabled := false.

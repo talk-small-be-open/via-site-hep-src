@@ -3,10 +3,12 @@ renderContentOn: html
 	html ukContainer: [
 		html heading level1; t: 'login:title'.
 
-		self renderLocalLoginOn: html.
-"Eventually here		self renderHepLoginOn: html."
+		self renderHepLoginOn: html.
 
-		html div: [ 
+		localEnabled ifTrue: [
+			self renderLocalLoginOn: html ].
+
+"		html div: [ 
 			html anchor
 				callback: [ self registerNewUser ];
 				with: [ html iconRight; t: 'login:register'].
@@ -18,10 +20,9 @@ renderContentOn: html
 			html anchor
 				callback: [ self showLoginSupport ];
 				with: [ html iconRight; t: 'login:support'].
-		].
+		]."
 
 		self ifDevelopment: [
 			html break; break.
 			self renderQuickLoginOn: html]].
 	
-	self renderHepLoginOn: html.
