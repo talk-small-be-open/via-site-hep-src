@@ -1,5 +1,6 @@
 rendering
 renderContentOn: html
+	self renderTopOn: html.
 	html div
 		class: 'mainContainer';
 		class: (VIATocHelper toccamoduleCssOfToccaunit: self session currentToccaunit);
