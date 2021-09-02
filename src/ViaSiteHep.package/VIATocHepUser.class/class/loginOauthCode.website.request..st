@@ -1,5 +1,5 @@
 as yet unclassified
-loginOauthCode: aString website: aWebsite
+loginOauthCode: aString website: aWebsite request: aRequest
 	| postData response data apiToken instance |
 
 	"OPTIMIZE: redirect_uri not needed but maybe API wants it? Check it."
@@ -16,7 +16,10 @@ loginOauthCode: aString website: aWebsite
 
 	response isDictionary ifFalse: [ self signalError: 'Invalid data from API' ].
 
-	response at: 'error' ifPresent: [:text | self signalError: ('Error from API: ', text) ].
+	response at: 'error' ifPresent: [:text |
+"		self signalError: ('OAuth error while granting auth-code: ', text)."
+		self signalError: 'OAuth error while granting auth-code.' returnData: response request: aRequest
+	].
 	
 	apiToken := response at: 'access_token'. "TODO: Save refresh_token also?"
 

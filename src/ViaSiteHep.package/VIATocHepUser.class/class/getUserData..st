@@ -7,4 +7,9 @@ getUserData: aToken
 
 	response isDictionary ifFalse: [ self signalError: 'No user data' ].
 
+	response at: 'error' ifPresent: [:text |
+"		self signalError: ('Error from API: ', text)."
+		self signalError: 'Error from API:' returnData: response
+	].
+
 	^response at: 'data'
