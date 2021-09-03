@@ -35,8 +35,9 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 
 				"OPTIMIZE: all = l1 has no logo. suppress."
 				task levelTag ifNotNil: [ :lt |
-					html span class: 'level'; with: [ 
-						html iconLevelTag: lt
+					lt isUsingIcon ifTrue: [
+						html span class: 'level'; with: [ 
+							html iconLevelTag: lt]
 				]]. 
 
 				html heading level3; class: 'accTitle'; with: title.
