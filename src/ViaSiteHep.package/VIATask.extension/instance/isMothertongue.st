@@ -1,3 +1,5 @@
 *ViaSiteHep
 isMothertongue
-	^ self classification contextTags anySatisfy: [ :each | each code = #mothertongue ]
+	self levelTag ifNotNil: [:lt | ^ lt code = #l3 ].
+	
+	^ false

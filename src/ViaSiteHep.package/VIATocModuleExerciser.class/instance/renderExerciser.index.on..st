@@ -32,6 +32,13 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 		
 		divTag with: [
 			html div class: 'left'; with: [
+
+				"OPTIMIZE: all = l1 has no logo. suppress."
+				task levelTag ifNotNil: [ :lt |
+					html span class: 'level'; with: [ 
+						html iconLevelTag: lt
+				]]. 
+
 				html heading level3; class: 'accTitle'; with: title.
 				task classification activityTypeTags ifNotEmpty: [ :all |
 					html span class: 'accIcons'; with: [
