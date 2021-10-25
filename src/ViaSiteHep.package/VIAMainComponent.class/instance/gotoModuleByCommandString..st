@@ -4,7 +4,7 @@ gotoModuleByCommandString: aString
 	| module index taskNumber |
 	
 	index := aString copyUpTo: $/.
-	taskNumber := (aString copyAfter: $/) asInteger.
+	taskNumber := (aString copyAfter: $/) asInteger. "=nil if blank"
 	module := self wd findModuleByIndexCode: index.
 
 	module ifNotNil: [
