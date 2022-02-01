@@ -2,7 +2,7 @@ as yet unclassified
 calculateSubcolumnsFromCol: aMainColInteger choices: aChoicesCollection
 
 	| maxLength totalChars |
-	maxLength := (aChoicesCollection max: [ :each | pillarLengthEstimator estimateString: each ]).
+	maxLength := (aChoicesCollection max: [ :each | pillarLengthEstimator estimateString: each asString ]).
 
 	maxLength ifNil: [ ^ 1 ].
 

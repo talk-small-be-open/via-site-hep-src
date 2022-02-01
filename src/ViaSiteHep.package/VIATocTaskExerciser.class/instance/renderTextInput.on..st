@@ -17,7 +17,7 @@ renderTextInput: aPlaceholder on: html
 		class: aPlaceholder uiStyle;
 		style: ('width: ', solutionMaxSize greaseString, 'em;');
 		callback: [:value |
-			value = 'BLANK' ifTrue: [ answerHolder beExplicitBlank ] ifFalse: [
+			value = aPlaceholder blankPlaceholder ifTrue: [ answerHolder beExplicitBlank ] ifFalse: [
 				answerHolder value: (self sanitizeClozeInput: value) ] ].
 
 
@@ -71,4 +71,5 @@ renderTextInput: aPlaceholder on: html
 
 	self renderCorrection: answerHolder on: html.
 
-	self renderHintSymbolOf: aPlaceholder on: html.
+	aPlaceholder isAutoShowHint ifFalse: [
+		self renderHintSymbolOf: aPlaceholder on: html ].

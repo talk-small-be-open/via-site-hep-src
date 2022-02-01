@@ -4,6 +4,10 @@ renderExerciser: aTaskExerciser index: anInteger on: html
 	id := html nextId.
 
 	task := aTaskExerciser task.
+
+	"Restricted access"
+	(task canViewByAnyRole: self currentUserRoles) ifFalse: [ ^ false ].
+
 	title := task title.
 	hasTitle := title notBlank.
 	exercise := aTaskExerciser exercise.

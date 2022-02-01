@@ -64,6 +64,7 @@ renderSelectOneRadio: aSelectOneInput on: html
 																(html jQuery id: buttonId) addClass: 'active');
 															value: choice.
 														html iconChecked class: 'checkedIcon'.
-														html pillarString: choice]
+														self renderTextualAnswer: choice brick: aSelectOneInput on: html.
+														"html pillarString: choice"]
 													].
 		]]]]]]]]

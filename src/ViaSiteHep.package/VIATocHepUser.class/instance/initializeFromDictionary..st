@@ -8,6 +8,7 @@ initializeFromDictionary: aDictionary
 	lastName := aDictionary at: 'last_name'.
 	email := aDictionary at: 'email'.
 
+	"TBD?: Einfacher mit property is_email_verified boolean"
 	isEmailConfirmed := (aDictionary at: 'email_verified_at') notNil.
 	
 "	confirmationKey := aDictionary at: 'confirmation' ifAbsent: [ nil ]."

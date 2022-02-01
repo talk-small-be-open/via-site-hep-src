@@ -12,25 +12,7 @@ renderSelectOne: aSelectOneInput on: html
 		class: 'answerWasWrong' if: answerValue isWrong;
 		with: [
 			aSelectOneInput solutions do: [:each |
-				html iconSolution; space.
-				html pillarString: each
-			] separatedBy: [html text: ' / ' ]
+				html iconSolution.
+				self renderTextualAnswer: each brick: aSelectOneInput on: html.
+			] separatedBy: [ html space "html text: ' / '" ]
 		].
-
-
-"	html div with: [
-		aSelectOneInput choices do: [:choice |
-			html label
-				class: 'solution';
-				class: ((answerValue value = choice)
-					ifTrue: ['answerWasCorrect']
-					ifFalse: ['answerWasWrong']);	
-				with: [
-					(aSelectOneInput solutions includes: choice)
-						ifTrue: [html iconCorrect]
-						ifFalse: [html iconWrong].
-					html space.
-					html span: choice].
-			html break.
-			].
- ]"

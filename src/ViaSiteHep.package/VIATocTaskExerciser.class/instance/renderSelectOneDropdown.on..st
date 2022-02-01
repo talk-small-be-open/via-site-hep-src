@@ -9,12 +9,13 @@ renderSelectOneDropdown: aSelectOneInput on: html
 	input := html select
 		id: id;
 		list: orderedChoices;
+		labels: [ :each | self labelForTextualAnswer: each brick: aSelectOneInput ];
 		beOptional;
 		class: 'uk-select uk-width-auto selectOneInput';
 		class: 'wrong' if: (self isca: answerValue isWrong);
 		class: 'correct' if: (self isca: answerValue isCorrect);
 		class: aSelectOneInput uiStyle;
-		callback: [:value | answerValue value: value].
+		callback: [:value | answerValue value: value ].
 
 	self isHideWrongAnswers
 		ifTrue: [
