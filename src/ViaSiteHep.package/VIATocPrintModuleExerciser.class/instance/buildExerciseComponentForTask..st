@@ -7,4 +7,6 @@ buildExerciseComponentForTask: aTask
 	
 	exerciserComponents
 		at: taskIndex
-		put: taskExerciser
+		put: taskExerciser.
+		
+	^ taskExerciser
