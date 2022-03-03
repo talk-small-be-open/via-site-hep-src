@@ -16,7 +16,8 @@ renderSelectMany: aSelectManyInput on: html
 					html iconCorrect.
 					html space.
 					html span: [
-						self renderTextualAnswer: choice brick: aSelectManyInput on: html.
+"						self renderTextualAnswer: choice brick: aSelectManyInput on: html."
+						choice acceptRenderingVisitor: self on: html.
 "						html pillarString: choice"]].
 			html break.
 			].

@@ -13,6 +13,7 @@ renderSelectOne: aSelectOneInput on: html
 		with: [
 			aSelectOneInput solutions do: [:each |
 				html iconSolution.
-				self renderTextualAnswer: each brick: aSelectOneInput on: html.
+				choice acceptRenderingVisitor: self on: html.
+"				self renderTextualAnswer: each brick: aSelectOneInput on: html."
 			] separatedBy: [ html space "html text: ' / '" ]
 		].

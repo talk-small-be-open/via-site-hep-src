@@ -63,7 +63,9 @@ renderSelectMany: aSelectManyInput on: html
 													value: isChozen.
 
 												html iconChecked class: 'checkedIcon'.
-												self renderTextualAnswer: choice brick: aSelectManyInput on: html.
+												choice acceptRenderingVisitor: self on: html.
+												"self renderTextualAnswer: choice brick: aSelectManyInput on: html."
+
 												"html pillarString: choice"].
 										].
 	]]]]]]]
