@@ -8,6 +8,8 @@ default
 	self validateFormat
 		of: #indexCodeString named: 'module:indexCode';
 		withRegexp: VIATocHelper regexpIndexCode.
+		
+	self validateUniqueIndexCode
 
 "	self validateFormat
 		of: #exerciseLevel named: 'module:level';
