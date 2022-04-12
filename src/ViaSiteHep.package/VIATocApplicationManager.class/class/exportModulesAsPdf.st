@@ -26,7 +26,10 @@ exportModulesAsPdf
 				targetFolder: exportFolder;
 				generate.
 		
-		] value "ifError: [ :message |
-			self logError: ('Fehler beim PDF-Export von Modul ', each displayName, ': ', message)
-		]"
+		] ifError: [ :message |
+			| text |
+			text := ('Fehler beim PDF-Export von Modul ', each displayName, ': ', message).
+			self logError: text.
+			self sendSysAdminEmailSubject: 'Error in exportModulesAsPdf' body: text
+		]
 	]
