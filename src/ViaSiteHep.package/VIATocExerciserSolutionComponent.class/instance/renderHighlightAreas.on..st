@@ -1,6 +1,7 @@
 as yet unclassified
 renderHighlightAreas: aHighlightAreas on: html
-	html div
+	self subRender: aHighlightAreas type: VIAHighlightAreasV2SolutionRenderer on: html
+"	html div
 		class: 'highlightAreas';
 		with: [
 			pillarSeasideRenderer
@@ -9,4 +10,4 @@ renderHighlightAreas: aHighlightAreas on: html
 					| area |
 					area := aHighlightAreas areaForMarker: marker.
 					area acceptRenderingVisitor: self on: h];
-				start: aHighlightAreas pillarDocument]
+				start: aHighlightAreas pillarDocument]"
