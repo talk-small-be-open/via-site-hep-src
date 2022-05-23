@@ -29,7 +29,7 @@ exportModulesAsPdf
 		] ifError: [ :message |
 			| text |
 			text := ('Fehler beim PDF-Export von Modul ', each displayName, ': ', message).
-			self logError: text.
-			self sendSysAdminEmailSubject: 'Error in exportModulesAsPdf' body: text
+			self logError: text. "will write to GemStone object log"
+"Not here. Only in maintenance gem, from object log			self sendSysAdminEmailSubject: 'Error in exportModulesAsPdf' body: text"
 		]
 	]
