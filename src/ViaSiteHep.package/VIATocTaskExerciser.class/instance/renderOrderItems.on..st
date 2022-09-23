@@ -27,13 +27,20 @@ renderOrderItems: anOrderItems on: html
 			class: 'orderItemsList';
 			with: [
 			
-				items do: [:each |
-					html listItem passenger: each; class: 'orderItem'; with: [
-						html div class: 'orderItemContent'; with: [
-							html div class: 'orderSymbol'; with: [
-								html iconOrderBullet ].
-							html div class: 'orderContent'; with: [
-								each acceptRenderingVisitor: self on: html]]]]].
+				items withIndexDo: [:each :index |
+					| isCorrect |
+					
+					isCorrect := answerHolder isChecked and: [anOrderItems isCorrect: each atPosition: index].
+					
+					html listItem passenger: each; class: 'orderItem draggable'; with: [
+						html div
+							class: 'orderItemContent';
+							class: 'correct' if: (self isca: isCorrect);
+							with: [
+								html div class: 'orderSymbol'; with: [
+									html iconOrderBullet ].
+								html div class: 'orderContent'; with: [
+									each acceptRenderingVisitor: self on: html]]]]].
 
 		self renderCorrection: answerHolder on: html.
 		].
