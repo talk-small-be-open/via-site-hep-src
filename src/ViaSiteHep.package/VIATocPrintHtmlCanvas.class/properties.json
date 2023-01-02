@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VIATocHtmlCanvas",
+	"category" : "ViaSiteHep-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VIATocPrintHtmlCanvas",
+	"type" : "normal"
+}
