@@ -43,11 +43,10 @@ renderSelectOneRadio: aSelectOneInput on: html
 								class: ('uk-grid-small uk-child-width-1-', subColumnsCount asString);
 								with: [
 									choices do: [:choice |
-										| isChozen isWrongChoice isCorrect isCorrectChoice |
+										| isChozen isWrongChoice isCorrectChoice |
 										isChozen := answerValue value = choice.
-										isCorrect := answerValue isCorrect.
-										isWrongChoice := (isChozen and: [isCorrect not]).
-										isCorrectChoice := (isChozen and: [isCorrect]).
+										isWrongChoice := (isChozen and: [answerValue isWrong]).
+										isCorrectChoice := (isChozen and: [answerValue isCorrect]).
 										html div: [
 											html label
 												id: (buttonId := html nextId);

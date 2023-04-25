@@ -1,19 +1,18 @@
 rendering
 renderSelectOne: aSelectOneInput on: html
-	| answerValue choice |
+	| answerValue |
 	
 	answerValue := exercise answerOf: aSelectOneInput.
 
-	choice := answerValue value.
+"	choice := answerValue value."
 	
 	html span
-		class: 'solution';
+		class: 'selectOneInput solution';
 		class: 'answerWasCorrect' if: answerValue isCorrect;
 		class: 'answerWasWrong' if: answerValue isWrong;
 		with: [
+			html iconSolution.
 			aSelectOneInput solutions do: [:each |
-				html iconSolution.
-				choice acceptRenderingVisitor: self on: html.
-"				self renderTextualAnswer: each brick: aSelectOneInput on: html."
-			] separatedBy: [ html space "html text: ' / '" ]
-		].
+				each acceptRenderingVisitor: self on: html.
+			] separatedBy: [ html text: ' | ' ]
+		]

@@ -6,18 +6,18 @@ renderSelectMany: aSelectManyInput on: html
 	answerCollection := answerValue value.
 	
 	html div with: [
-		aSelectManyInput solutions do: [:choice |
+		aSelectManyInput solutions do: [:each |
 			html label
 				class: 'solution';
-				class: ((answerCollection includes: choice)
+				class: ((answerCollection includes: each)
 					ifTrue: ['answerWasCorrect']
 					ifFalse: ['answerWasWrong']);	
 				with: [
-					html iconCorrect.
+					html iconSolution.
 					html space.
 					html span: [
 "						self renderTextualAnswer: choice brick: aSelectManyInput on: html."
-						choice acceptRenderingVisitor: self on: html.
+						each acceptRenderingVisitor: self on: html.
 "						html pillarString: choice"]].
 			html break.
 			].
