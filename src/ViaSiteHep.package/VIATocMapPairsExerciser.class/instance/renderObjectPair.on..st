@@ -10,7 +10,6 @@ renderObjectPair: anObjectPair on: html
 	html div
 		class: 'objectPair';
 		with: [
-			self renderHintSymbolOf: anObjectPair on: html.
 			html div
 				class: 'leftObject';
 				passenger: anObjectPair;
@@ -23,6 +22,7 @@ renderObjectPair: anObjectPair on: html
 						) asFunction: #(event))
 					);
 				with: [
+					self renderHintSymbolOf: anObjectPair on: html.
 					self renderWithParent: leftObject on: html].
 
 "			html div class: 'middleColumn'; with: [

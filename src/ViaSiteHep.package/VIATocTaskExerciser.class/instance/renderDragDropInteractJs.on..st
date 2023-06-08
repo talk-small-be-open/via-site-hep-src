@@ -7,8 +7,6 @@ renderDragDropInteractJs: aDragDropInput on: html
 
 "	html hintBox: 'dragDrop:seeTutorial'."
 
-	self renderHintSymbolOf: aDragDropInput on: html.
-
 "	self renderCorrection: answerValue showWrong: false on: html."
 	
 	dropTargetId := html nextId.
@@ -40,4 +38,6 @@ renderDragDropInteractJs: aDragDropInput on: html
 							self ifca: isCorrect t: [
 								html span class: 'correctIcon'; with: [html iconCorrect].
 							].
-							self renderDragDropDraggable: each on: html]]]]
+							self renderDragDropDraggable: each on: html]]]].
+			
+	self renderHintSymbolOf: aDragDropInput on: html.
