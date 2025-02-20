@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "VIAPortfolio",
+	"category" : "ViaSiteHep-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"lastOpenedPalloncini",
+		"lastOpenedVocabolario"
+	],
+	"name" : "VIATocPortfolio",
+	"type" : "normal"
+}

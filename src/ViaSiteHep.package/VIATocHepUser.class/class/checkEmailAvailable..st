@@ -1,3 +1,0 @@
-as yet unclassified
-checkEmailAvailable: anEmailString
-	self shouldNotImplement

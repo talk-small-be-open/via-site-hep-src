@@ -1,15 +1,11 @@
 {
 	"commentStamp" : "AndreasBrodbeck 7/1/2020 09:34",
-	"super" : "VIAExternalAuthUser",
+	"super" : "VIAHepUser",
 	"category" : "ViaSiteHep-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"groups",
-		"isEmailConfirmed",
-		"apiToken"
-	],
+	"instvars" : [ ],
 	"name" : "VIATocHepUser",
 	"type" : "normal"
 }

@@ -1,0 +1,3 @@
+site-config
+portfolioClass
+	^ VIATocPortfolio

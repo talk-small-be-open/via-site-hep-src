@@ -1,4 +1,4 @@
-as yet unclassified
+obsolete
 hepLoginWithPassword: aPassword
 	| viaUser hepUser skipVerification |
 	loginOk := false.
