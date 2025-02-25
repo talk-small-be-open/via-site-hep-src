@@ -1,3 +1,3 @@
 actions
 gotoMyTeacherCockpit
-	self coreComponent: VIATocTeacherMyCockpit new
+	self coreComponent: VIATocTeacherCockpit new

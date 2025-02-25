@@ -1,3 +1,0 @@
-rendering
-deleteInvitationCode
-	selectedGroup deleteInvitationCommand

@@ -1,3 +1,0 @@
-testing
-hasSelection
-	^ selectedGroup notNil

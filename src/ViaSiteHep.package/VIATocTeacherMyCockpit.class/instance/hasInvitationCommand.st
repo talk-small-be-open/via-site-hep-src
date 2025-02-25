@@ -1,3 +1,0 @@
-testing
-hasInvitationCommand
-	^ selectedGroup invitationCommand notNil

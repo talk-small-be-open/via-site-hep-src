@@ -3,6 +3,8 @@ enterInvitationCode
 	| code |
 	code := self request: 'myProfile:yourInvitationCodeQM'.
 	
+	code ifBlank: [ ^ self ].
+	
 	(self wd findInvitationCommandByCode: code)
 		ifNil: [
 			self flashMessage: 'myProfile:wrongInvitationCode' ]

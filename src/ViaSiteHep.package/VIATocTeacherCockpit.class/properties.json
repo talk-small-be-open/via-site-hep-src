@@ -1,14 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "VIAComponent",
+	"super" : "VIAHepTeacherCockpitBase",
 	"category" : "ViaSiteHep-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"studentsGroups",
-		"selectedGroup"
-	],
-	"name" : "VIATocTeacherMyCockpit",
+	"instvars" : [ ],
+	"name" : "VIATocTeacherCockpit",
 	"type" : "normal"
 }

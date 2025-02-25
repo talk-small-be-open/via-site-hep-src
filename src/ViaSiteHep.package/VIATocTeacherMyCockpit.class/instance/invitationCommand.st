@@ -1,3 +1,0 @@
-accessing
-invitationCommand
-	^ selectedGroup invitationCommand
