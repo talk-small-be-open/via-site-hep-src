@@ -1,5 +1,9 @@
 rendering
 renderButtonsOn: html
+
+	"After save, before check. Hook for certain bricks to cleanup, beautify input, etc."
+	html hiddenInput afterFormSaveBeforeButtonActionCallback: [ self afterSave ].
+
 	self task isSelfCheckMode ifTrue: [
 		html div class: 'exerciserMainButtons'; with: [
 			self renderSaveOnlyButtonsOn: html ]

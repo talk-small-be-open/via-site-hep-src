@@ -6,6 +6,7 @@ initialize
 	currentExerciser := nil.
 	exerciserComponents := nil.
 	
+	self addContainerDiv.
 	
 	self addForm
 		removeButtons.

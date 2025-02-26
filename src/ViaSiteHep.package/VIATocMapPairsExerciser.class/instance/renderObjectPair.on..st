@@ -14,7 +14,7 @@ renderObjectPair: anObjectPair on: html
 				class: 'leftObject';
 				passenger: anObjectPair;
 				script: (html jsInteract pointer
-					onTap: (((JSStream on: 'window')
+					onTap: ((html jsWindow
 						call: 'onMapPairsTapLeft'
 						with: exerciseId
 						with: (JSStream on: 'event.interactable.target')
@@ -35,7 +35,7 @@ renderObjectPair: anObjectPair on: html
 				class: 'rightObject';
 				passenger: answerHolder;
 				script: (html jsInteract pointer
-					onTap: (((JSStream on: 'window')
+					onTap: ((html jsWindow
 						call: 'onMapPairsTapRight'
 						with: exerciseId
 						with: (JSStream on: 'event.interactable.target')
