@@ -1,0 +1,4 @@
+icons
+iconDoneFinishedExercise: aModuleOrTaskExercise
+	
+	self iconProgressFromPercent: aModuleOrTaskExercise percentDone correctness: aModuleOrTaskExercise percentFinished

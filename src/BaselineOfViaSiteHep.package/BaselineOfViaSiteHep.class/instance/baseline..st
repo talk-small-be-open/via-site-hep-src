@@ -4,7 +4,7 @@ baseline: spec
 	spec for: #'common' do: [
 		spec baseline: 'Via' with: [
 			spec
-				repository: 'github://talk-small-be-open/via-base-src:hep-master/src';
+				repository: self viaRepoUrl;
 				loads: #('default')
 		].
 

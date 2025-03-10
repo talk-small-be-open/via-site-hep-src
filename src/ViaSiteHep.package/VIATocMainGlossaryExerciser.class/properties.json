@@ -1,11 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "VIAHepMyProfileComponentBase",
+	"super" : "VIAModuleExerciserBase",
 	"category" : "ViaSiteHep-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "VIATocMyProfileComponent",
+	"instvars" : [
+		"exerciserComponents"
+	],
+	"name" : "VIATocMainGlossaryExerciser",
 	"type" : "normal"
 }
