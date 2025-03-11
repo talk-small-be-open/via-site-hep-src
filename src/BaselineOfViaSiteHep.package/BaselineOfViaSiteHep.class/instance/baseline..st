@@ -7,7 +7,7 @@ baseline: spec
 				repository: 'github://talk-small-be-open/via-base-src:hep-master/src';
 				loads: #('default')
 		].
-		spec baseline: 'Via-Testing' with: [
+		spec baseline: 'ViaTesting' with: [
 			spec
 				className: 'BaselineOfVia'; 
 				repository: 'github://talk-small-be-open/via-base-src:hep-testing/src';
@@ -17,13 +17,13 @@ baseline: spec
 		spec package: 'ViaSiteHep' with: [
 			spec 
 				requires: #('Via') ].
-		spec package: 'ViaSiteHep-Testing' with: [
+		spec package: 'ViaSiteHepTesting' with: [
 			spec
 				file: 'ViaSiteHep';
-				requires: #('Via-Testing')].
+				requires: #('ViaTesting')].
 
 
 		spec
 			group: 'default' with: #('Core' );
-			group: 'testing' with: #('ViaSiteHep-Testing');
+			group: 'testing' with: #('ViaSiteHepTesting');
 			group: 'Core' with: #('ViaSiteHep' ). ].
