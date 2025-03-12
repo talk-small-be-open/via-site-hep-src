@@ -4,7 +4,9 @@
 	"category" : "BaselineOfViaSiteHep",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [ ],
+	"classvars" : [
+		"Branch"
+	],
 	"instvars" : [ ],
 	"name" : "BaselineOfViaSiteHep",
 	"type" : "normal"
