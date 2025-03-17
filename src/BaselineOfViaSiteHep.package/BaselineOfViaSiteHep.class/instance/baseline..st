@@ -5,7 +5,7 @@ baseline: spec
 		spec baseline: 'Via' with: [
 			spec
 				repository: 'github://talk-small-be-open/via-base-src:hep-master/src';
-				loads: #('default')
+				loads: #('default' 'hep')
 		].
 	].
 
@@ -13,7 +13,7 @@ baseline: spec
 		spec baseline: 'Via' with: [
 			spec
 				repository: 'github://talk-small-be-open/via-base-src:hep-testing/src';
-				loads: #('default')
+				loads: #('default' 'hep')
 		].
 	].
 
