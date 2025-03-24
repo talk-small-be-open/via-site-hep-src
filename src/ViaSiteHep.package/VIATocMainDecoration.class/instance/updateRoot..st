@@ -3,6 +3,7 @@ updateRoot: anHtmlRoot
 	super updateRoot: anHtmlRoot.
 
 	self updateRootEssentials: anHtmlRoot.
+	self updateRootStandardJsUiLibs: anHtmlRoot.
 	self updateRootCookieConsent: anHtmlRoot.
 	self updateRootFontawesome: anHtmlRoot.
 	self updateRootDefaultUi: anHtmlRoot.
