@@ -2,7 +2,7 @@ rendering
 renderContentOn: html
 
 	html heading: [
-		html text: 'Leseansicht'.
+		html sT: 'teacherViewModule:title'.
 		html space.
 		html text: self user fullName.
 	].
