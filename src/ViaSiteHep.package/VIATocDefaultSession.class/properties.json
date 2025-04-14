@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"currentToccaunit",
-		"workingToccaunit"
+		"workingToccaunit",
+		"lastUsedStudentsGroup"
 	],
 	"name" : "VIATocDefaultSession",
 	"type" : "normal"

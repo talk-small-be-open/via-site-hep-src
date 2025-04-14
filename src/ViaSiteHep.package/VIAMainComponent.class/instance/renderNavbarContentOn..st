@@ -26,6 +26,13 @@ renderNavbarContentOn: html
 		]."
 
 		html unorderedList class: 'uk-navbar-nav'; with: [
+			self ifTeacher: [
+				html listItem: [
+					html anchor
+						callback: [ self gotoMyTeacherCockpit ];
+						with: [ html iconUserTeacher ]
+				].
+			].
 			html listItem: [
 				html anchor
 					callback: [ self gotoMyPortfolio ];
