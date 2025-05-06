@@ -33,7 +33,13 @@ renderFooterOn: html
 							url: (self wd propertyAt: #agb:url);
 							target: '_blank';
 "							callback: [self openAgb];"
-							t: 'footer:agb' ]
+							t: 'footer:agb' ].
+					html ukGrid class: 'uk-flex uk-flex-wrap uk-flex-between@m uk-flex-right@l'; with: [
+						html anchor url: 'https://www.share-fair.ch/'; target: '_blank'; with: [
+							html image
+								class: 'shareFair';
+								url: '/site/images/share_fair_Logo_URL_Weiss-Neg_sRGB.svg' ].						
+					]
 		]]].
 	
 
