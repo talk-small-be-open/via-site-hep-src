@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "VIAError",
+	"super" : "VIAHepUserError",
 	"category" : "ViaSiteHep-Misc",
 	"classinstvars" : [ ],
 	"pools" : [ ],

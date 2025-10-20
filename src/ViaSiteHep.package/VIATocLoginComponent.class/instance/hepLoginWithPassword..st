@@ -7,7 +7,7 @@ hepLoginWithPassword: aPassword
 	[
 		hepUser := VIATocHepOldUser loginUsername: email password: aPassword.
 		viaUser := hepUser syncViaUserFromWebsite: self website.
-	] on: VIATocHepUserError do: [ :error |
+	] on: VIAHepUserError do: [ :error |
 		loginOk := false.
 		messageKey := 'login:hepLoginError'.
 		hepErrorMessage := error messageText.

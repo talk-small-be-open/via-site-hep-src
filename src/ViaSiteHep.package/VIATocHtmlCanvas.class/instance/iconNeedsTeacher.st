@@ -1,3 +1,4 @@
 icons
 iconNeedsTeacher
-	^ self iconUserTeacher
+"	^ self iconUserTeacher"
+	^ self farIcon: 'hand-paper'
