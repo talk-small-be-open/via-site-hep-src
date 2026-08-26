@@ -19,13 +19,10 @@ initializeMainMenu
 
 	mainMenu addDivider.
 
-	"NOCH NICHT REIF"
-	self ifDevelopment: [ 
 	self ifTeacher: [
 		(mainMenu addEntry: 'menu:myTeacherCockpit' send: #gotoMyTeacherCockpit to: self)
 			icon: 'menuTeacher'.
 		mainMenu addDivider.
-	].
 	].
 
 	

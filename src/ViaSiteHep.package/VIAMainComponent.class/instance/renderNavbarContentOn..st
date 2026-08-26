@@ -26,15 +26,12 @@ renderNavbarContentOn: html
 		]."
 
 		html unorderedList class: 'uk-navbar-nav'; with: [
-			"NOCH NICHT REIF"
-			self ifDevelopment: [ 
 			self ifTeacher: [
 				html listItem: [
 					html anchor
 						callback: [ self gotoMyTeacherCockpit ];
 						with: [ html iconUserTeacher ]
 				].
-			].
 			].
 			html listItem: [
 				html anchor
